@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
 import { render } from 'react-dom';
+import { downloadFile } from './utils';
 import './scss/style.scss';
 
 const myData = {
-  name: ' Some project ',
+  name: ' Новый проект!!',
   speech: {
     page1: {
       title: 'Page 1',
@@ -14,23 +15,12 @@ const myData = {
 };
 
 const App: FunctionComponent = () => {
-  const downloadFile = async () => {
-    const fileName = ((myData.name).trim()).replace(/ /g,'_').toLowerCase();
-    const json = JSON.stringify(myData);
-    const blob = new Blob([json],{type:'application/json'});
-    const href = await URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = href;
-    link.download = fileName + ".json";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+const saveToJSON = () => downloadFile(myData, myData.name);
 
   return (
     <>
       <h1>Hi there!</h1>
-      <button className="btn btn-green" type="button" onClick={downloadFile}>Save data as JSON</button>
+      <button className="btn btn-green" type="button" onClick={saveToJSON}>Save data as JSON</button>
     </>
   );
 };
