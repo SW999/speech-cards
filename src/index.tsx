@@ -19,7 +19,14 @@ const saveToJSON = () => downloadFile(myData, myData.name);
 
   return (
     <>
-      <h1>Hi there!</h1>
+      <h1>Simple speech cards</h1>
+      <p>Now You can:
+        <button className="btn btn-yellow" type="button" onClick={() => {}}>Check a demo project</button>
+        <button className="btn btn-blue" type="button" onClick={() => {}}>Open an existing project from local storage</button>
+        <button className="btn btn-blue" type="button" onClick={() => {}}>Load saved JSON file</button>
+        <button className="btn btn-green" type="button" onClick={() => {}}>Create a new project</button>
+</p>
+      <br/>
       <button className="btn btn-green" type="button" onClick={saveToJSON}>Save data as JSON</button>
     </>
   );
