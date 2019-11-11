@@ -5,7 +5,9 @@ import { NavLink } from 'react-router-dom';
 export const Header: FunctionComponent = () => (
   <header>
     <nav>
-      <NavLink exact={true} to="/">Home</NavLink>
+      <NavLink exact={true} to="/">
+        Home
+      </NavLink>
       <NavLink to="/demo">Demo</NavLink>
       <NavLink to="/from-storage">From Storage</NavLink>
       <NavLink to="/from-json">From JSON</NavLink>
