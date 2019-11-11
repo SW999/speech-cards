@@ -2,16 +2,29 @@
   "name": "speech-cards",
   "version": "0.1.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SW999/speech-cards"
+  },
+  "author": "Siarhei Vaitehovich",
+  "license": "MIT",
   "main": "src/index.tsx",
   "scripts": {
     "clean": "del-cli dist/*",
+    "develop": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
-    "build": "cross-env NODE_ENV=production && npm run clean && parcel build index.html --public-url ./ --no-cache --no-source-maps",
+    "build": "cross-env NODE_ENV=production && npm run clean && npm run type-check &&parcel build index.html --public-url ./ --no-cache --no-source-maps",
+    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettify"
+    }
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.7.2",
     "node-sass": "4.13.0",
@@ -30,13 +43,20 @@
     "@types/react-dom": "^16.8.4",
     "babel-eslint": "^10.0.3",
     "babel-plugin-transform-runtime": "^6.23.0",
+    "concurrently": "^5.0.0",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "del-cli": "^1.1.0",
     "eslint": "^6.2.2",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.5.0",
+    "husky": "^3.0.9",
+    "prettier": "^1.19.1",
     "sass": "1.23.3",
+    "tslint": "^5.20.1",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.1.0",
     "typescript": "3.7.2"
   }
 }
