@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 export const transliterate = (str: string): string => {
   const sp = '_';
   const text = str
