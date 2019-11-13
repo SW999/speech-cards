@@ -14,7 +14,7 @@
     "develop": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
     "build": "cross-env NODE_ENV=production && npm run clean && npm run type-check &&parcel build index.html --public-url ./ --no-cache --no-source-maps",
-    "prettify": "prettier --write './src/**/*.{ts,tsx}'",
+    "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -42,6 +42,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.5.0",
     "husky": "^3.0.9",
+    "markdown-to-jsx": "^6.10.3",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
     "regenerator-runtime": "^0.13.3",
