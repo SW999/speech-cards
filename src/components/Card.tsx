@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState, useEffect } from 'react';
 import Markdown from 'markdown-to-jsx';
 import { RedialProgressBar } from './RedialProgressBar';
 
@@ -16,8 +16,28 @@ type projectObject = {
 };
 
 export const Card: FunctionComponent<projectObject> = ({ project }) => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number>(-1);
   const len = project.speech.length;
+
+  useEffect(() => {
+    const slideCard = (e: KeyboardEvent) => {
+      const code = e.code || e.which;
+
+      if ((code === 'ArrowLeft' || code === 37) && page > -1) {
+        setPage(page => --page);
+      }
+
+      if ((code === 'ArrowRight' || code === 39) && page < len - 1) {
+        setPage(page => ++page);
+      }
+    };
+
+    window.addEventListener('keydown', slideCard);
+
+    return () => {
+      window.removeEventListener('keydown', slideCard);
+    };
+  }, [page]);
 
   return (
     <>
