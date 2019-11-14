@@ -35,8 +35,7 @@ body {
   background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%,#141414 100%);
 
   &::before {
-    content: "";
-    position: absolute;
+    @include pseudo;
     top: 0;
     bottom: 0;
     left: 0;

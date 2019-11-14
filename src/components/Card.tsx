@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FunctionComponent, useState } from 'react';
 import Markdown from 'markdown-to-jsx';
+import { RedialProgressBar } from './RedialProgressBar';
 
 type projectProps = {
   name: string;
@@ -25,9 +26,11 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
         <>
           <div className="card-header">
             <h2>{project.speech[page].title}</h2>
-            <div className="card-header_counter">
-              {page + 1}/{len}
-            </div>
+            <RedialProgressBar
+              current={page + 1}
+              total={len}
+              label={`${page + 1}/${len}`}
+            />
           </div>
           <div className="card-body">
             <Markdown children={project.speech[page].content} />

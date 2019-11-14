@@ -1,0 +1,35 @@
+$default-size: 4.5rem;
+$bg-color: white;
+$border-color: orangered;
+
+.radial-progress-bar {
+  @include size($default-size);
+  position: relative;
+  border-radius: 50%;
+  background-color: $bg-color;
+
+  &__pie {
+    @include size(calc(100% + .2rem));
+    @include center('both');
+    clip: rect(0, $default-size + .2rem, $default-size + .2rem, ($default-size + .2rem) / 2);
+  }
+
+  &__half-circle {
+    @include size(100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: .2rem solid $border-color;
+    border-radius: 50%;
+    clip: rect(0, ($default-size + .2rem) / 2, $default-size + .2rem, 0);
+  }
+
+  &__label {
+    @include center('both');
+    position: absolute;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  @include progress();
+}
