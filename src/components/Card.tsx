@@ -20,27 +20,26 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
   const [page, setPage] = useState<number>(-1);
   const len = project.speech.length;
   const isTouchExist = checkTouch();
-  const moveLeft = () => {
-    console.log('left');
-    if (page > -1) {
-      setPage(page => --page);
-    }
-  };
-  const moveRight = () => {
-    console.log('right');
-    if (page < len - 1) {
-      setPage(page => ++page);
-    }
-  };
 
   useEffect(() => {
+    const moveLeft = () => {
+      if (page > -1) {
+        setPage(page => --page);
+      }
+    };
+    const moveRight = () => {
+      if (page < len - 1) {
+        setPage(page => ++page);
+      }
+    };
+
     if (isTouchExist) {
       document.addEventListener('swipeLeft', moveRight);
       document.addEventListener('swipeRight', moveLeft);
 
       return () => {
-        document.removeEventListener('swipeLeft', moveLeft);
-        document.removeEventListener('swipeRight', moveRight);
+        document.removeEventListener('swipeLeft', moveRight);
+        document.removeEventListener('swipeRight', moveLeft);
       };
     } else {
       const slideCard = (e: KeyboardEvent) => {
@@ -60,7 +59,7 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
         document.removeEventListener('keydown', slideCard);
       };
     }
-  }, []);
+  }, [page]);
 
   return (
     <>
