@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FunctionComponent, useState, useEffect } from 'react';
 import Markdown from 'markdown-to-jsx';
 import { RedialProgressBar } from './RedialProgressBar';
+import { checkTouch } from '../utils';
 
 type projectProps = {
   name: string;
@@ -18,26 +19,48 @@ type projectObject = {
 export const Card: FunctionComponent<projectObject> = ({ project }) => {
   const [page, setPage] = useState<number>(-1);
   const len = project.speech.length;
+  const isTouchExist = checkTouch();
+  const moveLeft = () => {
+    console.log('left');
+    if (page > -1) {
+      setPage(page => --page);
+    }
+  };
+  const moveRight = () => {
+    console.log('right');
+    if (page < len - 1) {
+      setPage(page => ++page);
+    }
+  };
 
   useEffect(() => {
-    const slideCard = (e: KeyboardEvent) => {
-      const code = e.code || e.which;
+    if (isTouchExist) {
+      document.addEventListener('swipeLeft', moveRight);
+      document.addEventListener('swipeRight', moveLeft);
 
-      if ((code === 'ArrowLeft' || code === 37) && page > -1) {
-        setPage(page => --page);
-      }
+      return () => {
+        document.removeEventListener('swipeLeft', moveLeft);
+        document.removeEventListener('swipeRight', moveRight);
+      };
+    } else {
+      const slideCard = (e: KeyboardEvent) => {
+        const code = e.code || e.which;
 
-      if ((code === 'ArrowRight' || code === 39) && page < len - 1) {
-        setPage(page => ++page);
-      }
-    };
+        if (code === 'ArrowLeft' || code === 37) {
+          moveLeft();
+        }
 
-    window.addEventListener('keydown', slideCard);
+        if (code === 'ArrowRight' || code === 39) {
+          moveRight();
+        }
+      };
+      document.addEventListener('keydown', slideCard);
 
-    return () => {
-      window.removeEventListener('keydown', slideCard);
-    };
-  }, [page]);
+      return () => {
+        document.removeEventListener('keydown', slideCard);
+      };
+    }
+  }, []);
 
   return (
     <>

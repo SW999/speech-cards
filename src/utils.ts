@@ -101,3 +101,54 @@ export const downloadFile = async (data, name) => {
   link.click();
   document.body.removeChild(link);
 };
+
+export const checkTouch = (): boolean =>
+  'ontouchstart' in document.documentElement;
+
+export const addSwipeEvent = isTouchExist => {
+  if (isTouchExist) {
+    let nm = true;
+    let startPoint = { x: 0, y: 0 };
+    let endPoint = { x: 0, y: 0 };
+    const customEvent = (e, eventName) => {
+      let swipeEvent = document.createEvent('CustomEvent');
+      swipeEvent.initCustomEvent(eventName, true, true, e.target);
+      e.target.dispatchEvent(swipeEvent);
+      swipeEvent = null;
+
+      return false;
+    };
+
+    return {
+      touchstart: e => {
+        startPoint = { x: e.touches[0].pageX, y: e.touches[0].pageY };
+      },
+      touchmove: e => {
+        nm = false;
+        endPoint = { x: e.touches[0].pageX, y: e.touches[0].pageY };
+      },
+      touchend: e => {
+        if (nm) {
+          customEvent(e, 'fastClick');
+        } else {
+          let x = endPoint.x - startPoint.x,
+            y = endPoint.y - startPoint.y,
+            xr = Math.abs(x),
+            yr = Math.abs(y);
+
+          if (xr > yr) {
+            if (Math.max(xr) > 50) {
+              customEvent(e, x < 0 ? 'swipeLeft' : 'swipeRight');
+            }
+          } else {
+            if (Math.max(yr) > 50) {
+              customEvent(e, y < 0 ? 'swipeUp' : 'swipeDown');
+            }
+          }
+        }
+        nm = true;
+      },
+      touchcancel: () => (nm = false),
+    };
+  }
+};

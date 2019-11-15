@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { downloadFile } from './utils';
+import { downloadFile, checkTouch, addSwipeEvent } from './utils';
 import './scss/style.scss';
 import { Card } from './components/Card';
 import { Header } from './components/Header';
@@ -78,6 +78,23 @@ const efficientEmails = {
 
 const App: FunctionComponent = () => {
   const saveToJSON = () => downloadFile(efficientEmails, efficientEmails.name);
+
+  useEffect(() => {
+    const isTouchExist = checkTouch();
+    if (isTouchExist) {
+      const touch = addSwipeEvent(isTouchExist);
+
+      for (let swipeEvent in touch) {
+        document.addEventListener(swipeEvent, touch[swipeEvent], false);
+      }
+
+      return () => {
+        for (let swipeEvent in touch) {
+          document.removeEventListener(swipeEvent, touch[swipeEvent], false);
+        }
+      };
+    }
+  }, []);
 
   return (
     <Router basename="/">
