@@ -26,10 +26,9 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   min-height: 100vh;
-  color: rgba(0,0,0,.84);
+  color: rgba(black,.84);
   font-family: 'Open Sans', sans-serif;
   line-height: 1.58;
   background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%,#141414 100%);
@@ -48,7 +47,8 @@ body {
 .content {
   width: 100%;
   max-width: 60rem;
-  min-height: 90vh;
+  min-height: calc(100vh - 4rem);
+  margin-top: 2rem;
   padding: 1.5rem 2rem;
   border-radius: 2.5rem;
   z-index: 1;

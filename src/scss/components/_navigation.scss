@@ -1,10 +1,18 @@
+.page-header {
+  position: relative;
+}
+
 nav {
+  top: -8.5rem;
+  position: absolute;
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  margin-bottom: 5rem;
-  border-radius: 2.5rem;
+  padding-bottom: 0;
+  z-index: 1;
+  background-color: rgba(white, .0);
+  transition: all .4s ease-in;
 
   a {
     padding: 1rem;
@@ -18,6 +26,63 @@ nav {
     &.active, &:hover {
       border-bottom-color: orangered;
       color: black;
+    }
+  }
+}
+
+.menu-toggle {
+  position: absolute;
+  top: -2.3rem;
+  right: -3.5rem;
+  width: 4rem;
+  height: 3rem;
+  cursor: pointer;
+  animation: pulse .6s 3;
+  z-index: 2;
+
+  > span,
+  > span:before,
+  > span:after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: black;
+    transition: transform .3s ease;
+  }
+
+  > span {
+    top: 50%;
+    height: .5rem;
+  }
+
+  > span:before,
+  > span:after {
+    content: "";
+    height: 100%;
+  }
+
+  > span:before {
+    transform: translateY(-1.1rem);
+  }
+
+  > span:after {
+    transform: translateY(1.1rem);
+  }
+}
+
+.show-menu {
+  nav {
+    top: 0;
+    padding-bottom: 1rem;
+    background-color: rgba(white, .99);
+  }
+
+  .menu-toggle {
+    transform: rotate(45deg);
+
+    > span:before,
+    > span:after {
+      transform: rotate(90deg);
     }
   }
 }

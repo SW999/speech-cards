@@ -63,7 +63,7 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
 
   return (
     <>
-      {page < 0 && <h1>{project.name}</h1>}
+      {page < 0 && <h1 className="card-title">{project.name}</h1>}
       {page >= 0 && (
         <>
           <div className="card-header">

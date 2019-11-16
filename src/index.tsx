@@ -17,7 +17,7 @@ const efficientEmails = {
     {
       title: 'Foreword',
       content:
-        '* First email by Ray Tomlinson in 1871\n* How many time office workers spend on email correspondence\n* Common mistakes and their cost\n* Tips for writing efficient emails',
+        '* First email by Ray Tomlinson in 1971\n* How many time office workers spend on email correspondence\n* Common mistakes and their cost\n* Tips for writing efficient emails',
     },
     {
       title: 'Subject',
