@@ -1,22 +1,23 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { checkTouch } from '../utils';
 
 export const Header: FunctionComponent = () => {
+  const isTouchExist = checkTouch();
+
   useEffect(() => {
-    const menuBtn = document.getElementById('toggleMenu');
-    const toggleMenu = () => {
-      const menuParent = menuBtn.parentElement;
-      menuParent.classList.toggle('show-menu');
+    if (isTouchExist) {
+      const menuBtn = document.getElementById('toggleMenu');
+      const toggleMenu = () => {
+        const menuParent = menuBtn.parentElement;
+        menuParent.classList.toggle('show-menu');
+      };
 
-      if (menuParent.classList.contains('show-menu')) {
-        setTimeout(() => menuParent.classList.toggle('show-menu'), 7000);
-      }
-    };
+      menuBtn.addEventListener('click', toggleMenu);
 
-    menuBtn.addEventListener('click', toggleMenu);
-
-    return () => menuBtn.removeEventListener('click', toggleMenu);
+      return () => menuBtn.removeEventListener('click', toggleMenu);
+    }
   }, []);
 
   return (

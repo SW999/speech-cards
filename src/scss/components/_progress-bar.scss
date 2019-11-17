@@ -5,8 +5,13 @@ $border-color: orangered;
 .radial-progress-bar {
   @include size($default-size);
   position: relative;
+  margin-top: 3rem;
   border-radius: 50%;
   background-color: $bg-color;
+
+  @include mq(tablet) {
+    margin-top: 0;
+  }
 
   &__pie {
     @include size(calc(100% + .2rem));

@@ -9,8 +9,12 @@
   align-items: center;
   height: 9.2rem;
   padding: 1rem .5rem;
-  border-radius: 1.5rem 1.5rem 0 0;
+  overflow: hidden;
   background-color: rgba(black, .2);
+
+  @include mq(tablet) {
+    border-radius: 1.5rem 1.5rem 0 0;
+  }
 
   h2 {
     width: calc(100% - 5rem);
