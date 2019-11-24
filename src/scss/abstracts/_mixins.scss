@@ -81,6 +81,13 @@
   text-overflow: ellipsis;
 }
 
+@mixin truncateMultiLine($max-lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $max-lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @mixin button($padding:1rem 2rem, $font-size:1.6rem, $border-radius:.2rem, $bg-color:#151515, $font-color:#fff) {
   display: block;
   margin: 1.7rem auto;
