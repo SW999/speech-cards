@@ -45,14 +45,12 @@
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-  }
-  @else if $position == 'horizontal' {
+  } @else if $position == 'horizontal' {
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translate(-50%);
-  }
-  @else if $position == 'both' {
+  } @else if $position == 'both' {
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
@@ -88,29 +86,71 @@
   overflow: hidden;
 }
 
-@mixin button($padding:1rem 2rem, $font-size:1.6rem, $border-radius:.2rem, $bg-color:#151515, $font-color:#fff) {
-  display: block;
-  margin: 1.7rem auto;
-  padding:$padding;
+@mixin button($padding:1rem 2rem, $font-size:1.6rem, $border-radius:.4rem, $font-color:#151515) {
+  //display: block;
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
+  padding: $padding;
   border: none;
-  border-radius:$border-radius;
-  color:$font-color;
-  font-size:$font-size;
+  border-radius: $border-radius;
+  outline: .2rem solid transparent;
+  color: $font-color;
+  font-size: $font-size;
   font-family: inherit;
   cursor: pointer;
-  box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
   transition: all .2s ease-in-out;
-  background:$bg-color;
 }
 
 @mixin button-bg($bg) {
+  border: .2rem solid $bg;
+  color: #fff;
   background: $bg;
 
   &:hover {
-    box-shadow: 0 0 3px rgba(0,0,0,.12), 0 3px 4px rgba(0,0,0,.25);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   }
 
-  &:active {
+  &:active, &:focus {
+    border-width: 0;
+    border-radius: 0;
+    outline: .2rem solid darken($bg, 5%);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
     background: darken($bg, 5%);
+  }
+}
+
+@mixin button-outlined($color) {
+  border: .2rem solid $color;
+  color: $color;
+  background-color: transparent;
+
+  &:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
+  }
+
+  &:active, &:focus {
+    border-width: 0;
+    border-radius: 0;
+    outline: .2rem solid darken($color, 10%);
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
+    color: darken($color, 10%);
+  }
+}
+
+@mixin button-colored-link($color) {
+  border: .2rem solid transparent;
+  color: $color;
+  background-color: transparent;
+
+  &:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
+  }
+
+  &:active, &:focus {
+    border-width: 0;
+    border-radius: 0;
+    outline: .2rem solid $color;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   }
 }

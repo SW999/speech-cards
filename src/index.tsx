@@ -84,12 +84,12 @@ const App: FunctionComponent = () => {
     if (isTouchExist) {
       const touch = addSwipeEvent(isTouchExist);
 
-      for (let swipeEvent in touch) {
+      for (const swipeEvent in touch) {
         document.addEventListener(swipeEvent, touch[swipeEvent], false);
       }
 
       return () => {
-        for (let swipeEvent in touch) {
+        for (const swipeEvent in touch) {
           document.removeEventListener(swipeEvent, touch[swipeEvent], false);
         }
       };

@@ -1,0 +1,22 @@
+fieldset {
+  border: none;
+}
+
+label {
+  display: block;
+  margin-bottom: .8rem;
+  font-size: 1.9rem;
+}
+
+input {
+  width: 32rem;
+  margin-bottom: 1.6rem;
+  padding: 0.8rem;
+  border: 1px solid #bbb;
+  font-size: 1.9rem;
+  text-transform: none;
+
+  &:focus {
+    outline: 3px solid #2ecc71;
+  }
+}

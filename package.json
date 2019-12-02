@@ -11,7 +11,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "clean": "del-cli dist/*",
-    "develop": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
+    "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
     "build": "cross-env NODE_ENV=production && npm run clean && npm run type-check &&parcel build index.html --public-url ./ --no-cache --no-source-maps",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
