@@ -1,0 +1,33 @@
+$input-border-color: #bbb;
+$input-placeholder-color: lighten($input-border-color, 5%);
+
+::-webkit-input-placeholder { /* Edge */
+  color: $input-placeholder-color;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $input-placeholder-color;
+}
+
+::placeholder {
+  color: $input-placeholder-color;
+}
+
+label {
+  display: block;
+  margin-bottom: .8rem;
+  font-size: 1.9rem;
+}
+
+input {
+  width: 32rem;
+  margin-bottom: 1.6rem;
+  padding: 0.8rem;
+  border: 1px solid $input-border-color;
+  font-size: 1.9rem;
+  text-transform: none;
+
+  &:focus {
+    outline: 3px solid #2ecc71;
+  }
+}

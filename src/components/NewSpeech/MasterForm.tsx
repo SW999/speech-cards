@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { FormEvent, FunctionComponent, useState } from 'react';
+import { FirstStep } from './FirstStep';
 
 export const MasterForm: FunctionComponent = () => {
-  const [speechData, setSpeechData] = useState({ name: '', speech: [] });
+  const [speechData, setSpeechData] = useState({ title: '', speech: [] });
   const [step, setStep] = useState<number>(0);
-  const handleChange = e => {
-    const { name, value } = e.target;
-    return e;
-  };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     return e;
+  };
+
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    if (step < 1) {
+      setSpeechData(data => ({ ...data, title: value }));
+    } else {
+      setSpeechData(data => ({ ...data, [`step${step}`]: { [name]: value } }));
+    }
   };
 
   const nextStep = () => {};
@@ -25,17 +31,9 @@ export const MasterForm: FunctionComponent = () => {
           Go back
         </button>
       )}
-      <fieldset>
-        <label htmlFor="speechName">Speech name:</label>
-        <input
-          id="speechName"
-          name="speechName"
-          type="text"
-          autoCapitalize="none"
-          autoCorrect="off"
-          spellCheck={false}
-        />
-      </fieldset>
+      {step < 1 && (
+        <FirstStep title={speechData.title} handleChange={handleChange} />
+      )}
       <div>
         <button className="btn btn-green" type="button" onClick={nextStep}>
           Next card
@@ -49,7 +47,7 @@ export const MasterForm: FunctionComponent = () => {
         </button>
       </div>
       <button className="btn btn-orange-link" type="button" onClick={() => {}}>
-        Clear project
+        Clear speech
       </button>
     </form>
   );

@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@parcel/validator-eslint",
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"

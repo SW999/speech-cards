@@ -32,6 +32,7 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
+    "@parcel/validator-eslint": "^2.0.0-alpha.3",
     "@types/react": "^16.8.20",
     "@types/react-dom": "^16.8.4",
     "concurrently": "^5.0.0",
