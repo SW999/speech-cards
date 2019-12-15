@@ -20,9 +20,9 @@ export const FirstStep: FunctionComponent<FirstStepProps> = ({
         autoCapitalize="none"
         autoCorrect="off"
         placeholder="Enter new speech title"
-        onClick={handleChange}
+        onChange={handleChange}
         spellCheck={false}
-        defaultValue={title}
+        value={title}
       />
     </div>
   );

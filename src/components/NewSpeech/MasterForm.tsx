@@ -13,16 +13,23 @@ export const MasterForm: FunctionComponent = () => {
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
+
     if (step < 1) {
-      setSpeechData(data => ({ ...data, title: value }));
+      setSpeechData(data => ({ ...data, [name]: value }));
     } else {
       setSpeechData(data => ({ ...data, [`step${step}`]: { [name]: value } }));
     }
   };
 
-  const nextStep = () => {};
+  const nextStep = () => setStep(step => step + 1);
 
-  const prevStep = () => {};
+  const prevStep = () => {
+    if (step < 1) {
+      setStep(0);
+    } else {
+      setStep(step => step - 1);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
