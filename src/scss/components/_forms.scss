@@ -3,26 +3,42 @@ $input-placeholder-color: lighten($input-border-color, 5%);
 
 ::-webkit-input-placeholder { /* Edge */
   color: $input-placeholder-color;
+  font-size: 1.7rem;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: $input-placeholder-color;
+  font-size: 1.7rem;
 }
 
 ::placeholder {
   color: $input-placeholder-color;
+  font-size: 1.7rem;
 }
 
-label {
+label,
+.step-content-hint {
   display: block;
   margin-bottom: .8rem;
   font-size: 1.9rem;
+  line-height: 1.3158;
 }
 
-input {
-  width: 32rem;
-  margin-bottom: 1.6rem;
-  padding: 0.8rem;
+label {
+  font-weight: 600;
+}
+
+.step-content-hint {
+  margin-top: -.5rem;
+  color: #7a7a7a;
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 50rem;
+  margin-bottom: 2.5rem;
+  padding: .8rem;
   border: 1px solid $input-border-color;
   font-size: 1.9rem;
   text-transform: none;

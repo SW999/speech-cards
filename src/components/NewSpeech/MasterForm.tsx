@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FormEvent, FunctionComponent, useState } from 'react';
 import { FirstStep } from './FirstStep';
+import { MainStep } from './MainStep';
 
 export const MasterForm: FunctionComponent = () => {
-  const [speechData, setSpeechData] = useState({ title: '', speech: [] });
+  const [speechData, setSpeechData] = useState({ title: '' });
   const [step, setStep] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -17,7 +18,10 @@ export const MasterForm: FunctionComponent = () => {
     if (step < 1) {
       setSpeechData(data => ({ ...data, [name]: value }));
     } else {
-      setSpeechData(data => ({ ...data, [`step${step}`]: { [name]: value } }));
+      setSpeechData(data => ({
+        ...data,
+        [`step${step}`]: { ...data[`step${step}`], [name]: value },
+      }));
     }
   };
 
@@ -34,9 +38,25 @@ export const MasterForm: FunctionComponent = () => {
   return (
     <form onSubmit={handleSubmit}>
       {step > 0 && (
-        <button className="btn btn-green" type="button" onClick={prevStep}>
-          Go back
-        </button>
+        <>
+          <button className="btn btn-green" type="button" onClick={prevStep}>
+            Go back
+          </button>
+          <MainStep
+            title={
+              speechData[`step${step}`]
+                ? speechData[`step${step}`].title || ''
+                : ''
+            }
+            content={
+              speechData[`step${step}`]
+                ? speechData[`step${step}`].content || ''
+                : ''
+            }
+            handleChange={handleChange}
+            step={step}
+          />
+        </>
       )}
       {step < 1 && (
         <FirstStep title={speechData.title} handleChange={handleChange} />

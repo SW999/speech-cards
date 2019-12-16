@@ -12,9 +12,9 @@ export const FirstStep: FunctionComponent<FirstStepProps> = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor="speechTitle">Speech title:</label>
+      <label htmlFor="speech-title">Speech title:</label>
       <input
-        id="speechTitle"
+        id="speech-title"
         name="title"
         type="text"
         autoCapitalize="none"
