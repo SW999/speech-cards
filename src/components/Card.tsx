@@ -4,31 +4,38 @@ import Markdown from 'markdown-to-jsx';
 import { RedialProgressBar } from './RedialProgressBar';
 import { checkTouch } from '../utils';
 
-type projectProps = {
+interface NameProp {
   name: string;
-  speech: {
+}
+interface StepProps {
+  [key: string]: {
     title: string;
     content: string;
-  }[];
-};
+  };
+}
+type projectProps = NameProp & StepProps;
+//   {
+//   name: string;
+// } & {
+//   [key: string]: {
+//     title: string;
+//     content: string;
+//   };
+// };
 
-type projectObject = {
-  [key: string]: projectProps;
-};
-
-export const Card: FunctionComponent<projectObject> = ({ project }) => {
-  const [page, setPage] = useState<number>(-1);
-  const len = project.speech.length;
+export const Card: FunctionComponent<projectProps> = ({ project }) => {
+  const [page, setPage] = useState<number>(0);
+  const len = Object.keys(project).length - 1;
   const isTouchExist = checkTouch();
 
   useEffect(() => {
     const moveLeft = () => {
-      if (page > -1) {
+      if (page > 0) {
         setPage(page => --page);
       }
     };
     const moveRight = () => {
-      if (page < len - 1) {
+      if (page < len) {
         setPage(page => ++page);
       }
     };
@@ -63,19 +70,19 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
 
   return (
     <>
-      {page < 0 && <h1 className="card-title">{project.name}</h1>}
-      {page >= 0 && (
+      {page < 1 && <h1 className="card-title">{project['name']}</h1>}
+      {page > 0 && (
         <>
           <div className="card-header">
-            <h2>{project.speech[page].title}</h2>
+            <h2>{project[`step${page}`].title}</h2>
             <RedialProgressBar
-              current={page + 1}
+              current={page}
               total={len}
-              label={`${page + 1}/${len}`}
+              label={`${page}/${len}`}
             />
           </div>
           <div className="card-body">
-            <Markdown children={project.speech[page].content} />
+            <Markdown children={project[`step${page}`].content} />
           </div>
         </>
       )}

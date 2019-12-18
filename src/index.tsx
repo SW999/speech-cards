@@ -75,6 +75,18 @@ const efficientEmails = {
     },
   ],
 };
+const sample = {
+  name: 'some title',
+  step1: {
+    title: 'Foreword',
+    content:
+      '* First email by Ray Tomlinson in 1971\n* How many time office workers spend on email correspondence\n* Common mistakes and their cost\n* Tips for writing efficient emails',
+  },
+  step2: {
+    title: 'Subject',
+    content: '* Use clear, searchable subject lines\n* How it can help?',
+  },
+};
 
 const App: FunctionComponent = () => {
   const saveToJSON = () => downloadFile(efficientEmails, efficientEmails.name);
@@ -110,7 +122,7 @@ const App: FunctionComponent = () => {
           </button>
         </Route>
         <Route path="/demo">
-          <Card project={demo} />
+          <Card project={sample} />
         </Route>
         <Route path="/from-storage" component={ProjectStorage} />
         <Route path="/from-json" component={ProjectJSON} />
