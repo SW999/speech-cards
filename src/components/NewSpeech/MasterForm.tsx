@@ -4,7 +4,7 @@ import { FirstStep } from './FirstStep';
 import { MainStep } from './MainStep';
 
 export const MasterForm: FunctionComponent = () => {
-  const [speechData, setSpeechData] = useState({ title: '' });
+  const [speechData, setSpeechData] = useState({ name: '' });
   const [step, setStep] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,7 +27,9 @@ export const MasterForm: FunctionComponent = () => {
 
   const nextStep = () => setStep(step => step + 1);
 
-  const prevStep = () => {
+  const prevStep = e => {
+    e.preventDefault();
+
     if (step < 1) {
       setStep(0);
     } else {
@@ -39,9 +41,10 @@ export const MasterForm: FunctionComponent = () => {
     <form onSubmit={handleSubmit}>
       {step > 0 && (
         <>
-          <button className="btn btn-green" type="button" onClick={prevStep}>
-            Go back
-          </button>
+          <h3 className="step-indicator">{`Step ${step}`}</h3>
+          <a className="go-back" href="#" onClick={prevStep}>
+            Back
+          </a>
           <MainStep
             title={
               speechData[`step${step}`]
@@ -59,7 +62,7 @@ export const MasterForm: FunctionComponent = () => {
         </>
       )}
       {step < 1 && (
-        <FirstStep title={speechData.title} handleChange={handleChange} />
+        <FirstStep name={speechData.name} handleChange={handleChange} />
       )}
       <div>
         <button className="btn btn-green" type="button" onClick={nextStep}>

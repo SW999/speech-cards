@@ -29,6 +29,43 @@
   @include button-colored-link(orangered);
 }
 
+.go-back {
+  position: relative;
+  display: inline-block;
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-bottom: 1px solid #0b0c0c;
+  text-decoration: none;
+  color: #0b0c0c;
+  font-size: 1.8rem;
+  line-height: 1.25;
+
+  &:focus {
+    border-bottom-color: transparent;
+    outline: 3px solid transparent;
+    color: #0b0c0c;
+    background-color: #bbb;
+    box-shadow: 0 -2px #bbb, 0 4px #0b0c0c;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 0;
+    margin: auto;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 5px 6px 5px 0;
+    border-right-color: inherit;
+    transform: translateY(-50%);
+  }
+}
+
 //
 //.btn-blue {
 //  @include button-bg(#3498db);

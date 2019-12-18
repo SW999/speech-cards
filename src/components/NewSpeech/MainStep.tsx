@@ -18,7 +18,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor="step-title">{`Step ${step} title`}:</label>
+      <label htmlFor="step-title">Title:</label>
       <input
         id="step-title"
         name="title"
@@ -30,13 +30,17 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
         spellCheck={false}
         value={title}
       />
-      <label htmlFor="step-content">{`Step ${step} content`}:</label>
+      <label htmlFor="step-content">Content:</label>
       <span id="step-content-hint" className="step-content-hint">
-        Markdown{' '}
-        <a href="https://www.markdownguide.org/basic-syntax" target="_blank">
+        Markdown&nbsp;
+        <a
+          href="https://www.markdownguide.org/basic-syntax"
+          target="_blank"
+          tabIndex={-1}
+        >
           syntax
-        </a>{' '}
-        is available.
+        </a>
+        &nbsp;is available.
       </span>
       <textarea
         id="step-content"
@@ -45,10 +49,10 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
         aria-describedby="step-content-hint"
         autoCapitalize="none"
         autoCorrect="off"
-        placeholder={`Please use an asterisk before each item. New item should start from a new line:
+        placeholder={`Use an asterisk before each item.
+New item should start from a new line:
 * Some idea
-* Next idea
-* And so on`}
+* Next idea`}
         onChange={handleChange}
         spellCheck={false}
         value={content}

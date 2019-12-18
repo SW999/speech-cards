@@ -2,27 +2,27 @@ import * as React from 'react';
 import { FormEvent, FunctionComponent } from 'react';
 
 type FirstStepProps = {
-  title: string;
+  name: string;
   handleChange: (e: FormEvent<HTMLInputElement>) => void;
 };
 
 export const FirstStep: FunctionComponent<FirstStepProps> = ({
-  title,
+  name,
   handleChange,
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor="speech-title">Speech title:</label>
+      <label htmlFor="speech-name">Speech name:</label>
       <input
-        id="speech-title"
-        name="title"
+        id="speech-name"
+        name="name"
         type="text"
         autoCapitalize="none"
         autoCorrect="off"
-        placeholder="Enter new speech title"
+        placeholder="Enter new speech name"
         onChange={handleChange}
         spellCheck={false}
-        value={title}
+        value={name}
       />
     </div>
   );

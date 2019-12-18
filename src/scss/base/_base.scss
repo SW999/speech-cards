@@ -44,6 +44,10 @@ body {
   }
 }
 
+a {
+  color: #2b8cc4;
+}
+
 .content {
   width: 100%;
   max-width: 60rem;
@@ -57,4 +61,10 @@ body {
     padding: 1.5rem 2rem;
     border-radius: 2.5rem;
   }
+}
+
+.step-indicator {
+  color: lighten(#2ecc71, 10%);
+  font-size: 2rem;
+  font-weight: 600;
 }
