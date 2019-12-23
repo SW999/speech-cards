@@ -4,38 +4,31 @@ import Markdown from 'markdown-to-jsx';
 import { RedialProgressBar } from './RedialProgressBar';
 import { checkTouch } from '../utils';
 
-interface NameProp {
+type projectProps = {
   name: string;
-}
-interface StepProps {
-  [key: string]: {
+  speech: {
     title: string;
     content: string;
-  };
-}
-type projectProps = NameProp & StepProps;
-//   {
-//   name: string;
-// } & {
-//   [key: string]: {
-//     title: string;
-//     content: string;
-//   };
-// };
+  }[];
+};
 
-export const Card: FunctionComponent<projectProps> = ({ project }) => {
-  const [page, setPage] = useState<number>(0);
-  const len = Object.keys(project).length - 1;
+type projectObject = {
+  [key: string]: projectProps;
+};
+
+export const Card: FunctionComponent<projectObject> = ({ project }) => {
+  const [page, setPage] = useState<number>(-1);
+  const len = project.speech.length;
   const isTouchExist = checkTouch();
 
   useEffect(() => {
     const moveLeft = () => {
-      if (page > 0) {
+      if (page > -1) {
         setPage(page => --page);
       }
     };
     const moveRight = () => {
-      if (page < len) {
+      if (page < len - 1) {
         setPage(page => ++page);
       }
     };
@@ -70,19 +63,19 @@ export const Card: FunctionComponent<projectProps> = ({ project }) => {
 
   return (
     <>
-      {page < 1 && <h1 className="card-title">{project['name']}</h1>}
-      {page > 0 && (
+      {page < 0 && <h1 className="card-title">{project.name}</h1>}
+      {page >= 0 && (
         <>
           <div className="card-header">
-            <h2>{project[`step${page}`].title}</h2>
+            <h2>{project.speech[page].title}</h2>
             <RedialProgressBar
-              current={page}
+              current={page + 1}
               total={len}
-              label={`${page}/${len}`}
+              label={`${page + 1}/${len}`}
             />
           </div>
           <div className="card-body">
-            <Markdown children={project[`step${page}`].content} />
+            <Markdown children={project.speech[page].content} />
           </div>
         </>
       )}
