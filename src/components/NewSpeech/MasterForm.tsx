@@ -2,9 +2,10 @@ import * as React from 'react';
 import { FormEvent, FunctionComponent, useState } from 'react';
 import { FirstStep } from './FirstStep';
 import { MainStep } from './MainStep';
+import { downloadFile } from '../../utils';
 
 export const MasterForm: FunctionComponent = () => {
-  const [speechData, setSpeechData] = useState({ name: '' });
+  const [speechData, setSpeechData] = useState({ name: '', speech: [] });
   const [step, setStep] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -16,12 +17,15 @@ export const MasterForm: FunctionComponent = () => {
     const { name, value } = e.currentTarget;
 
     if (step < 1) {
-      setSpeechData(data => ({ ...data, [name]: value }));
+      setSpeechData(data => ({ ...data, name: value }));
     } else {
-      setSpeechData(data => ({
-        ...data,
-        [`step${step}`]: { ...data[`step${step}`], [name]: value },
-      }));
+      setSpeechData(data => {
+        if (!data['speech'][step - 1]) {
+          data['speech'][step - 1] = {};
+        }
+        data['speech'][step - 1][name] = value;
+        return { ...data };
+      });
     }
   };
 
@@ -47,13 +51,13 @@ export const MasterForm: FunctionComponent = () => {
           </a>
           <MainStep
             title={
-              speechData[`step${step}`]
-                ? speechData[`step${step}`].title || ''
+              speechData['speech'][step - 1]
+                ? speechData['speech'][step - 1].title || ''
                 : ''
             }
             content={
-              speechData[`step${step}`]
-                ? speechData[`step${step}`].content || ''
+              speechData['speech'][step - 1]
+                ? speechData['speech'][step - 1].content || ''
                 : ''
             }
             handleChange={handleChange}
@@ -71,7 +75,7 @@ export const MasterForm: FunctionComponent = () => {
         <button
           className="btn btn-green-outlined"
           type="button"
-          onClick={() => {}}
+          onClick={() => downloadFile(speechData, speechData.name)}
         >
           Save speech
         </button>
