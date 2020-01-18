@@ -8,9 +8,9 @@ export const MasterForm: FunctionComponent = () => {
   const [speechData, setSpeechData] = useState({ name: '', speech: [] });
   const [step, setStep] = useState<number>(0);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    return e;
+    await downloadFile(speechData, speechData.name);
   };
 
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
@@ -72,11 +72,7 @@ export const MasterForm: FunctionComponent = () => {
         <button className="btn btn-green" type="button" onClick={nextStep}>
           Next card
         </button>
-        <button
-          className="btn btn-green-outlined"
-          type="button"
-          onClick={() => downloadFile(speechData, speechData.name)}
-        >
+        <button className="btn btn-green-outlined" type="submit">
           Save speech
         </button>
       </div>
