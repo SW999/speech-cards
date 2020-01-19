@@ -57,8 +57,8 @@ export const MasterForm: FunctionComponent = () => {
             }
             content={
               speechData['speech'][step - 1]
-                ? speechData['speech'][step - 1].content || ''
-                : ''
+                ? speechData['speech'][step - 1].content || ['']
+                : ['']
             }
             handleChange={handleChange}
             step={step}
@@ -68,7 +68,8 @@ export const MasterForm: FunctionComponent = () => {
       {step < 1 && (
         <FirstStep name={speechData.name} handleChange={handleChange} />
       )}
-      <div>
+      <hr />
+      <div className="form-group">
         <button className="btn btn-green" type="button" onClick={nextStep}>
           Next card
         </button>

@@ -87,7 +87,6 @@
 }
 
 @mixin button($padding:1rem 2rem, $font-size:1.6rem, $border-radius:.4rem, $font-color:#151515) {
-  //display: block;
   margin-top: 1.7rem;
   margin-bottom: 1.7rem;
   padding: $padding;
