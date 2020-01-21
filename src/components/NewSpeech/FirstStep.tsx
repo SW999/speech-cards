@@ -9,21 +9,19 @@ type FirstStepProps = {
 export const FirstStep: FunctionComponent<FirstStepProps> = ({
   name,
   handleChange,
-}) => {
-  return (
-    <div className="form-group">
-      <label htmlFor="speech-name">Speech name:</label>
-      <input
-        id="speech-name"
-        name="name"
-        type="text"
-        autoCapitalize="none"
-        autoCorrect="off"
-        placeholder="Enter new speech name"
-        onChange={handleChange}
-        spellCheck={false}
-        value={name}
-      />
-    </div>
-  );
-};
+}) => (
+  <div className="form-group">
+    <label htmlFor="speech-name">Speech name:</label>
+    <input
+      id="speech-name"
+      name="name"
+      type="text"
+      autoCapitalize="none"
+      autoCorrect="off"
+      placeholder="Enter new speech name"
+      onChange={handleChange}
+      spellCheck={false}
+      value={name}
+    />
+  </div>
+);

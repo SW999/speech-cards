@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { FormEvent, FunctionComponent } from 'react';
+import { HandleChangeItem } from './MainStep';
 
 type AddRemoveContentItemProps = {
-  handleChange: (val: string, index: number) => void;
+  handleChange: (HandleChangeItem) => void;
   itemCount: number;
   itemText: string;
   onAdd: () => void;
+  step: number;
 };
 
 export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
@@ -13,14 +15,15 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   itemCount,
   itemText,
   onAdd,
+  step,
 }) => {
   const onInputChange = (e: FormEvent<HTMLInputElement>) => {
-    handleChange(e.currentTarget.value, itemCount);
+    handleChange({ val: e.currentTarget.value, index: itemCount });
   };
 
   return (
     <div className="form-group">
-      <label htmlFor={`content-item-#{itemCount}`}>Content item:</label>
+      <label htmlFor={`content-item-${step}-${itemCount}`}>Content item:</label>
       {itemCount < 1 && (
         <span id="step-content-hint" className="step-content-hint">
           Markdown&nbsp;
@@ -35,8 +38,8 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
         </span>
       )}
       <input
-        id={`content-item-#{itemCount}`}
-        name={`item-#{itemCount}`}
+        id={`content-item-${step}-${itemCount}`}
+        name={`item-${step}-${itemCount}`}
         type="text"
         autoCapitalize="none"
         autoCorrect="off"
