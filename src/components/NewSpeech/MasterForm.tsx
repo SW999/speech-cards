@@ -7,16 +7,17 @@ import { downloadFile } from '../../utils';
 
 const initialState = { name: '', step: 0, speech: [] };
 
-export type HandleChange = {
-  name: string;
-  value: string | string[];
-};
-
 export const MasterForm: FunctionComponent = () => {
   const [state, dispatch] = useReducer(newSpeechReducer, initialState);
 
   const addName = (e: FormEvent<HTMLInputElement>) =>
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
+
+  const addStepName = (title: string, step: number) =>
+    dispatch({
+      type: 'ADD_STEP_NAME',
+      payload: { title: title, step: step },
+    });
 
   const resetState = () => dispatch({ type: 'RESET', payload: initialState });
 
@@ -40,20 +41,20 @@ export const MasterForm: FunctionComponent = () => {
           <a className="go-back" href="#" onClick={prevStep}>
             Back
           </a>
-          {/*<MainStep*/}
-          {/*  title={*/}
-          {/*    speechData['speech'][step - 1]*/}
-          {/*      ? speechData['speech'][step - 1].title || ''*/}
-          {/*      : ''*/}
-          {/*  }*/}
-          {/*  content={*/}
-          {/*    speechData['speech'][step - 1]*/}
-          {/*      ? speechData['speech'][step - 1].content || ['']*/}
-          {/*      : ['']*/}
-          {/*  }*/}
-          {/*  handleChange={handleChange}*/}
-          {/*  step={step}*/}
-          {/*/>*/}
+          <MainStep
+            title={
+              state['speech'][state.step - 1]
+                ? state['speech'][state.step - 1].title
+                : ''
+            }
+            content={
+              state['speech'][state.step - 1]
+                ? state['speech'][state.step - 1].content
+                : ['']
+            }
+            changeStepName={addStepName}
+            step={state.step}
+          />
         </>
       )}
       {state.step < 1 && <FirstStep name={state.name} handleChange={addName} />}

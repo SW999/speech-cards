@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { FormEvent, FunctionComponent, useState, useEffect } from 'react';
+import { FormEvent, FunctionComponent, useState } from 'react';
 import { ContentItem } from './ContentItem';
-import { HandleChange } from './MasterForm';
 
 export type HandleChangeItem = {
   val: string;
@@ -10,20 +9,24 @@ export type HandleChangeItem = {
 
 type MainStepProps = {
   content: string[];
-  handleChange: (HandleChange) => void;
+  changeStepName: (title: string, step: number) => void;
   step: number;
   title: string;
 };
 
 export const MainStep: FunctionComponent<MainStepProps> = ({
   content,
-  handleChange,
+  changeStepName,
   step,
   title,
 }) => {
   const [contentArr, setContentArr] = useState<string[]>(content);
   const onAddContentItem = () => {
     setContentArr(contentArr => [...contentArr, '']);
+  };
+
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    changeStepName(e.currentTarget.value, step);
   };
 
   const handleChangeItem = ({ val, index }: HandleChangeItem) => {
@@ -34,11 +37,6 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
       const arr = contentArr.map((v, i) => (i === index ? val : v));
       return [...arr];
     });
-  };
-
-  const changeName = (e: FormEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    handleChange({ name, value });
   };
 
   const getContentItems = () =>
@@ -53,10 +51,6 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
       />
     ));
 
-  useEffect(() => {
-    handleChange({ name: 'content', value: [...contentArr] }); //FIXME
-  }, [contentArr]);
-
   return (
     <>
       <div className="form-group">
@@ -68,12 +62,13 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
           autoCapitalize="none"
           autoCorrect="off"
           placeholder={`Enter step ${step} title`}
-          onChange={changeName}
+          onChange={handleChange}
           spellCheck={false}
           value={title}
+          autoFocus
         />
       </div>
-      {getContentItems()}
+      {/*{getContentItems()}*/}
     </>
   );
 };

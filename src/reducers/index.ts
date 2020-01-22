@@ -1,3 +1,3 @@
-import {newSpeechReducer} from './NewSpeechReducer';
+import { newSpeechReducer } from './NewSpeechReducer';
 
-export {newSpeechReducer};
+export { newSpeechReducer };

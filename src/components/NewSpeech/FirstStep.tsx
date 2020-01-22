@@ -22,6 +22,7 @@ export const FirstStep: FunctionComponent<FirstStepProps> = ({
       onChange={handleChange}
       spellCheck={false}
       value={name}
+      autoFocus
     />
   </div>
 );

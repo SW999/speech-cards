@@ -5,6 +5,25 @@ export const newSpeechReducer = (state, action) => {
         ...state,
         name: action.payload,
       };
+    case 'ADD_STEP_NAME':
+      return {
+        ...state,
+        speech: [
+          ...(arr => {
+            if (arr.length < action.payload.step) {
+              // If current step is not defined
+              arr[action.payload.step - 1] = {
+                title: action.payload.title,
+                content: [''],
+              };
+            } else {
+              // Change title for current step
+              arr[action.payload.step - 1].title = action.payload.title;
+            }
+            return arr;
+          })(state.speech),
+        ],
+      };
     case 'NEXT_STEP':
       return {
         ...state,
