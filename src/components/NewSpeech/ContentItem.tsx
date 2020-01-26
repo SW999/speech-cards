@@ -9,7 +9,8 @@ type AddRemoveContentItemProps = {
   ) => void;
   itemCount: number;
   itemText: string;
-  onAdd: () => void;
+  onAdd: (step: number, itemNumber: number) => void;
+  onRemove: (step: number, itemNumber: number) => void;
   step: number;
 };
 
@@ -18,10 +19,15 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   itemCount,
   itemText,
   onAdd,
+  onRemove,
   step,
 }) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) =>
     handleChangeContent(e.currentTarget.value, step, itemCount);
+
+  const onAddContentItem = () => onAdd(step, itemCount);
+
+  const onRemoveContentItem = () => onRemove(step, itemCount);
 
   return (
     <div className="form-group">
@@ -54,13 +60,14 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
       <button
         className="btn btn-green-outlined btn-bold btn-rounded"
         type="button"
-        onClick={onAdd}
+        onClick={onAddContentItem}
       >
         +
       </button>
       <button
         className="btn btn-orange-outlined btn-bold btn-rounded"
         type="button"
+        onClick={onRemoveContentItem}
       >
         -
       </button>

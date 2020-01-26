@@ -31,6 +31,18 @@ export const MasterForm: FunctionComponent = () => {
       payload: { content, step, itemNumber },
     });
 
+  const addContentItem = (step: number, itemNumber: number) =>
+    dispatch({
+      type: 'ADD_CONTENT_ITEM',
+      payload: { step, itemNumber },
+    });
+
+  const removeContentItem = (step: number, itemNumber: number) =>
+    dispatch({
+      type: 'REMOVE_CONTENT_ITEM',
+      payload: { step, itemNumber },
+    });
+
   const resetState = () => dispatch({ type: 'RESET', payload: initialState });
 
   const nextStep = () => dispatch({ type: 'NEXT_STEP' });
@@ -66,6 +78,8 @@ export const MasterForm: FunctionComponent = () => {
             }
             changeStepName={addStepName}
             changeStepContent={addStepContent}
+            onAddContentItem={addContentItem}
+            onRemoveContentItem={removeContentItem}
             step={state.step}
           />
         </>

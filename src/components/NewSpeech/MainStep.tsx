@@ -1,39 +1,51 @@
 import * as React from 'react';
-import { ChangeEvent, FunctionComponent } from 'react';
+import { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
 import { ContentItem } from './ContentItem';
 
 type MainStepProps = {
   content: string[];
-  changeStepName: (title: string, step: number) => void;
   changeStepContent: (
     content: string,
     step: number,
     itemNumber: number
   ) => void;
+  changeStepName: (title: string, step: number) => void;
+  onAddContentItem: (step: number, itemNumber: number) => void;
+  onRemoveContentItem: (step: number, itemNumber: number) => void;
   step: number;
   title: string;
 };
 
 export const MainStep: FunctionComponent<MainStepProps> = ({
   content,
-  changeStepName,
   changeStepContent,
+  changeStepName,
+  onAddContentItem,
+  onRemoveContentItem,
   step,
   title,
 }) => {
+  const [contentItems, setContentItems] = useState([]);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     changeStepName(e.currentTarget.value, step);
-  const getContentItems = () =>
-    content.map((val, idx) => (
-      <ContentItem
-        key={`step-${step}-${idx}`}
-        step={step}
-        handleChangeContent={changeStepContent}
-        itemCount={idx}
-        itemText={val}
-        onAdd={() => false}
-      />
-    ));
+
+  useEffect(() => {
+    setContentItems(() =>
+      content.map((val, idx) => (
+        <ContentItem
+          key={`step-${step}-${idx}`}
+          step={step}
+          handleChangeContent={changeStepContent}
+          itemCount={idx}
+          itemText={val}
+          onAdd={onAddContentItem}
+          onRemove={onRemoveContentItem}
+        />
+      ))
+    );
+
+    return () => void 0;
+  }, [content, step, changeStepContent, onAddContentItem, onRemoveContentItem]);
 
   return (
     <>
@@ -52,7 +64,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
           value={title}
         />
       </div>
-      {getContentItems()}
+      {contentItems}
     </>
   );
 };

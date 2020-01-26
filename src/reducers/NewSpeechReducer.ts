@@ -38,10 +38,39 @@ export const newSpeechReducer = (state, action) => {
                 content: [action.payload.content],
               };
             } else {
-              // Change title for current step
+              // Change content item for current step
               arr[action.payload.step - 1].content[action.payload.itemNumber] =
                 action.payload.content;
             }
+            return arr;
+          })(state.speech),
+        ],
+      };
+
+    case 'ADD_CONTENT_ITEM':
+      return {
+        ...state,
+        speech: [
+          ...(arr => {
+            arr[action.payload.step - 1].content[
+              action.payload.itemNumber + 1
+            ] = '';
+
+            return arr;
+          })(state.speech),
+        ],
+      };
+
+    case 'REMOVE_CONTENT_ITEM':
+      return {
+        ...state,
+        speech: [
+          ...(arr => {
+            arr[action.payload.step - 1].content.splice(
+              action.payload.itemNumber,
+              1
+            );
+
             return arr;
           })(state.speech),
         ],
