@@ -22,7 +22,13 @@ export const MasterForm: FunctionComponent = () => {
   const addStepName = (title: string, step: number) =>
     dispatch({
       type: 'ADD_STEP_NAME',
-      payload: { title: title, step: step },
+      payload: { title, step },
+    });
+
+  const addStepContent = (content: string, step: number, itemNumber: number) =>
+    dispatch({
+      type: 'ADD_STEP_CONTENT',
+      payload: { content, step, itemNumber },
     });
 
   const resetState = () => dispatch({ type: 'RESET', payload: initialState });
@@ -59,6 +65,7 @@ export const MasterForm: FunctionComponent = () => {
                 : ['']
             }
             changeStepName={addStepName}
+            changeStepContent={addStepContent}
             step={state.step}
           />
         </>
@@ -73,11 +80,7 @@ export const MasterForm: FunctionComponent = () => {
           Save speech
         </button>
       </div>
-      <button
-        className="btn btn-orange-link"
-        type="button"
-        onClick={resetState}
-      >
+      <button className="btn btn-orange-link" type="reset" onClick={resetState}>
         Clear speech
       </button>
     </form>

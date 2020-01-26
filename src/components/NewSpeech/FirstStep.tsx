@@ -18,6 +18,7 @@ export const FirstStep: FunctionComponent<FirstStepProps> = ({
       type="text"
       autoCapitalize="none"
       autoCorrect="off"
+      autoComplete="off"
       placeholder="Enter new speech name"
       onChange={handleChange}
       spellCheck={false}

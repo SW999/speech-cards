@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { FormEvent, ChangeEvent, FunctionComponent } from 'react';
-import { HandleChangeItem } from './MainStep';
+import { ChangeEvent, FunctionComponent } from 'react';
 
 type AddRemoveContentItemProps = {
-  handleChange: (HandleChangeItem) => void;
+  handleChangeContent: (
+    content: string,
+    step: number,
+    itemNumber: number
+  ) => void;
   itemCount: number;
   itemText: string;
   onAdd: () => void;
@@ -11,15 +14,14 @@ type AddRemoveContentItemProps = {
 };
 
 export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
-  handleChange,
+  handleChangeContent,
   itemCount,
   itemText,
   onAdd,
   step,
 }) => {
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    handleChange({ val: e.currentTarget.value, index: itemCount });
-  };
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) =>
+    handleChangeContent(e.currentTarget.value, step, itemCount);
 
   return (
     <div className="form-group">
@@ -44,7 +46,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
         autoCapitalize="none"
         autoCorrect="off"
         placeholder="Enter item text"
-        aria-describedby={itemCount < 1 ? 'step-content-hint' : null} // FIXME
+        aria-describedby={itemCount < 1 ? 'step-content-hint' : null}
         onChange={onInputChange}
         spellCheck={false}
         value={itemText}
