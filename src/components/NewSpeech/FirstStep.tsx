@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FormEvent, FunctionComponent } from 'react';
+import { ChangeEvent, FunctionComponent } from 'react';
 
 type FirstStepProps = {
   name: string;
-  handleChange: (e: FormEvent<HTMLInputElement>) => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const FirstStep: FunctionComponent<FirstStepProps> = ({

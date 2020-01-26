@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { FormEvent, MouseEvent, FunctionComponent, useReducer } from 'react';
+import {
+  FormEvent,
+  ChangeEvent,
+  MouseEvent,
+  FunctionComponent,
+  useReducer,
+} from 'react';
 import { newSpeechReducer } from '../../reducers';
 import { FirstStep } from './FirstStep';
 import { MainStep } from './MainStep';
@@ -10,7 +16,7 @@ const initialState = { name: '', step: 0, speech: [] };
 export const MasterForm: FunctionComponent = () => {
   const [state, dispatch] = useReducer(newSpeechReducer, initialState);
 
-  const addName = (e: FormEvent<HTMLInputElement>) =>
+  const addName = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
 
   const addStepName = (title: string, step: number) =>

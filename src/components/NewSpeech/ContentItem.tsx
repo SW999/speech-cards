@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormEvent, FunctionComponent } from 'react';
+import { FormEvent, ChangeEvent, FunctionComponent } from 'react';
 import { HandleChangeItem } from './MainStep';
 
 type AddRemoveContentItemProps = {
@@ -17,7 +17,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   onAdd,
   step,
 }) => {
-  const onInputChange = (e: FormEvent<HTMLInputElement>) => {
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     handleChange({ val: e.currentTarget.value, index: itemCount });
   };
 

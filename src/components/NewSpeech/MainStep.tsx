@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormEvent, FunctionComponent, useState } from 'react';
+import { ChangeEvent, FunctionComponent, useState } from 'react';
 import { ContentItem } from './ContentItem';
 
 export type HandleChangeItem = {
@@ -25,7 +25,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
     setContentArr(contentArr => [...contentArr, '']);
   };
 
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     changeStepName(e.currentTarget.value, step);
   };
 
