@@ -26,15 +26,15 @@
   },
   "keywords": [],
   "dependencies": {
-    "node-sass": "4.13.0",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
-    "react-dom": "16.8.6",
+    "react-dom": "16.12.0",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@parcel/validator-eslint": "^2.0.0-alpha.3",
-    "@types/react": "^16.8.20",
-    "@types/react-dom": "^16.8.4",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
     "concurrently": "^5.0.0",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
@@ -52,6 +52,6 @@
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0",
-    "typescript": "3.7.2"
+    "typescript": "3.7.5"
   }
 }
