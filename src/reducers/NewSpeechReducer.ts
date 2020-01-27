@@ -1,4 +1,22 @@
-export const newSpeechReducer = (state, action) => {
+type SpeechItem = {
+  title: string;
+  content: string[];
+};
+
+export type IState = {
+  name: string;
+  step: number;
+  speech: SpeechItem[];
+};
+
+export type IAction = {
+  type: string;
+  payload?: any;
+};
+
+export const speechInitialState: IState = { name: '', step: 0, speech: [] };
+
+export const newSpeechReducer = (state: IState, action: IAction) => {
   switch (action.type) {
     case 'ADD_NAME':
       return {
@@ -7,44 +25,38 @@ export const newSpeechReducer = (state, action) => {
       };
 
     case 'ADD_STEP_NAME':
+      let arr1 = [...state.speech];
+
+      if (state.speech.length < action.payload.step) {
+        arr1 = [
+          ...state.speech,
+          { title: action.payload.title, content: [''] },
+        ];
+      } else {
+        arr1[action.payload.step - 1].title = action.payload.title;
+      }
+
       return {
         ...state,
-        speech: [
-          ...(arr => {
-            if (arr.length < action.payload.step) {
-              // If current step is not defined
-              arr[action.payload.step - 1] = {
-                title: action.payload.title,
-                content: [''],
-              };
-            } else {
-              // Change title for current step
-              arr[action.payload.step - 1].title = action.payload.title;
-            }
-            return arr;
-          })(state.speech),
-        ],
+        speech: [...arr1],
       };
 
     case 'ADD_STEP_CONTENT':
+      let arr2 = [...state.speech];
+
+      if (state.speech.length < action.payload.step) {
+        arr2 = [
+          ...state.speech,
+          { title: '', content: [action.payload.content] },
+        ];
+      } else {
+        arr2[action.payload.step - 1].content[action.payload.itemNumber] =
+          action.payload.content;
+      }
+
       return {
         ...state,
-        speech: [
-          ...(arr => {
-            if (arr.length < action.payload.step) {
-              // If current step is not defined
-              arr[action.payload.step - 1] = {
-                title: '',
-                content: [action.payload.content],
-              };
-            } else {
-              // Change content item for current step
-              arr[action.payload.step - 1].content[action.payload.itemNumber] =
-                action.payload.content;
-            }
-            return arr;
-          })(state.speech),
-        ],
+        speech: [...arr2],
       };
 
     case 'ADD_CONTENT_ITEM':
@@ -89,17 +101,9 @@ export const newSpeechReducer = (state, action) => {
       };
 
     case 'RESET':
-      return { ...action.payload };
-
-    case 'ADD_STEP_NAME1':
-      return {
-        ...state,
-        //additionalPrice: state.additionalPrice + action.item.price,
-        //car: { ...state.car, features: [...state.car.features, action.item] },
-        //store: state.store.filter(x => x.id !== action.item.id),
-      };
+      return speechInitialState;
 
     default:
-      return state;
+      throw new Error();
   }
 };

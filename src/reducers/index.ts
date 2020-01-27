@@ -1,3 +1,8 @@
-import { newSpeechReducer } from './NewSpeechReducer';
+import {
+  newSpeechReducer,
+  speechInitialState as initialState,
+  IAction,
+  IState,
+} from './NewSpeechReducer';
 
-export { newSpeechReducer };
+export { newSpeechReducer, initialState, IAction, IState };

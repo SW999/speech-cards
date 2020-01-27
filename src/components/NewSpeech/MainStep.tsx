@@ -43,8 +43,6 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
         />
       ))
     );
-
-    return () => void 0;
   }, [content, step, changeStepContent, onAddContentItem, onRemoveContentItem]);
 
   return (
