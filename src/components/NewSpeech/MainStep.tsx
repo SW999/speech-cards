@@ -34,12 +34,13 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
       content.map((val, idx) => (
         <ContentItem
           key={`step-${step}-${idx}`}
-          step={step}
           handleChangeContent={changeStepContent}
+          isLastItem={idx === content.length - 1}
           itemCount={idx}
           itemText={val}
           onAdd={onAddContentItem}
           onRemove={onRemoveContentItem}
+          step={step}
         />
       ))
     );

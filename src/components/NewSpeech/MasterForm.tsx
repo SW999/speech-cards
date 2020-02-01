@@ -92,7 +92,6 @@ export const MasterForm: FunctionComponent = () => {
         </>
       )}
       {state.step < 1 && <FirstStep name={state.name} handleChange={addName} />}
-      <hr />
       <div className="form-group">
         <button className="btn btn-green" type="button" onClick={nextStep}>
           Next card

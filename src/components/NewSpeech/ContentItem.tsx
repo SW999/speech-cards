@@ -9,6 +9,7 @@ type AddRemoveContentItemProps = {
   ) => void;
   itemCount: number;
   itemText: string;
+  isLastItem: boolean;
   onAdd: (step: number, itemNumber: number) => void;
   onRemove: (step: number, itemNumber: number) => void;
   step: number;
@@ -18,6 +19,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   handleChangeContent,
   itemCount,
   itemText,
+  isLastItem,
   onAdd,
   onRemove,
   step,
@@ -57,20 +59,26 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
         spellCheck={false}
         value={itemText}
       />
-      <button
-        className="btn btn-green-outlined btn-bold btn-rounded"
-        type="button"
-        onClick={onAddContentItem}
-      >
-        +
-      </button>
-      <button
-        className="btn btn-orange-outlined btn-bold btn-rounded"
-        type="button"
-        onClick={onRemoveContentItem}
-      >
-        -
-      </button>
+      {isLastItem && (
+        <button
+          className="btn btn-green-outlined btn-bold btn-rounded"
+          onClick={onAddContentItem}
+          title="Add new"
+          type="button"
+        >
+          +
+        </button>
+      )}
+      {itemCount > 0 && (
+        <button
+          className="btn btn-orange-outlined btn-bold btn-rounded"
+          onClick={onRemoveContentItem}
+          title="Remove item"
+          type="button"
+        >
+          -
+        </button>
+      )}
     </div>
   );
 };
