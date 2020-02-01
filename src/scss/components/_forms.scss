@@ -35,12 +35,10 @@ label {
   line-height: 1.5625;
 }
 
-input,
-textarea {
+input {
   width: 100%;
   max-width: 40rem;
   margin-right: 1.7rem;
-  margin-bottom: 2.5rem;
   padding: .8rem;
   border: 1px solid $input-border-color;
   font-size: 1.9rem;
@@ -49,4 +47,8 @@ textarea {
   &:focus {
     outline: 3px solid #2ecc71;
   }
+}
+
+.form-group + .form-group {
+  margin-top: 2.5rem;
 }
