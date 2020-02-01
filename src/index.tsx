@@ -110,7 +110,7 @@ const App: FunctionComponent = () => {
           </button>
         </Route>
         <Route path="/demo">
-          <Card project={demo} />
+          <Card {...demo} />
         </Route>
         <Route path="/from-storage" component={ProjectStorage} />
         <Route path="/from-json" component={ProjectJSON} />

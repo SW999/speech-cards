@@ -1,37 +1,19 @@
 import * as React from 'react';
-import { FunctionComponent, useState, useEffect } from 'react';
-import Markdown from 'markdown-to-jsx';
-import { RedialProgressBar } from './RedialProgressBar';
+import { FunctionComponent, useState, useEffect, lazy, Suspense } from 'react';
+import { IState } from '../reducers';
 import { checkTouch } from '../utils';
+const Markdown = lazy(() => import('markdown-to-jsx'));
+const RedialProgressBar = lazy(() => import('./RedialProgressBar'));
 
-type projectProps = {
-  name: string;
-  speech: {
-    title: string;
-    content: string;
-  }[];
-};
-
-type projectObject = {
-  [key: string]: projectProps;
-};
-
-export const Card: FunctionComponent<projectObject> = ({ project }) => {
+export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const [page, setPage] = useState<number>(-1);
-  const len = project.speech.length;
   const isTouchExist = checkTouch();
 
   useEffect(() => {
-    const moveLeft = () => {
-      if (page > -1) {
-        setPage(page => --page);
-      }
-    };
-    const moveRight = () => {
-      if (page < len - 1) {
-        setPage(page => ++page);
-      }
-    };
+    const moveLeft = (): void => setPage(page => (page > -1 ? --page : -1));
+
+    const moveRight = (): void =>
+      setPage(page => (page < step - 1 ? ++page : step - 1));
 
     if (isTouchExist) {
       document.addEventListener('swipeLeft', moveRight);
@@ -42,7 +24,7 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
         document.removeEventListener('swipeRight', moveLeft);
       };
     } else {
-      const slideCard = (e: KeyboardEvent) => {
+      const slideCard = (e: KeyboardEvent): void => {
         const code = e.code || e.which;
 
         if (code === 'ArrowLeft' || code === 37) {
@@ -59,25 +41,32 @@ export const Card: FunctionComponent<projectObject> = ({ project }) => {
         document.removeEventListener('keydown', slideCard);
       };
     }
-  }, [page]);
+  }, [page, speech]);
 
   return (
     <>
-      {page < 0 && <h1 className="card-title">{project.name}</h1>}
-      {page >= 0 && (
-        <>
+      {page < 0 ? (
+        <h1 className="card-title">{name}</h1>
+      ) : (
+        <Suspense fallback="Loading...">
           <div className="card-header">
-            <h2>{project.speech[page].title}</h2>
+            <h2>{speech[page].title}</h2>
             <RedialProgressBar
               current={page + 1}
-              total={len}
-              label={`${page + 1}/${len}`}
+              total={step}
+              label={`${page + 1}/${step}`}
             />
           </div>
           <div className="card-body">
-            <Markdown children={project.speech[page].content} />
+            <ul>
+              {speech[page].content.map(item => (
+                <li key={item}>
+                  <Markdown children={item} />
+                </li>
+              ))}
+            </ul>
           </div>
-        </>
+        </Suspense>
       )}
     </>
   );

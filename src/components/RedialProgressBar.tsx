@@ -7,7 +7,7 @@ type RedialProgressBarProps = {
   label?: string;
 };
 
-export const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
+const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   current,
   total,
   label,
@@ -24,3 +24,5 @@ export const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
     </div>
   );
 };
+
+export default RedialProgressBar;
