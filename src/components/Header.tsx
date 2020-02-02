@@ -4,10 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { checkTouch } from '../utils';
 
 export const Header: FunctionComponent = () => {
-  const isTouchExist = checkTouch();
-
   useEffect(() => {
-    if (isTouchExist) {
+    if (checkTouch()) {
       const menuBtn = document.getElementById('toggleMenu');
       const toggleMenu = () => {
         const menuParent = menuBtn.parentElement;
@@ -30,8 +28,7 @@ export const Header: FunctionComponent = () => {
           Home
         </NavLink>
         <NavLink to="/demo">Demo</NavLink>
-        <NavLink to="/from-storage">From Storage</NavLink>
-        <NavLink to="/from-json">From JSON</NavLink>
+        <NavLink to="/show-speech">Show Speech</NavLink>
         <NavLink to="/new">New</NavLink>
       </nav>
     </header>
