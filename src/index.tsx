@@ -12,9 +12,8 @@ import demo from './how_to_write_efficient_emails.json';
 
 const App: FunctionComponent = () => {
   useEffect(() => {
-    const isTouchExist = checkTouch();
-    if (isTouchExist) {
-      const touch = addSwipeEvent(isTouchExist);
+    if (checkTouch()) {
+      const touch = addSwipeEvent();
 
       for (const swipeEvent in touch) {
         document.addEventListener(swipeEvent, touch[swipeEvent], false);
@@ -35,7 +34,7 @@ const App: FunctionComponent = () => {
         <Route exact path="/">
           <h1>Simple speech cards</h1>
           <h2>How it works?</h2>
-          <p>Some text</p>
+          <p>Description here</p>
         </Route>
         <Route path="/demo">
           <Card {...demo} />

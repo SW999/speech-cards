@@ -32,18 +32,21 @@ body {
   color: rgba(black, .84);
   font-family: 'Open Sans', sans-serif;
   line-height: 1.58;
-  background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%, #141414 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 
-  &::before {
-    @include pseudo;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: .9;
-    background: url($dim_bg_url) transparent 0 0 repeat;
+  @include mq(tablet) {
+    background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%, #141414 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    &::before {
+      @include pseudo;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: .9;
+      background: url($dim_bg_url) transparent 0 0 repeat;
+    }
   }
 }
 
