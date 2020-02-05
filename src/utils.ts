@@ -1,4 +1,5 @@
 import 'regenerator-runtime/runtime';
+import { IState } from './reducers';
 
 export const transliterate = (str: string): string => {
   const sp = '_';
@@ -89,14 +90,19 @@ export const transliterate = (str: string): string => {
     .join('');
 };
 
-export const downloadFile = async (data, name) => {
-  const fileName = transliterate(name).replace(/ /g, '_');
+const _prepareSpeechName = (name: string): string =>
+  transliterate(name).replace(/ /g, '_');
+
+export const downloadFile = async (
+  data: IState,
+  name: string
+): Promise<void> => {
   const json = JSON.stringify(data);
   const blob = new Blob([json], { type: 'application/json' });
   const href = await URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = href;
-  link.download = fileName + '.json';
+  link.download = _prepareSpeechName(name) + '.json';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -150,3 +156,18 @@ export const addSwipeEvent = () => {
     touchcancel: () => (nm = false),
   };
 };
+
+export const saveToStorage = (data: IState, name: string): void =>
+  localStorage.setItem(
+    `speech_${_prepareSpeechName(name)}`,
+    JSON.stringify(data)
+  );
+
+export const readFromStorage = (name: string): IState =>
+  JSON.parse(localStorage.getItem(name));
+
+export const getSpeechNamesFromStorage = (): string[] =>
+  Object.keys(localStorage).filter(key => key.substring(0, 7) === 'speech_');
+
+export const doSpeechNameReadable = (name: string): string =>
+  name.substring(7).replace(/_/g, ' ');

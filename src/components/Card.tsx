@@ -43,31 +43,29 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     }
   }, [page, speech]);
 
+  if (page < 0) {
+    return <h1 className="card-title">{name}</h1>;
+  }
+
   return (
-    <>
-      {page < 0 ? (
-        <h1 className="card-title">{name}</h1>
-      ) : (
-        <Suspense fallback="Loading...">
-          <div className="card-header">
-            <h2>{speech[page].title}</h2>
-            <RedialProgressBar
-              current={page + 1}
-              total={step}
-              label={`${page + 1}/${step}`}
-            />
-          </div>
-          <div className="card-body">
-            <ul>
-              {speech[page].content.map(item => (
-                <li key={item}>
-                  <Markdown children={item} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Suspense>
-      )}
-    </>
+    <Suspense fallback="Loading...">
+      <div className="card-header">
+        <h2>{speech[page].title}</h2>
+        <RedialProgressBar
+          current={page + 1}
+          total={step}
+          label={`${page + 1}/${step}`}
+        />
+      </div>
+      <div className="card-body">
+        <ul>
+          {speech[page].content.map(item => (
+            <li key={item}>
+              <Markdown children={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Suspense>
   );
 };

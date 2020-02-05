@@ -15,7 +15,7 @@ import {
 } from '../../reducers';
 import { FirstStep } from './FirstStep';
 import { MainStep } from './MainStep';
-import { downloadFile } from '../../utils';
+import { downloadFile, saveToStorage } from '../../utils';
 
 export const MasterForm: FunctionComponent = () => {
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
@@ -61,6 +61,7 @@ export const MasterForm: FunctionComponent = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    saveToStorage(state, state.name);
     await downloadFile(state, state.name);
   };
 
