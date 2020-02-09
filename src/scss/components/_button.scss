@@ -38,7 +38,11 @@
   }
 
   & + & {
-    margin-left: 1.7rem;
+    margin-left: .8rem;
+
+    @include mq(tablet) {
+      margin-left: 1.7rem;
+    }
   }
 }
 
