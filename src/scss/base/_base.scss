@@ -34,7 +34,7 @@ body {
   line-height: 1.58;
 
   @include mq(tablet) {
-    background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%, #141414 100%);
+    background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%, $dark-gray 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
 
@@ -81,4 +81,15 @@ main {
   color: lighten(#2ecc71, 10%);
   font-size: 2rem;
   font-weight: 600;
+}
+
+.storage-item {
+  padding-left: 1rem;
+
+  &::before {
+    content: "•";
+    padding-right: 1rem;
+    color: $dark-gray;
+    font-size: 2rem;
+  }
 }
