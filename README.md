@@ -9,3 +9,5 @@
 - [ ] Add color themes or change main design(?)
 - [ ] Fix mobile layout for New page
 - [ ] Add a hint how to slide a speech
+- [x] Add JSON validation for external files
+- [x] Add button to load an external JSON file
