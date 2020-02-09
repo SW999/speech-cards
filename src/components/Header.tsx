@@ -4,14 +4,16 @@ import { NavLink } from 'react-router-dom';
 import { checkTouch } from '../utils';
 
 export const Header: FunctionComponent = () => {
-  useEffect(() => {
-    if (checkTouch()) {
-      const menuBtn = document.getElementById('toggleMenu');
-      const toggleMenu = () => {
-        const menuParent = menuBtn.parentElement;
-        menuParent.classList.toggle('show-menu');
-      };
+  const isTouch = checkTouch();
+  const toggleMenu = () => {
+    if (isTouch) {
+      document.getElementById('pageHeader').classList.toggle('show-menu');
+    }
+  };
 
+  useEffect(() => {
+    if (isTouch) {
+      const menuBtn = document.getElementById('toggleMenu');
       menuBtn.addEventListener('click', toggleMenu);
 
       return () => menuBtn.removeEventListener('click', toggleMenu);
@@ -19,17 +21,23 @@ export const Header: FunctionComponent = () => {
   }, []);
 
   return (
-    <header className="page-header">
+    <header className="page-header" id="pageHeader">
       <div className="menu-toggle" id="toggleMenu">
         <span />
       </div>
       <nav role="navigation" aria-label="Main navigation">
-        <NavLink exact={true} to="/">
+        <NavLink exact={true} to="/" onClick={toggleMenu}>
           Home
         </NavLink>
-        <NavLink to="/demo">Demo</NavLink>
-        <NavLink to="/show-speech">Show Speech</NavLink>
-        <NavLink to="/new">New</NavLink>
+        <NavLink to="/demo" onClick={toggleMenu}>
+          Demo
+        </NavLink>
+        <NavLink to="/show-speech" onClick={toggleMenu}>
+          Show Speech
+        </NavLink>
+        <NavLink to="/new" onClick={toggleMenu}>
+          New
+        </NavLink>
       </nav>
     </header>
   );
