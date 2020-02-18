@@ -1,4 +1,4 @@
-$default-size: 4.5rem;
+$default-size: 4.6rem;
 $bg-color: white;
 $border-color: orangered;
 
@@ -6,7 +6,8 @@ $border-color: orangered;
   @include size($default-size);
   position: relative;
   margin-top: 3rem;
-  border-radius: 50%;
+  border-radius: 999px;
+  box-shadow: 0 .3rem 1.5rem rgba(0, 0, 0, .13);
   background-color: $bg-color;
 
   @include mq(tablet) {
@@ -25,15 +26,19 @@ $border-color: orangered;
     top: 0;
     left: 0;
     border: .2rem solid $border-color;
-    border-radius: 50%;
+    border-radius: 999px;
     clip: rect(0, ($default-size + .2rem) / 2, $default-size + .2rem, 0);
   }
 
   &__label {
-    @include center('both');
-    position: absolute;
+    @include size($default-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: .4rem solid rgba(179, 179, 179, 0.4);
+    border-radius: 999px;
     font-size: 1.4rem;
-    text-align: center;
+    font-family: fantasy;
   }
 
   @include progress();
