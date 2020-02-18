@@ -7,7 +7,7 @@ const RedialProgressBar = lazy(() => import('./RedialProgressBar'));
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const [page, setPage] = useState<number>(-1);
-  const isTouchExist = checkTouch();
+  const isTouchExist: boolean = checkTouch();
 
   useEffect(() => {
     const moveLeft = (): void => setPage(page => (page > -1 ? --page : -1));

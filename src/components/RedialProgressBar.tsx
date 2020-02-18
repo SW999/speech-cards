@@ -15,11 +15,11 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   const percent = Math.ceil((current * 100) / total);
 
   return (
-    <div className={`radial-progress-bar progress-${percent}`}>
-      <div className="radial-progress-bar__label">{label || `${percent}%`}</div>
-      <div className="radial-progress-bar__pie">
-        <div className="left-side radial-progress-bar__half-circle" />
-        <div className="right-side radial-progress-bar__half-circle" />
+    <div className={`progress progress-${percent}`}>
+      <div className="progress__count">{label || `${percent}%`}</div>
+      <div className="progress__curve">
+        <div className="progress__curve-first-half" />
+        <div className="progress__curve-second-half" />
       </div>
     </div>
   );

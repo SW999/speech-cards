@@ -33,7 +33,7 @@ nav {
     transition: all .3s ease-in;
 
     &.active, &:hover {
-      border-bottom-color: orangered;
+      border-bottom-color: $orange;
       color: black;
     }
   }

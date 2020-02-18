@@ -1,45 +1,46 @@
 $default-size: 4.6rem;
-$bg-color: white;
-$border-color: orangered;
+$bg-color: $white;
+$border-color: $orange;
 
-.radial-progress-bar {
-  @include size($default-size);
+.progress {
+  @include progress($default-size);
+
   position: relative;
-  margin-top: 3rem;
+  @include size($default-size);
   border-radius: 999px;
-  box-shadow: 0 .3rem 1.5rem rgba(0, 0, 0, .13);
-  background-color: $bg-color;
+  //box-shadow: 0 .3rem 1.5rem rgba(black, .13);
+  box-shadow: -2px -2px 5px rgba(black, .1), 3px 3px 5px rgba(black, .1);
 
-  @include mq(tablet) {
-    margin-top: 0;
+  &__count {
+    @include center-flex;
+    @include size($default-size);
+    border: .4rem solid rgba(210, 210, 210, .4);
+    border-radius: 999px;
+    font-size: 1.4rem;
+    font-family: fantasy;
+    background-color: $white;
   }
 
-  &__pie {
-    @include size(calc(100% + .2rem));
-    @include center('both');
-    clip: rect(0, $default-size + .2rem, $default-size + .2rem, ($default-size + .2rem) / 2);
-  }
-
-  &__half-circle {
+  &__curve {
     @include size(100%);
     position: absolute;
     top: 0;
     left: 0;
-    border: .2rem solid $border-color;
-    border-radius: 999px;
-    clip: rect(0, ($default-size + .2rem) / 2, $default-size + .2rem, 0);
   }
 
-  &__label {
-    @include size($default-size);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: .4rem solid rgba(179, 179, 179, 0.4);
+  &__curve-first-half {
+    @include size(100%);
+    position: absolute;
+    border: .4rem solid $border-color;
     border-radius: 999px;
-    font-size: 1.4rem;
-    font-family: fantasy;
+    clip: rect(0, #{$default-size/2}, $default-size, 0);
   }
 
-  @include progress();
+  &__curve-second-half {
+    @include size(100%);
+    position: absolute;
+    border: .4rem solid $border-color;
+    border-radius: 999px;
+    clip: rect(0, #{$default-size/2}, $default-size, 0);
+  }
 }

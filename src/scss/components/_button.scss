@@ -55,11 +55,11 @@
 }
 
 .btn-orange-outlined {
-  @include button-outlined(orangered);
+  @include button-outlined($orange);
 }
 
 .btn-orange-link {
-  @include button-colored-link(orangered);
+  @include button-colored-link($orange);
 }
 
 .go-back {
