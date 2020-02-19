@@ -10,10 +10,10 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const isTouchExist: boolean = checkTouch();
 
   useEffect(() => {
-    const moveLeft = (): void => setPage(page => (page > -1 ? --page : -1));
+    const moveLeft = (): void => setPage(page => (page > -1 ? page - 1 : -1));
 
     const moveRight = (): void =>
-      setPage(page => (page < step - 1 ? ++page : step - 1));
+      setPage(page => (page < step - 1 ? page + 1 : step - 1));
 
     if (isTouchExist) {
       document.addEventListener('swipeLeft', moveRight);
@@ -52,7 +52,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
       <div className="card-header">
         <h2>{speech[page].title}</h2>
         <RedialProgressBar
-          current={page + 1}
+          currentValue={page + 1}
           total={step}
           label={`${page + 1}/${step}`}
         />
