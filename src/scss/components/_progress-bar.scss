@@ -7,15 +7,14 @@ $border-color: $orange;
 
   position: relative;
   @include size($default-size);
-  border-radius: 999px;
-  //box-shadow: 0 .3rem 1.5rem rgba(black, .13);
+  border-radius: $br;
   box-shadow: -2px -2px 5px rgba(black, .1), 3px 3px 5px rgba(black, .1);
 
   &__count {
     @include center-flex;
     @include size($default-size);
     border: .4rem solid rgba(210, 210, 210, .4);
-    border-radius: 999px;
+    border-radius: $br;
     font-size: 1.4rem;
     font-family: fantasy;
     background-color: $white;
@@ -40,7 +39,7 @@ $border-color: $orange;
     @include size(100%);
     position: absolute;
     border: .4rem solid $border-color;
-    border-radius: 999px;
+    border-radius: $br;
     clip: rect(0, #{$default-size/2}, $default-size, 0);
   }
 }

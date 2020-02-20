@@ -31,6 +31,13 @@
       transform: rotate(180deg);
     }
   }
+
+  @if $progress == 100 {
+    .progress__curve-first-half,
+    .progress__curve-second-half {
+      border-color: $green;
+    }
+  }
 }
 
 @mixin progress($size) {

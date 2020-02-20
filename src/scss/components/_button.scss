@@ -47,11 +47,11 @@
 }
 
 .btn-green {
-  @include button-bg(#2ecc71);
+  @include button-bg($green);
 }
 
 .btn-green-outlined {
-  @include button-outlined(#2ecc71);
+  @include button-outlined($green);
 }
 
 .btn-orange-outlined {
