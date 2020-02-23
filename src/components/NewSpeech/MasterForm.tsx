@@ -13,7 +13,7 @@ import {
   IAction,
   IState,
 } from '../../reducers';
-import { FirstStep } from './FirstStep';
+import { InputText } from '../InputText';
 import { MainStep } from './MainStep';
 import { downloadFile, saveToStorage } from '../../utils';
 
@@ -92,7 +92,15 @@ export const MasterForm: FunctionComponent = () => {
           />
         </>
       )}
-      {state.step < 1 && <FirstStep name={state.name} handleChange={addName} />}
+      {state.step < 1 && (
+        <InputText
+          value={state.name}
+          onChange={addName}
+          placeholder="Enter new speech name"
+          label="Speech name"
+          name="speech-name"
+        />
+      )}
       <div className="form-group">
         <button className="btn btn-green" type="button" onClick={nextStep}>
           Next card

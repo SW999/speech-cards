@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
 import { ContentItem } from './ContentItem';
+import { InputText } from '../InputText';
 
 type MainStepProps = {
   content: string[];
@@ -48,21 +49,13 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
 
   return (
     <>
-      <div className="form-group">
-        <label htmlFor="step-title">Title:</label>
-        <input
-          id="step-title"
-          name="title"
-          type="text"
-          autoCapitalize="none"
-          autoComplete="off"
-          autoCorrect="off"
-          placeholder={`Enter step ${step} title`}
-          onChange={handleChange}
-          spellCheck={false}
-          value={title}
-        />
-      </div>
+      <InputText
+        label="Title"
+        name="step-title"
+        placeholder={`Enter step ${step} title`}
+        value={title}
+        onChange={handleChange}
+      />
       {contentItems}
     </>
   );
