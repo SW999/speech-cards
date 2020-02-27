@@ -32,6 +32,7 @@ export const InputText: FunctionComponent<InputTextProps> = ({
     <div className="form-group">
       <label htmlFor={name}>{label}:</label>
       {description}
+      {error[name] && <div className="error-message">Required field</div>}
       <input
         ref={register({ required })}
         id={name}
@@ -46,9 +47,9 @@ export const InputText: FunctionComponent<InputTextProps> = ({
         spellCheck={false}
         value={value}
         autoFocus
+        className={error[name] ? 'invalid-input' : null}
       />
       {controls}
     </div>
-    {error[name] && 'Required field'}
   </>
 );
