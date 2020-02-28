@@ -1,28 +1,32 @@
 import * as React from 'react';
-import { ChangeEvent, FunctionComponent } from 'react';
+import { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
 import { InputText } from '../InputText';
 
 type AddRemoveContentItemProps = {
+  error: object;
   handleChangeContent: (
     content: string,
     step: number,
     itemNumber: number
   ) => void;
+  isLastItem: boolean;
   itemCount: number;
   itemText: string;
-  isLastItem: boolean;
   onAdd: (step: number, itemNumber: number) => void;
   onRemove: (step: number, itemNumber: number) => void;
+  register: (val) => LegacyRef<HTMLInputElement>;
   step: number;
 };
 
 export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
+  error,
   handleChangeContent,
+  isLastItem,
   itemCount,
   itemText,
-  isLastItem,
   onAdd,
   onRemove,
+  register,
   step,
 }) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -36,7 +40,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
     <InputText
       controls={
         <>
-          {isLastItem && (
+          {isLastItem && ( // TODO: check if it's correct
             <button
               className="btn btn-green-outlined btn-bold btn-rounded"
               onClick={onAddContentItem}
@@ -75,10 +79,13 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
         )
       }
       label="Content item"
-      name={`content-item-${step}-${itemCount}`}
+      name={`contentItem-${step}-${itemCount}`}
       onChange={onInputChange}
       placeholder="Enter item text"
       value={itemText}
+      register={register}
+      error={error}
+      required={itemCount < 1}
     />
   );
 };

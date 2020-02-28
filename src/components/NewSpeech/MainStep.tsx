@@ -1,28 +1,39 @@
 import * as React from 'react';
-import { ChangeEvent, FunctionComponent, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  FunctionComponent,
+  useEffect,
+  useState,
+  LegacyRef,
+} from 'react';
 import { ContentItem } from './ContentItem';
 import { InputText } from '../InputText';
 
 type MainStepProps = {
-  content: string[];
   changeStepContent: (
     content: string,
     step: number,
     itemNumber: number
   ) => void;
   changeStepName: (title: string, step: number) => void;
+  content: string[];
+  error: object;
   onAddContentItem: (step: number, itemNumber: number) => void;
   onRemoveContentItem: (step: number, itemNumber: number) => void;
+  register: (val) => LegacyRef<HTMLInputElement>;
+  required?: boolean;
   step: number;
   title: string;
 };
 
 export const MainStep: FunctionComponent<MainStepProps> = ({
-  content,
   changeStepContent,
   changeStepName,
+  content,
+  error,
   onAddContentItem,
   onRemoveContentItem,
+  register,
   step,
   title,
 }) => {
@@ -42,6 +53,8 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
           onAdd={onAddContentItem}
           onRemove={onRemoveContentItem}
           step={step}
+          error={error}
+          register={register}
         />
       ))
     );
@@ -51,10 +64,13 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
     <>
       <InputText
         label="Title"
-        name="step-title"
+        name="stepTitle"
+        onChange={handleChange}
         placeholder={`Enter step ${step} title`}
         value={title}
-        onChange={handleChange}
+        error={error}
+        register={register}
+        required
       />
       {contentItems}
     </>

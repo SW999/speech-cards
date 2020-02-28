@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  FormEvent,
   ChangeEvent,
-  MouseEvent,
   FunctionComponent,
-  useReducer,
+  MouseEvent,
   Reducer,
+  useReducer,
 } from 'react';
 import {
   newSpeechReducer,
@@ -69,50 +68,52 @@ export const MasterForm: FunctionComponent = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/*{state.step > 0 && (*/}
-      {/*  <>*/}
-      {/*    <h3 className="step-indicator">{`Step ${state.step}`}</h3>*/}
-      {/*    <a className="go-back" href="#" onClick={prevStep}>*/}
-      {/*      Back*/}
-      {/*    </a>*/}
-      {/*    <MainStep*/}
-      {/*      title={*/}
-      {/*        state['speech'][state.step - 1]*/}
-      {/*          ? state['speech'][state.step - 1].title*/}
-      {/*          : ''*/}
-      {/*      }*/}
-      {/*      content={*/}
-      {/*        state['speech'][state.step - 1]*/}
-      {/*          ? state['speech'][state.step - 1].content*/}
-      {/*          : ['']*/}
-      {/*      }*/}
-      {/*      changeStepName={addStepName}*/}
-      {/*      changeStepContent={addStepContent}*/}
-      {/*      onAddContentItem={addContentItem}*/}
-      {/*      onRemoveContentItem={removeContentItem}*/}
-      {/*      step={state.step}*/}
-      {/*    />*/}
-      {/*  </>*/}
-      {/*)}*/}
+      {state.step > 0 && (
+        <>
+          <h3 className="step-indicator">{`Step ${state.step}`}</h3>
+          <a className="go-back" href="#" onClick={prevStep}>
+            Back
+          </a>
+          <MainStep
+            changeStepContent={addStepContent}
+            changeStepName={addStepName}
+            content={
+              state['speech'][state.step - 1]
+                ? state['speech'][state.step - 1].content
+                : ['']
+            }
+            error={errors}
+            onAddContentItem={addContentItem}
+            onRemoveContentItem={removeContentItem}
+            register={register}
+            step={state.step}
+            title={
+              state['speech'][state.step - 1]
+                ? state['speech'][state.step - 1].title
+                : ''
+            }
+          />
+        </>
+      )}
       {state.step < 1 && (
         <>
           <InputText
-            value={state.name}
-            onChange={addName}
-            placeholder="Enter new speech name"
+            error={errors}
             label="Speech name"
             name="speechName"
-            error={errors}
+            onChange={addName}
+            placeholder="Enter new speech name"
             register={register}
             required
+            value={state.name}
           />
         </>
       )}
       <div className="form-group">
         <button
           className="btn btn-green"
-          type="button"
           onClick={handleSubmit(nextStep)}
+          type="button"
         >
           Next card
         </button>
