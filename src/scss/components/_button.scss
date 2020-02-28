@@ -1,5 +1,6 @@
 .btn {
   @include button;
+  @include ripple;
 
   &:active, &:focus {
     margin-top: 1.9rem;
