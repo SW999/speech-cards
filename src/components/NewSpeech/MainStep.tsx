@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   ChangeEvent,
   FunctionComponent,
+  LegacyRef,
   useEffect,
   useState,
-  LegacyRef,
 } from 'react';
 import { ContentItem } from './ContentItem';
 import { InputText } from '../InputText';
@@ -23,6 +23,7 @@ type MainStepProps = {
   register: (val) => LegacyRef<HTMLInputElement>;
   required?: boolean;
   step: number;
+  setValue: any;
   title: string;
 };
 
@@ -35,26 +36,31 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
   onRemoveContentItem,
   register,
   step,
+  setValue,
   title,
 }) => {
   const [contentItems, setContentItems] = useState([]);
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const [currentTitle, setCurrentTitle] = useState<string>(title);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     changeStepName(e.currentTarget.value, step);
+    setValue(`step${step}Title`, e.currentTarget.value);
+  };
 
   useEffect(() => {
     setContentItems(() =>
       content.map((val, idx) => (
         <ContentItem
-          key={`step-${step}-${idx}`}
+          error={error}
           handleChangeContent={changeStepContent}
           isLastItem={idx === content.length - 1}
           itemCount={idx}
           itemText={val}
+          key={`step-${step}-${idx}`}
           onAdd={onAddContentItem}
           onRemove={onRemoveContentItem}
-          step={step}
-          error={error}
           register={register}
+          setValue={setValue}
+          step={step}
         />
       ))
     );
@@ -63,12 +69,14 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
   return (
     <>
       <InputText
+        key={`step${step}Title`}
+        autoFocus
+        defaultValue={title}
+        error={error}
         label="Title"
-        name="stepTitle"
+        name={`step${step}Title`}
         onChange={handleChange}
         placeholder={`Enter step ${step} title`}
-        value={title}
-        error={error}
         register={register}
         required
       />

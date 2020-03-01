@@ -2,7 +2,9 @@ import * as React from 'react';
 import { ChangeEvent, FunctionComponent, LegacyRef, ReactNode } from 'react';
 
 type InputTextProps = {
+  autoFocus?: boolean;
   controls?: ReactNode;
+  defaultValue?: string;
   describedby?: string;
   description?: ReactNode;
   error: object;
@@ -12,11 +14,12 @@ type InputTextProps = {
   placeholder: string;
   register: (val) => LegacyRef<HTMLInputElement>;
   required?: boolean;
-  value: string;
 };
 
 export const InputText: FunctionComponent<InputTextProps> = ({
+  autoFocus,
   controls,
+  defaultValue,
   describedby,
   description,
   error,
@@ -26,7 +29,6 @@ export const InputText: FunctionComponent<InputTextProps> = ({
   placeholder,
   register,
   required,
-  value,
 }) => (
   <>
     <div className="form-group">
@@ -34,20 +36,20 @@ export const InputText: FunctionComponent<InputTextProps> = ({
       {description}
       {error[name] && <div className="error-message">Required field</div>}
       <input
-        ref={register({ required })}
-        id={name}
-        name={name}
-        type="text"
         aria-describedby={describedby}
         autoCapitalize="none"
-        autoCorrect="off"
         autoComplete="off"
-        placeholder={placeholder}
-        onChange={onChange}
-        spellCheck={false}
-        value={value}
-        autoFocus
+        autoCorrect="off"
+        autoFocus={autoFocus}
         className={error[name] ? 'invalid-input' : null}
+        defaultValue={defaultValue}
+        id={name}
+        name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        ref={register({ required })}
+        spellCheck={false}
+        type="text"
       />
       {controls}
     </div>

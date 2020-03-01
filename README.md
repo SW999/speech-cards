@@ -3,7 +3,7 @@
 ### TODO:
 
 - [ ] Add tests
-- [ ] Add form validation
+- [x] Add form validation
 - [ ] Add color themes or change main design(?)
 - [ ] Add a hint how to slide a speech
 - [ ] Add edit mode for an existed speech

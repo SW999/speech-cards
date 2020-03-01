@@ -1,6 +1,17 @@
 import 'regenerator-runtime/runtime';
 import { IState } from './reducers';
 
+const _prepareSpeechName = (name: string): string =>
+  transliterate(name).replace(/ /g, '_');
+
+export const normalizeState = (data: IState) => {
+  if (data.step > data.speech.length) {
+    return { ...data, step: data.speech.length };
+  }
+
+  return { ...data };
+};
+
 export const transliterate = (str: string): string => {
   const sp = '_';
   const text = str
@@ -83,26 +94,20 @@ export const transliterate = (str: string): string => {
         return transliterationMap[currentValue] === sp
           ? accumulator
           : [...accumulator, transliterationMap[currentValue]];
-      } else {
-        return [...accumulator, currentValue];
       }
+
+      return [...accumulator, currentValue];
     }, [])
     .join('');
 };
 
-const _prepareSpeechName = (name: string): string =>
-  transliterate(name).replace(/ /g, '_');
-
-export const downloadFile = async (
-  data: IState,
-  name: string
-): Promise<void> => {
+export const downloadFile = async (data: IState): Promise<void> => {
   const json = JSON.stringify(data);
   const blob = new Blob([json], { type: 'application/json' });
   const href = await URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = href;
-  link.download = _prepareSpeechName(name) + '.json';
+  link.download = `${_prepareSpeechName(data.name)}.json`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -136,10 +141,10 @@ export const addSwipeEvent = () => {
       if (nm) {
         customEvent(e, 'fastClick');
       } else {
-        let x = endPoint.x - startPoint.x,
-          y = endPoint.y - startPoint.y,
-          xr = Math.abs(x),
-          yr = Math.abs(y);
+        const x = endPoint.x - startPoint.x;
+        const y = endPoint.y - startPoint.y;
+        const xr = Math.abs(x);
+        const yr = Math.abs(y);
 
         if (xr > yr) {
           if (Math.max(xr) > 50) {
@@ -157,9 +162,9 @@ export const addSwipeEvent = () => {
   };
 };
 
-export const saveToStorage = (data: IState, name: string): void =>
+export const saveToStorage = (data: IState): void =>
   localStorage.setItem(
-    `speech_${_prepareSpeechName(name)}`,
+    `speech_${_prepareSpeechName(data.name)}`,
     JSON.stringify(data)
   );
 

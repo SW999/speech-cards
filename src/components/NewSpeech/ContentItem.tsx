@@ -15,6 +15,7 @@ type AddRemoveContentItemProps = {
   onAdd: (step: number, itemNumber: number) => void;
   onRemove: (step: number, itemNumber: number) => void;
   register: (val) => LegacyRef<HTMLInputElement>;
+  setValue: any;
   step: number;
 };
 
@@ -27,10 +28,13 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   onAdd,
   onRemove,
   register,
+  setValue,
   step,
 }) => {
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     handleChangeContent(e.currentTarget.value, step, itemCount);
+    setValue(`contentItem-${step}-${itemCount}`, e.currentTarget.value);
+  };
 
   const onAddContentItem = () => onAdd(step, itemCount);
 
@@ -40,7 +44,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
     <InputText
       controls={
         <>
-          {isLastItem && ( // TODO: check if it's correct
+          {isLastItem && (
             <button
               className="btn btn-green-outlined btn-bold btn-rounded"
               onClick={onAddContentItem}
@@ -62,6 +66,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
           )}
         </>
       }
+      defaultValue={itemText}
       describedby={itemCount < 1 ? 'step-content-hint' : null}
       description={
         itemCount < 1 && (
@@ -78,13 +83,12 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
           </span>
         )
       }
+      error={error}
       label="Content item"
       name={`contentItem-${step}-${itemCount}`}
       onChange={onInputChange}
       placeholder="Enter item text"
-      value={itemText}
       register={register}
-      error={error}
       required={itemCount < 1}
     />
   );

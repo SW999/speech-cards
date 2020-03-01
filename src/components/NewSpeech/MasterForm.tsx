@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import {
+  BaseSyntheticEvent,
   ChangeEvent,
   FunctionComponent,
   MouseEvent,
@@ -15,7 +16,7 @@ import {
 } from '../../reducers';
 import { InputText } from '../InputText';
 import { MainStep } from './MainStep';
-import { downloadFile, saveToStorage } from '../../utils';
+import { downloadFile, saveToStorage, normalizeState } from '../../utils';
 
 export const MasterForm: FunctionComponent = () => {
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
@@ -23,8 +24,10 @@ export const MasterForm: FunctionComponent = () => {
     initialState
   );
 
-  const addName = (e: ChangeEvent<HTMLInputElement>) =>
+  const addName = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
+    setValue('speechName', e.currentTarget.value);
+  };
 
   const addStepName = (title: string, step: number) =>
     dispatch({
@@ -60,10 +63,10 @@ export const MasterForm: FunctionComponent = () => {
   };
 
   const { register, setValue, handleSubmit, errors } = useForm<FormData>();
-  const onSubmit = async (state, e?: React.BaseSyntheticEvent) => {
-    e.preventDefault();
-    saveToStorage(state, state.name);
-    await downloadFile(state, state.name);
+  const onSubmit = async () => {
+    const normalizedState = normalizeState(state);
+    saveToStorage(normalizedState);
+    await downloadFile(normalizedState);
   };
 
   return (
@@ -87,6 +90,7 @@ export const MasterForm: FunctionComponent = () => {
             onRemoveContentItem={removeContentItem}
             register={register}
             step={state.step}
+            setValue={setValue}
             title={
               state['speech'][state.step - 1]
                 ? state['speech'][state.step - 1].title
@@ -98,6 +102,7 @@ export const MasterForm: FunctionComponent = () => {
       {state.step < 1 && (
         <>
           <InputText
+            autoFocus
             error={errors}
             label="Speech name"
             name="speechName"
@@ -105,7 +110,7 @@ export const MasterForm: FunctionComponent = () => {
             placeholder="Enter new speech name"
             register={register}
             required
-            value={state.name}
+            defaultValue={state.name}
           />
         </>
       )}
