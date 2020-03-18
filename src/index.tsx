@@ -1,3 +1,4 @@
+/* tslint:disable:import-name */
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { FunctionComponent, useState, useEffect, lazy, Suspense } from 'react';
 import { IState } from '../reducers';
 import { checkTouch } from '../utils';
+import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
+
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() => import('./RedialProgressBar'));
 
@@ -23,24 +24,24 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
         document.removeEventListener('swipeLeft', moveRight);
         document.removeEventListener('swipeRight', moveLeft);
       };
-    } else {
-      const slideCard = (e: KeyboardEvent): void => {
-        const code = e.code || e.which;
-
-        if (code === 'ArrowLeft' || code === 37) {
-          moveLeft();
-        }
-
-        if (code === 'ArrowRight' || code === 39) {
-          moveRight();
-        }
-      };
-      document.addEventListener('keydown', slideCard);
-
-      return () => {
-        document.removeEventListener('keydown', slideCard);
-      };
     }
+
+    const slideCard = (e: KeyboardEvent): void => {
+      const code = e.code || e.which;
+
+      if (code === 'ArrowLeft' || code === 37) {
+        moveLeft();
+      }
+
+      if (code === 'ArrowRight' || code === 39) {
+        moveRight();
+      }
+    };
+    document.addEventListener('keydown', slideCard);
+
+    return () => {
+      document.removeEventListener('keydown', slideCard);
+    };
   }, [page, speech]);
 
   if (page < 0) {

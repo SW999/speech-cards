@@ -26,7 +26,7 @@ export const Header: FunctionComponent = () => {
         <span />
       </div>
       <nav role="navigation" aria-label="Main navigation">
-        <NavLink exact={true} to="/" onClick={toggleMenu}>
+        <NavLink exact to="/" onClick={toggleMenu}>
           Home
         </NavLink>
         <NavLink to="/demo" onClick={toggleMenu}>
