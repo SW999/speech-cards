@@ -1,18 +1,4 @@
-type SpeechItem = {
-  title: string;
-  content: string[];
-};
-
-export type IState = {
-  name: string;
-  step: number;
-  speech: SpeechItem[];
-};
-
-export type IAction = {
-  type: string;
-  payload?: any;
-};
+import { IState, IAction } from '../types';
 
 export const speechInitialState: IState = { name: '', step: 0, speech: [] };
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import { checkTouch, addSwipeEvent } from './utils';
+import { checkTouch, addSwipeEvent } from './utils/';
 import './scss/style.scss';
 import { Card } from './components/Card';
 import { Header } from './components/Header';

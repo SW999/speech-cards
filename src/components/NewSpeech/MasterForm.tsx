@@ -1,22 +1,17 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import {
-  BaseSyntheticEvent,
   ChangeEvent,
   FunctionComponent,
   MouseEvent,
   Reducer,
   useReducer,
 } from 'react';
-import {
-  newSpeechReducer,
-  initialState,
-  IAction,
-  IState,
-} from '../../reducers';
+import { IAction, IState } from '../../types/';
+import { newSpeechReducer, initialState } from '../../reducers';
 import { InputText } from '../InputText';
 import { MainStep } from './MainStep';
-import { downloadFile, saveToStorage, normalizeState } from '../../utils';
+import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 
 export const MasterForm: FunctionComponent = () => {
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(

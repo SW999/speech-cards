@@ -3,14 +3,14 @@ import { FunctionComponent, useEffect, useState } from 'react';
 
 type RedialProgressBarProps = {
   currentValue: number;
-  total: number;
   label?: string;
+  total: number;
 };
 
 const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   currentValue,
-  total,
   label,
+  total,
 }) => {
   const percent: number = Math.ceil((currentValue * 100) / total);
   const [dynamicValue, setDynamicValue] = useState(1);

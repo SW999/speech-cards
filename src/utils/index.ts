@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import { IState } from './reducers';
+import { IState } from '../types/';
 
 const _prepareSpeechName = (name: string): string =>
   transliterate(name).replace(/ /g, '_');

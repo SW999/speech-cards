@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { checkTouch } from '../utils';
+import { checkTouch } from '../utils/';
 
 export const Header: FunctionComponent = () => {
   const isTouch = checkTouch();

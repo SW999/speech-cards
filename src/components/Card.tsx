@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IState } from '../reducers';
-import { checkTouch } from '../utils';
+import { IState } from '../types/';
+import { checkTouch } from '../utils/';
 import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
