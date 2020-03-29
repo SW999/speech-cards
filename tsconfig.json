@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "jsx": "react",
-    "incremental": true,
     "baseUrl": "src",
     "rootDir": "./src",
     "declaration": false,

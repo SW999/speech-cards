@@ -9,8 +9,8 @@ import {
 } from 'react';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
-import { InputText } from '../InputText';
-import { MainStep } from './MainStep';
+import { Input } from '../input/Input';
+import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 
 export const MasterForm: FunctionComponent = () => {
@@ -96,7 +96,7 @@ export const MasterForm: FunctionComponent = () => {
       )}
       {state.step < 1 && (
         <>
-          <InputText
+          <Input
             autoFocus
             error={errors}
             label="Speech name"

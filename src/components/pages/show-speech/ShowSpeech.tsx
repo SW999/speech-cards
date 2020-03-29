@@ -11,9 +11,9 @@ import {
   doSpeechNameReadable,
   readFromStorage,
   validateJSON,
-} from '../utils/';
-import { IState } from '../types/';
-import { Card } from './Card';
+} from '../../../utils/';
+import { IState } from '../../../types/';
+import { Card } from '../card/Card';
 
 const speechesFromStorage = getSpeechNamesFromStorage();
 

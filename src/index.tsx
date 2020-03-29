@@ -5,10 +5,10 @@ import { render } from 'react-dom';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import { checkTouch, addSwipeEvent } from './utils/';
 import './scss/style.scss';
-import { Card } from './components/Card';
-import { Header } from './components/Header';
-import { ShowSpeech } from './components/ShowSpeech';
-import { CreateNew } from './components/CreateNew';
+import { Card } from './components/pages/card/Card';
+import { Header } from './components/header/Header';
+import { ShowSpeech } from './components/pages/show-speech/ShowSpeech';
+import { CreateNew } from './components/pages/create-new/CreateNew';
 import demo from './how_to_write_efficient_emails.json';
 
 const App: FunctionComponent = () => {

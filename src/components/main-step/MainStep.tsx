@@ -6,8 +6,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { ContentItem } from './ContentItem';
-import { InputText } from '../InputText';
+import { ContentItem } from '../content-item/ContentItem';
+import { Input } from '../input/Input';
 
 type MainStepProps = {
   changeStepContent: (
@@ -68,7 +68,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
 
   return (
     <>
-      <InputText
+      <Input
         key={`step${step}Title`}
         autoFocus
         defaultValue={title}
