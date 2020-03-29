@@ -84,13 +84,13 @@ export const ShowSpeech: FunctionComponent = () => {
     <>
       <h2>Show speech</h2>
       <p>
-        Select a speech saved to local storage or download an external JSON file
+        Select a speech saved to local storage or load an external JSON file
         with saved speech.
       </p>
       {speechesList()}
       <br />
       <br />
-      <h3>Download speech:</h3>
+      <h3>Load speech:</h3>
       <input
         type="file"
         id="file"

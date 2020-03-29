@@ -95,19 +95,17 @@ export const MasterForm: FunctionComponent = () => {
         </>
       )}
       {state.step < 1 && (
-        <>
-          <Input
-            autoFocus
-            error={errors}
-            label="Speech name"
-            name="speechName"
-            onChange={addName}
-            placeholder="Enter new speech name"
-            register={register}
-            required
-            defaultValue={state.name}
-          />
-        </>
+        <Input
+          autoFocus
+          error={errors}
+          label="Speech name"
+          name="speechName"
+          onChange={addName}
+          placeholder="Enter new speech name"
+          register={register}
+          required
+          defaultValue={state.name}
+        />
       )}
       <div className="form-group">
         <button
