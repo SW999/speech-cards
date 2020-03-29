@@ -16,7 +16,7 @@ type InputTextProps = {
   required?: boolean;
 };
 
-export const InputText: FunctionComponent<InputTextProps> = ({
+export const Input: FunctionComponent<InputTextProps> = ({
   autoFocus,
   controls,
   defaultValue,

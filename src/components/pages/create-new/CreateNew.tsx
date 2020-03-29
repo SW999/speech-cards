@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
-import { MasterForm } from './NewSpeech/MasterForm';
+import { MasterForm } from '../../master-form/MasterForm';
 
 export const CreateNew: FunctionComponent = () => (
   <>

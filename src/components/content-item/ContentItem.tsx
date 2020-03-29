@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
-import { InputText } from '../InputText';
+import { Input } from '../input/Input';
 
 type AddRemoveContentItemProps = {
   error: object;
@@ -41,7 +41,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   const onRemoveContentItem = () => onRemove(step, itemCount);
 
   return (
-    <InputText
+    <Input
       controls={
         <>
           {isLastItem && (

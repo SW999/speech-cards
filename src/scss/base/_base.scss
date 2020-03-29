@@ -31,7 +31,7 @@ body {
   min-height: 100%;
   color: rgba(black, .84);
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.58;
+  line-height: 1.65;
 
   @include mq(tablet) {
     background-image: url('../img/grid.png'), linear-gradient(to bottom, #434343 0%, $dark-gray 100%);

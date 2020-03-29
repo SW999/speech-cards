@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { IState } from '../types/';
-import { checkTouch } from '../utils/';
+import { IState } from '../../../types/';
+import { checkTouch } from '../../../utils/';
 import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
-const RedialProgressBar = lazy(() => import('./RedialProgressBar'));
+const RedialProgressBar = lazy(() =>
+  import('../../radial-progress-bar/RedialProgressBar')
+);
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const [page, setPage] = useState<number>(-1);
