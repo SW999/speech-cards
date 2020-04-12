@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { checkTouch, addSwipeEvent } from './utils/';
 import './scss/style.scss';
 import { Card } from './components/pages/card/Card';
@@ -46,11 +46,13 @@ const App: FunctionComponent = () => {
           <p>This app has some advantages:</p>
           <ul className="advantages">
             <li>
-              - you can easily use your mobile device to create and store speech
-              cards.
+              - could be easily used on a mobile device to{' '}
+              <Link to="/new">create</Link>, store and{' '}
+              <Link to="/demo">use speech cards</Link>.
             </li>
             <li>
-              - you will not lose or forget your speech cards, because your
+              - no way to lose or forget{' '}
+              <Link to="/show-speech">your speech cards</Link>, because your
               mobile device is always with you. Am I right?
             </li>
             <li>
