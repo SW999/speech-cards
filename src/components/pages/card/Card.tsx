@@ -7,6 +7,8 @@ const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
   import('../../radial-progress-bar/RedialProgressBar')
 );
+const TOUCH_HINT = 'Please use swipe to turn cards!';
+const HINT = 'Please use left/right arrows to turn cards!';
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const [page, setPage] = useState<number>(-1);
@@ -47,7 +49,12 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }, [page, speech]);
 
   if (page < 0) {
-    return <h1 className="card-title">{name}</h1>;
+    return (
+      <>
+        <div className="card-hint">{isTouchExist ? TOUCH_HINT : HINT}</div>
+        <h1 className="card-title">{name}</h1>
+      </>
+    );
   }
 
   return (
