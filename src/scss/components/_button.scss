@@ -16,6 +16,10 @@
       margin-left: 1.9rem;
     }
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .btn-bold {

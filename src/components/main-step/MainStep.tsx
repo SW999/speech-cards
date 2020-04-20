@@ -40,7 +40,6 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
   title,
 }) => {
   const [contentItems, setContentItems] = useState([]);
-  const [currentTitle, setCurrentTitle] = useState<string>(title);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     changeStepName(e.currentTarget.value, step);
     setValue(`step${step}Title`, e.currentTarget.value);

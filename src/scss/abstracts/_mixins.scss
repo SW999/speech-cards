@@ -120,7 +120,7 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   transition: all .2s ease-in-out;
 
   @media(hover: hover) and (pointer: fine) {
-    &:hover {
+    &:not(:disabled):hover {
       box-shadow: $shadow;
     }
   }
@@ -128,7 +128,7 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
 
 @mixin button-bg($bg) {
   border: .2rem solid $bg;
-  color: #fff;
+  color: $white;
   background: $bg;
 
   &:active, &:focus {

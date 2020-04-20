@@ -48,8 +48,9 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
             <button
               className="btn btn-green-outlined btn-bold btn-rounded"
               onClick={onAddContentItem}
-              title="Add new"
+              title={itemText.trim() ? 'Add new' : 'Add text first'}
               type="button"
+              disabled={!itemText.trim()}
             >
               +
             </button>
