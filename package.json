@@ -1,6 +1,6 @@
 {
   "name": "speech-cards",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -17,23 +17,44 @@
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettify"
+      "pre-commit": "npm run prettify && npm run test"
     }
+  },
+  "engines": {
+    "node": ">= 8.11.0",
+    "npm": ">= 6.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "moduleNameMapper": {
+      ".+\\.css$": "<rootDir>/src/styleMock.ts"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
   "keywords": [],
   "dependencies": {
-    "node-sass": "^4.13.1",
     "react": "^16.13.1",
-    "react-dom": "16.13.1",
-    "react-hook-form": "^4.9.8",
-    "react-router-dom": "^5.1.2"
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
     "@parcel/validator-eslint": "^2.0.0-alpha.3",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
     "concurrently": "^5.0.0",
@@ -44,11 +65,18 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.5.0",
     "husky": "^3.0.9",
+    "jest": "^25.4.0",
+    "jest-extended": "^0.11.5",
     "markdown-to-jsx": "^6.10.3",
+    "node-sass": "^4.13.1",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.19.1",
+    "react-hook-form": "^4.9.8",
+    "react-router-dom": "^5.1.2",
+    "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.3",
     "sass": "1.23.3",
+    "ts-jest": "^25.4.0",
     "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",

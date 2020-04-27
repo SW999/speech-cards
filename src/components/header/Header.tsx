@@ -21,7 +21,7 @@ export const Header: FunctionComponent = () => {
   }, []);
 
   return (
-    <header className="page-header" id="pageHeader">
+    <header className="page-header" id="pageHeader" data-testid="header">
       <div className="menu-toggle" id="toggleMenu">
         <span />
       </div>

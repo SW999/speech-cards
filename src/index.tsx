@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link, BrowserRouter } from 'react-router-dom';
 import { checkTouch, addSwipeEvent } from './utils/';
 import './scss/style.scss';
 import { Card } from './components/pages/card/Card';
@@ -29,7 +29,7 @@ const App: FunctionComponent = () => {
   }, []);
 
   return (
-    <Router basename="/">
+    <BrowserRouter basename="/">
       <Header />
       <main>
         <Route exact path="/">
@@ -74,7 +74,7 @@ const App: FunctionComponent = () => {
         <Route path="/show-speech" component={ShowSpeech} />
         <Route path="/new" component={CreateNew} />
       </main>
-    </Router>
+    </BrowserRouter>
   );
 };
 
