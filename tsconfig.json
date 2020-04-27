@@ -14,7 +14,6 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "target": "es2017",
-    "isolatedModules": true,
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
@@ -31,6 +30,7 @@
     ".cache",
     ".git",
     "dist",
-    "node_modules"
+    "node_modules",
+    "*.test.tsx"
   ]
 }
