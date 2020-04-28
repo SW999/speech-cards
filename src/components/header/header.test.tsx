@@ -4,14 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Header } from './Header';
 
 describe('<Header />', () => {
-  test('Header Component renders with className', async () => {
-    const { findByTestId } = render(
+  test('Header Component renders Navigation with aria label', () => {
+    const { getByRole } = render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
-    const wrap = await findByTestId('header');
-
-    expect(wrap).toHaveClass('page-header');
+    const aria = getByRole('navigation');
+    expect(aria).toHaveAttribute('aria-label', 'Main navigation');
   });
 });
