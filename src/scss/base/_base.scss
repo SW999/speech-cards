@@ -72,8 +72,8 @@ main {
 
   @include mq(tablet) {
     min-height: calc(100vh - 4rem);
-    margin-top: 2rem;
-    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    padding: 1.5rem 2rem 6.6rem 2rem;
     border-radius: 2.5rem;
   }
 
@@ -81,7 +81,7 @@ main {
     max-width: 102rem;
     min-height: 100vh;
     margin: 0;
-    padding: 3rem 4rem;
+    padding: 3rem 4rem 8rem 4rem;
     border-radius: 0;
   }
 }
@@ -100,5 +100,28 @@ main {
     padding-right: 1rem;
     color: $dark-gray;
     font-size: 2rem;
+  }
+}
+
+.footer {
+  width: 100%;
+  max-width: 60rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  color: $white;
+  font-size: 1.5rem;
+  background-color: rgba($dark-gray, .45);
+
+  @include mq(tablet) {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    margin-top: 0;
+    transform: translateX(-50%);
+  }
+
+  @include mq(desktop) {
+    bottom: 0;
+    max-width: 102rem;
   }
 }

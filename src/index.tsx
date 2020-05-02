@@ -1,4 +1,4 @@
-/* tslint:disable:import-name */
+/// <reference path='../custom.d.ts'/>
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
@@ -10,6 +10,7 @@ import { Header } from './components/header/Header';
 import { ShowSpeech } from './components/pages/show-speech/ShowSpeech';
 import { CreateNew } from './components/pages/create-new/CreateNew';
 import demo from './how_to_write_efficient_emails.json';
+import github from './img/github.svg';
 
 const App: FunctionComponent = () => {
   useEffect(() => {
@@ -74,6 +75,18 @@ const App: FunctionComponent = () => {
         <Route path="/show-speech" component={ShowSpeech} />
         <Route path="/new" component={CreateNew} />
       </main>
+      <Route exact path="/">
+        <div className="footer">
+          <a
+            href="https://github.com/SW999/speech-cards"
+            rel="nofollow"
+            title="Github page"
+          >
+            <img src={github} alt="github" width="24" height="24" />
+          </a>{' '}
+          © SW999 2020
+        </div>
+      </Route>
     </BrowserRouter>
   );
 };
