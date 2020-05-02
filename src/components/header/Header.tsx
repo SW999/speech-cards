@@ -5,11 +5,9 @@ import { checkTouch } from '../../utils/';
 
 export const Header: FunctionComponent = () => {
   const isTouch = checkTouch();
-  const toggleMenu = () => {
-    if (isTouch) {
-      document.getElementById('pageHeader').classList.toggle('show-menu');
-    }
-  };
+  const toggleMenu = () =>
+    isTouch &&
+    document.getElementById('pageHeader').classList.toggle('show-menu');
 
   useEffect(() => {
     if (isTouch) {
@@ -21,10 +19,12 @@ export const Header: FunctionComponent = () => {
   }, []);
 
   return (
-    <header className="page-header">
-      <div className="menu-toggle" id="toggleMenu">
-        <span />
-      </div>
+    <header className="page-header" id="pageHeader" role="header">
+      {isTouch && (
+        <div className="menu-toggle" id="toggleMenu" role="button">
+          <span />
+        </div>
+      )}
       <nav role="navigation" aria-label="Main navigation">
         <NavLink exact to="/" onClick={toggleMenu}>
           Home
