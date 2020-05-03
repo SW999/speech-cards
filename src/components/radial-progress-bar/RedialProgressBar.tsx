@@ -12,27 +12,24 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   label,
   total,
 }) => {
-  const percent: number = Math.ceil((currentValue * 100) / total);
-  const [dynamicValue, setDynamicValue] = useState(1);
+  const [dynamicValue, setDynamicValue] = useState<number>(1);
   const result: string =
     dynamicValue === 100 ? 'Done' : label || `${dynamicValue}%`;
 
   useEffect(() => {
+    const percent: number = Math.ceil((currentValue * 100) / total);
     const delta = ((): number => {
       if (percent === dynamicValue) return 0;
       return percent > dynamicValue ? 1 : -1;
     })();
     let timer;
 
-    if (dynamicValue === percent) {
-      clearInterval(timer);
-      return;
+    if (dynamicValue !== percent) {
+      timer = setInterval(() => setDynamicValue(v => v + delta), 30);
     }
 
-    timer = setInterval(() => setDynamicValue(v => v + delta), 40);
-
     return () => clearInterval(timer);
-  }, [currentValue, dynamicValue]);
+  }, [currentValue, dynamicValue, total]);
 
   return (
     <div className={`progress progress-${dynamicValue}`}>

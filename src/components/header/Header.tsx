@@ -16,6 +16,7 @@ export const Header: FunctionComponent = () => {
 
       return () => menuBtn.removeEventListener('click', toggleMenu);
     }
+    return () => {};
   }, []);
 
   return (

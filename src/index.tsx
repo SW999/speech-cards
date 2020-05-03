@@ -27,6 +27,7 @@ const App: FunctionComponent = () => {
         }
       };
     }
+    return () => {};
   }, []);
 
   return (

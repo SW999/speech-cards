@@ -12,7 +12,9 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "sourceMap": true,
+    "sourceMap": false,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
     "target": "es2017",
     "resolveJsonModule": true,
     "typeRoots": [
