@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 import { IState } from '../../../types/';
 import { checkTouch } from '../../../utils/';
-import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
+import swipe from '../../../img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
@@ -24,7 +25,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
       document.addEventListener('swipeLeft', moveRight);
       document.addEventListener('swipeRight', moveLeft);
 
-      return () => {
+      return (): void => {
         document.removeEventListener('swipeLeft', moveRight);
         document.removeEventListener('swipeRight', moveLeft);
       };
@@ -43,15 +44,25 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     };
     document.addEventListener('keydown', slideCard);
 
-    return () => {
+    return (): void => {
       document.removeEventListener('keydown', slideCard);
     };
-  }, [page, speech]);
+  }, [isTouchExist, page, speech, step]);
 
   if (page < 0) {
     return (
       <>
-        <div className="card-hint">{isTouchExist ? TOUCH_HINT : HINT}</div>
+        <div className="card-hint">
+          {isTouchExist ? (
+            <>
+              <img src={swipe} alt="Navigation hint" width="30" height="30" />
+              {}
+              {TOUCH_HINT}
+            </>
+          ) : (
+            HINT
+          )}
+        </div>
         <h1 className="card-title">{name}</h1>
       </>
     );
