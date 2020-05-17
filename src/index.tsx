@@ -1,4 +1,4 @@
-/// <reference path='../custom.d.ts'/>
+// <reference path='../custom.d.ts'/>
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
@@ -21,13 +21,12 @@ const App: FunctionComponent = () => {
         document.addEventListener(swipeEvent, touch[swipeEvent], false);
       }
 
-      return () => {
+      return (): void => {
         for (const swipeEvent in touch) {
           document.removeEventListener(swipeEvent, touch[swipeEvent], false);
         }
       };
     }
-    return () => {};
   }, []);
 
   return (

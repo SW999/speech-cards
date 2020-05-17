@@ -1,4 +1,4 @@
-type SpeechItem = {
+export type SpeechItem = {
   title: string;
   content: string[];
 };

@@ -26,7 +26,7 @@ export const ShowSpeech: FunctionComponent = () => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
-  const handleFileRead = () => {
+  const handleFileRead = (): void => {
     const data = JSON.parse(fileReader.result);
     if (validateJSON(data)) {
       setData(() => data);
@@ -35,7 +35,7 @@ export const ShowSpeech: FunctionComponent = () => {
     }
   };
 
-  const handleFileSelected = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelected = (e: ChangeEvent<HTMLInputElement>): void => {
     fileReader = new FileReader();
     fileReader.onloadend = handleFileRead;
     fileReader.readAsText(e.target.files[0]);

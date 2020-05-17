@@ -14,51 +14,56 @@ import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 
 export const MasterForm: FunctionComponent = () => {
+  const { register, setValue, handleSubmit, errors } = useForm<FormData>();
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
     newSpeechReducer,
     initialState
   );
 
-  const addName = (e: ChangeEvent<HTMLInputElement>) => {
+  const addName = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
     setValue('speechName', e.currentTarget.value);
   };
 
-  const addStepName = (title: string, step: number) =>
+  const addStepName = (title: string, step: number): void =>
     dispatch({
       type: 'ADD_STEP_NAME',
       payload: { title, step },
     });
 
-  const addStepContent = (content: string, step: number, itemNumber: number) =>
+  const addStepContent = (
+    content: string,
+    step: number,
+    itemNumber: number
+  ): void =>
     dispatch({
       type: 'ADD_STEP_CONTENT',
       payload: { content, step, itemNumber },
     });
 
-  const addContentItem = (step: number, itemNumber: number) =>
+  const addContentItem = (step: number, itemNumber: number): void =>
     dispatch({
       type: 'ADD_CONTENT_ITEM',
       payload: { step, itemNumber },
     });
 
-  const removeContentItem = (step: number, itemNumber: number) =>
+  const removeContentItem = (step: number, itemNumber: number): void =>
     dispatch({
       type: 'REMOVE_CONTENT_ITEM',
       payload: { step, itemNumber },
     });
 
-  const resetState = () => dispatch({ type: 'RESET', payload: initialState });
+  const resetState = (): void =>
+    dispatch({ type: 'RESET', payload: initialState });
 
-  const nextStep = () => dispatch({ type: 'NEXT_STEP' });
+  const nextStep = (): void => dispatch({ type: 'NEXT_STEP' });
 
-  const prevStep = (e: MouseEvent<HTMLElement>) => {
+  const prevStep = (e: MouseEvent<HTMLElement>): void => {
     e.preventDefault();
     dispatch({ type: 'PREV_STEP' });
   };
 
-  const { register, setValue, handleSubmit, errors } = useForm<FormData>();
-  const onSubmit = async () => {
+  const onSubmit = async (): Promise<void> => {
     const normalizedState = normalizeState(state);
     saveToStorage(normalizedState);
     await downloadFile(normalizedState);

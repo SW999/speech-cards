@@ -28,7 +28,7 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
       timer = setInterval(() => setDynamicValue(v => v + delta), 30);
     }
 
-    return () => clearInterval(timer);
+    return (): void => clearInterval(timer);
   }, [currentValue, dynamicValue, total]);
 
   return (

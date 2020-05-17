@@ -23,6 +23,7 @@ type MainStepProps = {
   register: (val) => LegacyRef<HTMLInputElement>;
   required?: boolean;
   step: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: any;
   title: string;
 };
@@ -40,7 +41,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
   title,
 }) => {
   const [contentItems, setContentItems] = useState([]);
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     changeStepName(e.currentTarget.value, step);
     setValue(`step${step}Title`, e.currentTarget.value);
   };
@@ -63,7 +64,16 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
         />
       ))
     );
-  }, [content, step, changeStepContent, onAddContentItem, onRemoveContentItem]);
+  }, [
+    content,
+    step,
+    changeStepContent,
+    onAddContentItem,
+    onRemoveContentItem,
+    error,
+    register,
+    setValue,
+  ]);
 
   return (
     <>

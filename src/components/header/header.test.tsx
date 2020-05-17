@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Header } from './Header';
 jest.mock('../../utils/', () => ({
@@ -22,23 +22,26 @@ describe('<Header />', () => {
   });
 
   test('Header toggles menu on click by button', async () => {
-    const { queryByRole } = render(
+    render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
 
-    fireEvent.click(queryByRole('button'));
+    fireEvent.click(screen.queryByRole('button'));
     await waitFor(() => {
-      expect(queryByRole('header')).toHaveAttribute(
+      expect(screen.queryByRole('heading')).toHaveAttribute(
         'class',
         'page-header show-menu'
       );
     });
 
-    fireEvent.click(queryByRole('button'));
+    fireEvent.click(screen.queryByRole('button'));
     await waitFor(() => {
-      expect(queryByRole('header')).toHaveAttribute('class', 'page-header');
+      expect(screen.queryByRole('heading')).toHaveAttribute(
+        'class',
+        'page-header'
+      );
     });
   });
 

@@ -1,8 +1,8 @@
-import { IState, IAction } from '../types';
+import { IState, IAction, SpeechItem } from '../types';
 
 export const speechInitialState: IState = { name: '', step: 0, speech: [] };
 
-export const newSpeechReducer = (state: IState, action: IAction) => {
+export const newSpeechReducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
     case 'ADD_NAME':
       return {
@@ -49,7 +49,7 @@ export const newSpeechReducer = (state: IState, action: IAction) => {
       return {
         ...state,
         speech: [
-          ...(arr => {
+          ...((arr: SpeechItem[]): SpeechItem[] => {
             arr[action.payload.step - 1].content[
               action.payload.itemNumber + 1
             ] = '';
@@ -63,7 +63,7 @@ export const newSpeechReducer = (state: IState, action: IAction) => {
       return {
         ...state,
         speech: [
-          ...(arr => {
+          ...((arr: SpeechItem[]): SpeechItem[] => {
             arr[action.payload.step - 1].content.splice(
               action.payload.itemNumber,
               1

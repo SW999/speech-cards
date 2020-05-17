@@ -15,6 +15,7 @@ type AddRemoveContentItemProps = {
   onAdd: (step: number, itemNumber: number) => void;
   onRemove: (step: number, itemNumber: number) => void;
   register: (val) => LegacyRef<HTMLInputElement>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: any;
   step: number;
 };
@@ -31,14 +32,14 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   setValue,
   step,
 }) => {
-  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     handleChangeContent(e.currentTarget.value, step, itemCount);
     setValue(`contentItem-${step}-${itemCount}`, e.currentTarget.value);
   };
 
-  const onAddContentItem = () => onAdd(step, itemCount);
+  const onAddContentItem = (): void => onAdd(step, itemCount);
 
-  const onRemoveContentItem = () => onRemove(step, itemCount);
+  const onRemoveContentItem = (): void => onRemove(step, itemCount);
 
   return (
     <Input
@@ -76,6 +77,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
             <a
               href="https://www.markdownguide.org/basic-syntax"
               target="_blank"
+              rel="noopener noreferrer"
               tabIndex={-1}
             >
               syntax

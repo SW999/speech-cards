@@ -1,17 +1,6 @@
 import 'regenerator-runtime/runtime';
 import { IState } from '../types/';
 
-const _prepareSpeechName = (name: string): string =>
-  transliterate(name).replace(/ /g, '_');
-
-export const normalizeState = (data: IState) => {
-  if (data.step > data.speech.length) {
-    return { ...data, step: data.speech.length };
-  }
-
-  return { ...data };
-};
-
 export const transliterate = (str: string): string => {
   const sp = '_';
   const text = str
@@ -101,6 +90,17 @@ export const transliterate = (str: string): string => {
     .join('');
 };
 
+const _prepareSpeechName = (name: string): string =>
+  transliterate(name).replace(/ /g, '_');
+
+export const normalizeState = (data: IState): IState => {
+  if (data.step > data.speech.length) {
+    return { ...data, step: data.speech.length };
+  }
+
+  return { ...data };
+};
+
 export const downloadFile = async (data: IState): Promise<void> => {
   const json = JSON.stringify(data);
   const blob = new Blob([json], { type: 'application/json' });
@@ -116,28 +116,28 @@ export const downloadFile = async (data: IState): Promise<void> => {
 export const checkTouch = (): boolean =>
   'ontouchstart' in document.documentElement;
 
-export const addSwipeEvent = () => {
+export const addSwipeEvent = (): Record<string, (e: TouchEvent) => void> => {
   let nm = true;
   let startPoint = { x: 0, y: 0 };
   let endPoint = { x: 0, y: 0 };
-  const customEvent = (e, eventName) => {
+  const customEvent = (e, eventName): void => {
     let swipeEvent = document.createEvent('CustomEvent');
     swipeEvent.initCustomEvent(eventName, true, true, e.target);
     e.target.dispatchEvent(swipeEvent);
     swipeEvent = null;
 
-    return false;
+    return;
   };
 
   return {
-    touchstart: e => {
+    touchstart: (e: TouchEvent): void => {
       startPoint = { x: e.touches[0].pageX, y: e.touches[0].pageY };
     },
-    touchmove: e => {
+    touchmove: (e: TouchEvent): void => {
       nm = false;
       endPoint = { x: e.touches[0].pageX, y: e.touches[0].pageY };
     },
-    touchend: e => {
+    touchend: (e: TouchEvent): void => {
       if (nm) {
         customEvent(e, 'fastClick');
       } else {
@@ -158,7 +158,9 @@ export const addSwipeEvent = () => {
       }
       nm = true;
     },
-    touchcancel: () => (nm = false),
+    touchcancel: (): void => {
+      nm = false;
+    },
   };
 };
 
