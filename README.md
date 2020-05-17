@@ -5,5 +5,6 @@
 - [ ] Add tests
 - [x] Add form validation
 - [ ] Add color themes or change main design(?)
-- [x] Add a hint how to slide a speech
 - [ ] Add edit mode for an existed speech
+- [ ] Add lint-staged to pre-commit(?)
+- [ ] Add a QR code to start page only for desktop

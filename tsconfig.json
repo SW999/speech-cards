@@ -13,7 +13,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "sourceMap": false,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noUnusedLocals": true,
     "target": "es2017",
     "resolveJsonModule": true,
@@ -34,5 +34,6 @@
     "dist",
     "node_modules",
     "*.test.tsx"
-  ]
+  ],
+  "files": ["custom.d.ts"]
 }
