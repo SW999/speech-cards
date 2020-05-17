@@ -52,7 +52,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   if (page < 0) {
     return (
       <>
-        <div className="card-hint">
+        <div className="card-hint" data-testid="card-hint">
           {isTouchExist ? (
             <>
               <img src={swipe} alt="Navigation hint" width="30" height="30" />

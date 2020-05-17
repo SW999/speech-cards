@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Header } from './Header';
 jest.mock('../../utils/', () => ({
@@ -12,13 +12,13 @@ jest.mock('../../utils/', () => ({
 
 describe('<Header />', () => {
   test('Header renders with show/hide menu button for touch device', () => {
-    const { queryByRole } = render(
+    render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
-    const toggleMenu = queryByRole('button');
-    expect(toggleMenu).toBeInTheDocument();
+
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   test('Header toggles menu on click by button', async () => {
@@ -29,29 +29,27 @@ describe('<Header />', () => {
     );
 
     fireEvent.click(screen.queryByRole('button'));
-    await waitFor(() => {
-      expect(screen.queryByRole('heading')).toHaveAttribute(
-        'class',
-        'page-header show-menu'
-      );
-    });
+
+    expect(await screen.findByRole('heading')).toHaveAttribute(
+      'class',
+      'page-header show-menu'
+    );
 
     fireEvent.click(screen.queryByRole('button'));
-    await waitFor(() => {
-      expect(screen.queryByRole('heading')).toHaveAttribute(
-        'class',
-        'page-header'
-      );
-    });
+
+    expect(await screen.findByRole('heading')).toHaveAttribute(
+      'class',
+      'page-header'
+    );
   });
 
   test('Header renders without show/hide menu button for not touch device', () => {
-    const { queryByRole } = render(
+    render(
       <BrowserRouter>
         <Header />
       </BrowserRouter>
     );
-    const toggleMenu = queryByRole('button');
-    expect(toggleMenu).not.toBeInTheDocument();
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 });
