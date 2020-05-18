@@ -19,7 +19,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     const moveLeft = (): void => setPage(page => (page > -1 ? page - 1 : -1));
 
     const moveRight = (): void =>
-      setPage(page => (page < step - 1 ? page + 1 : step - 1));
+      setPage(page => (page < step - 1 ? page + 1 : page));
 
     if (isTouchExist) {
       document.addEventListener('swipeLeft', moveRight);
