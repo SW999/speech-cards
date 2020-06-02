@@ -106,7 +106,6 @@
     "no-useless-computed-key": "warn",
     "no-useless-concat": "warn",
     "no-useless-constructor": "warn",
-    "no-useless-escape": "warn",
     "no-useless-rename": [
       "warn",
       {
@@ -142,7 +141,6 @@
     "getter-return": "warn",
     "import/first": "error",
     "import/no-amd": "error",
-    "import/no-relative-parent-imports": "warn",
     "import/no-webpack-loader-syntax": "error",
     "react/forbid-foreign-prop-types": ["warn", { "allowInPropTypes": true }],
     "react/jsx-no-comment-textnodes": "warn",

@@ -35,6 +35,14 @@
     "npm": ">= 6.0.0"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "**/src/components/**/*.{ts,tsx}"
+    ],
+    "coverageReporters": [
+      "html",
+      "text",
+      "cobertura"
+    ],
     "preset": "ts-jest",
     "moduleFileExtensions": [
       "ts",
