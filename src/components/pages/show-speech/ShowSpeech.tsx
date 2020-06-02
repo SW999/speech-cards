@@ -21,8 +21,7 @@ export const ShowSpeech: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<JSX.Element | null>(null);
   let fileReader;
-  const openSpeech = (e: MouseEvent<HTMLAnchorElement>): void => {
-    e.preventDefault();
+  const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
@@ -49,9 +48,14 @@ export const ShowSpeech: FunctionComponent = () => {
           <ul>
             {speechesFromStorage.map(name => (
               <li key={name} className="storage-item">
-                <a href="#" data-name={name} onClick={openSpeech}>
+                <button
+                  className="btn-link"
+                  data-name={name}
+                  onClick={openSpeech}
+                  type="button"
+                >
                   {doSpeechNameReadable(name)}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

@@ -31,6 +31,10 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
     return (): void => clearInterval(timer);
   }, [currentValue, dynamicValue, total]);
 
+  if (total < 2) {
+    return null;
+  }
+
   return (
     <div className={`progress progress-${dynamicValue}`}>
       <div className="progress__count">{result}</div>

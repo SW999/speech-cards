@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
+import { debounce } from '../../utils/index';
 import { Input } from '../input/Input';
 
 type AddRemoveContentItemProps = {
@@ -37,9 +38,13 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
     setValue(`contentItem-${step}-${itemCount}`, e.currentTarget.value);
   };
 
-  const onAddContentItem = (): void => onAdd(step, itemCount);
+  const onAddContentItem = debounce((): void => {
+    onAdd(step, itemCount);
+  }, 500);
 
-  const onRemoveContentItem = (): void => onRemove(step, itemCount);
+  const onRemoveContentItem = debounce((): void => {
+    onRemove(step, itemCount);
+  }, 500);
 
   return (
     <Input

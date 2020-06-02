@@ -7,6 +7,7 @@ import {
   Reducer,
   useReducer,
 } from 'react';
+import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
 import { Input } from '../input/Input';
@@ -53,15 +54,17 @@ export const MasterForm: FunctionComponent = () => {
       payload: { step, itemNumber },
     });
 
-  const resetState = (): void =>
-    dispatch({ type: 'RESET', payload: initialState });
+  const resetState = debounce(
+    (): void => dispatch({ type: 'RESET', payload: initialState }),
+    500
+  );
 
-  const nextStep = (): void => dispatch({ type: 'NEXT_STEP' });
+  const nextStep = debounce((): void => dispatch({ type: 'NEXT_STEP' }), 500);
 
-  const prevStep = (e: MouseEvent<HTMLElement>): void => {
+  const prevStep = debounce((e: MouseEvent): void => {
     e.preventDefault();
     dispatch({ type: 'PREV_STEP' });
-  };
+  }, 500);
 
   const onSubmit = async (): Promise<void> => {
     const normalizedState = normalizeState(state);
@@ -74,9 +77,9 @@ export const MasterForm: FunctionComponent = () => {
       {state.step > 0 && (
         <>
           <h3 className="step-indicator">{`Step ${state.step}`}</h3>
-          <a className="go-back" href="#" onClick={prevStep}>
+          <button className="go-back" onClick={prevStep} type="button">
             Back
-          </a>
+          </button>
           <MainStep
             changeStepContent={addStepContent}
             changeStepName={addStepName}
@@ -120,7 +123,15 @@ export const MasterForm: FunctionComponent = () => {
         >
           Next card
         </button>
-        <button className="btn btn-green-outlined" type="submit">
+        <button
+          className="btn btn-green-outlined"
+          type="submit"
+          disabled={
+            state['speech'][0]?.content.length < 1 ||
+            state['speech'][0]?.content[0]?.trim() === '' ||
+            !state['speech'][0]?.title
+          }
+        >
           Save speech
         </button>
       </div>
