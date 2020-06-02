@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   height: 9.2rem;
-  margin: 0 -1rem;
+  margin: -.6rem -1.5rem 0 -1.5rem;
   padding: 1rem .5rem;
   overflow: hidden;
   background-color: $blue;
@@ -56,8 +56,8 @@
   &:before {
     @include pseudo;
     top: -11.6rem;
-    left: -1rem;
-    right: -1rem;
+    left: -1.5rem;
+    right: -1.5rem;
     height: 2.4rem;
     background-color: $blue;
   }
@@ -71,6 +71,7 @@
   }
 
   li {
+    margin: 0 -1.5rem;
     padding: 1.2rem 1rem;
     font-size: 2rem;
     line-height: 1.55;
@@ -80,6 +81,7 @@
       background-color: rgba(#B3E5FC, .3);
 
       @include mq(tablet) {
+        margin: 0;
         background-color: rgba(black, .1);
       }
     }

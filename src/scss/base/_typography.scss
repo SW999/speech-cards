@@ -39,8 +39,11 @@ li {
     margin-bottom: 1rem;
     color: black;
     font-size: 1.8rem;
-    line-height: 1.3;
     font-weight: bolder;
     letter-spacing: .03rem;
+
+    @include mq(desktop) {
+      line-height: 1.3;
+    }
   }
 }

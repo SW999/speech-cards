@@ -29,7 +29,7 @@ body {
   align-items: center;
   position: relative;
   min-height: 100%;
-  color: rgba(black, .84);
+  color: rgba($dark-gray, .84);
   font-family: 'Open Sans', sans-serif;
   line-height: 1.65;
 
@@ -51,12 +51,12 @@ body {
 }
 
 a {
-  color: #2b8cc4;
+  color: $link-color;
 }
 
 main {
   position: relative;
-  padding: 2.4rem 1rem 0 1rem;
+  padding: 3rem 1.5rem 0 1.5rem;
 
   @include mq(tablet) {
     padding: 3.6rem 0 0 0;

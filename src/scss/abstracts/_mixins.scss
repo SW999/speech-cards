@@ -132,11 +132,13 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   background: $bg;
 
   &:active, &:focus {
-    border-width: 0;
-    border-radius: 0;
-    outline: .2rem solid darken($bg, 5%);
+    border-color: darken($bg, 5%);
     box-shadow: $shadow;
     background: darken($bg, 5%);
+  }
+
+  &:active {
+    border-radius: 0;
   }
 }
 
@@ -146,11 +148,13 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   background-color: transparent;
 
   &:active, &:focus {
-    border-width: 0;
-    border-radius: 0;
-    outline: .2rem solid darken($color, 10%);
+    border-color: darken($color, 10%);
     box-shadow: $shadow;
     color: darken($color, 10%);
+  }
+
+  &:active {
+    border-radius: 0;
   }
 }
 
@@ -160,10 +164,12 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   background-color: transparent;
 
   &:active, &:focus {
-    border-width: 0;
-    border-radius: 0;
-    outline: .2rem solid $color;
+    border-color: $color;
     box-shadow: $shadow;
+  }
+
+  &:active {
+    border-radius: 0;
   }
 }
 

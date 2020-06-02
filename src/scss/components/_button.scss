@@ -2,23 +2,15 @@
   @include button;
   @include ripple;
 
-  &:active, &:focus {
-    margin-top: 1.9rem;
-    margin-right: 0.2rem;
-    margin-left: 0.2rem;
-  }
-
   & + & {
     margin-left: 1.7rem;
-
-    &:active, &:focus {
-      margin-right: 0;
-      margin-left: 1.9rem;
-    }
   }
 
   &:disabled {
+    border-color: lighten($semi-gray, 20%);
+    color: lighten($semi-gray, 10%);
     cursor: not-allowed;
+    box-shadow: none;
   }
 }
 
@@ -26,21 +18,19 @@
   font-weight: 700;
 }
 
-.btn.btn-rounded {
+.btn-rounded {
   width: 4rem;
   height: 4rem;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
-  border-radius: 50%;
+  border-radius: $br;
   line-height: 3.6rem;
   text-align: center;
 
   &:active, &:focus {
-    margin: 1.7rem 0;
-    border-width: .2rem;
-    border-radius: 50%;
-    outline: none;
+    border-radius: $br !important;
+    outline: none !important;
     box-shadow: 0 0 2px rgba($dark-gray, .12), 0 -2px 2px rgba($dark-gray, .2);
   }
 
@@ -74,11 +64,14 @@
   display: inline-block;
   margin: 2rem 0;
   padding-left: 1.5rem;
+  border: none;
   border-bottom: 1px solid $dark-gray;
   text-decoration: none;
   color: $dark-gray;
   font-size: 1.8rem;
   line-height: 1.25;
+  background-color: transparent;
+  transition: all .3s;
 
   &:focus {
     border-bottom-color: transparent;
@@ -103,6 +96,24 @@
     border-width: 5px 6px 5px 0;
     border-right-color: inherit;
     transform: translateY(-50%);
+  }
+}
+
+.btn-link {
+  position: relative;
+  display: inline-block;
+  border: none;
+  text-decoration: underline;
+  color: $link-color;
+  font-size: 2rem;
+  line-height: 1.25;
+  background-color: transparent;
+  transition: all .3s;
+
+  &:focus {
+    outline: none;
+    color: $dark-gray;
+    text-decoration: none;
   }
 }
 
