@@ -1,9 +1,6 @@
 export const transliterate = (str: string): string => {
   const sp = '_';
-  const text = str
-    .trim()
-    .toLowerCase()
-    .split('');
+  const text = str.trim().toLowerCase().split('');
   const transliterationMap = {
     а: 'a',
     б: 'b',
