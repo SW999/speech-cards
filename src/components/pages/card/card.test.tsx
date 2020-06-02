@@ -11,7 +11,7 @@ const mockStartProps = {
 };
 
 jest.mock('../../../utils/', () => ({
-  checkTouch: jest
+  isMobileDevice: jest
     .fn()
     .mockReturnValueOnce(false)
     .mockReturnValueOnce(true)

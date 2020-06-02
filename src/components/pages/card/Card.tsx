@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 import { IState } from '../../../types/';
-import { checkTouch } from '../../../utils/';
+import { isMobileDevice } from '../../../utils/';
 import swipe from '../../../img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
@@ -13,7 +13,7 @@ const HINT = 'Please use left/right arrows to turn cards!';
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const [page, setPage] = useState<number>(-1);
-  const isTouchExist: boolean = checkTouch();
+  const isMobile: boolean = isMobileDevice();
 
   useEffect(() => {
     const moveLeft = (): void => setPage(page => (page > -1 ? page - 1 : -1));
@@ -21,7 +21,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     const moveRight = (): void =>
       setPage(page => (page < step - 1 ? page + 1 : page));
 
-    if (isTouchExist) {
+    if (isMobile) {
       document.addEventListener('swipeLeft', moveRight);
       document.addEventListener('swipeRight', moveLeft);
 
@@ -47,13 +47,13 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     return (): void => {
       document.removeEventListener('keydown', slideCard);
     };
-  }, [isTouchExist, page, speech, step]);
+  }, [isMobile, page, speech, step]);
 
   if (page < 0) {
     return (
       <>
         <div className="card-hint" data-testid="card-hint">
-          {isTouchExist ? (
+          {isMobile ? (
             <>
               <img src={swipe} alt="Navigation hint" width="30" height="30" />
               {}

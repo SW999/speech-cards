@@ -1,28 +1,28 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import { checkTouch } from '../../utils/';
+import { isMobileDevice } from '../../utils/';
 
 export const Header: FunctionComponent = () => {
-  const isTouch = checkTouch();
+  const isMobile = isMobileDevice();
   const toggleMenu = useCallback(() => {
-    if (isTouch) {
+    if (isMobile) {
       document.getElementById('pageHeader').classList.toggle('show-menu');
     }
-  }, [isTouch]);
+  }, [isMobile]);
 
   useEffect(() => {
-    if (isTouch) {
+    if (isMobile) {
       const menuBtn = document.getElementById('toggleMenu');
       menuBtn.addEventListener('click', toggleMenu);
 
       return (): void => menuBtn.removeEventListener('click', toggleMenu);
     }
-  }, [isTouch, toggleMenu]);
+  }, [isMobile, toggleMenu]);
 
   return (
     <header className="page-header" id="pageHeader" role="heading">
-      {isTouch && (
+      {isMobile && (
         <div className="menu-toggle" id="toggleMenu" role="button">
           <span />
         </div>

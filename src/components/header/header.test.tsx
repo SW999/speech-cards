@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Header } from './Header';
 jest.mock('../../utils/', () => ({
-  checkTouch: jest
+  isMobileDevice: jest
     .fn()
     .mockReturnValueOnce(true)
     .mockReturnValueOnce(true)

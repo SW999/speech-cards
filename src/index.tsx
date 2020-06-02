@@ -3,7 +3,7 @@ import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
 import { render } from 'react-dom';
 import { Route, Link, BrowserRouter } from 'react-router-dom';
-import { checkTouch, addSwipeEvent } from './utils/';
+import { isMobileDevice, addSwipeEvent } from './utils/';
 import './scss/style.scss';
 import { Card } from './components/pages/card/Card';
 import { Header } from './components/header/Header';
@@ -14,7 +14,7 @@ import github from './img/github.svg';
 
 const App: FunctionComponent = () => {
   useEffect(() => {
-    if (checkTouch()) {
+    if (isMobileDevice()) {
       const touch = addSwipeEvent();
 
       for (const swipeEvent in touch) {
