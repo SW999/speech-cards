@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { Header } from './Header';
 jest.mock('../../utils/', () => ({
   isMobileDevice: jest
@@ -13,9 +13,9 @@ jest.mock('../../utils/', () => ({
 describe('<Header />', () => {
   test('Header renders with show/hide menu button for touch device', () => {
     render(
-      <BrowserRouter>
+      <HashRouter>
         <Header />
-      </BrowserRouter>
+      </HashRouter>
     );
 
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -23,9 +23,9 @@ describe('<Header />', () => {
 
   test('Header toggles menu on click by button', async () => {
     render(
-      <BrowserRouter>
+      <HashRouter>
         <Header />
-      </BrowserRouter>
+      </HashRouter>
     );
 
     fireEvent.click(screen.queryByRole('button'));
@@ -45,9 +45,9 @@ describe('<Header />', () => {
 
   test('Header renders without show/hide menu button for not touch device', () => {
     render(
-      <BrowserRouter>
+      <HashRouter>
         <Header />
-      </BrowserRouter>
+      </HashRouter>
     );
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument();

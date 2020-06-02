@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
-import swipe from '../../../img/swipe.svg';
+import swipe from './swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>

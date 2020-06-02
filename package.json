@@ -2,6 +2,7 @@
   "name": "speech-cards",
   "version": "0.2.6",
   "description": "",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/SW999/speech-cards"
@@ -15,8 +16,7 @@
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
     "build": "cross-env NODE_ENV=production && npm run clean && npm run type-check &&parcel build index.html --public-url ./ --no-cache --no-source-maps",
-    "prebuild": "npm version patch",
-    "predeploy": "npm run build && git push --follow-tags",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
