@@ -34,8 +34,8 @@ export const Header: FunctionComponent = () => {
         <NavLink to="/demo" onClick={toggleMenu}>
           Demo
         </NavLink>
-        <NavLink to="/show-speech" onClick={toggleMenu}>
-          Show Speech
+        <NavLink to="/my-speeches" onClick={toggleMenu}>
+          My Speeches
         </NavLink>
         <NavLink to="/new" onClick={toggleMenu}>
           New

@@ -17,7 +17,7 @@ import { Card } from '../card/Card';
 
 const speechesFromStorage = getSpeechNamesFromStorage();
 
-export const ShowSpeech: FunctionComponent = () => {
+export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<JSX.Element | null>(null);
   let fileReader;
@@ -86,7 +86,7 @@ export const ShowSpeech: FunctionComponent = () => {
 
   return (
     <>
-      <h2>Show speech</h2>
+      <h2>My speeches</h2>
       <p>
         Select a speech saved to local storage or load an external JSON file
         with saved speech.
