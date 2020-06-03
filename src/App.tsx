@@ -50,7 +50,7 @@ export const App: FunctionComponent = () => {
             </li>
             <li>
               - no way to lose or forget{' '}
-              <Link to="/show-speech">your speech cards</Link>, because your
+              <Link to="/my-speeches">your speech cards</Link>, because your
               mobile device is always with you. Am I right?
             </li>
             <li>
