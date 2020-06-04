@@ -86,10 +86,10 @@ export const MySpeeches: FunctionComponent = () => {
 
   return (
     <>
-      <h2>My speeches</h2>
+      <h1>My speeches</h1>
       <p>
         Select a speech saved to local storage or load an external JSON file
-        with saved speech.
+        with a speech.
       </p>
       {speechesList()}
       <br />

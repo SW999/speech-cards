@@ -4,7 +4,7 @@ import { MasterForm } from '../../master-form/MasterForm';
 
 export const CreateNew: FunctionComponent = () => (
   <>
-    <h2>Create new speech</h2>
+    <h1>Create new</h1>
     <MasterForm />
   </>
 );
