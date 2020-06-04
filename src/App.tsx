@@ -9,10 +9,13 @@ import { CreateNew } from './components/pages/create-new/CreateNew';
 import { NoMatch } from './components/pages/no-match/NoMatch';
 import demo from './how_to_write_efficient_emails.json';
 import github from './img/github.svg';
+import qr from './img/qr.png';
 
 export const App: FunctionComponent = () => {
+  const isMobile: boolean = isMobileDevice();
+
   useEffect(() => {
-    if (isMobileDevice()) {
+    if (isMobile) {
       const touch = addSwipeEvent();
 
       for (const swipeEvent in touch) {
@@ -25,7 +28,7 @@ export const App: FunctionComponent = () => {
         }
       };
     }
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
@@ -35,6 +38,12 @@ export const App: FunctionComponent = () => {
           <Route exact path="/">
             <h1>Simple speech cards</h1>
             <h2>How it works?</h2>
+            {!isMobile && (
+              <figure className="qr-code-figure">
+                <img src={qr} alt="QR Code link" />
+                <figcaption>QR Code link for mobile</figcaption>
+              </figure>
+            )}
             <p>
               After you have prepared well your speech, you may need a little
               helper in order not to lose the thread and be more confident.

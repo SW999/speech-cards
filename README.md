@@ -7,4 +7,4 @@
 - [ ] Add color themes or change main design(?)
 - [ ] Add edit mode for an existed speech
 - [ ] Add lint-staged to pre-commit(?)
-- [ ] Add a QR code to start page only for desktop
+- [x] Add a QR code to start page only for desktop
