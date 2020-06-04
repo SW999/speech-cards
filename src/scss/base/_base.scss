@@ -103,6 +103,23 @@ main {
   }
 }
 
+.no-match-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 10.5rem);
+  background: url('../img/not-found-bg.png') center 1rem no-repeat;
+
+  @include mq(tablet) {
+    height: calc(100vh - 20rem);
+  }
+
+  h1 {
+    font-size: 10rem;
+  }
+}
+
 .footer {
   width: 100%;
   max-width: 60rem;
