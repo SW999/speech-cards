@@ -6,7 +6,9 @@ import {
   MouseEvent,
   Reducer,
   useReducer,
+  useState,
 } from 'react';
+import { Redirect } from 'react-router-dom';
 import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
@@ -15,6 +17,8 @@ import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 
 export const MasterForm: FunctionComponent = () => {
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [redirect, setRedirect] = useState<boolean>(false);
   const { register, setValue, handleSubmit, errors } = useForm<FormData>();
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
     newSpeechReducer,
@@ -66,11 +70,26 @@ export const MasterForm: FunctionComponent = () => {
     dispatch({ type: 'PREV_STEP' });
   }, 500);
 
+  const showMessageAndRedirect = (): void => {
+    setShowMessage(true);
+    setTimeout(() => setRedirect(true), 5000);
+  };
+
   const onSubmit = async (): Promise<void> => {
     const normalizedState = normalizeState(state);
     saveToStorage(normalizedState);
-    await downloadFile(normalizedState);
+    await downloadFile(normalizedState, showMessageAndRedirect);
   };
+
+  if (showMessage) {
+    return (
+      <>
+        <h3>Your speech was successfully saved!</h3>
+        <p>You'll be redirected to a new speech after 5 seconds.</p>
+        {redirect && <Redirect to="/my-speeches" />}
+      </>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
