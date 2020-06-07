@@ -6,5 +6,5 @@
 - [x] Add form validation
 - [ ] Add color themes or change main design(?)
 - [ ] Add edit mode for an existed speech
-- [ ] Add lint-staged to pre-commit(?)
 - [x] Add a QR code to start page only for desktop
+- [ ] Add confirmation modal or remove Clear button (?)

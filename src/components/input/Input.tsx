@@ -49,6 +49,7 @@ export const Input: FunctionComponent<InputTextProps> = ({
         placeholder={placeholder}
         ref={register({ required })}
         spellCheck={false}
+        required={required}
         type="text"
       />
       {controls}
