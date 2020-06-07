@@ -8,3 +8,4 @@
 - [ ] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [ ] Add confirmation modal or remove Clear button (?)
+- [ ] Disable an idea field before Topic(?)

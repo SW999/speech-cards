@@ -82,10 +82,10 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
         autoFocus
         defaultValue={title}
         error={error}
-        label="Title"
+        label="Topic title"
         name={`step${step}Title`}
         onChange={handleChange}
-        placeholder={`Enter step ${step} title`}
+        placeholder={`Enter topic title of step ${step}`}
         register={register}
         required
       />

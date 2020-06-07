@@ -54,7 +54,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
             <button
               className="btn btn-green-outlined btn-bold btn-rounded"
               onClick={onAddContentItem}
-              title={itemText.trim() ? 'Add new' : 'Add text first'}
+              title={itemText.trim() ? 'Add new idea' : 'Add text first'}
               type="button"
               disabled={!itemText.trim()}
             >
@@ -92,10 +92,10 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
         )
       }
       error={error}
-      label="Content item"
+      label="Idea"
       name={`contentItem-${step}-${itemCount}`}
       onChange={onInputChange}
-      placeholder="Enter item text"
+      placeholder="Enter an idea"
       register={register}
       required={itemCount < 1}
     />
