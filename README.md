@@ -1,7 +1,6 @@
 # Simple speech cards
 
-<div style="float: right;margin: 0 0 3px 3px;padding: 5px;border: thin solid #bbb;">
-![QR Code link for mobile](https://github.com/SW999/speech-cards/raw/master/src/img/qr.png)</div>
+<img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
 After you have prepared well your public speech, you may need a little helper in order not to lose the thread and be more confident.
 
 You may prepare such helper in some pieces of paper by pen or using this simple app.
