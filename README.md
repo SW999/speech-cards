@@ -1,4 +1,4 @@
-# Simple speech cards
+# <span style="color:#0275a8;">Simple speech cards</span>
 
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
 After you have prepared well your public speech, you may need a little helper in order not to lose the thread and be more confident.
