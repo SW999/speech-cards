@@ -58,10 +58,7 @@ export const MasterForm: FunctionComponent = () => {
       payload: { step, itemNumber },
     });
 
-  const resetState = debounce(
-    (): void => dispatch({ type: 'RESET', payload: initialState }),
-    500
-  );
+  const resetState = debounce((): void => dispatch({ type: 'RESET' }), 500);
 
   const nextStep = debounce((): void => dispatch({ type: 'NEXT_STEP' }), 500);
 
@@ -154,7 +151,12 @@ export const MasterForm: FunctionComponent = () => {
           Save speech
         </button>
       </div>
-      <button className="btn btn-orange-link" type="reset" onClick={resetState}>
+      <button
+        className="btn btn-orange-link"
+        type="reset"
+        hidden
+        onClick={resetState}
+      >
         Clear speech
       </button>
     </form>
