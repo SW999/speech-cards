@@ -1,3 +1,4 @@
+![Simple speech cards](https://user-images.githubusercontent.com/3176886/84038222-58584080-a9a8-11ea-89a5-38c494fe2b32.jpg)
 # Simple speech cards
 
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
