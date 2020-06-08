@@ -3,7 +3,7 @@
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
 After you have prepared well your public speech, you may need a little helper in order not to lose the thread and be more confident.
 
-You may prepare such helper in some pieces of paper by pen or using this simple app.
+You may prepare such helper in some pieces of paper by pen or using [this simple app](https://sw999.github.io/speech-cards/).
 
 
 
