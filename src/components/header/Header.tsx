@@ -28,16 +28,19 @@ export const Header: FunctionComponent = () => {
         </div>
       )}
       <nav role="navigation" aria-label="Main navigation">
-        <NavLink exact to="/" onClick={toggleMenu}>
+        <NavLink exact to={`${process.env.PUBLIC_URL}`} onClick={toggleMenu}>
           Home
         </NavLink>
-        <NavLink to="/demo" onClick={toggleMenu}>
+        <NavLink to={`${process.env.PUBLIC_URL}demo`} onClick={toggleMenu}>
           Demo
         </NavLink>
-        <NavLink to="/my-speeches" onClick={toggleMenu}>
+        <NavLink
+          to={`${process.env.PUBLIC_URL}my-speeches`}
+          onClick={toggleMenu}
+        >
           My Speeches
         </NavLink>
-        <NavLink to="/new" onClick={toggleMenu}>
+        <NavLink to={`${process.env.PUBLIC_URL}new`} onClick={toggleMenu}>
           New
         </NavLink>
       </nav>

@@ -33,17 +33,25 @@ export const App: FunctionComponent = () => {
       <Header />
       <main>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/demo">
+          <Route exact path={process.env.PUBLIC_URL} component={Home} />
+          <Route exact path={`${process.env.PUBLIC_URL}demo`}>
             <Card {...demo} />
           </Route>
-          <Route exact path="/my-speeches" component={MySpeeches} />
-          <Route exact path="/new" component={CreateNew} />
+          <Route
+            path={`${process.env.PUBLIC_URL}my-speeches`}
+            exact
+            component={MySpeeches}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}new`}
+            exact
+            component={CreateNew}
+          />
           <Route component={NoMatch} />
         </Switch>
       </main>
       <Switch>
-        <Route exact path="/" component={Footer} />
+        <Route exact path={process.env.PUBLIC_URL} component={Footer} />
       </Switch>
     </>
   );
