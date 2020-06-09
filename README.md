@@ -7,9 +7,9 @@
 
 Many people, like me, experience anxiety or even fear when preparing for public speaking. The reasons can be different and there are many ways to defeat such a fear.
 
-Moreover, I noticed that from excitement I can forget part of the report that I had learned and practised well before.
+Moreover, I noticed that from excitement I can forget part of the speech that I had learned and practised well before.
 
-There are many simple techniques to deal with this problem. The easiest way is to prepare cards with a sequence of words or phrases that correspond to the main sections of the report. **Speech cards**.
+There are many simple techniques to deal with this problem. The easiest way is to prepare cards with a sequence of words or phrases that correspond to the particular sections of the speech. **Speech cards**.
 
 
 ## How it works?
