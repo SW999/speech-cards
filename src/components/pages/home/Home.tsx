@@ -41,6 +41,12 @@ export const Home: FunctionComponent = () => (
         <strong>your mobile phone will be your assistant!</strong>
       </em>
     </p>
+    <p>To do this you need create a new speech and save it.</p>
+    <p>
+      Now it will be available in 2 versions: in the{' '}
+      <Link to="/my-speeches">My speeches</Link> section from the browser local
+      storage and as a separate file with the JSON extension.
+    </p>
     <p>This app has some advantages:</p>
     <ul className="advantages">
       <li>

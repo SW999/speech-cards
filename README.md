@@ -17,6 +17,8 @@ After you have prepared well your public speech, you may need a little helper in
 
 You may prepare such helper in some pieces of paper by pen **or** using [this simple app](https://sw999.github.io/speech-cards/). In the latter case, **your mobile phone will be your assistant!**
 
+To do this you need create a new speech and save it.
+Now it will be available in 2 versions: in the "**My speeches**" section from the browser local storage and as a separate file with the **JSON** extension.
 
 ## Advantages:
 
