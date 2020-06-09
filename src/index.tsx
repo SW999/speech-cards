@@ -7,7 +7,7 @@ import { App } from './App';
 require('dotenv').config();
 
 render(
-  <BrowserRouter basename={process.env.PUBLIC_URL}>
+  <BrowserRouter>
     <App />
   </BrowserRouter>,
   document.getElementById('app')
