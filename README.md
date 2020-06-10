@@ -32,6 +32,12 @@ Now it will be available in 2 versions: in the "**My speeches**" section from th
 - Should contain short clear heading,
 - Should contain main idea/ideas of current part of speech.
 
+## Technology Stack
+* Parcel web application bundler
+* React with TypeScript
+* SASS
+* Tests via Jest and @testing-library/react
+
 ## License
 
 MIT © Siarhei Vaitehovich

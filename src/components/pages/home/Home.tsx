@@ -20,13 +20,13 @@ export const Home: FunctionComponent = () => (
       defeat such a fear.
     </p>
     <p>
-      Moreover, I noticed that from excitement I can forget part of the report
+      Moreover, I noticed that from excitement I can forget part of the speech
       that I had learned and practised well before.{' '}
     </p>
     <p>
       There are many simple techniques to deal with this problem. The easiest
       way is to prepare cards with a sequence of words or phrases that
-      correspond to the main sections of the report.{' '}
+      correspond to the main sections of the speech.{' '}
       <strong>Speech cards</strong>.
     </p>
     <h2>How it works?</h2>
