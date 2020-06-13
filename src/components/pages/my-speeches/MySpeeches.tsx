@@ -8,9 +8,10 @@ import {
   useState,
 } from 'react';
 import {
-  getSpeechNamesFromStorage,
   doSpeechNameReadable,
+  getSpeechNamesFromStorage,
   readFromStorage,
+  reviverJSON,
   validateJSON,
 } from '../../../utils/';
 import { IState } from '../../../types/';
@@ -26,7 +27,14 @@ export const MySpeeches: FunctionComponent = () => {
     setData(() => readFromStorage(target.dataset.name));
   };
   const handleFileRead = (): void => {
-    const data = JSON.parse(fileReader.result);
+    let data;
+
+    try {
+      data = JSON.parse(fileReader.result, reviverJSON);
+    } catch (e) {
+      data = null;
+    }
+
     if (validateJSON(data)) {
       setData(() => data);
     } else {
