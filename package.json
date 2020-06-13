@@ -1,7 +1,7 @@
 {
   "name": "speech-cards",
   "version": "0.2.19",
-  "description": "",
+  "description": "Simple service to prepare speech cards for public speaking",
   "type": "module",
   "repository": {
     "type": "git",
@@ -63,7 +63,13 @@
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
-  "keywords": [],
+  "keywords": [
+    "public speaking",
+    "speech",
+    "speech-cards",
+    "react",
+    "typescript"
+  ],
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "16.13.1"

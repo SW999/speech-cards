@@ -35,6 +35,7 @@ Now it will be available in 2 versions: in the "**My speeches**" section from th
 ## Technology Stack
 * Parcel web application bundler
 * React with TypeScript
+* Form validation with [react-hook-form](https://github.com/react-hook-form/react-hook-form)
 * SASS
 * Tests via Jest and @testing-library/react
 
