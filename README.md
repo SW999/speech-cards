@@ -8,6 +8,7 @@
   <a href="https://github.com/SW999/random-number/tags">
     <img src="https://img.shields.io/github/v/tag/sw999/speech-cards.svg?sort=semver&style=flat-square" alt="Version">
   </a>
+  ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/speech-cards)
 </p>
 
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
