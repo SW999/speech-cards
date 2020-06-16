@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  ChangeEvent,
   FunctionComponent,
   MouseEvent,
   ReactNode,
@@ -11,42 +10,20 @@ import {
   doSpeechNameReadable,
   getSpeechNamesFromStorage,
   readFromStorage,
-  reviverJSON,
-  validateJSON,
 } from '../../../utils/';
 import { IState } from '../../../types/';
 import { Card } from '../card/Card';
+import { LoadSpeech } from '../../load-speech/LoadSpeech';
 
 export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
-  let fileReader;
   const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
-  const handleFileRead = (): void => {
-    let data;
-
-    try {
-      data = JSON.parse(fileReader.result, reviverJSON);
-    } catch (e) {
-      data = null;
-    }
-
-    if (validateJSON(data)) {
-      setData(() => data);
-    } else {
-      alert('Not valid speech file!');
-    }
-  };
-
-  const handleFileSelected = (e: ChangeEvent<HTMLInputElement>): void => {
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
-    fileReader.readAsText(e.target.files[0]);
-  };
+  const onSpeechOpen = (data: IState): void => setData(data);
 
   const speechesList = (): ReactNode => {
     if (speechNames.length > 0) {
@@ -110,16 +87,7 @@ export const MySpeeches: FunctionComponent = () => {
       <br />
       <br />
       <h3>Load speech:</h3>
-      <input
-        type="file"
-        id="file"
-        className="file-input"
-        accept=".json"
-        onChange={handleFileSelected}
-      />
-      <label htmlFor="file" className="file-input-label btn-green">
-        Choose a JSON file
-      </label>
+      <LoadSpeech onLoadSpeech={onSpeechOpen} />
     </>
   );
 };
