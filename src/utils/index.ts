@@ -8,6 +8,7 @@ export * from './getSpeechNamesFromStorage.util';
 export * from './isMobileDevice.util';
 export * from './normalizeState.util';
 export * from './readFromStorage.util';
+export * from './removeFromStorage.util';
 export * from './reviverJSON.util';
 export * from './saveToStorage.util';
 export * from './transliterate.util';

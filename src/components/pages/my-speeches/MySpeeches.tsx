@@ -11,6 +11,7 @@ import {
   doSpeechNameReadable,
   getSpeechNamesFromStorage,
   readFromStorage,
+  removeFromStorage,
 } from '../../../utils/';
 import { IState } from '../../../types/';
 import { Card } from '../card/Card';
@@ -21,10 +22,27 @@ export const MySpeeches: FunctionComponent = () => {
   const [edit, setEdit] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
+
   const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
+
+  const updateSpeechesList = (): void => {
+    const speechesFromStorage = getSpeechNamesFromStorage();
+    if (speechesFromStorage.length > 0) {
+      setSpeechNames(speechesFromStorage);
+    }
+  };
+
+  const removeSpeech = async (
+    e: MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    const target = e.currentTarget;
+    await removeFromStorage(target.dataset.name);
+    updateSpeechesList();
+  };
+
   const editSpeech = async (
     e: MouseEvent<HTMLButtonElement>
   ): Promise<void> => {
@@ -32,6 +50,7 @@ export const MySpeeches: FunctionComponent = () => {
     const data = await readFromStorage(target.dataset.name);
     setEdit({ ...data, step: 0 });
   };
+
   const onSpeechOpen = (data: IState): void => setData(data);
 
   const speechesList = (): ReactNode => {
@@ -60,12 +79,13 @@ export const MySpeeches: FunctionComponent = () => {
                   +
                 </button>
                 <button
-                  className="btn btn-green-outlined btn-bold btn-rounded"
-                  onClick={() => false}
+                  className="btn btn-orange-outlined btn-bold btn-rounded"
+                  data-name={name}
+                  onClick={removeSpeech}
                   title="Remove"
                   type="button"
                 >
-                  +
+                  -
                 </button>
               </li>
             ))}
@@ -92,10 +112,7 @@ export const MySpeeches: FunctionComponent = () => {
   }, [data]);
 
   useEffect(() => {
-    const speechesFromStorage = getSpeechNamesFromStorage();
-    if (speechesFromStorage.length > 0) {
-      setSpeechNames(speechesFromStorage);
-    }
+    updateSpeechesList();
   }, []);
 
   if (speech) {
