@@ -79,7 +79,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
 
   const showMessageAndRedirect = (): void => {
     setShowMessage(true);
-    setTimeout(() => setRedirect(true), 5000);
+    setTimeout(() => setRedirect(true), 3000);
   };
 
   const onSubmit = async (): Promise<void> => {
@@ -92,7 +92,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
     return (
       <>
         <h3>Your speech was successfully saved!</h3>
-        <p>You'll be redirected to a new speech after 5 seconds.</p>
+        <p>You'll be redirected to a new speech after 3 seconds.</p>
         {redirect && <Redirect to="/my-speeches" />}
       </>
     );
@@ -139,7 +139,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
             placeholder="Enter new speech name"
             register={register}
             required
-            value={state.name}
+            defaultValue={state.name}
           />
         )}
         <div className="form-group">

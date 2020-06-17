@@ -4,7 +4,7 @@ import { ChangeEvent, FunctionComponent, LegacyRef, ReactNode } from 'react';
 type InputTextProps = {
   autoFocus?: boolean;
   controls?: ReactNode;
-  value?: string;
+  defaultValue?: string;
   describedby?: string;
   description?: ReactNode;
   error: object;
@@ -19,7 +19,7 @@ type InputTextProps = {
 export const Input: FunctionComponent<InputTextProps> = ({
   autoFocus,
   controls,
-  value,
+  defaultValue,
   describedby,
   description,
   error,
@@ -42,7 +42,7 @@ export const Input: FunctionComponent<InputTextProps> = ({
         autoCorrect="off"
         autoFocus={autoFocus}
         className={error[name] ? 'invalid-input' : null}
-        value={value}
+        defaultValue={defaultValue}
         id={name}
         name={name}
         onChange={onChange}

@@ -80,7 +80,7 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
       <Input
         key={`step${step}Title`}
         autoFocus
-        value={title}
+        defaultValue={title}
         error={error}
         label="Topic title"
         name={`step${step}Title`}
