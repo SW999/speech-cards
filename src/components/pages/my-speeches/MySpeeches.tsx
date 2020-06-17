@@ -76,7 +76,7 @@ export const MySpeeches: FunctionComponent = () => {
                   title="Edit"
                   type="button"
                 >
-                  +
+                  <i className="icon-pencil icon" aria-hidden="true" />
                 </button>
                 <button
                   className="btn btn-orange-outlined btn-bold btn-rounded"
@@ -85,7 +85,7 @@ export const MySpeeches: FunctionComponent = () => {
                   title="Remove"
                   type="button"
                 >
-                  -
+                  <i className="icon-trash-can icon" aria-hidden="true" />
                 </button>
               </li>
             ))}

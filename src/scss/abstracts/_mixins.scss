@@ -56,7 +56,7 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   justify-content: center;
 }
 
-@mixin center($position) {
+@mixin center($position: 'both') {
   position: absolute;
 
   @if $position == 'vertical' {
