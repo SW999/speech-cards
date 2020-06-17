@@ -86,6 +86,9 @@ export const newSpeechReducer = (state: IState, action: IAction): IState => {
         step: state.step <= 1 ? 0 : state.step - 1,
       };
 
+    case 'LOAD_FILE':
+      return { ...action.payload };
+
     case 'RESET':
       return speechInitialState;
 

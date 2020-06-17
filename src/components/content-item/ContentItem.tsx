@@ -73,7 +73,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
           )}
         </>
       }
-      defaultValue={itemText}
+      value={itemText}
       describedby={itemCount < 1 ? 'step-content-hint' : null}
       description={
         itemCount < 1 && (

@@ -70,10 +70,11 @@
   color: $dark-gray;
   font-size: 1.8rem;
   line-height: 1.25;
+  cursor: pointer;
   background-color: transparent;
   transition: all .3s;
 
-  &:focus {
+  &:hover {
     border-bottom-color: transparent;
     outline: 3px solid transparent;
     color: $dark-gray;

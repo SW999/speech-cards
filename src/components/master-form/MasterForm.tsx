@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import {
   ChangeEvent,
   FunctionComponent,
-  MouseEvent,
   Reducer,
   useReducer,
   useState,
@@ -13,18 +12,19 @@ import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
 import { Input } from '../input/Input';
+import { LoadSpeech } from '../load-speech/LoadSpeech';
 import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 
 export const MasterForm: FunctionComponent = () => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [showLoadBtn, setShowLoadBtn] = useState<boolean>(true);
   const [redirect, setRedirect] = useState<boolean>(false);
   const { register, setValue, handleSubmit, errors } = useForm<FormData>();
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
     newSpeechReducer,
     initialState
   );
-
   const addName = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
     setValue('speechName', e.currentTarget.value);
@@ -62,10 +62,16 @@ export const MasterForm: FunctionComponent = () => {
 
   const nextStep = debounce((): void => dispatch({ type: 'NEXT_STEP' }), 500);
 
-  const prevStep = debounce((e: MouseEvent): void => {
-    e.preventDefault();
-    dispatch({ type: 'PREV_STEP' });
-  }, 500);
+  const prevStep = (): void => dispatch({ type: 'PREV_STEP' });
+
+  const editFile = (data: IState): void => {
+    setShowLoadBtn(false);
+
+    dispatch({
+      type: 'LOAD_FILE',
+      payload: { ...data, step: 0 },
+    });
+  };
 
   const showMessageAndRedirect = (): void => {
     setShowMessage(true);
@@ -89,76 +95,81 @@ export const MasterForm: FunctionComponent = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {state.step > 0 && (
-        <>
-          <h3 className="step-indicator">{`Step ${state.step}`}</h3>
-          <button className="go-back" onClick={prevStep} type="button">
-            Back
-          </button>
-          <MainStep
-            changeStepContent={addStepContent}
-            changeStepName={addStepName}
-            content={
-              state['speech'][state.step - 1]
-                ? state['speech'][state.step - 1].content
-                : ['']
-            }
+    <>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {state.step > 0 && (
+          <>
+            <h3 className="step-indicator">{`Step ${state.step}`}</h3>
+            <button className="go-back" onClick={prevStep} type="button">
+              Back
+            </button>
+            <MainStep
+              changeStepContent={addStepContent}
+              changeStepName={addStepName}
+              content={
+                state['speech'][state.step - 1]
+                  ? state['speech'][state.step - 1].content
+                  : ['']
+              }
+              error={errors}
+              onAddContentItem={addContentItem}
+              onRemoveContentItem={removeContentItem}
+              register={register}
+              step={state.step}
+              setValue={setValue}
+              title={
+                state['speech'][state.step - 1]
+                  ? state['speech'][state.step - 1].title
+                  : ''
+              }
+            />
+          </>
+        )}
+        {state.step < 1 && (
+          <Input
+            autoFocus
             error={errors}
-            onAddContentItem={addContentItem}
-            onRemoveContentItem={removeContentItem}
+            label="Speech name"
+            name="speechName"
+            onChange={addName}
+            placeholder="Enter new speech name"
             register={register}
-            step={state.step}
-            setValue={setValue}
-            title={
-              state['speech'][state.step - 1]
-                ? state['speech'][state.step - 1].title
-                : ''
-            }
+            required
+            value={state.name}
           />
-        </>
-      )}
-      {state.step < 1 && (
-        <Input
-          autoFocus
-          error={errors}
-          label="Speech name"
-          name="speechName"
-          onChange={addName}
-          placeholder="Enter new speech name"
-          register={register}
-          required
-          defaultValue={state.name}
-        />
-      )}
-      <div className="form-group">
+        )}
+        <div className="form-group">
+          <button
+            className="btn btn-green"
+            onClick={handleSubmit(nextStep)}
+            type="button"
+          >
+            Next card
+          </button>
+          <button
+            className="btn btn-green-outlined"
+            type="submit"
+            disabled={
+              state['speech'][0]?.content.length < 1 ||
+              state['speech'][0]?.content[0]?.trim() === '' ||
+              !state['speech'][0]?.title
+            }
+          >
+            Save speech
+          </button>
+        </div>
         <button
-          className="btn btn-green"
-          onClick={handleSubmit(nextStep)}
-          type="button"
+          className="btn btn-orange-link"
+          type="reset"
+          hidden
+          onClick={resetState}
         >
-          Next card
+          Clear speech
         </button>
-        <button
-          className="btn btn-green-outlined"
-          type="submit"
-          disabled={
-            state['speech'][0]?.content.length < 1 ||
-            state['speech'][0]?.content[0]?.trim() === '' ||
-            !state['speech'][0]?.title
-          }
-        >
-          Save speech
-        </button>
-      </div>
-      <button
-        className="btn btn-orange-link"
-        type="reset"
-        hidden
-        onClick={resetState}
-      >
-        Clear speech
-      </button>
-    </form>
+      </form>
+      {state.step === 0 && showLoadBtn && (
+        <LoadSpeech onLoadSpeech={editFile} />
+      )}
+    </>
   );
 };
