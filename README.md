@@ -7,7 +7,7 @@
 
 ## Problem
 
-Many people, like me, experience anxiety or even fear when preparing for public speaking. The reasons can be different and there are many ways to defeat such a fear.
+Many people, like me, experience anxiety or even fear when preparing for public speaking or interview. The reasons can be different and there are many ways to defeat such a fear.
 
 Moreover, I noticed that from excitement I can forget part of the speech that I had learned and practised well before.
 
@@ -15,11 +15,11 @@ There are many simple techniques to deal with this problem. The easiest way is t
 
 
 ## How it works?
-After you have prepared well your public speech, you may need a little helper in order not to lose the thread and be more confident.
+After you have prepared well your **public speech** or **interview**, you may need a little helper in order not to lose the thread and be more confident.
 
 You may prepare such helper in some pieces of paper by pen **or** using [this simple app](https://sw999.github.io/speech-cards/). In the latter case, **your mobile phone will be your assistant!**
 
-To do this you need create a new speech and save it.
+To do this you need create a **new speech** or **interview** and save it.
 Now it will be available in 2 versions: in the "**My speeches**" section from the browser local storage and as a separate file with the **JSON** extension.
 
 ## Advantages:
@@ -50,7 +50,7 @@ MIT © Siarhei Vaitehovich
 - [ ] Add tests
 - [x] Add form validation
 - [ ] Add color themes or change main design(?)
-- [ ] Add edit mode for an existed speech
+- [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [ ] Add confirmation modal or remove Clear button (?)
 - [ ] Disable an idea field before Topic(?)
