@@ -1,52 +1,57 @@
 import * as React from 'react';
 import {
-  ChangeEvent,
   FunctionComponent,
   MouseEvent,
   ReactNode,
   useEffect,
   useState,
 } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   doSpeechNameReadable,
   getSpeechNamesFromStorage,
   readFromStorage,
-  reviverJSON,
-  validateJSON,
+  removeFromStorage,
 } from '../../../utils/';
 import { IState } from '../../../types/';
 import { Card } from '../card/Card';
+import { LoadSpeech } from '../../load-speech/LoadSpeech';
 
 export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
+  const [edit, setEdit] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
-  let fileReader;
+
   const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
-  const handleFileRead = (): void => {
-    let data;
 
-    try {
-      data = JSON.parse(fileReader.result, reviverJSON);
-    } catch (e) {
-      data = null;
-    }
-
-    if (validateJSON(data)) {
-      setData(() => data);
-    } else {
-      alert('Not valid speech file!');
+  const updateSpeechesList = (): void => {
+    const speechesFromStorage = getSpeechNamesFromStorage();
+    if (speechesFromStorage.length > 0) {
+      setSpeechNames(speechesFromStorage);
     }
   };
 
-  const handleFileSelected = (e: ChangeEvent<HTMLInputElement>): void => {
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
-    fileReader.readAsText(e.target.files[0]);
+  const removeSpeech = async (
+    e: MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    const target = e.currentTarget;
+    await removeFromStorage(target.dataset.name);
+    updateSpeechesList();
   };
+
+  const editSpeech = async (
+    e: MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    const target = e.currentTarget;
+    const data = await readFromStorage(target.dataset.name);
+    setEdit({ ...data, step: 0 });
+  };
+
+  const onSpeechOpen = (data: IState): void => setData(data);
 
   const speechesList = (): ReactNode => {
     if (speechNames.length > 0) {
@@ -63,6 +68,24 @@ export const MySpeeches: FunctionComponent = () => {
                   type="button"
                 >
                   {doSpeechNameReadable(name)}
+                </button>
+                <button
+                  className="btn btn-green-outlined btn-bold btn-rounded"
+                  data-name={name}
+                  onClick={editSpeech}
+                  title="Edit"
+                  type="button"
+                >
+                  <i className="icon-pencil icon" aria-hidden="true" />
+                </button>
+                <button
+                  className="btn btn-orange-outlined btn-bold btn-rounded"
+                  data-name={name}
+                  onClick={removeSpeech}
+                  title="Remove"
+                  type="button"
+                >
+                  <i className="icon-trash-can icon" aria-hidden="true" />
                 </button>
               </li>
             ))}
@@ -89,10 +112,7 @@ export const MySpeeches: FunctionComponent = () => {
   }, [data]);
 
   useEffect(() => {
-    const speechesFromStorage = getSpeechNamesFromStorage();
-    if (speechesFromStorage.length > 0) {
-      setSpeechNames(speechesFromStorage);
-    }
+    updateSpeechesList();
   }, []);
 
   if (speech) {
@@ -110,16 +130,8 @@ export const MySpeeches: FunctionComponent = () => {
       <br />
       <br />
       <h3>Load speech:</h3>
-      <input
-        type="file"
-        id="file"
-        className="file-input"
-        accept=".json"
-        onChange={handleFileSelected}
-      />
-      <label htmlFor="file" className="file-input-label btn-green">
-        Choose a JSON file
-      </label>
+      <LoadSpeech onLoadSpeech={onSpeechOpen} />
+      {edit && <Redirect to={{ pathname: '/new', state: { data: edit } }} />}
     </>
   );
 };

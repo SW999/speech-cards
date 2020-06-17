@@ -27,19 +27,13 @@ export const Header: FunctionComponent = () => {
           <span />
         </div>
       )}
-      <nav role="navigation" aria-label="Main navigation">
-        <NavLink exact to="/" onClick={toggleMenu}>
+      <nav role="navigation" aria-label="Main navigation" onClick={toggleMenu}>
+        <NavLink exact to="/">
           Home
         </NavLink>
-        <NavLink to="/demo" onClick={toggleMenu}>
-          Demo
-        </NavLink>
-        <NavLink to="/my-speeches" onClick={toggleMenu}>
-          My Speeches
-        </NavLink>
-        <NavLink to="/new" onClick={toggleMenu}>
-          New
-        </NavLink>
+        <NavLink to="/demo">Demo</NavLink>
+        <NavLink to="/my-speeches">My Speeches</NavLink>
+        <NavLink to="/new">New</NavLink>
       </nav>
     </header>
   );

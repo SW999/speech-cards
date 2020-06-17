@@ -16,8 +16,8 @@ export const Home: FunctionComponent = () => (
     )}
     <p>
       Many people, like me, experience anxiety or even fear when preparing for
-      public speaking. The reasons can be different and there are many ways to
-      defeat such a fear.
+      public speaking or interview. The reasons can be different and there are
+      many ways to defeat such a fear.
     </p>
     <p>
       Moreover, I noticed that from excitement I can forget part of the speech
@@ -31,8 +31,8 @@ export const Home: FunctionComponent = () => (
     </p>
     <h2>How it works?</h2>
     <p>
-      After you have prepared well your speech, you may need a little helper in
-      order not to lose the thread and be more confident.
+      After you have prepared well your speech or interview, you may need a
+      little helper in order not to lose the thread and be more confident.
     </p>
     <p>
       You may prepare such helper in some pieces of paper by pen{' '}
@@ -41,7 +41,7 @@ export const Home: FunctionComponent = () => (
         <strong>your mobile phone will be your assistant!</strong>
       </em>
     </p>
-    <p>To do this you need create a new speech and save it.</p>
+    <p>To do this you need create a new speech or an interview and save it.</p>
     <p>
       Now it will be available in 2 versions: in the{' '}
       <Link to="/my-speeches">My speeches</Link> section from the browser local

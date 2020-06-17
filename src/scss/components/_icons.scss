@@ -1,0 +1,66 @@
+.icon-pencil {
+  position: relative;
+  width: .4rem;
+  height: 1.2rem;
+  background: currentColor;
+  transform: rotate(30deg);
+
+  &::before {
+    @include pseudo;
+    @include size(.4rem);
+    top: -.6rem;
+    border-top-left-radius: .2rem;
+    border-top-right-radius: .2rem;
+    background: currentColor;
+  }
+
+  &::after {
+    @include pseudo;
+    @include size(0);
+    left: 0;
+    bottom: -.7rem;
+    border-left: .2rem solid transparent;
+    border-right: .2rem solid transparent;
+    border-top: .5rem solid currentColor;
+  }
+}
+
+.icon-trash-can {
+  position: relative;
+  width: 1rem;
+  height: 1.2rem;
+  margin-top: .1rem;
+  border: .2rem solid transparent;
+  border-bottom-left-radius: .1rem;
+  border-bottom-right-radius: .1rem;
+  box-shadow: 0 0 0 .2rem, inset -.2rem 0 0, inset .2rem 0 0;
+
+  &::after,
+  &::before {
+    @include pseudo;
+  }
+
+  &::after {
+    top: -.4rem;
+    left: -.5rem;
+    width: 1.6rem;
+    height: .2rem;
+    border-radius: .3rem;
+    background: currentColor;
+  }
+
+  &::before {
+    top: -.7rem;
+    left: -.2rem;
+    width: 1rem;
+    height: .4rem;
+    border: .2rem solid;
+    border-bottom: transparent;
+    border-top-left-radius: .2rem;
+    border-top-right-radius: .2rem;
+  }
+}
+
+.btn .icon {
+  position: absolute;
+}

@@ -19,14 +19,14 @@
 }
 
 .btn-rounded {
-  width: 4rem;
-  height: 4rem;
+  @include size(4rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
   border-radius: $br;
-  line-height: 3.6rem;
-  text-align: center;
 
   &:active, &:focus {
     border-radius: $br !important;
@@ -40,6 +40,10 @@
     @include mq(tablet) {
       margin-left: 1.7rem;
     }
+  }
+
+  &::after {
+    display: none;
   }
 }
 
@@ -70,10 +74,11 @@
   color: $dark-gray;
   font-size: 1.8rem;
   line-height: 1.25;
+  cursor: pointer;
   background-color: transparent;
   transition: all .3s;
 
-  &:focus {
+  &:hover {
     border-bottom-color: transparent;
     outline: 3px solid transparent;
     color: $dark-gray;
@@ -107,6 +112,7 @@
   color: $link-color;
   font-size: 2rem;
   line-height: 1.25;
+  cursor: pointer;
   background-color: transparent;
   transition: all .3s;
 
