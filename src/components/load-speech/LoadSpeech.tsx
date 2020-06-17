@@ -5,10 +5,12 @@ import { IState } from '../../types';
 
 type LoadSpeechType = {
   onLoadSpeech: (data: IState) => void;
+  name?: string;
 };
 
 export const LoadSpeech: FunctionComponent<LoadSpeechType> = ({
   onLoadSpeech,
+  name = 'Choose a JSON file',
 }) => {
   let fileReader;
   const handleFileRead = (): void => {
@@ -43,7 +45,7 @@ export const LoadSpeech: FunctionComponent<LoadSpeechType> = ({
         onChange={handleFileSelected}
       />
       <label htmlFor="file" className="file-input-label btn-green">
-        Choose a JSON file
+        {name}
       </label>
     </>
   );

@@ -93,13 +93,29 @@ main {
 }
 
 .storage-item {
-  padding-left: 1rem;
+  position: relative;
+  display: flex;
 
   &::before {
     content: "•";
-    padding-right: 1rem;
+    position: absolute;
+    left: -1.2rem;
     color: $dark-gray;
     font-size: 2rem;
+    line-height: 2;
+
+    @include mq(tablet) {
+      left: -2rem;
+    }
+  }
+
+  .btn-link {
+    margin-right: .8rem;
+    text-align: left;
+  }
+
+  .btn {
+    flex: 0 0 4rem;
   }
 }
 

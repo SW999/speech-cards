@@ -15,15 +15,19 @@ import { Input } from '../input/Input';
 import { LoadSpeech } from '../load-speech/LoadSpeech';
 import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
-
-export const MasterForm: FunctionComponent = () => {
+type DataType = {
+  data?: IState;
+};
+export const MasterForm: FunctionComponent<DataType> = ({
+  data = initialState,
+}) => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [showLoadBtn, setShowLoadBtn] = useState<boolean>(true);
   const [redirect, setRedirect] = useState<boolean>(false);
   const { register, setValue, handleSubmit, errors } = useForm<FormData>();
   const [state, dispatch] = useReducer<Reducer<IState, IAction>>(
     newSpeechReducer,
-    initialState
+    data
   );
   const addName = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch({ type: 'ADD_NAME', payload: e.currentTarget.value });
@@ -167,8 +171,8 @@ export const MasterForm: FunctionComponent = () => {
           Clear speech
         </button>
       </form>
-      {state.step === 0 && showLoadBtn && (
-        <LoadSpeech onLoadSpeech={editFile} />
+      {state.step === 0 && showLoadBtn && data === initialState && (
+        <LoadSpeech onLoadSpeech={editFile} name="Edit an existed speech" />
       )}
     </>
   );

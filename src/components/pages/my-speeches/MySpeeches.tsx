@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { Redirect } from 'react-router-dom';
 import {
   doSpeechNameReadable,
   getSpeechNamesFromStorage,
@@ -17,11 +18,19 @@ import { LoadSpeech } from '../../load-speech/LoadSpeech';
 
 export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
+  const [edit, setEdit] = useState<IState | null>(null);
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
   const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
+  };
+  const editSpeech = async (
+    e: MouseEvent<HTMLButtonElement>
+  ): Promise<void> => {
+    const target = e.currentTarget;
+    const data = await readFromStorage(target.dataset.name);
+    setEdit({ ...data, step: 0 });
   };
   const onSpeechOpen = (data: IState): void => setData(data);
 
@@ -40,6 +49,23 @@ export const MySpeeches: FunctionComponent = () => {
                   type="button"
                 >
                   {doSpeechNameReadable(name)}
+                </button>
+                <button
+                  className="btn btn-green-outlined btn-bold btn-rounded"
+                  data-name={name}
+                  onClick={editSpeech}
+                  title="Edit"
+                  type="button"
+                >
+                  +
+                </button>
+                <button
+                  className="btn btn-green-outlined btn-bold btn-rounded"
+                  onClick={() => false}
+                  title="Remove"
+                  type="button"
+                >
+                  +
                 </button>
               </li>
             ))}
@@ -88,6 +114,7 @@ export const MySpeeches: FunctionComponent = () => {
       <br />
       <h3>Load speech:</h3>
       <LoadSpeech onLoadSpeech={onSpeechOpen} />
+      {edit && <Redirect to={{ pathname: '/new', state: { data: edit } }} />}
     </>
   );
 };

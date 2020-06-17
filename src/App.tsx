@@ -38,7 +38,11 @@ export const App: FunctionComponent = () => {
             <Card {...demo} />
           </Route>
           <Route path="/my-speeches" exact component={MySpeeches} />
-          <Route path="/new" exact component={CreateNew} />
+          <Route
+            path="/new"
+            exact
+            render={(props): React.ReactNode => <CreateNew {...props} />}
+          />
           <Route component={NoMatch} />
         </Switch>
       </main>
