@@ -15,11 +15,13 @@ import {
 } from '../../../utils/';
 import { IState } from '../../../types/';
 import { Card } from '../card/Card';
+import { ModalPopup } from '../../modal-popup/ModalPopup';
 import { LoadSpeech } from '../../load-speech/LoadSpeech';
 
 export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
   const [edit, setEdit] = useState<IState | null>(null);
+  const [removedItemName, setRemovedItemName] = useState<string | null>(null);
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
 
@@ -35,12 +37,9 @@ export const MySpeeches: FunctionComponent = () => {
     }
   };
 
-  const removeSpeech = async (
-    e: MouseEvent<HTMLButtonElement>
-  ): Promise<void> => {
+  const removeSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
-    await removeFromStorage(target.dataset.name);
-    updateSpeechesList();
+    setRemovedItemName(target.dataset.name);
   };
 
   const editSpeech = async (
@@ -52,6 +51,13 @@ export const MySpeeches: FunctionComponent = () => {
   };
 
   const onSpeechOpen = (data: IState): void => setData(data);
+
+  const showModal = async (): Promise<void> => {
+    await removeFromStorage(removedItemName);
+    updateSpeechesList();
+  };
+
+  const hideModal = (): void => setRemovedItemName(null);
 
   const speechesList = (): ReactNode => {
     if (speechNames.length > 0) {
@@ -90,6 +96,11 @@ export const MySpeeches: FunctionComponent = () => {
               </li>
             ))}
           </ul>
+          <ModalPopup
+            callback={showModal}
+            isOpen={!!removedItemName}
+            onClose={hideModal}
+          />
         </>
       );
     }
