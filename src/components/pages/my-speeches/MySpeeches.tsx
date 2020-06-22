@@ -31,10 +31,12 @@ export const MySpeeches: FunctionComponent = () => {
   };
 
   const updateSpeechesList = (): void => {
-    const speechesFromStorage = getSpeechNamesFromStorage();
-    if (speechesFromStorage.length > 0) {
-      setSpeechNames(speechesFromStorage);
-    }
+    setTimeout(() => {
+      const speechesFromStorage = getSpeechNamesFromStorage();
+      if (speechesFromStorage.length > 0) {
+        setSpeechNames(speechesFromStorage);
+      }
+    }, 300);
   };
 
   const removeSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
