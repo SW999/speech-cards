@@ -12,7 +12,7 @@ import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
 import { Input } from '../input/Input';
-import { LoadSpeech } from '../load-speech/LoadSpeech';
+import { LoadSpeechBtn } from '../load-speech-btn/LoadSpeechBtn';
 import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 type DataType = {
@@ -172,7 +172,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
         </button>
       </form>
       {state.step === 0 && showLoadBtn && data === initialState && (
-        <LoadSpeech onLoadSpeech={editFile} name="Edit an existed speech" />
+        <LoadSpeechBtn onLoadSpeech={editFile} name="Edit an existed speech" />
       )}
     </>
   );

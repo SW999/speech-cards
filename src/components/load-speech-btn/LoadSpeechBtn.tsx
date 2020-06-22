@@ -3,12 +3,12 @@ import { ChangeEvent, FunctionComponent } from 'react';
 import { reviverJSON, validateJSON } from '../../utils';
 import { IState } from '../../types';
 
-type LoadSpeechType = {
+type LoadSpeechBtnType = {
   onLoadSpeech: (data: IState) => void;
   name?: string;
 };
 
-export const LoadSpeech: FunctionComponent<LoadSpeechType> = ({
+export const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = ({
   onLoadSpeech,
   name = 'Choose a JSON file',
 }) => {

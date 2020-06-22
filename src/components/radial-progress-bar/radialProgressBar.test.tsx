@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { render, screen, waitFor, cleanup } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import RedialProgressBar from './RedialProgressBar';
-
-afterEach(cleanup);
 
 describe('<RedialProgressBar />', () => {
   test("RedialProgressBar doesn't render for one page", () => {
@@ -31,10 +29,14 @@ describe('<RedialProgressBar />', () => {
   });
 
   test('RedialProgressBar renders with correct text for last slide', async () => {
-    render(<RedialProgressBar currentValue={5} total={5} delay={1} />);
+    act(() => {
+      render(<RedialProgressBar currentValue={5} total={5} delay={0} />);
+    });
 
     await waitFor(() => {
-      expect(screen.getByText('Done')).toBeInTheDocument();
+      act(() => {
+        expect(screen.getByText('Done')).toBeInTheDocument();
+      });
     });
   });
 

@@ -49,7 +49,7 @@ MIT © Siarhei Vaitehovich
 
 - [ ] Add tests
 - [x] Add form validation
-- [ ] Add color themes or change main design(?)
+- [ ] Add color themes or change main design
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal

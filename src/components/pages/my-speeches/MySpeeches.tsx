@@ -8,7 +8,6 @@ import {
 } from 'react';
 import { Redirect } from 'react-router-dom';
 import {
-  doSpeechNameReadable,
   getSpeechNamesFromStorage,
   readFromStorage,
   removeFromStorage,
@@ -16,7 +15,8 @@ import {
 import { IState } from '../../../types/';
 import { Card } from '../card/Card';
 import { ModalPopup } from '../../modal-popup/ModalPopup';
-import { LoadSpeech } from '../../load-speech/LoadSpeech';
+import { LoadSpeechBtn } from '../../load-speech-btn/LoadSpeechBtn';
+import { SpeechesList } from '../../speeches-list/SpeechesList';
 
 export const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
@@ -25,19 +25,13 @@ export const MySpeeches: FunctionComponent = () => {
   const [speech, setSpeech] = useState<ReactNode | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
 
-  const openSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
+  const showSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
     setData(() => readFromStorage(target.dataset.name));
   };
 
-  const updateSpeechesList = (): void => {
-    setTimeout(() => {
-      const speechesFromStorage = getSpeechNamesFromStorage();
-      if (speechesFromStorage.length > 0) {
-        setSpeechNames(speechesFromStorage);
-      }
-    }, 300);
-  };
+  const updateSpeechesList = (): void =>
+    setSpeechNames(getSpeechNamesFromStorage());
 
   const removeSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
@@ -54,65 +48,12 @@ export const MySpeeches: FunctionComponent = () => {
 
   const onSpeechOpen = (data: IState): void => setData(data);
 
-  const showModal = async (): Promise<void> => {
+  const doModalAction = async (): Promise<void> => {
     await removeFromStorage(removedItemName);
     updateSpeechesList();
   };
 
   const hideModal = (): void => setRemovedItemName(null);
-
-  const speechesList = (): ReactNode => {
-    if (speechNames.length > 0) {
-      return (
-        <>
-          <h3>From browser local storage:</h3>
-          <ul>
-            {speechNames.map(name => (
-              <li key={name} className="storage-item">
-                <button
-                  className="btn-link"
-                  data-name={name}
-                  onClick={openSpeech}
-                  type="button"
-                >
-                  {doSpeechNameReadable(name)}
-                </button>
-                <button
-                  className="btn btn-green-outlined btn-bold btn-rounded"
-                  data-name={name}
-                  onClick={editSpeech}
-                  title="Edit"
-                  type="button"
-                >
-                  <i className="icon-pencil icon" aria-hidden="true" />
-                </button>
-                <button
-                  className="btn btn-orange-outlined btn-bold btn-rounded"
-                  data-name={name}
-                  onClick={removeSpeech}
-                  title="Remove"
-                  type="button"
-                >
-                  <i className="icon-trash-can icon" aria-hidden="true" />
-                </button>
-              </li>
-            ))}
-          </ul>
-          <ModalPopup
-            callback={showModal}
-            isOpen={!!removedItemName}
-            onClose={hideModal}
-          />
-        </>
-      );
-    }
-
-    return (
-      <p>
-        <strong>There are no saved speeches on local storage.</strong>
-      </p>
-    );
-  };
 
   useEffect(() => {
     setSpeech(() => {
@@ -139,11 +80,21 @@ export const MySpeeches: FunctionComponent = () => {
         Select a speech saved to local storage or load an external JSON file
         with a speech.
       </p>
-      {speechesList()}
+      <SpeechesList
+        editSpeech={editSpeech}
+        removeSpeech={removeSpeech}
+        showSpeech={showSpeech}
+        speechNames={speechNames}
+      />
+      <ModalPopup
+        callback={doModalAction}
+        isOpen={!!removedItemName}
+        onClose={hideModal}
+      />
       <br />
       <br />
       <h3>Load speech:</h3>
-      <LoadSpeech onLoadSpeech={onSpeechOpen} />
+      <LoadSpeechBtn onLoadSpeech={onSpeechOpen} />
       {edit && <Redirect to={{ pathname: '/new', state: { data: edit } }} />}
     </>
   );

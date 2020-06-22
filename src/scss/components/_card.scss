@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   height: 9.2rem;
-  margin: -2.6rem -1.5rem 0 -1.5rem;
+  margin: -2.6rem -2rem 0 -2rem;
   padding: 1rem .5rem;
   overflow: hidden;
   background-color: $blue;
@@ -55,8 +55,8 @@
   &:before {
     @include pseudo;
     top: -11.6rem;
-    left: -1.5rem;
-    right: -1.5rem;
+    left: -2rem;
+    right: -2rem;
     height: 2.4rem;
     background-color: $blue;
   }
@@ -70,8 +70,8 @@
   }
 
   li {
-    margin: 1rem -1.5rem;
-    padding: 1.5rem 1rem;
+    margin: 1rem -2rem;
+    padding: 1.5rem 2rem;
     font-size: 2rem;
     line-height: 1.55;
     letter-spacing: .03rem;
