@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor, act, cleanup } from '@testing-library/react';
 import RedialProgressBar from './RedialProgressBar';
+
+afterEach(cleanup);
 
 describe('<RedialProgressBar />', () => {
   test("RedialProgressBar doesn't render for one page", () => {
