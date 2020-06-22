@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FunctionComponent, MouseEvent, useEffect, useState } from 'react';
+import { FunctionComponent, MouseEvent } from 'react';
 
 type ModalPopupType = {
   callback: () => void;
@@ -14,7 +14,6 @@ export const ModalPopup: FunctionComponent<ModalPopupType> = ({
   onClose,
   title = 'Are you sure?',
 }) => {
-  const [open, setOpen] = useState<boolean>(isOpen);
   const onAccept = (e: MouseEvent<HTMLButtonElement>): void => {
     e.stopPropagation();
     if (typeof callback === 'function') {
@@ -24,21 +23,21 @@ export const ModalPopup: FunctionComponent<ModalPopupType> = ({
   };
   const handleClose = (e: MouseEvent<HTMLElement>): void => {
     e.stopPropagation();
-    setOpen(false);
     onClose();
   };
 
-  useEffect(() => {
-    setOpen(isOpen);
-  }, [isOpen]);
-
-  if (!open) {
+  if (!isOpen) {
     return null;
   }
 
   return (
-    <div className="modal-popup-wrapper" onClick={handleClose}>
-      <div className="modal-popup">
+    <div
+      className="modal-popup-wrapper"
+      onClick={handleClose}
+      tabIndex={-1}
+      data-testid="overlay"
+    >
+      <div className="modal-popup" role="dialog">
         <div className="modal-popup-header">{title}</div>
         <div className="modal-popup-body">
           <button className="btn" onClick={onAccept}>
