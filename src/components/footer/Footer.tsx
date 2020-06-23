@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
-import github from '../../../img/github.svg';
+import github from '../../img/github.svg';
 
 export const Footer: FunctionComponent = () => (
   <div className="footer">

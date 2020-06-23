@@ -38,6 +38,7 @@
     color: $white;
     line-height: 1;
     text-align: left;
+    text-shadow: 1px 1px rgba($dark-gray, .5);
 
     @include mq(tablet-wide, max) {
       @include truncateMultiLine();

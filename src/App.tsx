@@ -5,7 +5,7 @@ import { isMobileDevice, addSwipeEvent } from './utils/';
 import { Card } from './components/pages/card/Card';
 import { Header } from './components/header/Header';
 import { Home } from './components/pages/home/Home';
-import { Footer } from './components/pages/footer/Footer';
+import { Footer } from './components/footer/Footer';
 import { MySpeeches } from './components/pages/my-speeches/MySpeeches';
 import { CreateNew } from './components/pages/create-new/CreateNew';
 import { NoMatch } from './components/pages/no-match/NoMatch';
