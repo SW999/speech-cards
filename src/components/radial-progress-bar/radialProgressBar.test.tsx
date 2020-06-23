@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { render, screen, waitFor, act, cleanup } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import RedialProgressBar from './RedialProgressBar';
 
-afterEach(cleanup);
+beforeAll(() => {
+  jest.useFakeTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
 
 describe('<RedialProgressBar />', () => {
   test("RedialProgressBar doesn't render for one page", () => {
@@ -12,7 +18,8 @@ describe('<RedialProgressBar />', () => {
   });
 
   test('RedialProgressBar renders with correct class name', async () => {
-    render(<RedialProgressBar currentValue={1} total={10} />);
+    render(<RedialProgressBar currentValue={1} total={10} delay={1} />);
+    act(() => jest.advanceTimersByTime(100));
 
     await waitFor(() => {
       expect(screen.getByRole('progressbar')).toHaveAttribute(
@@ -23,7 +30,8 @@ describe('<RedialProgressBar />', () => {
   });
 
   test('RedialProgressBar renders with correct text in the beginning', async () => {
-    render(<RedialProgressBar currentValue={1} total={10} />);
+    render(<RedialProgressBar currentValue={1} total={10} delay={1} />);
+    act(() => jest.advanceTimersByTime(100));
 
     await waitFor(() => {
       expect(screen.getByText('10%')).toBeInTheDocument();
@@ -31,14 +39,20 @@ describe('<RedialProgressBar />', () => {
   });
 
   test('RedialProgressBar renders with correct text for last slide', async () => {
-    act(() => {
-      render(<RedialProgressBar currentValue={5} total={5} delay={0} />);
-    });
+    const { rerender } = render(
+      <RedialProgressBar currentValue={4} total={5} delay={1} />
+    );
+    act(() => jest.advanceTimersByTime(100));
 
     await waitFor(() => {
-      act(() => {
-        expect(screen.getByText('Done')).toBeInTheDocument();
-      });
+      expect(screen.getByText('80%')).toBeInTheDocument();
+    });
+
+    rerender(<RedialProgressBar currentValue={5} total={5} delay={0} />);
+    act(() => jest.advanceTimersByTime(100));
+
+    await waitFor(() => {
+      expect(screen.getByText('Done')).toBeInTheDocument();
     });
   });
 
@@ -52,6 +66,7 @@ describe('<RedialProgressBar />', () => {
         label={`${current}/${total}`}
       />
     );
+    act(() => jest.advanceTimersByTime(100));
 
     await waitFor(() => {
       expect(screen.getByText('1/10')).toBeInTheDocument();
