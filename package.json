@@ -1,6 +1,6 @@
 {
   "name": "speech-cards",
-  "version": "0.2.27",
+  "version": "0.2.28",
   "description": "Simple service to prepare speech cards for public speaking",
   "type": "module",
   "repository": {
