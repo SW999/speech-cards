@@ -7,7 +7,7 @@
   position: absolute;
   top: 4.5rem;
   right: 1rem;
-  color: lighten($green, 15%);
+  color: lighten($link-color, 5%);
   font-size: 1.5rem;
   animation: pulse .6s 2;
 
@@ -25,7 +25,7 @@
   margin: -2.6rem -2rem 0 -2rem;
   padding: 1rem .5rem;
   overflow: hidden;
-  background-color: rgba($blue, .85);
+  background-color: rgba($blue, .8);
 
   @include mq(tablet) {
     margin: 0;
@@ -47,6 +47,10 @@
       font-size: 2.5rem;
       line-height: normal;
     }
+
+    &::after {
+      display: none;
+    }
   }
 }
 
@@ -60,7 +64,7 @@
     left: -2rem;
     right: -2rem;
     height: 2.4rem;
-    background-color: rgba($blue, .85);
+    background-color: rgba($blue, .8);
   }
 
   @include mq(tablet) {

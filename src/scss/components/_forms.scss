@@ -30,7 +30,7 @@ label {
 
 .step-content-hint {
   margin-top: -.5rem;
-  color: #7a7a7a;
+  color: lighten($dark-gray, 30%);
   font-size: 1.6rem;
   line-height: 1.5625;
 }
@@ -50,14 +50,15 @@ input[type="text"] {
   }
 
   &:focus {
-    outline: 3px solid $green;
+    outline: .3rem solid $green;
+    border-color: $green;
   }
 
   &.invalid-input {
     border-color: $orange;
 
     &:focus {
-      outline: 2px solid $orange;
+      outline: .3rem solid $orange;
     }
   }
 }
