@@ -114,6 +114,8 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   outline: .2rem solid transparent;
   color: $font-color;
   font-size: $font-size;
+  font-weight: bolder;
+  letter-spacing: .1rem;
   font-family: inherit;
   cursor: pointer;
   box-shadow: 0 0 .2rem rgba($dark-gray, .12), 0 .2rem .2rem rgba($dark-gray, .2);
@@ -127,8 +129,9 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
 }
 
 @mixin button-bg($bg) {
+  @include text-shadow;
   border: .2rem solid $bg;
-  color: $white;
+  color: $white !important;
   background: $bg;
 
   &:active, &:focus {
@@ -198,4 +201,8 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
     transform: scale(0, 0);
     transition: 0s
   }
+}
+
+@mixin text-shadow {
+  text-shadow: .1rem .1rem rgba($dark-gray, .5);
 }

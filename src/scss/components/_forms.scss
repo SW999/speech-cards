@@ -84,6 +84,7 @@ input[type="text"] {
 
 .file-input-label {
   @include button;
+  @include ripple;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
