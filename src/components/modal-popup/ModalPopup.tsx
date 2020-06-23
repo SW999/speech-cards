@@ -25,6 +25,8 @@ export const ModalPopup: FunctionComponent<ModalPopupType> = ({
     e.stopPropagation();
     onClose();
   };
+  const stopPropagation = (e: MouseEvent<HTMLElement>): void =>
+    e.stopPropagation();
 
   if (!isOpen) {
     return null;
@@ -37,7 +39,7 @@ export const ModalPopup: FunctionComponent<ModalPopupType> = ({
       tabIndex={-1}
       data-testid="overlay"
     >
-      <div className="modal-popup" role="dialog">
+      <div className="modal-popup" role="dialog" onClick={stopPropagation}>
         <div className="modal-popup-header">{title}</div>
         <div className="modal-popup-body">
           <button className="btn" onClick={onAccept}>

@@ -22,8 +22,10 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
     const percent: number = Math.ceil((currentValue * 100) / total);
     let timer;
 
-    if (dynamicValue < percent) {
-      timer = setTimeout(() => setDynamicValue(v => v + 1), delay);
+    // Don't touch it any more! )))
+    if (dynamicValue !== percent) {
+      const delta = dynamicValue < percent ? 1 : -1;
+      timer = setTimeout(() => setDynamicValue(v => v + delta), delay);
     }
 
     return (): void => clearTimeout(timer);
