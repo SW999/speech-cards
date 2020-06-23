@@ -123,10 +123,8 @@ main {
 }
 
 .no-match-wrapper {
-  display: flex;
+  @include center-flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: calc(100vh - 10.5rem);
   background: url('../img/not-found-bg.png') center 1rem no-repeat;
 
@@ -136,6 +134,10 @@ main {
 
   h1 {
     font-size: 10rem;
+  }
+
+  h2::after {
+    display: none;
   }
 }
 
@@ -175,5 +177,19 @@ main {
   @include mq(desktop) {
     bottom: 0;
     max-width: 102rem;
+  }
+}
+
+.loading {
+  @include center-flex;
+  height: calc(100vh - 10.5rem);
+
+  @include mq(tablet) {
+    height: calc(100vh - 20rem);
+  }
+
+  h1 {
+    font-size: 5rem;
+    font-style: italic;
   }
 }

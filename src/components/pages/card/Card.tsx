@@ -69,7 +69,13 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }
 
   return (
-    <Suspense fallback="Loading...">
+    <Suspense
+      fallback={
+        <div className="loading">
+          <h1>Loading ...</h1>
+        </div>
+      }
+    >
       <div className="card-header">
         <h2>{speech[page].title}</h2>
         <RedialProgressBar
