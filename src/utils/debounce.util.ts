@@ -6,8 +6,8 @@ export const debounce = (
   let timer: NodeJS.Timeout;
   return (...args: any): void => {
     /* eslint-enable @typescript-eslint/no-explicit-any */
-    clearTimeout(timer);
-    timer = setTimeout(() => {
+    global.clearTimeout(timer);
+    timer = global.setTimeout(() => {
       func(...args);
     }, timeout);
   };

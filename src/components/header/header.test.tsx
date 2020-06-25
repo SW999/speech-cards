@@ -2,16 +2,15 @@ import * as React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import { Header } from './Header';
-jest.mock('../../utils/', () => ({
-  isMobileDevice: jest
-    .fn()
-    .mockReturnValueOnce(true)
-    .mockReturnValueOnce(true)
-    .mockReturnValueOnce(false),
+
+const isMobileDevice = jest.fn();
+jest.mock('../../utils', () => ({
+  isMobileDevice: () => isMobileDevice(),
 }));
 
 describe('<Header />', () => {
   test('Header renders with show/hide menu button for touch device', () => {
+    isMobileDevice.mockReturnValue(true);
     render(
       <HashRouter>
         <Header />
@@ -22,6 +21,7 @@ describe('<Header />', () => {
   });
 
   test('Header toggles menu on click by button', async () => {
+    isMobileDevice.mockReturnValue(true);
     render(
       <HashRouter>
         <Header />
@@ -44,6 +44,7 @@ describe('<Header />', () => {
   });
 
   test('Header renders without show/hide menu button for not touch device', () => {
+    isMobileDevice.mockReturnValue(false);
     render(
       <HashRouter>
         <Header />

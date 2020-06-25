@@ -9,8 +9,7 @@ export const Header: FunctionComponent = () => {
     if (isMobile) {
       document.getElementById('pageHeader').classList.toggle('show-menu');
     }
-  }, [isMobile]);
-
+  }, []);
   useEffect(() => {
     if (isMobile) {
       const menuBtn = document.getElementById('toggleMenu');

@@ -12,26 +12,26 @@ const TOUCH_HINT = 'Please use swipe to turn cards!';
 const HINT = 'Please use left/right arrows to turn cards!';
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
+  const isMobile = isMobileDevice();
   const [page, setPage] = useState<number>(-1);
-  const isMobile: boolean = isMobileDevice();
 
   useEffect(() => {
-    const moveLeft = (): void => setPage(page => (page > -1 ? page - 1 : -1));
+    const moveLeft = () => setPage(page => (page > -1 ? page - 1 : -1));
 
-    const moveRight = (): void =>
+    const moveRight = () =>
       setPage(page => (page < step - 1 ? page + 1 : page));
 
     if (isMobile) {
       document.addEventListener('swipeLeft', moveRight);
       document.addEventListener('swipeRight', moveLeft);
 
-      return (): void => {
+      return () => {
         document.removeEventListener('swipeLeft', moveRight);
         document.removeEventListener('swipeRight', moveLeft);
       };
     }
 
-    const slideCard = (e: KeyboardEvent): void => {
+    const slideCard = (e: KeyboardEvent) => {
       const code = e.code || e.which;
 
       if (code === 'ArrowLeft' || code === 37) {
@@ -44,7 +44,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     };
     document.addEventListener('keydown', slideCard);
 
-    return (): void => {
+    return () => {
       document.removeEventListener('keydown', slideCard);
     };
   }, [isMobile, page, speech, step]);

@@ -56,6 +56,24 @@ describe('<RedialProgressBar />', () => {
     });
   });
 
+  test('RedialProgressBar renders with correct text for prev slide', async () => {
+    const { rerender } = render(
+      <RedialProgressBar currentValue={4} total={5} delay={1} />
+    );
+    act(() => jest.advanceTimersByTime(100));
+
+    await waitFor(() => {
+      expect(screen.getByText('80%')).toBeInTheDocument();
+    });
+
+    rerender(<RedialProgressBar currentValue={3} total={5} delay={0} />);
+    act(() => jest.advanceTimersByTime(100));
+
+    await waitFor(() => {
+      expect(screen.getByText('60%')).toBeInTheDocument();
+    });
+  });
+
   test('RedialProgressBar renders with correct text with label prop', async () => {
     const current = 1;
     const total = 10;

@@ -2,23 +2,22 @@ import * as React from 'react';
 import { FunctionComponent, MouseEvent } from 'react';
 
 type ModalPopupType = {
-  callback: () => void;
+  callback?: () => void;
   isOpen: boolean;
   onClose: () => void;
   title?: string;
 };
 
 export const ModalPopup: FunctionComponent<ModalPopupType> = ({
-  callback,
+  callback = () => undefined,
   isOpen,
   onClose,
   title = 'Are you sure?',
 }) => {
   const onAccept = (e: MouseEvent<HTMLButtonElement>): void => {
     e.stopPropagation();
-    if (typeof callback === 'function') {
-      callback();
-    }
+
+    callback();
     onClose();
   };
   const handleClose = (e: MouseEvent<HTMLElement>): void => {

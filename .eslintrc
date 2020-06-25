@@ -169,6 +169,7 @@
         "allowSingleExtends": true
       }
     ],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "jsx-a11y/accessible-emoji": "warn",
     "jsx-a11y/alt-text": "warn",
     "jsx-a11y/anchor-has-content": "warn",
