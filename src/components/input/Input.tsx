@@ -33,7 +33,9 @@ export const Input: FunctionComponent<InputTextProps> = ({
   <div className="form-group">
     <label htmlFor={name}>{label}:</label>
     {description}
-    {error[name] && <div className="error-message">Required field</div>}
+    {error[name] && error[name]?.type === 'required' && (
+      <div className="error-message">Required field</div>
+    )}
     <input
       aria-describedby={describedby}
       autoCapitalize="none"
