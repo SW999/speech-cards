@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
 import { debounce } from '../../utils/index';
 import { Input } from '../input/Input';
+import md from '../../img/md.svg';
 
 type AddRemoveContentItemProps = {
   error: object;
@@ -68,7 +69,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
               title="Remove item"
               type="button"
             >
-              -
+              −
             </button>
           )}
         </>
@@ -87,7 +88,7 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
             >
               syntax
             </a>
-            &nbsp;is available.
+            &nbsp;is available <img src={md} alt="md" width="26" height="16" />
           </span>
         )
       }

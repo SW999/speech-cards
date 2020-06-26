@@ -27,6 +27,7 @@
   margin-bottom: 0;
   padding: 0;
   border-radius: $br;
+  letter-spacing: normal;
 
   &:active, &:focus {
     border-radius: $br !important;
@@ -40,10 +41,6 @@
     @include mq(tablet) {
       margin-left: 1.7rem;
     }
-  }
-
-  &::after {
-    //display: none;
   }
 }
 
@@ -111,10 +108,14 @@
   text-decoration: underline;
   color: $link-color;
   font-size: 2rem;
-  line-height: 1.25;
+  line-height: 1.65;
   cursor: pointer;
   background-color: transparent;
   transition: all .3s;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   &:focus {
     outline: none;
@@ -122,16 +123,3 @@
     text-decoration: none;
   }
 }
-
-//
-//.btn-blue {
-//  @include button-bg(#3498db);
-//}
-//
-//.btn-yellow {
-//  @include button-bg(#f1c40f);
-//}
-//
-//.btn-red {
-//  @include button-bg(#e74c3c);
-//}

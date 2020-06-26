@@ -91,37 +91,6 @@ main {
   font-weight: 600;
 }
 
-.storage-item {
-  position: relative;
-  display: flex;
-  width: 40rem;
-  max-width: 100%;
-  margin-bottom: 1.3rem;
-
-  &::before {
-    content: "•";
-    position: absolute;
-    left: -1.2rem;
-    color: $dark-gray;
-    font-size: 2rem;
-    line-height: 2;
-
-    @include mq(tablet) {
-      left: -2rem;
-    }
-  }
-
-  .btn-link {
-    margin-right: .8rem;
-    text-align: left;
-    flex: 1;
-  }
-
-  .btn {
-    flex: 0 0 4rem;
-  }
-}
-
 .no-match-wrapper {
   @include center-flex;
   flex-direction: column;
@@ -153,30 +122,6 @@ main {
     font: italic 1.5rem sans-serif;
     text-align: center;
     background-color: $dark-gray;
-  }
-}
-
-.footer {
-  @include text-shadow;
-  width: 100%;
-  max-width: 60rem;
-  margin-top: 3rem;
-  padding: 2rem;
-  color: $white;
-  font-size: 1.5rem;
-  background: linear-gradient(to right, rgba($blue, .7) 0%, rgba($blue, .4) 100%);
-
-  @include mq(tablet) {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    margin-top: 0;
-    transform: translateX(-50%);
-  }
-
-  @include mq(desktop) {
-    bottom: 0;
-    max-width: 102rem;
   }
 }
 

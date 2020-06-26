@@ -1,0 +1,23 @@
+.footer {
+  @include text-shadow;
+  width: 100%;
+  max-width: 60rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  color: $white;
+  font-size: 1.5rem;
+  background: linear-gradient(to right, rgba($link-color, .7) 0%, rgba($blue, .5) 100%);
+
+  @include mq(tablet) {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    margin-top: 0;
+    transform: translateX(-50%);
+  }
+
+  @include mq(desktop) {
+    bottom: 0;
+    max-width: 102rem;
+  }
+}

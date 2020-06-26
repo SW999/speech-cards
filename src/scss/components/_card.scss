@@ -76,19 +76,24 @@
   }
 
   li {
-    margin: 1rem -2rem;
+    margin: 1.3rem -2rem;
     padding: 1.5rem 2rem;
-    font-size: 2rem;
+    font-size: 2.4rem;
     line-height: 1.55;
     letter-spacing: .03rem;
+
+    &::before {
+      display: none;
+    }
 
     @include mq(tablet) {
       margin: 0;
       padding: 3rem 1rem;
+      font-size: 2rem;
     }
 
     &:nth-child(even) {
-      text-shadow: .1rem .1rem $white;
+      text-shadow: .15rem .15rem $white;
       background-color: rgba($light-blue, .3);
     }
   }

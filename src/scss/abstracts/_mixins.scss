@@ -37,7 +37,7 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   @if $progress == 100 {
     .progress__curve-first-half,
     .progress__curve-second-half {
-      border-color: $green;
+      border-color: $orange;
     }
   }
 }
@@ -78,7 +78,6 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   }
 }
 
-// @include mq('tablet-wide')
 @mixin mq($width, $type: min) {
   @if map_has_key($breakpoints, $width) {
     $width: map_get($breakpoints, $width);
@@ -119,7 +118,7 @@ $shadow: 0 0 3px rgba(0, 0, 0, .12), 0 3px 4px rgba(0, 0, 0, .25);
   font-family: inherit;
   cursor: pointer;
   box-shadow: 0 0 .2rem rgba($dark-gray, .12), 0 .2rem .2rem rgba($dark-gray, .2);
-  transition: all .2s ease-in-out;
+  transition: all .2s $easing-function;
 
   @media(hover: hover) and (pointer: fine) {
     &:not(:disabled):hover {

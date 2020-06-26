@@ -55,10 +55,10 @@ input[type="text"] {
   }
 
   &.invalid-input {
-    border-color: $orange;
+    border-color: $mojo;
 
     &:focus {
-      outline: .3rem solid $orange;
+      outline: .3rem solid $mojo;
     }
   }
 }
@@ -68,14 +68,14 @@ input[type="text"] {
 }
 
 .form-group + .form-group {
-  margin-top: 2.5rem;
+  margin-top: 2.7rem;
 }
 
 .error-message {
   position: absolute;
-  bottom: -2.5rem;
+  bottom: -2.7rem;
   left: 0;
-  color: $orange;
+  color: $mojo;
   font-size: 1.5rem;
 }
 

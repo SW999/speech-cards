@@ -29,7 +29,7 @@ export const Home: FunctionComponent = () => (
       correspond to the main sections of the speech.{' '}
       <strong>Speech cards</strong>.
     </p>
-    <h2>How it works?</h2>
+    <h3>How it works?</h3>
     <p>
       After you have prepared well your speech or interview, you may need a
       little helper in order not to lose the thread and be more confident.
@@ -47,29 +47,28 @@ export const Home: FunctionComponent = () => (
       <Link to="/my-speeches">My speeches</Link> section from the browser local
       storage and as a separate file with the JSON extension.
     </p>
-    <p>This app has some advantages:</p>
+    <h3>Advantages:</h3>
     <ul className="advantages">
       <li>
-        - could be easily used on a mobile phone to{' '}
-        <Link to="/new">create</Link>, store and{' '}
-        <Link to="/demo">use speech cards</Link>.
+        could be easily used on a mobile phone to <Link to="/new">create</Link>,
+        store and <Link to="/demo">use speech cards</Link>.
       </li>
       <li>
-        - no way to lose or forget{' '}
+        no way to lose or forget{' '}
         <Link to="/my-speeches">your speech cards</Link>, because your mobile
         phone is always with you. Am I right?
       </li>
       <li>
-        - you may easily share prepared speech cards in JSON format with someone
+        you may easily share prepared speech cards in JSON format with someone
         or to open it in a different device.
       </li>
     </ul>
-
     <h3>Tips</h3>
     <ul>
-      <li>- Each card should be as simple as possible,</li>
-      <li>- Should contain short clear heading,</li>
-      <li>- Should contain main idea/ideas of current part of speech.</li>
+      <li>Each card should be as simple as possible,</li>
+      <li>Should contain short clear heading,</li>
+      <li>Should contain main idea/ideas of current part of speech.</li>
     </ul>
+    <br />
   </>
 );

@@ -58,7 +58,21 @@ p {
 }
 
 li {
+  position: relative;
+  padding-left: 1.5rem;
   font-size: 2rem;
+
+  &::before {
+    @include pseudo;
+    content: "►";
+    left: 0;
+    font-size: 1rem;
+    line-height: 3.3;
+  }
+
+  @include mq(desktop) {
+    line-height: 1.65;
+  }
 }
 
 p + h2,
@@ -68,17 +82,17 @@ ul + h3 {
 }
 
 .advantages {
-  margin-bottom: 3.16rem;
-
   li {
-    margin-bottom: 1rem;
-    color: $dark-gray;
-    font-size: 1.8rem;
-    font-weight: bolder;
-    letter-spacing: .03rem;
+    position: relative;
+    margin-bottom: .5rem;
+    padding-left: 3rem;
 
-    @include mq(desktop) {
-      line-height: 1.68;
+    &::before {
+      content: "✓";
+      color: $green;
+      font-size: 2.2rem;
+      font-weight: bold;
+      line-height: 1.6;
     }
   }
 }
