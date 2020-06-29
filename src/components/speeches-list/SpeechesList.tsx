@@ -18,7 +18,9 @@ export const SpeechesList: FunctionComponent<SpeechesListType> = ({
   if (speechNames.length < 1) {
     return (
       <p>
-        <strong>There are no saved speeches on local storage.</strong>
+        <strong data-testid="no-speeches">
+          There are no saved speeches on local storage.
+        </strong>
       </p>
     );
   }

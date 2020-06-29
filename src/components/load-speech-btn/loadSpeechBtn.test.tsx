@@ -27,8 +27,9 @@ describe('<LoadSpeechBtn />', () => {
   });
 
   test('LoadSpeechBtn shows alert for incorrect speech file', async () => {
-    const jsdomAlert = window.alert;
-    window.alert = () => null;
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const noop = () => {};
+    Object.defineProperty(window, 'alert', { value: noop, writable: true });
     const onLoadSpeech = jest.fn();
     const wrongSpeech = { test: 'test' };
     const file = new File([JSON.stringify(wrongSpeech)], 'test.json', {
@@ -43,6 +44,5 @@ describe('<LoadSpeechBtn />', () => {
     await waitFor(() => {
       expect(onLoadSpeech).toHaveBeenCalledTimes(0);
     });
-    window.alert = jsdomAlert;
   });
 });
