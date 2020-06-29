@@ -5,7 +5,6 @@ import { ModalPopup } from './ModalPopup';
 const defaultProps = {
   isOpen: false,
   onClose: (): void => undefined,
-  callback: (): void => undefined,
 };
 
 describe('<ModalPopup />', () => {
@@ -30,6 +29,7 @@ describe('<ModalPopup />', () => {
         callback={doCallback}
       />
     );
+
     userEvent.click(screen.getByRole('button', { name: 'Yes' }));
 
     await waitFor(() => {
@@ -37,11 +37,9 @@ describe('<ModalPopup />', () => {
     });
   });
 
-  test('ModalPopup runs an onClose function on click "No"', async () => {
+  test('ModalPopup fires onClose function on click "No"', async () => {
     const onClose = jest.fn();
-    render(
-      <ModalPopup isOpen onClose={onClose} callback={(): void => undefined} />
-    );
+    render(<ModalPopup isOpen onClose={onClose} />);
     userEvent.click(screen.getByRole('button', { name: 'No' }));
 
     await waitFor(() => {
@@ -49,15 +47,23 @@ describe('<ModalPopup />', () => {
     });
   });
 
-  test('ModalPopup runs an onClose function on click outside', async () => {
+  test('ModalPopup fires onClose function on click outside', async () => {
     const onClose = jest.fn();
-    render(
-      <ModalPopup isOpen onClose={onClose} callback={(): void => undefined} />
-    );
+    render(<ModalPopup isOpen onClose={onClose} />);
     userEvent.click(screen.getByTestId('overlay'));
 
     await waitFor(() => {
       expect(onClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test("ModalPopup doesn't run onClose when click on popoup body", async () => {
+    const onClose = jest.fn();
+    render(<ModalPopup isOpen onClose={onClose} />);
+    userEvent.click(screen.getByRole('dialog'));
+
+    await waitFor(() => {
+      expect(onClose).toHaveBeenCalledTimes(0);
     });
   });
 });

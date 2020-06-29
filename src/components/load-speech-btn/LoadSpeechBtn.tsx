@@ -14,13 +14,11 @@ export const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = ({
 }) => {
   let fileReader;
   const handleFileRead = (): void => {
-    let data;
+    let data = null;
 
     try {
       data = JSON.parse(fileReader.result, reviverJSON);
-    } catch (e) {
-      data = null;
-    }
+    } catch (e) {}
 
     if (validateJSON(data)) {
       onLoadSpeech(data);
