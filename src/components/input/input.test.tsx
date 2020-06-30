@@ -11,32 +11,30 @@ const mockedInputProps = {
 };
 
 describe('Input component', () => {
-  test('Input renders correctly', () => {
-    const { container } = render(<Input {...mockedInputProps} />);
+  it('Input renders correctly', () => {
+    render(<Input {...mockedInputProps} />);
     expect(
       screen.getByLabelText(`${mockedInputProps.label}:`)
     ).toBeInTheDocument();
 
-    expect(container.querySelector('.error-message')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
-  test('Input renders with an error message', () => {
-    const { container } = render(
+  it('Input renders with an error message', () => {
+    render(
       <Input {...mockedInputProps} error={{ test: { type: 'required' } }} />
     );
 
-    expect(container.querySelector('.error-message')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(screen.getByLabelText(`${mockedInputProps.label}:`)).toHaveClass(
       'invalid-input'
     );
   });
 
-  test('Input renders an error outline without a message for an error without type', () => {
-    const { container } = render(
-      <Input {...mockedInputProps} error={{ test: {} }} />
-    );
+  it('Input renders an error outline without a message for an error without type', () => {
+    render(<Input {...mockedInputProps} error={{ test: {} }} />);
 
-    expect(container.querySelector('.error-message')).not.toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     expect(screen.getByLabelText(`${mockedInputProps.label}:`)).toHaveClass(
       'invalid-input'
     );

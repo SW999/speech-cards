@@ -19,20 +19,20 @@ jest.mock('../../../utils/', () => ({
 }));
 
 describe('<Card />', () => {
-  test('Card renders with speech title and hint for non touch devices', () => {
+  it('Card renders with speech title and hint for non touch devices', () => {
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByRole('heading')).toHaveTextContent(SPEECH_TITLE);
     expect(screen.getByTestId('card-hint')).toHaveTextContent(HINT);
   });
 
-  test('Card renders with hint for touch devices', () => {
+  it('Card renders with hint for touch devices', () => {
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByTestId('card-hint')).toHaveTextContent(TOUCH_HINT);
   });
 
-  test('Card renders first slide', async () => {
+  it('Card renders first slide', async () => {
     const { container } = render(<Card {...mockStartProps} />);
 
     fireEvent.keyDown(document.body, {
@@ -48,7 +48,7 @@ describe('<Card />', () => {
     );
   });
 
-  test('Card not slides to the left after on title slide', async () => {
+  it('Card not slides to the left after on title slide', async () => {
     render(<Card {...mockStartProps} />);
 
     fireEvent.keyDown(document.body, {

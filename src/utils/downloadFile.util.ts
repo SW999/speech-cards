@@ -1,10 +1,7 @@
 import { IState } from 'types';
 import { prepareSpeechName } from './prepareSpeechName.util';
 
-export const downloadFile = async (
-  data: IState,
-  callback?: () => void
-): Promise<void> => {
+export const downloadFile = async (data: IState): Promise<void> => {
   const json = JSON.stringify(data);
   const blob = new Blob([json], { type: 'application/json' });
   const href = await URL.createObjectURL(blob);
@@ -14,8 +11,4 @@ export const downloadFile = async (
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-
-  if (typeof callback === 'function') {
-    callback();
-  }
 };

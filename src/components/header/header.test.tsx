@@ -9,7 +9,7 @@ jest.mock('../../utils', () => ({
 }));
 
 describe('<Header />', () => {
-  test('Header renders with show/hide menu button for touch device', () => {
+  it('Header renders with show/hide menu button for touch device', () => {
     isMobileDevice.mockReturnValue(true);
     render(
       <HashRouter>
@@ -20,7 +20,7 @@ describe('<Header />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  test('Header toggles menu on click by button', async () => {
+  it('Header toggles menu on click by button', async () => {
     isMobileDevice.mockReturnValue(true);
     render(
       <HashRouter>
@@ -43,7 +43,7 @@ describe('<Header />', () => {
     );
   });
 
-  test('Header renders without show/hide menu button for not touch device', () => {
+  it('Header renders without show/hide menu button for not touch device', () => {
     isMobileDevice.mockReturnValue(false);
     render(
       <HashRouter>

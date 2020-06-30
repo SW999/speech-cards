@@ -34,7 +34,9 @@ export const Input: FunctionComponent<InputTextProps> = ({
     <label htmlFor={name}>{label}:</label>
     {description}
     {error[name] && error[name]?.type === 'required' && (
-      <div className="error-message">Required field</div>
+      <div className="error-message" role="alert">
+        Required field
+      </div>
     )}
     <input
       aria-describedby={describedby}

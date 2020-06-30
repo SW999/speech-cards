@@ -8,13 +8,13 @@ const mockedProps = {
   speechNames: [],
 };
 describe('<SpeechesList />', () => {
-  test('SpeechesList shows message in case no saved speeches', () => {
+  it('SpeechesList shows message in case no saved speeches', () => {
     render(<SpeechesList {...mockedProps} />);
 
     expect(screen.getByTestId('no-speeches')).toBeInTheDocument();
   });
 
-  test('SpeechesList shows list of speeches', () => {
+  it('SpeechesList shows list of speeches', () => {
     render(
       <SpeechesList
         {...mockedProps}

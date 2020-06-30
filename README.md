@@ -47,10 +47,9 @@ MIT © Siarhei Vaitehovich
 
 ## TODO:
 
-- [ ] Add tests
+- [x] Add tests
 - [x] Add form validation
-- [ ] Add color themes
+- [ ] Add color themes(?)
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
-- [ ] Disable an idea field before Topic(?)

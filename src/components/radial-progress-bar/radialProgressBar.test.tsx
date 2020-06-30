@@ -11,13 +11,13 @@ afterAll(() => {
 });
 
 describe('<RedialProgressBar />', () => {
-  test("RedialProgressBar doesn't render for one page", () => {
+  it("RedialProgressBar doesn't render for one page", () => {
     render(<RedialProgressBar currentValue={1} total={1} />);
 
     expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
   });
 
-  test('RedialProgressBar renders with correct class name', async () => {
+  it('RedialProgressBar renders with correct class name', async () => {
     render(<RedialProgressBar currentValue={1} total={10} delay={1} />);
     act(() => jest.advanceTimersByTime(100));
 
@@ -29,7 +29,7 @@ describe('<RedialProgressBar />', () => {
     });
   });
 
-  test('RedialProgressBar renders with correct text in the beginning', async () => {
+  it('RedialProgressBar renders with correct text in the beginning', async () => {
     render(<RedialProgressBar currentValue={1} total={10} delay={1} />);
     act(() => jest.advanceTimersByTime(100));
 
@@ -38,7 +38,7 @@ describe('<RedialProgressBar />', () => {
     });
   });
 
-  test('RedialProgressBar renders with correct text for last slide', async () => {
+  it('RedialProgressBar renders with correct text for last slide', async () => {
     const { rerender } = render(
       <RedialProgressBar currentValue={4} total={5} delay={1} />
     );
@@ -56,7 +56,7 @@ describe('<RedialProgressBar />', () => {
     });
   });
 
-  test('RedialProgressBar renders with correct text for prev slide', async () => {
+  it('RedialProgressBar renders with correct text for prev slide', async () => {
     const { rerender } = render(
       <RedialProgressBar currentValue={4} total={5} delay={1} />
     );
@@ -74,7 +74,7 @@ describe('<RedialProgressBar />', () => {
     });
   });
 
-  test('RedialProgressBar renders with correct text with label prop', async () => {
+  it('RedialProgressBar renders with correct text with label prop', async () => {
     const current = 1;
     const total = 10;
     render(

@@ -10,7 +10,7 @@ jest.mock('../../../utils', () => ({
 }));
 
 describe('Home component', () => {
-  test('Home renders with QR code for desktop', () => {
+  it('Home renders with QR code for desktop', () => {
     isMobileDevice.mockReturnValue(false);
     const { asFragment } = render(
       <HashRouter>
@@ -22,7 +22,7 @@ describe('Home component', () => {
     expect(asFragment()).toMatchSnapshot('Desktop');
   });
 
-  test('Home renders without QR code for mobile', () => {
+  it('Home renders without QR code for mobile', () => {
     isMobileDevice.mockReturnValue(true);
     const { asFragment } = render(
       <HashRouter>

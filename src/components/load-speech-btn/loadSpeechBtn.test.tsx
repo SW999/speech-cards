@@ -4,13 +4,13 @@ import { LoadSpeechBtn } from './LoadSpeechBtn';
 import demo from '../../how_to_write_efficient_emails.json';
 
 describe('<LoadSpeechBtn />', () => {
-  test('LoadSpeechBtn renders with default props', () => {
+  it('LoadSpeechBtn renders with default props', () => {
     render(<LoadSpeechBtn onLoadSpeech={() => null} />);
 
     expect(screen.getByLabelText('Choose a JSON file')).toBeInTheDocument();
   });
 
-  test('LoadSpeechBtn loads correct speecch file', async () => {
+  it('LoadSpeechBtn loads correct speecch file', async () => {
     const onLoadSpeech = jest.fn();
     const file = new File([JSON.stringify(demo)], 'test.json', {
       type: 'text/json',
@@ -26,10 +26,10 @@ describe('<LoadSpeechBtn />', () => {
     });
   });
 
-  test('LoadSpeechBtn shows alert for incorrect speech file', async () => {
+  it('LoadSpeechBtn shows alert for incorrect speech file', async () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const noop = () => {};
-    Object.defineProperty(window, 'alert', { value: noop, writable: true });
+    Object.defineProperty(window, 'alert', { value: () => {}, writable: true });
+
     const onLoadSpeech = jest.fn();
     const wrongSpeech = { test: 'test' };
     const file = new File([JSON.stringify(wrongSpeech)], 'test.json', {

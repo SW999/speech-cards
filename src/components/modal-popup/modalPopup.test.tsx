@@ -8,19 +8,19 @@ const defaultProps = {
 };
 
 describe('<ModalPopup />', () => {
-  test("ModalPopup doesn't render at start", () => {
+  it("ModalPopup doesn't render at start", () => {
     render(<ModalPopup {...defaultProps} />);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  test('ModalPopup renders on the page', () => {
+  it('ModalPopup renders on the page', () => {
     render(<ModalPopup {...defaultProps} isOpen />);
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 
-  test('ModalPopup runs a callback on click "Yes"', async () => {
+  it('ModalPopup runs a callback on click "Yes"', async () => {
     const doCallback = jest.fn();
     render(
       <ModalPopup
@@ -37,7 +37,7 @@ describe('<ModalPopup />', () => {
     });
   });
 
-  test('ModalPopup fires onClose function on click "No"', async () => {
+  it('ModalPopup fires onClose function on click "No"', async () => {
     const onClose = jest.fn();
     render(<ModalPopup isOpen onClose={onClose} />);
     userEvent.click(screen.getByRole('button', { name: 'No' }));
@@ -47,7 +47,7 @@ describe('<ModalPopup />', () => {
     });
   });
 
-  test('ModalPopup fires onClose function on click outside', async () => {
+  it('ModalPopup fires onClose function on click outside', async () => {
     const onClose = jest.fn();
     render(<ModalPopup isOpen onClose={onClose} />);
     userEvent.click(screen.getByTestId('overlay'));
@@ -57,7 +57,7 @@ describe('<ModalPopup />', () => {
     });
   });
 
-  test("ModalPopup doesn't run onClose when click on popoup body", async () => {
+  it("ModalPopup doesn't run onClose when click on popoup body", async () => {
     const onClose = jest.fn();
     render(<ModalPopup isOpen onClose={onClose} />);
     userEvent.click(screen.getByRole('dialog'));

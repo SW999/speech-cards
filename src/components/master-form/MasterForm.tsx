@@ -85,7 +85,8 @@ export const MasterForm: FunctionComponent<DataType> = ({
   const onSubmit = async (): Promise<void> => {
     const normalizedState = normalizeState(state);
     saveToStorage(normalizedState);
-    await downloadFile(normalizedState, showMessageAndRedirect);
+    await downloadFile(normalizedState);
+    showMessageAndRedirect();
   };
 
   if (showMessage) {

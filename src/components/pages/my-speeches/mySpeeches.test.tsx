@@ -1,41 +1,73 @@
 import * as React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { HashRouter } from 'react-router-dom';
 import { MySpeeches } from './MySpeeches';
 
 const getSpeechNamesFromStorage = jest.fn();
 const doSpeechNameReadable = jest.fn();
 const readFromStorage = jest.fn();
 const validateJSON = jest.fn();
+const isMobileDevice = jest.fn();
 
 jest.mock('../../../utils', () => ({
   getSpeechNamesFromStorage: () => getSpeechNamesFromStorage(),
   doSpeechNameReadable: () => doSpeechNameReadable(),
   readFromStorage: () => readFromStorage(),
   validateJSON: () => validateJSON(),
+  isMobileDevice: () => isMobileDevice(),
 }));
 
 describe('MySpeeches', () => {
-  test('MySpeeches renders with button', () => {
+  it('MySpeeches renders with button', () => {
     getSpeechNamesFromStorage.mockReturnValue([]);
     render(<MySpeeches />);
     expect(screen.getByLabelText('Choose a JSON file')).toBeInTheDocument();
   });
 
-  test('MySpeeches renders ...', async () => {
+  it('MySpeeches renders selected speech from storage', async () => {
     getSpeechNamesFromStorage.mockReturnValue(['speech_test1']);
     doSpeechNameReadable.mockReturnValue(['test1']);
     validateJSON.mockReturnValue(true);
+    isMobileDevice.mockReturnValue(false);
     readFromStorage.mockReturnValue({
-      name: 'test',
+      name: 'test1',
       step: 1,
       speech: [{ title: 'test', content: ['test'] }],
     });
 
-    const { debug } = render(<MySpeeches />);
+    render(<MySpeeches />);
+    fireEvent.click(screen.getByRole('button', { name: 'test1' }));
 
     await waitFor(() => {
-      debug();
-      expect(screen.getByLabelText('Choose a JSON file')).toBeInTheDocument();
+      expect(
+        screen.queryByLabelText('Choose a JSON file')
+      ).not.toBeInTheDocument();
+      expect(screen.getByTestId('card-hint')).toBeInTheDocument();
+    });
+  });
+
+  it('MySpeeches opens selected speech for edit', async () => {
+    getSpeechNamesFromStorage.mockReturnValue(['speech_test1']);
+    doSpeechNameReadable.mockReturnValue(['test1']);
+    validateJSON.mockReturnValue(true);
+    isMobileDevice.mockReturnValue(false);
+    readFromStorage.mockReturnValue({
+      name: 'test1',
+      step: 1,
+      speech: [{ title: 'test', content: ['test'] }],
+    });
+
+    render(
+      <HashRouter>
+        <MySpeeches />
+      </HashRouter>
+    );
+    fireEvent.click(screen.getAllByRole('button')[1]);
+
+    await waitFor(() => {
+      expect(
+        screen.queryByLabelText('Choose a JSON file')
+      ).not.toBeInTheDocument();
     });
   });
 });

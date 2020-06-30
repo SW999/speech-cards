@@ -64,6 +64,10 @@ export const MySpeeches: FunctionComponent = () => {
     return <Card {...data} />;
   }
 
+  if (edit) {
+    return <Redirect to={{ pathname: '/new', state: { data: edit } }} />;
+  }
+
   return (
     <>
       <h1>My speeches</h1>
@@ -86,7 +90,6 @@ export const MySpeeches: FunctionComponent = () => {
       <br />
       <h3>Load speech:</h3>
       <LoadSpeechBtn onLoadSpeech={onSpeechOpen} />
-      {edit && <Redirect to={{ pathname: '/new', state: { data: edit } }} />}
     </>
   );
 };
