@@ -16,11 +16,11 @@ nav {
   padding-bottom: 0;
   z-index: 1;
   transition: all .45s $easing-function;
-  background-color: rgba(white, 0);
+  background-color: rgba($white, 0);
 
   @include mq(tablet) {
     position: static;
-    background-color: white;
+    background-color: $white;
   }
 
   a {
@@ -70,7 +70,7 @@ nav {
     position: absolute;
     display: block;
     width: 100%;
-    background-color: black;
+    background-color: $dark-gray;
     transition: transform .3s $easing-function;
   }
 
@@ -98,7 +98,7 @@ nav {
   nav {
     top: 0;
     padding-bottom: 1rem;
-    background-color: rgba(white, .99);
+    background-color: rgba($white, .99);
 
     &::after {
       @include pseudo;

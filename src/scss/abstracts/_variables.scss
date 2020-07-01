@@ -15,17 +15,12 @@ $br: 999rem;
 $easing-function: cubic-bezier(0.25, 1, 0.4, 1);
 
 // COLORS
-$white:      white;
+$white:      #ffffff;
 $dark-gray:  #2b2b2b;
-$semi-gray:  #bbb;
-//$orange:     orangered;
+$semi-gray:  #bbbbbb;
 $mojo:       #BD4E31;
 $orange:     #f6ce4b;
-//$green:      #2ecc71;
 $green:      #41a592;
-//$blue:       #03a9f4;
 $blue:       #1998d3;
-//$light-blue: #B3E5FC;
 $light-blue: lighten($blue, 30%);
-//$link-color: #2b8cc4;
 $link-color: darken($blue, 13%);
