@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState, memo } from 'react';
 
 type RedialProgressBarProps = {
   currentValue: number;
@@ -46,4 +46,4 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   );
 };
 
-export default RedialProgressBar;
+export default memo(RedialProgressBar);

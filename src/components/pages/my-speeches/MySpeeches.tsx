@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { FunctionComponent, MouseEvent, useEffect, useState } from 'react';
+import {
+  FunctionComponent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { Redirect } from 'react-router-dom';
 import {
   getSpeechNamesFromStorage,
@@ -47,7 +53,7 @@ export const MySpeeches: FunctionComponent = () => {
     setEdit({ ...data, step: 0 });
   };
 
-  const onSpeechOpen = (data: IState): void => setData(data);
+  const onSpeechOpen = useCallback((data: IState): void => setData(data), []);
 
   const doModalAction = async (): Promise<void> => {
     await removeFromStorage(removedItemName);

@@ -4,6 +4,7 @@ import {
   ChangeEvent,
   FunctionComponent,
   Reducer,
+  useCallback,
   useReducer,
   useState,
 } from 'react';
@@ -68,14 +69,14 @@ export const MasterForm: FunctionComponent<DataType> = ({
 
   const prevStep = (): void => dispatch({ type: 'PREV_STEP' });
 
-  const editFile = (data: IState): void => {
+  const editFile = useCallback((data: IState): void => {
     setShowLoadBtn(false);
 
     dispatch({
       type: 'LOAD_FILE',
       payload: { ...data, step: 0 },
     });
-  };
+  }, []);
 
   const showMessageAndRedirect = (): void => {
     setShowMessage(true);
