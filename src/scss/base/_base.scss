@@ -98,7 +98,7 @@ main {
   background: url('../img/not-found-bg.png') center 1rem no-repeat;
 
   @include mq(tablet) {
-    height: calc(100vh - 20rem);
+    height: calc(100vh - 30rem);
   }
 
   h1 {
@@ -127,11 +127,7 @@ main {
 
 .loading {
   @include center-flex;
-  height: calc(100vh - 10.5rem);
-
-  @include mq(tablet) {
-    height: calc(100vh - 20rem);
-  }
+  height: 33.4rem;
 
   h1 {
     font-size: 5rem;
