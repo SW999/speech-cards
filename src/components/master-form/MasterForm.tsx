@@ -4,6 +4,8 @@ import {
   ChangeEvent,
   FunctionComponent,
   Reducer,
+  Suspense,
+  lazy,
   useCallback,
   useReducer,
   useState,
@@ -13,9 +15,10 @@ import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
 import { Input } from '../input/Input';
+import { Loading } from '../loading/Loading';
 import { LoadSpeechBtn } from '../load-speech-btn/LoadSpeechBtn';
-import { MainStep } from '../main-step/MainStep';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
+const MainStep = lazy(() => import('../main-step/MainStep'));
 type DataType = {
   data?: IState;
 };
@@ -104,7 +107,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         {state.step > 0 && (
-          <>
+          <Suspense fallback={<Loading />}>
             <h3 className="step-indicator">{`Step ${state.step}`}</h3>
             <button className="go-back" onClick={prevStep} type="button">
               Back
@@ -129,7 +132,7 @@ export const MasterForm: FunctionComponent<DataType> = ({
                   : ''
               }
             />
-          </>
+          </Suspense>
         )}
         {state.step < 1 && (
           <Input

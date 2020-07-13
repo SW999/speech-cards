@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
+import { Loading } from '../../loading/Loading';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
 import swipe from './swipe.svg';
@@ -69,13 +70,7 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }
 
   return (
-    <Suspense
-      fallback={
-        <div className="loading">
-          <h1>Loading ...</h1>
-        </div>
-      }
-    >
+    <Suspense fallback={<Loading />}>
       <div className="card-header">
         <h2>{speech[page].title}</h2>
         <RedialProgressBar

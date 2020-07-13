@@ -28,7 +28,7 @@ type MainStepProps = {
   title: string;
 };
 
-export const MainStep: FunctionComponent<MainStepProps> = ({
+const MainStep: FunctionComponent<MainStepProps> = ({
   changeStepContent,
   changeStepName,
   content,
@@ -93,3 +93,5 @@ export const MainStep: FunctionComponent<MainStepProps> = ({
     </>
   );
 };
+
+export default MainStep;
