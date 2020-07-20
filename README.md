@@ -5,7 +5,7 @@
 
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
 
-## Problem
+## Why?
 
 Many people, like me, experience anxiety or even fear when preparing for public speaking or interview. The reasons can be different and there are many ways to defeat such a fear.
 
@@ -24,9 +24,11 @@ Now it will be available in 2 versions: in the "**My speeches**" section from th
 
 ## Advantages:
 
-- Could be easily used on a mobile device to create, store and use speech cards.
+- Could be easily used on a mobile device to create, store and use speech cards,
 - No way to lose or forget your speech cards, because your mobile device is always with you. Am I right?
-- You may easily share prepared speech cards in JSON format with someone or to open it in a different device.
+- You may easily share prepared speech cards in JSON format with someone or to open it in a different device,
+- No authorization required,
+- No remote storage is used for your projects - you store all data locally on your devices.
 
 ## Tips:
 
@@ -49,7 +51,7 @@ MIT © Siarhei Vaitehovich
 
 - [x] Add tests
 - [x] Add form validation
-- [ ] Add color themes(?)
+- [ ] Add color themes
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
