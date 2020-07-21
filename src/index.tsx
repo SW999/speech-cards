@@ -6,7 +6,7 @@ import './scss/style.scss';
 import { App } from './App';
 
 render(
-  <Router basename="/">
+  <Router basename="/speech-cards">
     <App />
   </Router>,
   document.getElementById('app')
