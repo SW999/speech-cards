@@ -1,13 +1,13 @@
 // <reference path='../custom.d.ts'/>
 import * as React from 'react';
 import { render } from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './scss/style.scss';
 import { App } from './App';
 
 render(
-  <HashRouter basename="/">
+  <Router basename="/">
     <App />
-  </HashRouter>,
+  </Router>,
   document.getElementById('app')
 );
