@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FunctionComponent, useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { isMobileDevice, addSwipeEvent } from './utils/';
 import { Card } from './components/pages/card/Card';
 import { Header } from './components/header/Header';
@@ -42,8 +42,7 @@ export const App: FunctionComponent = () => {
             path="/new"
             render={(props): React.ReactNode => <CreateNew {...props} />}
           />
-          <Route path="/404" component={NoMatch} />
-          <Redirect to="/404" />
+          <Route path="*" exact component={NoMatch} />
         </Switch>
       </main>
       <Switch>
