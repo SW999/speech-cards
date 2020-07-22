@@ -34,11 +34,12 @@ export const App: FunctionComponent = () => {
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/demo">
+          <Route exact path="/demo">
             <Card {...demo} />
           </Route>
-          <Route path="/my-speeches" component={MySpeeches} />
+          <Route exact path="/my-speeches" component={MySpeeches} />
           <Route
+            exact
             path="/new"
             render={(props): React.ReactNode => <CreateNew {...props} />}
           />
