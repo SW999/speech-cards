@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoMatch component NoMatch renders correctly: NoMatch 1`] = `
+exports[`PageNotFound component PageNotFound renders correctly: PageNotFound 1`] = `
 <DocumentFragment>
   <div
     class="no-match-wrapper"
