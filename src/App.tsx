@@ -8,7 +8,7 @@ import { Home } from './components/pages/home/Home';
 import { Footer } from './components/footer/Footer';
 import { MySpeeches } from './components/pages/my-speeches/MySpeeches';
 import { CreateNew } from './components/pages/create-new/CreateNew';
-import { NoMatch } from './components/pages/no-match/NoMatch';
+import { PageNotFound } from './components/pages/page-not-found/PageNotFound';
 import demo from './how_to_write_efficient_emails.json';
 
 export const App: FunctionComponent = () => {
@@ -42,7 +42,7 @@ export const App: FunctionComponent = () => {
             path="/new"
             render={(props): React.ReactNode => <CreateNew {...props} />}
           />
-          <Route component={NoMatch} />
+          <Route component={PageNotFound} />
         </Switch>
       </main>
       <Switch>
