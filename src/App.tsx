@@ -9,6 +9,7 @@ import { Footer } from './components/footer/Footer';
 import { MySpeeches } from './components/pages/my-speeches/MySpeeches';
 import { CreateNew } from './components/pages/create-new/CreateNew';
 import { PageNotFound } from './components/pages/page-not-found/PageNotFound';
+import { Theme } from './components/pages/theme/Theme';
 import demo from './how_to_write_efficient_emails.json';
 
 export const App: FunctionComponent = () => {
@@ -42,6 +43,7 @@ export const App: FunctionComponent = () => {
             path="/new"
             render={(props): React.ReactNode => <CreateNew {...props} />}
           />
+          <Route path="/theme" component={Theme} />
           <Route component={PageNotFound} />
         </Switch>
       </main>

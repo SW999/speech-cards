@@ -32,8 +32,9 @@ export const Header: FunctionComponent = memo(() => {
           Home
         </NavLink>
         <NavLink to="/demo">Demo</NavLink>
-        <NavLink to="/my-speeches">My Speeches</NavLink>
+        <NavLink to="/my-speeches">Speeches</NavLink>
         <NavLink to="/new">New</NavLink>
+        <NavLink to="/theme">Theme</NavLink>
       </nav>
     </header>
   );

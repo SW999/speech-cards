@@ -1,0 +1,20 @@
+.theme-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -.8rem;
+}
+
+.theme-col {
+  flex-basis: 50%;
+  margin-bottom: 1.6rem;
+  padding: 0 .8rem;
+}
+
+.theme {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: thin solid $semi-gray;
+  border-radius: .3rem;
+  cursor: pointer;
+}
