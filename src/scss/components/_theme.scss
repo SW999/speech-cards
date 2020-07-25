@@ -12,9 +12,40 @@
 
 .theme {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border: thin solid $semi-gray;
   border-radius: .3rem;
   cursor: pointer;
+}
+
+.active-theme {
+  position: relative;
+
+  &::before {
+    @include pseudo;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(2px);
+  }
+
+  &::after {
+    @include pseudo($content: "✓");
+    @include center;
+    @include center-flex;
+    @include size(7rem);
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    border: thin solid $green;
+    border-radius: $br;
+    box-shadow: $shadow;
+    color: $green;
+    font-size: 4rem;
+    font-weight: bold;
+    background-color: $white;
+  }
 }
