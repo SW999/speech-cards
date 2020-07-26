@@ -43,6 +43,8 @@ Now it will be available in 2 versions: in the "**My speeches**" section from th
 * SASS
 * Tests via Jest and @testing-library/react
 
+Besides, I've faced with an interesting issue with routing of SPA on GitHub Pages. Fortunately, I managed to find a brilliant [solution](https://github.com/rafgraph/spa-github-pages) by [Rafael Pedicini](https://github.com/rafgraph). Thank you, Rafael, you helped keep the remains of my mind! :speak_no_evil:
+
 ## License
 
 MIT © Siarhei Vaitehovich
