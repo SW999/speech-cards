@@ -10,16 +10,19 @@ const mockStartProps = {
   speech: [{ title: 'Start', content: ['Content item'] }],
 };
 
+jest.mock('../../../scss/themes/default-theme.scss', () => '', {
+  virtual: true,
+});
+
+const isMobileDeviceMock = jest.fn();
+
 jest.mock('../../../utils/', () => ({
-  isMobileDevice: jest
-    .fn()
-    .mockReturnValueOnce(false)
-    .mockReturnValueOnce(true)
-    .mockReturnValueOnce(false),
+  isMobileDevice: () => isMobileDeviceMock(),
 }));
 
 describe('<Card />', () => {
   it('Card renders with speech title and hint for non touch devices', () => {
+    isMobileDeviceMock.mockReturnValue(false);
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByRole('heading')).toHaveTextContent(SPEECH_TITLE);
@@ -27,12 +30,14 @@ describe('<Card />', () => {
   });
 
   it('Card renders with hint for touch devices', () => {
+    isMobileDeviceMock.mockReturnValue(true);
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByTestId('card-hint')).toHaveTextContent(TOUCH_HINT);
   });
 
   it('Card renders first slide', async () => {
+    isMobileDeviceMock.mockReturnValue(false);
     const { container } = render(<Card {...mockStartProps} />);
 
     fireEvent.keyDown(document.body, {
