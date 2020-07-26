@@ -16,10 +16,11 @@ export const ThemeItem: FunctionComponent<ThemeItemType> = ({
 
   return (
     <img
-      src={pic}
-      className="theme"
       alt={`${name} theme`}
+      className="theme"
       onClick={onSetTheme}
+      src={pic}
+      title={`${name} theme`}
     />
   );
 };

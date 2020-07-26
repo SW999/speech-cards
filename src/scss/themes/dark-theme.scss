@@ -1,0 +1,113 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+$card-bgc: $dark-gray;
+$title-color: $white;
+$hint-color: lighten($semi-gray, 5%);
+
+.with-theme {
+  .content {
+    background-color: $card-bgc;
+  }
+
+  .card-title {
+    margin-top: 30vh;
+    color: $title-color;
+  }
+
+  .card-hint {
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    color: $hint-color;
+    font-size: 1.5rem;
+    animation: pulse .6s 2;
+
+    @include mq(tablet) {
+      top: 2rem;
+      font-size: 2rem;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 9.2rem;
+    margin: -2.6rem -2rem 0 -2rem;
+    padding: 1rem .5rem;
+    overflow: hidden;
+    background-color: rgba($blue, .8);
+
+    @include mq(tablet) {
+      margin: 0;
+      border-radius: 1rem;
+    }
+
+    h2 {
+      @include text-shadow;
+      width: calc(100% - 5rem);
+      margin: 0;
+      color: $white;
+      line-height: 1;
+      text-align: left;
+      letter-spacing: .1rem;
+
+      @include mq(tablet-wide, max) {
+        @include truncateMultiLine();
+        height: 6.8rem;
+        font-size: 2.5rem;
+        line-height: normal;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  .card-body {
+    position: relative;
+    padding: 2rem 0;
+
+    &:before {
+      @include pseudo;
+      top: -11.6rem;
+      left: -2rem;
+      right: -2rem;
+      height: 2.4rem;
+      background-color: rgba($blue, .8);
+    }
+
+    @include mq(tablet) {
+      position: static;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    li {
+      margin: 1.3rem -2rem;
+      padding: 1.5rem 2rem;
+      font-size: 2.4rem;
+      line-height: 1.55;
+      letter-spacing: .03rem;
+
+      &::before {
+        display: none;
+      }
+
+      @include mq(tablet) {
+        margin: 0;
+        padding: 3rem 1rem;
+        font-size: 2rem;
+      }
+
+      &:nth-child(even) {
+        text-shadow: .15rem .15rem $white;
+        background-color: rgba($light-blue, .3);
+      }
+    }
+  }
+}

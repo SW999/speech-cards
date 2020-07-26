@@ -1,25 +1,27 @@
 import * as React from 'react';
 import { FunctionComponent, useState } from 'react';
 import { ThemeItem } from '../../theme-item/ThemeItem';
+import { THEMES } from '../../../constants';
+
 import alternativeTheme from '../../../img/alternativeTheme.jpg';
 import darkTheme from '../../../img/darkTheme.jpg';
 import defaultTheme from '../../../img/defaultTheme.jpg';
 import simpleTheme from '../../../img/simpleTheme.jpg';
 
-const THEMES = [
-  { name: 'default', img: defaultTheme },
-  { name: 'dark', img: darkTheme },
-  { name: 'simple', img: simpleTheme },
-  { name: 'alternative', img: alternativeTheme },
+const THEME_ITEMS = [
+  { name: THEMES.DEFAULT, img: defaultTheme },
+  { name: THEMES.DARK, img: darkTheme },
+  { name: THEMES.SIMPLE, img: simpleTheme },
+  { name: THEMES.ALTERNATIVE, img: alternativeTheme },
 ];
 
 export const Theme: FunctionComponent = () => {
   const [active, setActive] = useState<string>(
-    localStorage.getItem('speech_theme') || 'default'
+    localStorage.getItem('speechTheme') || THEMES.DEFAULT
   );
   const onSetTheme = (name: string): void => {
     setActive(name);
-    localStorage.setItem('speech_theme', name);
+    localStorage.setItem('speechTheme', name);
   };
 
   return (
@@ -30,12 +32,12 @@ export const Theme: FunctionComponent = () => {
         convenient for you.
       </p>
       <div className="theme-row">
-        {THEMES.map(theme => {
+        {THEME_ITEMS.map(theme => {
           return (
             <div
               key={theme.name}
               className={`theme-col${
-                active === theme.name ? ' active-theme' : ''
+                active === theme.name ? ' theme-col_active' : ''
               }`}
             >
               <ThemeItem

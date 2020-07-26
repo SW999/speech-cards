@@ -3,18 +3,31 @@ import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
 import { Loading } from '../../loading/Loading';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
+import { CARD_TOUCH_HINT, CARD_HINT, THEMES } from '../../../constants';
 import swipe from './swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
   import('../../radial-progress-bar/RedialProgressBar')
 );
-const TOUCH_HINT = 'Please use swipe to turn cards!';
-const HINT = 'Please use left/right arrows to turn cards!';
+
+// Themes
+const DefaultTheme = lazy(() => import('../../../theme/DefaultTheme'));
+const DarkTheme = lazy(() => import('../../../theme/DarkTheme'));
 
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const isMobile = isMobileDevice();
   const [page, setPage] = useState<number>(-1);
+  const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
+
+  const LoadTheme = () => (
+    <>
+      <Suspense fallback={<></>}>
+        {CURRENT_THEME === THEMES.DEFAULT && <DefaultTheme />}
+        {CURRENT_THEME === THEMES.DARK && <DarkTheme />}
+      </Suspense>
+    </>
+  );
 
   useEffect(() => {
     const moveLeft = () => setPage(page => (page > -1 ? page - 1 : -1));
@@ -50,18 +63,27 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     };
   }, [isMobile, page, speech, step]);
 
+  useEffect(() => {
+    document.body.classList.add('with-theme');
+
+    return function cleanup() {
+      document.body.classList.remove('with-theme');
+    };
+  }, []);
+
   if (page < 0) {
     return (
       <>
+        <LoadTheme />
         <div className="card-hint" data-testid="card-hint">
           {isMobile ? (
             <>
               <img src={swipe} alt="Navigation hint" width="30" height="30" />
               {}
-              {TOUCH_HINT}
+              {CARD_TOUCH_HINT}
             </>
           ) : (
-            HINT
+            CARD_HINT
           )}
         </div>
         <h1 className="card-title">{name}</h1>
@@ -70,24 +92,27 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="card-header">
-        <h2>{speech[page].title}</h2>
-        <RedialProgressBar
-          currentValue={page + 1}
-          total={step}
-          label={`${page + 1}/${step}`}
-        />
-      </div>
-      <div className="card-body">
-        <ul>
-          {speech[page].content.map(item => (
-            <li key={item}>
-              <Markdown children={item} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Suspense>
+    <>
+      <LoadTheme />
+      <Suspense fallback={<Loading />}>
+        <div className="card-header">
+          <h2>{speech[page].title}</h2>
+          <RedialProgressBar
+            currentValue={page + 1}
+            total={step}
+            label={`${page + 1}/${step}`}
+          />
+        </div>
+        <div className="card-body">
+          <ul>
+            {speech[page].content.map(item => (
+              <li key={item}>
+                <Markdown children={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Suspense>
+    </>
   );
 };
