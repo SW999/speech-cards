@@ -11,7 +11,20 @@ export const Footer: FunctionComponent = () => (
       title="Github page"
     >
       <img src={github} alt="github" width="24" height="24" />
-    </a>{' '}
-    © SW999 2020 | {`v. ${packageJson.version}`}
+    </a>
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© SW999
+    2020&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    {`v. ${packageJson.version}`}
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a
+      href="mailto:swarog2002@mail.ru?subject=Speech%20cards"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Email me"
+    >
+      <span role="img" aria-label="email me">
+        📧
+      </span>
+    </a>
   </div>
 );

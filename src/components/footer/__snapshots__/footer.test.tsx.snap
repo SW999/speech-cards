@@ -17,7 +17,20 @@ exports[`Footer component Footer should take a snapshot: Footer 1`] = `
         width="24"
       />
     </a>
-     © SW999 2020 | v. 1.0.0
+       |   © SW999 2020   |   v. 1.0.0   |   
+    <a
+      href="mailto:swarog2002@mail.ru?subject=Speech%20cards"
+      rel="noopener noreferrer"
+      target="_blank"
+      title="Email me"
+    >
+      <span
+        aria-label="email me"
+        role="img"
+      >
+        📧
+      </span>
+    </a>
   </div>
 </DocumentFragment>
 `;
