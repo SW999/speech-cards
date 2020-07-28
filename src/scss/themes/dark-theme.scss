@@ -1,25 +1,49 @@
 @import '../abstracts/variables';
 @import '../abstracts/mixins';
 
-$card-bgc: $dark-gray;
-$title-color: $white;
-$hint-color: lighten($semi-gray, 5%);
+$dark: $dark-gray;
+$gray: $semi-gray;
 
 .with-theme {
   .content {
-    background-color: $card-bgc;
+    background-color: $dark;
   }
 
+  nav {
+    @include mq(tablet) {
+      background-color: $dark;
+
+      a {
+        color: $white;
+      }
+    }
+  }
+
+  .menu-toggle {
+    > span,
+    > span:before,
+    > span:after {
+      background-color: $gray;
+    }
+  }
+
+  .progress {
+    &__count {
+      color: $gray;
+      background-color: $dark;
+    }
+  }
+
+  // Card
   .card-title {
-    margin-top: 30vh;
-    color: $title-color;
+    color: $white;
   }
 
   .card-hint {
     position: absolute;
     top: 4.5rem;
     right: 1rem;
-    color: $hint-color;
+    color: lighten($gray, 5%);
     font-size: 1.5rem;
     animation: pulse .6s 2;
 
@@ -37,7 +61,7 @@ $hint-color: lighten($semi-gray, 5%);
     margin: -2.6rem -2rem 0 -2rem;
     padding: 1rem .5rem;
     overflow: hidden;
-    background-color: rgba($blue, .8);
+    background-color: lighten($dark, 5%);
 
     @include mq(tablet) {
       margin: 0;
@@ -45,7 +69,6 @@ $hint-color: lighten($semi-gray, 5%);
     }
 
     h2 {
-      @include text-shadow;
       width: calc(100% - 5rem);
       margin: 0;
       color: $white;
@@ -76,7 +99,7 @@ $hint-color: lighten($semi-gray, 5%);
       left: -2rem;
       right: -2rem;
       height: 2.4rem;
-      background-color: rgba($blue, .8);
+      background-color: lighten($dark, 5%);
     }
 
     @include mq(tablet) {
@@ -90,6 +113,7 @@ $hint-color: lighten($semi-gray, 5%);
     li {
       margin: 1.3rem -2rem;
       padding: 1.5rem 2rem;
+      color: lighten($gray, 20%);
       font-size: 2.4rem;
       line-height: 1.55;
       letter-spacing: .03rem;
@@ -105,8 +129,8 @@ $hint-color: lighten($semi-gray, 5%);
       }
 
       &:nth-child(even) {
-        text-shadow: .15rem .15rem $white;
-        background-color: rgba($light-blue, .3);
+        text-shadow: .15rem .15rem $dark;
+        background-color: lighten($dark, 10%);
       }
     }
   }

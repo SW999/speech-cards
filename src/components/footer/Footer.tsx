@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FunctionComponent } from 'react';
-import packageJson from '../../../package.json';
+import { version } from '../../../package.json';
 import github from '../../img/github.svg';
 
 export const Footer: FunctionComponent = () => (
@@ -14,7 +14,7 @@ export const Footer: FunctionComponent = () => (
     </a>
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© SW999
     2020&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    {`v. ${packageJson.version}`}
+    {`v. ${version}`}
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a
       href="mailto:swarog2002@mail.ru?subject=Speech%20cards"

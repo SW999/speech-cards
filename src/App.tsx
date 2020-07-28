@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent, useEffect, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { isMobileDevice, addSwipeEvent } from './utils/';
 import { Card } from './components/pages/card/Card';
 import { Header } from './components/header/Header';
-import { Home } from './components/pages/home/Home';
 import { Footer } from './components/footer/Footer';
 import { MySpeeches } from './components/pages/my-speeches/MySpeeches';
 import { CreateNew } from './components/pages/create-new/CreateNew';
 import { PageNotFound } from './components/pages/page-not-found/PageNotFound';
 import { Theme } from './components/pages/theme/Theme';
 import demo from './how_to_write_efficient_emails.json';
+import { WithLoading } from './components/with-loading/WithLoading';
+
+// TODO: wrap all pages to WithLoading
+const Home = lazy(() => import('./components/pages/home/Home'));
 
 export const App: FunctionComponent = () => {
   useEffect(() => {
@@ -34,7 +37,7 @@ export const App: FunctionComponent = () => {
       <Header />
       <main>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={WithLoading(Home)} />
           <Route path="/demo">
             <Card {...demo} />
           </Route>

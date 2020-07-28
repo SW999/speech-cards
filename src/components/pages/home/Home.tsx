@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { isMobileDevice } from '../../../utils';
 import qr from '../../../img/qr.png';
 
-export const Home: FunctionComponent = () => (
+const Home: FunctionComponent = () => (
   <>
     <h1>Simple speech cards</h1>
     <h2>Why?</h2>
@@ -77,3 +77,5 @@ export const Home: FunctionComponent = () => (
     <br />
   </>
 );
+
+export default Home;

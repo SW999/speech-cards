@@ -1,6 +1,10 @@
+.dark-theme {
+  --title-color: #{$green};
+}
+
 .card-title {
   margin-top: 30vh;
-  color: $orange;
+  color: var(--title-color, $orange);
 }
 
 .card-hint {

@@ -11,23 +11,9 @@ const RedialProgressBar = lazy(() =>
   import('../../radial-progress-bar/RedialProgressBar')
 );
 
-// Themes
-const DefaultTheme = lazy(() => import('../../../theme/DefaultTheme'));
-const DarkTheme = lazy(() => import('../../../theme/DarkTheme'));
-
 export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const isMobile = isMobileDevice();
   const [page, setPage] = useState<number>(-1);
-  const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
-
-  const LoadTheme = () => (
-    <>
-      <Suspense fallback={<></>}>
-        {CURRENT_THEME === THEMES.DEFAULT && <DefaultTheme />}
-        {CURRENT_THEME === THEMES.DARK && <DarkTheme />}
-      </Suspense>
-    </>
-  );
 
   useEffect(() => {
     const moveLeft = () => setPage(page => (page > -1 ? page - 1 : -1));
@@ -64,17 +50,17 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }, [isMobile, page, speech, step]);
 
   useEffect(() => {
-    document.body.classList.add('with-theme');
+    const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
+    document.body.classList.add(`${CURRENT_THEME}-theme`);
 
     return function cleanup() {
-      document.body.classList.remove('with-theme');
+      document.body.classList.remove(`${CURRENT_THEME}-theme`);
     };
   }, []);
 
   if (page < 0) {
     return (
       <>
-        <LoadTheme />
         <div className="card-hint" data-testid="card-hint">
           {isMobile ? (
             <>
@@ -93,7 +79,6 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
 
   return (
     <>
-      <LoadTheme />
       <Suspense fallback={<Loading />}>
         <div className="card-header">
           <h2>{speech[page].title}</h2>
