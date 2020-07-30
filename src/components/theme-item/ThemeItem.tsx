@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 type ThemeItemType = {
   name: string;
@@ -7,7 +6,7 @@ type ThemeItemType = {
   setTheme: (name: string) => void;
 };
 
-export const ThemeItem: FunctionComponent<ThemeItemType> = ({
+const ThemeItem: FunctionComponent<ThemeItemType> = ({
   name,
   pic,
   setTheme,
@@ -24,3 +23,5 @@ export const ThemeItem: FunctionComponent<ThemeItemType> = ({
     />
   );
 };
+
+export default ThemeItem;

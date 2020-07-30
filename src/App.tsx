@@ -1,21 +1,23 @@
-import * as React from 'react';
-import { FunctionComponent, useEffect, lazy } from 'react';
+import React, { FunctionComponent, useEffect, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { isMobileDevice, addSwipeEvent } from './utils/';
-import { Card } from './components/pages/card/Card';
-import { Header } from './components/header/Header';
-import { Footer } from './components/footer/Footer';
-import { MySpeeches } from './components/pages/my-speeches/MySpeeches';
-import { CreateNew } from './components/pages/create-new/CreateNew';
-import { PageNotFound } from './components/pages/page-not-found/PageNotFound';
-import { Theme } from './components/pages/theme/Theme';
+import Header from './components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
-import { WithLoading } from './components/with-loading/WithLoading';
+import WithLoading from './components/with-loading/WithLoading';
+import Card from './components/pages/card/Card';
 
-// TODO: wrap all pages to WithLoading
 const Home = lazy(() => import('./components/pages/home/Home'));
+const Footer = lazy(() => import('./components/footer/Footer'));
+const MySpeeches = lazy(() =>
+  import('./components/pages/my-speeches/MySpeeches')
+);
+const Theme = lazy(() => import('./components/pages/theme/Theme'));
+const PageNotFound = lazy(() =>
+  import('./components/pages/page-not-found/PageNotFound')
+);
+const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
 
-export const App: FunctionComponent = () => {
+const App: FunctionComponent = () => {
   useEffect(() => {
     if (isMobileDevice()) {
       const touch = addSwipeEvent();
@@ -37,22 +39,36 @@ export const App: FunctionComponent = () => {
       <Header />
       <main>
         <Switch>
-          <Route exact path="/" component={WithLoading(Home)} />
-          <Route path="/demo">
-            <Card {...demo} />
-          </Route>
-          <Route path="/my-speeches" component={MySpeeches} />
+          <Route
+            exact
+            path="/"
+            component={() => <WithLoading component={Home} />}
+          />
+          <Route path="/demo" component={() => <Card {...demo} />} />
+          <Route
+            path="/my-speeches"
+            component={() => <WithLoading component={MySpeeches} />}
+          />
           <Route
             path="/new"
-            render={(props): React.ReactNode => <CreateNew {...props} />}
+            render={props => <WithLoading component={CreateNew} {...props} />}
           />
-          <Route path="/theme" component={Theme} />
-          <Route component={PageNotFound} />
+          <Route
+            path="/theme"
+            component={() => <WithLoading component={Theme} />}
+          />
+          <Route component={() => <WithLoading component={PageNotFound} />} />
         </Switch>
       </main>
       <Switch>
-        <Route exact path="/" component={Footer} />
+        <Route
+          exact
+          path="/"
+          component={() => <WithLoading component={Footer} />}
+        />
       </Switch>
     </>
   );
 };
+
+export default App;

@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { version } from '../../../package.json';
 import github from '../../img/github.svg';
 
-export const Footer: FunctionComponent = () => (
+const Footer: FunctionComponent = () => (
   <div className="footer">
     <a
       href="https://github.com/SW999/speech-cards"
@@ -28,3 +27,5 @@ export const Footer: FunctionComponent = () => (
     </a>
   </div>
 );
+
+export default Footer;

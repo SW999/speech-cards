@@ -1,11 +1,10 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
+import React from 'react';
 
-export const PageNotFound: FunctionComponent = () => {
+export default function PageNotFound() {
   return (
     <div className="no-match-wrapper">
       <h1>404</h1>
       <h2>Ups, not found!</h2>
     </div>
   );
-};
+}

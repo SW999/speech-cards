@@ -1,6 +1,6 @@
 import { IState } from 'types';
 
-export const validateJSON = (o: IState): boolean => {
+export const validateJSON = (o: IState | null): boolean => {
   return !!(
     o !== null &&
     typeof o?.name === 'string' &&

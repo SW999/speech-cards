@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
-import { MasterForm } from './MasterForm';
+import MasterForm from './MasterForm';
 
 jest.mock('../../utils', () => ({
   ...jest.requireActual('../../utils'),

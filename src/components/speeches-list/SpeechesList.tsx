@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { FunctionComponent, MouseEvent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 import { doSpeechNameReadable } from '../../utils';
 
 type SpeechesListType = {
@@ -9,7 +8,7 @@ type SpeechesListType = {
   speechNames: string[];
 };
 
-export const SpeechesList: FunctionComponent<SpeechesListType> = ({
+const SpeechesList: FunctionComponent<SpeechesListType> = ({
   editSpeech,
   removeSpeech,
   showSpeech,
@@ -63,3 +62,5 @@ export const SpeechesList: FunctionComponent<SpeechesListType> = ({
     </>
   );
 };
+
+export default SpeechesList;

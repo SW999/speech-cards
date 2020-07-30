@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
-import { MasterForm } from '../../master-form/MasterForm';
+import React, { FunctionComponent } from 'react';
+import MasterForm from '../../master-form/MasterForm';
 import { IState } from '../../../types';
 
 type LocationType = {
@@ -14,7 +13,7 @@ type CreateNewType = {
   location: LocationType;
 };
 
-export const CreateNew: FunctionComponent<CreateNewType> = ({ location }) => {
+const CreateNew: FunctionComponent<CreateNewType> = ({ location }) => {
   const data = location.state?.data;
 
   return (
@@ -24,3 +23,5 @@ export const CreateNew: FunctionComponent<CreateNewType> = ({ location }) => {
     </>
   );
 };
+
+export default CreateNew;

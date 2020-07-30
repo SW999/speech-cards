@@ -57,3 +57,4 @@ MIT © Siarhei Vaitehovich
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
+- [ ] Create PWA

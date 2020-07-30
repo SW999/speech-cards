@@ -1,7 +1,6 @@
-import * as React from 'react';
-import { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
+import React, { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
 import { debounce } from '../../utils/index';
-import { Input } from '../input/Input';
+import Input from '../input/Input';
 import md from '../../img/md.svg';
 
 type AddRemoveContentItemProps = {
@@ -22,7 +21,7 @@ type AddRemoveContentItemProps = {
   step: number;
 };
 
-export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
+const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
   error,
   handleChangeContent,
   isLastItem,
@@ -102,3 +101,5 @@ export const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
     />
   );
 };
+
+export default ContentItem;

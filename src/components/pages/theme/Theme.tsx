@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { FunctionComponent, useState } from 'react';
-import { ThemeItem } from '../../theme-item/ThemeItem';
+import React, { FunctionComponent, useState } from 'react';
+import ThemeItem from '../../theme-item/ThemeItem';
 import { THEMES } from '../../../constants';
 
 import alternativeTheme from '../../../img/alternativeTheme.jpg';
@@ -15,7 +14,7 @@ const THEME_ITEMS = [
   { name: THEMES.ALTERNATIVE, img: alternativeTheme },
 ];
 
-export const Theme: FunctionComponent = () => {
+const Theme: FunctionComponent = () => {
   const [active, setActive] = useState<string>(
     localStorage.getItem('speechTheme') || THEMES.DEFAULT
   );
@@ -52,3 +51,5 @@ export const Theme: FunctionComponent = () => {
     </>
   );
 };
+
+export default Theme;

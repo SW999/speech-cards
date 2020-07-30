@@ -1,6 +1,11 @@
-import * as React from 'react';
-import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
-import { Loading } from '../../loading/Loading';
+import React, {
+  FunctionComponent,
+  lazy,
+  Suspense,
+  useEffect,
+  useState,
+} from 'react';
+import Loading from '../../loading/Loading';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
 import { CARD_TOUCH_HINT, CARD_HINT, THEMES } from '../../../constants';
@@ -11,7 +16,7 @@ const RedialProgressBar = lazy(() =>
   import('../../radial-progress-bar/RedialProgressBar')
 );
 
-export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
+const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const isMobile = isMobileDevice();
   const [page, setPage] = useState<number>(-1);
 
@@ -101,3 +106,5 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     </>
   );
 };
+
+export default Card;

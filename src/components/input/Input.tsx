@@ -1,5 +1,9 @@
-import * as React from 'react';
-import { ChangeEvent, FunctionComponent, LegacyRef, ReactNode } from 'react';
+import React, {
+  ChangeEvent,
+  FunctionComponent,
+  LegacyRef,
+  ReactNode,
+} from 'react';
 
 type InputTextProps = {
   autoFocus?: boolean;
@@ -16,7 +20,7 @@ type InputTextProps = {
   required?: boolean;
 };
 
-export const Input: FunctionComponent<InputTextProps> = ({
+const Input: FunctionComponent<InputTextProps> = ({
   autoFocus,
   controls,
   defaultValue,
@@ -58,3 +62,5 @@ export const Input: FunctionComponent<InputTextProps> = ({
     {controls}
   </div>
 );
+
+export default Input;

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { Card } from './Card';
+import Card from './Card';
 const SPEECH_TITLE = 'Test';
 const TOUCH_HINT = 'Please use swipe to turn cards!';
 const HINT = 'Please use left/right arrows to turn cards!';

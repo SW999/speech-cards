@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { CreateNew } from './CreateNew';
+import CreateNew from './CreateNew';
 
 const mockLocationProp = {
   pathname: 'new',

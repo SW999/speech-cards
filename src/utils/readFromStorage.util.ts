@@ -1,6 +1,6 @@
 import { IState } from 'types';
 
-export const readFromStorage = (name: string): IState | void => {
+export const readFromStorage = (name: string): IState | null => {
   try {
     return JSON.parse(localStorage.getItem(name));
   } catch (e) {
@@ -8,5 +8,6 @@ export const readFromStorage = (name: string): IState | void => {
       'Error when passe JSON from storage in func "readFromStorage": ',
       e
     );
+    return null;
   }
 };

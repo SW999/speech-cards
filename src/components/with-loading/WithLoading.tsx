@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { Suspense } from 'react';
-import { Loading } from '../loading/Loading';
+import React, { Suspense } from 'react';
+import Loading from '../loading/Loading';
 
-export const WithLoading = Component => <T,>(props: T) => (
+const WithLoading = ({ component: Component, ...rest }) => (
   <Suspense fallback={<Loading />}>
-    <Component {...(props as T)} />
+    <Component {...rest} />
   </Suspense>
 );
+
+export default WithLoading;

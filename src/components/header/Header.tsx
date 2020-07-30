@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { FunctionComponent, useEffect, useCallback, memo } from 'react';
+import React, { FunctionComponent, useEffect, useCallback, memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { isMobileDevice } from '../../utils/';
 
-export const Header: FunctionComponent = memo(() => {
+const Header: FunctionComponent = memo(() => {
   const isMobile = isMobileDevice();
   const toggleMenu = useCallback(() => {
     if (isMobile) {
@@ -39,3 +38,5 @@ export const Header: FunctionComponent = memo(() => {
     </header>
   );
 });
+
+export default Header;

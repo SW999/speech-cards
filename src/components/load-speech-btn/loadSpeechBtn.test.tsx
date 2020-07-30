@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { LoadSpeechBtn } from './LoadSpeechBtn';
+import LoadSpeechBtn from './LoadSpeechBtn';
 import demo from '../../how_to_write_efficient_emails.json';
 
 describe('<LoadSpeechBtn />', () => {
