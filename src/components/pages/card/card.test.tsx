@@ -10,10 +10,6 @@ const mockStartProps = {
   speech: [{ title: 'Start', content: ['Content item'] }],
 };
 
-jest.mock('../../../scss/themes/default-theme.scss', () => '', {
-  virtual: true,
-});
-
 const isMobileDeviceMock = jest.fn();
 
 jest.mock('../../../utils/', () => ({

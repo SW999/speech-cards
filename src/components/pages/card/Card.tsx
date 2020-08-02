@@ -58,7 +58,7 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
     document.body.classList.add(`${CURRENT_THEME}-theme`);
 
-    return function cleanup() {
+    return () => {
       document.body.classList.remove(`${CURRENT_THEME}-theme`);
     };
   }, []);

@@ -1,7 +1,70 @@
 .dark-theme {
-  --title-color: #{$green};
+  --title-color: #{$white};
+  --content-bg: #{$dark-gray};
+  --mobile-nav-bg: #{$dark-gray};
+  --nav-bg: #{$dark-gray};
+  --nav-link-color: #{$white};
+  --nav-link-active-color: #{$white};
+  --nav-link-hover-color: #{$white};
+  --menu-toggle-bg: #{$semi-gray};
+  --menu-progress-count-color: #{$semi-gray};
+  --menu-progress-count-bg: #{$dark-gray};
+  --card-hint: #{lighten($semi-gray, 5%)};
+  --card-header-bg: #{lighten($dark-gray, 5%)};
+  --card-body-before-bg: #{lighten($dark-gray, 5%)};
+  --card-body-li-color: #{lighten($semi-gray, 20%)};
+  --card-body-li-stripe-shadow: #{$dark-gray};
+  --card-body-li-stripe-bg: #{lighten($dark-gray, 10%)};
+
+  .card-header h2 {
+    text-shadow: none;
+  }
 }
 
+
+// TODO: remove from mane files
+.content {
+  background-color: var(--content-bg, $white);
+}
+
+.show-menu nav {
+  background-color: var(--mobile-nav-bg, rgba($white, .99));
+}
+
+nav {
+  background-color: var(--nav-bg, $white);
+
+  a {
+    color: var(--nav-link-color, rgba($dark-gray, 0.9));
+
+    &.active {
+      color: var(--nav-link-active-color, $dark-gray);
+    }
+
+    @media(hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--nav-link-hover-color, $dark-gray);
+      }
+    }
+  }
+}
+
+.menu-toggle {
+  > span,
+  > span:before,
+  > span:after {
+    background-color: var(--menu-toggle-bg, $dark-gray);
+  }
+}
+
+.progress {
+  &__count {
+    color: var(--menu-progress-count-color, $dark-gray);
+    background-color: var(--menu-progress-count-bg, $white);
+  }
+}
+
+// CARD
 .card-title {
   margin-top: 30vh;
   color: var(--title-color, $orange);
@@ -11,7 +74,7 @@
   position: absolute;
   top: 4.5rem;
   right: 1rem;
-  color: lighten($link-color, 5%);
+  color: var(--card-hint, lighten($link-color, 5%));
   font-size: 1.5rem;
   animation: pulse .6s 2;
 
@@ -29,7 +92,7 @@
   margin: -2.6rem -2rem 0 -2rem;
   padding: 1rem .5rem;
   overflow: hidden;
-  background-color: rgba($blue, .8);
+  background-color: var(--card-header-bg, rgba($blue, .8));
 
   @include mq(tablet) {
     margin: 0;
@@ -68,7 +131,7 @@
     left: -2rem;
     right: -2rem;
     height: 2.4rem;
-    background-color: rgba($blue, .8);
+    background-color: var(--card-body-before-bg, rgba($blue, .8));
   }
 
   @include mq(tablet) {
@@ -82,6 +145,7 @@
   li {
     margin: 1.3rem -2rem;
     padding: 1.5rem 2rem;
+    color: var(--card-body-li-color, $dark-gray);
     font-size: 2.4rem;
     line-height: 1.55;
     letter-spacing: .03rem;
@@ -97,8 +161,8 @@
     }
 
     &:nth-child(even) {
-      text-shadow: .15rem .15rem $white;
-      background-color: rgba($light-blue, .3);
+      text-shadow: .15rem .15rem var(--card-body-li-stripe-shadow, $white);
+      background-color: var(--card-body-li-stripe-bg, rgba($light-blue, .3));
     }
   }
 }

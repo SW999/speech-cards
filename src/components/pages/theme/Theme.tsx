@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import ThemeItem from '../../theme-item/ThemeItem';
 import { THEMES } from '../../../constants';
 
-import alternativeTheme from '../../../img/alternativeTheme.jpg';
 import darkTheme from '../../../img/darkTheme.jpg';
 import defaultTheme from '../../../img/defaultTheme.jpg';
 import simpleTheme from '../../../img/simpleTheme.jpg';
@@ -11,7 +10,6 @@ const THEME_ITEMS = [
   { name: THEMES.DEFAULT, img: defaultTheme },
   { name: THEMES.DARK, img: darkTheme },
   { name: THEMES.SIMPLE, img: simpleTheme },
-  { name: THEMES.ALTERNATIVE, img: alternativeTheme },
 ];
 
 const Theme: FunctionComponent = () => {

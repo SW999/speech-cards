@@ -9,10 +9,6 @@ const readFromStorage = jest.fn();
 const validateJSON = jest.fn();
 const isMobileDevice = jest.fn();
 
-jest.mock('../../../scss/themes/default-theme.scss', () => '', {
-  virtual: true,
-});
-
 jest.mock('../../../utils', () => ({
   getSpeechNamesFromStorage: () => getSpeechNamesFromStorage(),
   doSpeechNameReadable: () => doSpeechNameReadable(),
