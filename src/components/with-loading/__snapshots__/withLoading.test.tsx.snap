@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WithLoading component WithLoading renders correctly: WithLoading 1`] = `
+<DocumentFragment>
+  <div>
+    Test
+  </div>
+</DocumentFragment>
+`;

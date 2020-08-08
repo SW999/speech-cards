@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from 'react';
-import ThemeItem from '../../theme-item/ThemeItem';
 import { THEMES } from '../../../constants';
 
 import darkTheme from '../../../img/darkTheme.jpg';
@@ -17,6 +16,8 @@ const Theme: FunctionComponent = () => {
     localStorage.getItem('speechTheme') || THEMES.DEFAULT
   );
   const onSetTheme = (name: string): void => {
+    if (name === active) return;
+
     setActive(name);
     localStorage.setItem('speechTheme', name);
   };
@@ -30,17 +31,20 @@ const Theme: FunctionComponent = () => {
       </p>
       <div className="theme-row">
         {THEME_ITEMS.map(theme => {
+          const { name, img } = theme;
           return (
             <div
-              key={theme.name}
+              key={name}
               className={`theme-col${
-                active === theme.name ? ' theme-col_active' : ''
+                active === name ? ' theme-col_active' : ''
               }`}
+              onClick={() => onSetTheme(name)}
             >
-              <ThemeItem
-                name={theme.name}
-                pic={theme.img}
-                setTheme={onSetTheme}
+              <img
+                alt={`${name} theme`}
+                className="theme"
+                src={img}
+                title={`${name} theme`}
               />
             </div>
           );
