@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
-import { MySpeeches } from './MySpeeches';
+import MySpeeches from './MySpeeches';
 
 const getSpeechNamesFromStorage = jest.fn();
 const doSpeechNameReadable = jest.fn();

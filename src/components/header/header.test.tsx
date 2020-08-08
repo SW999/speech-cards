@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
-import { Header } from './Header';
+import Header from './Header';
 
 const isMobileDevice = jest.fn();
 jest.mock('../../utils', () => ({

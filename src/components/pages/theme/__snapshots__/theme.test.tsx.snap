@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Theme component Theme renders correctly: Theme 1`] = `
+<DocumentFragment>
+  <h1>
+    Select speech theme
+  </h1>
+  <p>
+    Please choose a theme of the speech/interview that is convenient for you.
+  </p>
+  <div
+    class="theme-row"
+  >
+    <div
+      class="theme-col theme-col_active"
+    >
+      <img
+        alt="default theme"
+        class="theme"
+        src="[object Object]"
+        title="default theme"
+      />
+    </div>
+    <div
+      class="theme-col"
+    >
+      <img
+        alt="dark theme"
+        class="theme"
+        src="[object Object]"
+        title="dark theme"
+      />
+    </div>
+    <div
+      class="theme-col"
+    >
+      <img
+        alt="simple theme"
+        class="theme"
+        src="[object Object]"
+        title="simple theme"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import {
+import React, {
   ChangeEvent,
   FunctionComponent,
   Reducer,
@@ -14,17 +13,15 @@ import { Redirect } from 'react-router-dom';
 import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
-import { Input } from '../input/Input';
-import { Loading } from '../loading/Loading';
-import { LoadSpeechBtn } from '../load-speech-btn/LoadSpeechBtn';
+import Input from '../input/Input';
+import Loading from '../loading/Loading';
+import LoadSpeechBtn from '../load-speech-btn/LoadSpeechBtn';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 const MainStep = lazy(() => import('../main-step/MainStep'));
 type DataType = {
   data?: IState;
 };
-export const MasterForm: FunctionComponent<DataType> = ({
-  data = initialState,
-}) => {
+const MasterForm: FunctionComponent<DataType> = ({ data = initialState }) => {
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [showLoadBtn, setShowLoadBtn] = useState<boolean>(true);
   const [redirect, setRedirect] = useState<boolean>(false);
@@ -182,3 +179,5 @@ export const MasterForm: FunctionComponent<DataType> = ({
     </>
   );
 };
+
+export default MasterForm;

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { Card } from './Card';
+import Card from './Card';
 const SPEECH_TITLE = 'Test';
 const TOUCH_HINT = 'Please use swipe to turn cards!';
 const HINT = 'Please use left/right arrows to turn cards!';
@@ -10,16 +10,15 @@ const mockStartProps = {
   speech: [{ title: 'Start', content: ['Content item'] }],
 };
 
+const isMobileDeviceMock = jest.fn();
+
 jest.mock('../../../utils/', () => ({
-  isMobileDevice: jest
-    .fn()
-    .mockReturnValueOnce(false)
-    .mockReturnValueOnce(true)
-    .mockReturnValueOnce(false),
+  isMobileDevice: () => isMobileDeviceMock(),
 }));
 
 describe('<Card />', () => {
   it('Card renders with speech title and hint for non touch devices', () => {
+    isMobileDeviceMock.mockReturnValue(false);
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByRole('heading')).toHaveTextContent(SPEECH_TITLE);
@@ -27,12 +26,14 @@ describe('<Card />', () => {
   });
 
   it('Card renders with hint for touch devices', () => {
+    isMobileDeviceMock.mockReturnValue(true);
     render(<Card {...mockStartProps} />);
 
     expect(screen.getByTestId('card-hint')).toHaveTextContent(TOUCH_HINT);
   });
 
   it('Card renders first slide', async () => {
+    isMobileDeviceMock.mockReturnValue(false);
     const { container } = render(<Card {...mockStartProps} />);
 
     fireEvent.keyDown(document.body, {

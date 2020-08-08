@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ModalPopup } from './ModalPopup';
+import ModalPopup from './ModalPopup';
 const defaultProps = {
   isOpen: false,
   onClose: (): void => undefined,

@@ -1,5 +1,4 @@
-import * as React from 'react';
-import {
+import React, {
   FunctionComponent,
   MouseEvent,
   useCallback,
@@ -14,12 +13,12 @@ import {
   validateJSON,
 } from '../../../utils/';
 import { IState } from '../../../types/';
-import { Card } from '../card/Card';
-import { ModalPopup } from '../../modal-popup/ModalPopup';
-import { LoadSpeechBtn } from '../../load-speech-btn/LoadSpeechBtn';
-import { SpeechesList } from '../../speeches-list/SpeechesList';
+import Card from '../card/Card';
+import ModalPopup from '../../modal-popup/ModalPopup';
+import LoadSpeechBtn from '../../load-speech-btn/LoadSpeechBtn';
+import SpeechesList from '../../speeches-list/SpeechesList';
 
-export const MySpeeches: FunctionComponent = () => {
+const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
   const [edit, setEdit] = useState<IState | null>(null);
   const [removedItemName, setRemovedItemName] = useState<string | null>(null);
@@ -27,7 +26,10 @@ export const MySpeeches: FunctionComponent = () => {
 
   const showSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;
-    setData(() => readFromStorage(target.dataset.name));
+    const data = readFromStorage(target.dataset.name);
+    if (data) {
+      setData(data);
+    }
   };
 
   const updateSpeechesList = (): void => {
@@ -99,3 +101,5 @@ export const MySpeeches: FunctionComponent = () => {
     </>
   );
 };
+
+export default MySpeeches;

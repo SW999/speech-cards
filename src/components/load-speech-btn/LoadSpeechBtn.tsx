@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ChangeEvent, FunctionComponent, memo } from 'react';
+import React, { ChangeEvent, FunctionComponent, memo } from 'react';
 import { reviverJSON, validateJSON } from '../../utils';
 import { IState } from '../../types';
 
@@ -8,7 +7,7 @@ type LoadSpeechBtnType = {
   name?: string;
 };
 
-export const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = memo(
+const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = memo(
   ({ onLoadSpeech, name = 'Choose a JSON file' }) => {
     let fileReader;
     const handleFileRead = (): void => {
@@ -47,3 +46,5 @@ export const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = memo(
     );
   }
 );
+
+export default LoadSpeechBtn;

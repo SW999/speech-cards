@@ -6,7 +6,7 @@ exports[`Home component Home renders with QR code for desktop: Desktop 1`] = `
     Simple speech cards
   </h1>
   <h2>
-    Problem
+    Why?
   </h2>
   <figure
     class="qr-code-figure"
@@ -81,7 +81,7 @@ exports[`Home component Home renders with QR code for desktop: Desktop 1`] = `
       >
         use speech cards
       </a>
-      .
+      ,
     </li>
     <li>
       no way to lose or forget 
@@ -93,7 +93,13 @@ exports[`Home component Home renders with QR code for desktop: Desktop 1`] = `
       , because your mobile phone is always with you. Am I right?
     </li>
     <li>
-      you may easily share prepared speech cards in JSON format with someone or to open it in a different device.
+      you may easily share prepared speech cards in JSON format with someone or to open it in a different device,
+    </li>
+    <li>
+      no authorization required,
+    </li>
+    <li>
+      no remote storage is used for your projects — you store all data locally on your devices.
     </li>
   </ul>
   <h3>
@@ -120,7 +126,7 @@ exports[`Home component Home renders without QR code for mobile: Mobile 1`] = `
     Simple speech cards
   </h1>
   <h2>
-    Problem
+    Why?
   </h2>
   <p>
     Many people, like me, experience anxiety or even fear when preparing for public speaking or interview. The reasons can be different and there are many ways to defeat such a fear.
@@ -184,7 +190,7 @@ exports[`Home component Home renders without QR code for mobile: Mobile 1`] = `
       >
         use speech cards
       </a>
-      .
+      ,
     </li>
     <li>
       no way to lose or forget 
@@ -196,7 +202,13 @@ exports[`Home component Home renders without QR code for mobile: Mobile 1`] = `
       , because your mobile phone is always with you. Am I right?
     </li>
     <li>
-      you may easily share prepared speech cards in JSON format with someone or to open it in a different device.
+      you may easily share prepared speech cards in JSON format with someone or to open it in a different device,
+    </li>
+    <li>
+      no authorization required,
+    </li>
+    <li>
+      no remote storage is used for your projects — you store all data locally on your devices.
     </li>
   </ul>
   <h3>

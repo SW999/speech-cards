@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { isMobileDevice } from '../../../utils';
 import qr from '../../../img/qr.png';
 
-export const Home: FunctionComponent = () => (
+const Home: FunctionComponent = () => (
   <>
     <h1>Simple speech cards</h1>
-    <h2>Problem</h2>
+    <h2>Why?</h2>
     {!isMobileDevice() && (
       <figure className="qr-code-figure">
         <img src={qr} alt="QR Code link" />
@@ -51,7 +50,7 @@ export const Home: FunctionComponent = () => (
     <ul className="advantages">
       <li>
         could be easily used on a mobile phone to <Link to="/new">create</Link>,
-        store and <Link to="/demo">use speech cards</Link>.
+        store and <Link to="/demo">use speech cards</Link>,
       </li>
       <li>
         no way to lose or forget{' '}
@@ -60,7 +59,12 @@ export const Home: FunctionComponent = () => (
       </li>
       <li>
         you may easily share prepared speech cards in JSON format with someone
-        or to open it in a different device.
+        or to open it in a different device,
+      </li>
+      <li>no authorization required,</li>
+      <li>
+        no remote storage is used for your projects &mdash; you store all data
+        locally on your devices.
       </li>
     </ul>
     <h3>Tips</h3>
@@ -72,3 +76,5 @@ export const Home: FunctionComponent = () => (
     <br />
   </>
 );
+
+export default Home;

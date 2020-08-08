@@ -1,13 +1,12 @@
-import * as React from 'react';
-import {
+import React, {
   ChangeEvent,
   FunctionComponent,
   LegacyRef,
   useEffect,
   useState,
 } from 'react';
-import { ContentItem } from '../content-item/ContentItem';
-import { Input } from '../input/Input';
+import ContentItem from '../content-item/ContentItem';
+import Input from '../input/Input';
 
 type MainStepProps = {
   changeStepContent: (

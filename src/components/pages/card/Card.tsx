@@ -1,18 +1,22 @@
-import * as React from 'react';
-import { FunctionComponent, lazy, Suspense, useEffect, useState } from 'react';
-import { Loading } from '../../loading/Loading';
+import React, {
+  FunctionComponent,
+  lazy,
+  Suspense,
+  useEffect,
+  useState,
+} from 'react';
+import Loading from '../../loading/Loading';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
+import { CARD_TOUCH_HINT, CARD_HINT, THEMES } from '../../../constants';
 import swipe from './swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
   import('../../radial-progress-bar/RedialProgressBar')
 );
-const TOUCH_HINT = 'Please use swipe to turn cards!';
-const HINT = 'Please use left/right arrows to turn cards!';
 
-export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
+const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   const isMobile = isMobileDevice();
   const [page, setPage] = useState<number>(-1);
 
@@ -50,6 +54,15 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     };
   }, [isMobile, page, speech, step]);
 
+  useEffect(() => {
+    const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
+    document.body.classList.add(`${CURRENT_THEME}-theme`);
+
+    return () => {
+      document.body.classList.remove(`${CURRENT_THEME}-theme`);
+    };
+  }, []);
+
   if (page < 0) {
     return (
       <>
@@ -58,10 +71,10 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
             <>
               <img src={swipe} alt="Navigation hint" width="30" height="30" />
               {}
-              {TOUCH_HINT}
+              {CARD_TOUCH_HINT}
             </>
           ) : (
-            HINT
+            CARD_HINT
           )}
         </div>
         <h1 className="card-title">{name}</h1>
@@ -70,24 +83,28 @@ export const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div className="card-header">
-        <h2>{speech[page].title}</h2>
-        <RedialProgressBar
-          currentValue={page + 1}
-          total={step}
-          label={`${page + 1}/${step}`}
-        />
-      </div>
-      <div className="card-body">
-        <ul>
-          {speech[page].content.map(item => (
-            <li key={item}>
-              <Markdown children={item} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Suspense>
+    <>
+      <Suspense fallback={<Loading />}>
+        <div className="card-header">
+          <h2>{speech[page].title}</h2>
+          <RedialProgressBar
+            currentValue={page + 1}
+            total={step}
+            label={`${page + 1}/${step}`}
+          />
+        </div>
+        <div className="card-body">
+          <ul>
+            {speech[page].content.map(item => (
+              <li key={item}>
+                <Markdown children={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Suspense>
+    </>
   );
 };
+
+export default Card;

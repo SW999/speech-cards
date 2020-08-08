@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { FunctionComponent, useEffect, useState, memo } from 'react';
+import React, { FunctionComponent, useEffect, useState, memo } from 'react';
 
 type RedialProgressBarProps = {
   currentValue: number;

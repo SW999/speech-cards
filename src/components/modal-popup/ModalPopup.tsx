@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { FunctionComponent, MouseEvent } from 'react';
+import React, { FunctionComponent, MouseEvent } from 'react';
 
 type ModalPopupType = {
   callback?: () => void;
@@ -8,7 +7,7 @@ type ModalPopupType = {
   title?: string;
 };
 
-export const ModalPopup: FunctionComponent<ModalPopupType> = ({
+const ModalPopup: FunctionComponent<ModalPopupType> = ({
   callback = () => undefined,
   isOpen,
   onClose,
@@ -52,3 +51,5 @@ export const ModalPopup: FunctionComponent<ModalPopupType> = ({
     </div>
   );
 };
+
+export default ModalPopup;

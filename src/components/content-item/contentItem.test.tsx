@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ContentItem } from './ContentItem';
+import ContentItem from './ContentItem';
 
 const mockedContentItemProps = {
   error: {},
