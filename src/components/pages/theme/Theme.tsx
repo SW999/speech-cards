@@ -25,8 +25,8 @@ const Theme: FunctionComponent = () => {
     <>
       <h1>Select speech theme</h1>
       <p>
-        Please choose a theme for displaying the speech/interview that is
-        convenient for you.
+        Please choose a theme of the&nbsp;speech/interview that is convenient
+        for you.
       </p>
       <div className="theme-row">
         {THEME_ITEMS.map(theme => {

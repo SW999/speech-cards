@@ -1,5 +1,4 @@
 $default-size: 4.6rem;
-$border-color: $mojo;
 
 .progress {
   @include progress($default-size);
@@ -28,7 +27,6 @@ $border-color: $mojo;
   &__curve-first-half {
     @include size(100%);
     position: absolute;
-    border: .4rem solid $border-color;
     border-radius: $br;
     clip: rect(0, #{$default-size/2}, $default-size, 0);
   }
@@ -36,7 +34,6 @@ $border-color: $mojo;
   &__curve-second-half {
     @include size(100%);
     position: absolute;
-    border: .4rem solid $border-color;
     border-radius: $br;
     clip: rect(0, #{$default-size/2}, $default-size, 0);
   }

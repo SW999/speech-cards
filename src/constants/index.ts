@@ -4,5 +4,4 @@ export const THEMES = {
   DEFAULT: 'default',
   DARK: 'dark',
   SIMPLE: 'simple',
-  ALTERNATIVE: 'alternative',
 };
