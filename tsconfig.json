@@ -26,6 +26,7 @@
     ]
   },
   "include": [
+    "index.d.ts",
     "src/**/*"
   ],
   "exclude": [
@@ -33,7 +34,8 @@
     ".git",
     "dist",
     "node_modules",
+    "public",
     "*.test.tsx"
   ],
-  "files": ["custom.d.ts"]
+  "files": ["index.d.ts"]
 }

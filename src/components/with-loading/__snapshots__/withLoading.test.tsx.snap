@@ -3,7 +3,7 @@
 exports[`WithLoading component WithLoading renders correctly: WithLoading 1`] = `
 <DocumentFragment>
   <div>
-    Test
+    Test Test
   </div>
 </DocumentFragment>
 `;

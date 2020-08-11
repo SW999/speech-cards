@@ -4,18 +4,18 @@ import { isMobileDevice, addSwipeEvent } from './utils/';
 import Header from './components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
 import WithLoading from './components/with-loading/WithLoading';
-import Card from './components/pages/card/Card';
 
-const Home = lazy(() => import('./components/pages/home/Home'));
+const Card = lazy(() => import('./components/pages/card/Card'));
+const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
 const Footer = lazy(() => import('./components/footer/Footer'));
+const Home = lazy(() => import('./components/pages/home/Home'));
 const MySpeeches = lazy(() =>
   import('./components/pages/my-speeches/MySpeeches')
 );
-const Theme = lazy(() => import('./components/pages/theme/Theme'));
 const PageNotFound = lazy(() =>
   import('./components/pages/page-not-found/PageNotFound')
 );
-const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
+const Theme = lazy(() => import('./components/pages/theme/Theme'));
 
 const App: FunctionComponent = () => {
   useEffect(() => {
@@ -26,7 +26,7 @@ const App: FunctionComponent = () => {
         document.addEventListener(swipeEvent, touch[swipeEvent], false);
       });
 
-      return (): void => {
+      return () => {
         Object.keys(touch).forEach(swipeEvent => {
           document.removeEventListener(swipeEvent, touch[swipeEvent], false);
         });
@@ -39,33 +39,25 @@ const App: FunctionComponent = () => {
       <Header />
       <main>
         <Switch>
+          <Route exact path="/" component={WithLoading({ component: Home })} />
           <Route
-            exact
-            path="/"
-            component={() => <WithLoading component={Home} />}
+            path="/demo"
+            component={WithLoading({ component: Card, ...demo })}
           />
-          <Route path="/demo" component={() => <Card {...demo} />} />
           <Route
             path="/my-speeches"
-            component={() => <WithLoading component={MySpeeches} />}
+            component={WithLoading({ component: MySpeeches })}
           />
           <Route
             path="/new"
-            render={props => <WithLoading component={CreateNew} {...props} />}
+            component={props => WithLoading({ component: CreateNew })(props)}
           />
-          <Route
-            path="/theme"
-            component={() => <WithLoading component={Theme} />}
-          />
-          <Route component={() => <WithLoading component={PageNotFound} />} />
+          <Route path="/theme" component={WithLoading({ component: Theme })} />
+          <Route component={WithLoading({ component: PageNotFound })} />
         </Switch>
       </main>
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={() => <WithLoading component={Footer} />}
-        />
+        <Route exact path="/" component={WithLoading({ component: Footer })} />
       </Switch>
     </>
   );

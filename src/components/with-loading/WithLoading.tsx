@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import Loading from '../loading/Loading';
 
-const WithLoading = ({ component: Component, ...rest }) => (
+const WithLoading = ({ component: Component, ...rest }) => (props?: any) => (
   <Suspense fallback={<Loading />}>
-    <Component {...rest} />
+    <Component {...rest} {...props} />
   </Suspense>
 );
 
