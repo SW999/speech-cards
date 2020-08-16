@@ -124,13 +124,3 @@ main {
     background-color: $dark-gray;
   }
 }
-
-.loading {
-  @include center-flex;
-  height: 33.4rem;
-
-  h1 {
-    font-size: 5rem;
-    font-style: italic;
-  }
-}

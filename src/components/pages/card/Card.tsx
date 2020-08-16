@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Loading from '../../loading/Loading';
+import Loader from '../../loader/Loader';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
 import { CARD_TOUCH_HINT, CARD_HINT, THEMES } from '../../../constants';
@@ -84,7 +84,7 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loader />}>
         <div className="card-header">
           <h2>{speech[page].title}</h2>
           <RedialProgressBar

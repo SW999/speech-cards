@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { isMobileDevice, addSwipeEvent } from './utils/';
 import Header from './components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
-import WithLoading from './components/with-loading/WithLoading';
+import WithLoader from './components/with-loader/WithLoader';
 
 const Card = lazy(() => import('./components/pages/card/Card'));
 const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
@@ -39,25 +39,29 @@ const App: FunctionComponent = () => {
       <Header />
       <main>
         <Switch>
-          <Route exact path="/" component={WithLoading({ component: Home })} />
+          <Route exact path="/" component={WithLoader({ component: Home })} />
           <Route
             path="/demo"
-            component={WithLoading({ component: Card, ...demo })}
+            component={WithLoader({ component: Card, ...demo })}
           />
           <Route
             path="/my-speeches"
-            component={WithLoading({ component: MySpeeches })}
+            component={WithLoader({ component: MySpeeches })}
           />
           <Route
             path="/new"
-            component={props => WithLoading({ component: CreateNew })(props)}
+            component={props => WithLoader({ component: CreateNew })(props)}
           />
-          <Route path="/theme" component={WithLoading({ component: Theme })} />
-          <Route component={WithLoading({ component: PageNotFound })} />
+          <Route path="/theme" component={WithLoader({ component: Theme })} />
+          <Route component={WithLoader({ component: PageNotFound })} />
         </Switch>
       </main>
       <Switch>
-        <Route exact path="/" component={WithLoading({ component: Footer })} />
+        <Route
+          exact
+          path="/"
+          component={WithLoader({ component: Footer, onlyText: true })}
+        />
       </Switch>
     </>
   );

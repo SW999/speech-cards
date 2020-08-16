@@ -14,7 +14,7 @@ import { debounce } from '../../utils/index';
 import { IAction, IState } from '../../types/';
 import { newSpeechReducer, initialState } from '../../reducers';
 import Input from '../input/Input';
-import Loading from '../loading/Loading';
+import Loader from '../loader/Loader';
 import LoadSpeechBtn from '../load-speech-btn/LoadSpeechBtn';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils/';
 const MainStep = lazy(() => import('../main-step/MainStep'));
@@ -104,7 +104,7 @@ const MasterForm: FunctionComponent<DataType> = ({ data = initialState }) => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         {state.step > 0 && (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loader />}>
             <h3 className="step-indicator">{`Step ${state.step}`}</h3>
             <button className="go-back" onClick={prevStep} type="button">
               Back

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader component Loader should take a snapshot with spinner: Loader with spinner 1`] = `
+<DocumentFragment>
+  <div
+    class="loader-wrapper"
+  >
+    <svg
+      class="loader"
+      viewBox="0 0 320 320"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="160"
+        cy="160"
+        r="140"
+        stroke="#BD4E31"
+      />
+      <circle
+        cx="160"
+        cy="160"
+        r="115"
+        stroke="#f6ce4b"
+      />
+      <circle
+        cx="160"
+        cy="160"
+        r="90"
+        stroke="#1998d3"
+      />
+      <circle
+        cx="160"
+        cy="160"
+        r="65"
+        stroke="#2b2b2b"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader component Loader should take a snapshot with text: Loader with text 1`] = `
+<DocumentFragment>
+  <div
+    class="loader-wrapper"
+  >
+    <h1>
+      Loading...
+    </h1>
+  </div>
+</DocumentFragment>
+`;
