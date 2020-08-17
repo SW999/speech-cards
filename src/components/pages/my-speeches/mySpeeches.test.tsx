@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import MySpeeches from './MySpeeches';
+import { STORAGE_SPEECH_PREFIX } from '../../../constants/index';
 
 const getSpeechNamesFromStorage = jest.fn();
 const doSpeechNameReadable = jest.fn();
@@ -25,7 +26,9 @@ describe('MySpeeches', () => {
   });
 
   it('MySpeeches renders selected speech from storage', async () => {
-    getSpeechNamesFromStorage.mockReturnValue(['speech_test1']);
+    getSpeechNamesFromStorage.mockReturnValue([
+      `${STORAGE_SPEECH_PREFIX}test1`,
+    ]);
     doSpeechNameReadable.mockReturnValue(['test1']);
     validateJSON.mockReturnValue(true);
     isMobileDevice.mockReturnValue(false);
@@ -47,7 +50,9 @@ describe('MySpeeches', () => {
   });
 
   it('MySpeeches opens selected speech for edit', async () => {
-    getSpeechNamesFromStorage.mockReturnValue(['speech_test1']);
+    getSpeechNamesFromStorage.mockReturnValue([
+      `${STORAGE_SPEECH_PREFIX}test1`,
+    ]);
     doSpeechNameReadable.mockReturnValue(['test1']);
     validateJSON.mockReturnValue(true);
     isMobileDevice.mockReturnValue(false);

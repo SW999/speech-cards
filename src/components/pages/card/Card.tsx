@@ -8,7 +8,12 @@ import React, {
 import Loader from '../../loader/Loader';
 import { IState } from '../../../types/';
 import { isMobileDevice } from '../../../utils/';
-import { CARD_TOUCH_HINT, CARD_HINT, THEMES } from '../../../constants';
+import {
+  CARD_TOUCH_HINT,
+  CARD_HINT,
+  THEMES,
+  STORAGE_THEME_PREFIX,
+} from '../../../constants';
 import swipe from './swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
@@ -55,7 +60,8 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
   }, [isMobile, page, speech, step]);
 
   useEffect(() => {
-    const CURRENT_THEME = localStorage.getItem('speechTheme') || THEMES.DEFAULT;
+    const CURRENT_THEME =
+      localStorage.getItem(STORAGE_THEME_PREFIX) || THEMES.DEFAULT;
     document.body.classList.add(`${CURRENT_THEME}-theme`);
 
     return () => {

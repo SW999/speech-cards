@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Theme from './Theme';
+import { STORAGE_THEME_PREFIX } from '../../../constants/index';
 
 const mockWindowProperty = (property, value) => {
   const { [property]: originalProperty } = window;
@@ -41,7 +42,7 @@ describe('Theme component', () => {
     fireEvent.click(wrapper.container.querySelectorAll('.theme-col')[1]);
 
     expect(window.localStorage.setItem).toHaveBeenCalledWith(
-      'speechTheme',
+      STORAGE_THEME_PREFIX,
       'dark'
     );
   });

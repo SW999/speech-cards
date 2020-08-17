@@ -1,12 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SpeechesList from './SpeechesList';
+import { STORAGE_SPEECH_PREFIX } from '../../constants/index';
 const mockedProps = {
   editSpeech: jest.fn(),
   removeSpeech: jest.fn(),
   showSpeech: jest.fn(),
   speechNames: [],
 };
+
 describe('<SpeechesList />', () => {
   it('SpeechesList shows message in case no saved speeches', () => {
     render(<SpeechesList {...mockedProps} />);
@@ -18,7 +20,10 @@ describe('<SpeechesList />', () => {
     render(
       <SpeechesList
         {...mockedProps}
-        speechNames={['speech_test1', 'speech_test2']}
+        speechNames={[
+          `${STORAGE_SPEECH_PREFIX}test1`,
+          `${STORAGE_SPEECH_PREFIX}test2`,
+        ]}
       />
     );
 

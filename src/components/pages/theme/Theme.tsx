@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { THEMES } from '../../../constants';
+import { THEMES, STORAGE_THEME_PREFIX } from '../../../constants';
 
 import darkTheme from '../../../img/darkTheme.jpg';
 import defaultTheme from '../../../img/defaultTheme.jpg';
@@ -13,13 +13,13 @@ const THEME_ITEMS = [
 
 const Theme: FunctionComponent = () => {
   const [active, setActive] = useState<string>(
-    localStorage.getItem('speechTheme') || THEMES.DEFAULT
+    localStorage.getItem(STORAGE_THEME_PREFIX) || THEMES.DEFAULT
   );
   const onSetTheme = (name: string): void => {
     if (name === active) return;
 
     setActive(name);
-    localStorage.setItem('speechTheme', name);
+    localStorage.setItem(STORAGE_THEME_PREFIX, name);
   };
 
   return (

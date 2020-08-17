@@ -22,6 +22,8 @@ You may prepare such helper in some pieces of paper by pen **or** using [this si
 To do this you need create a **new speech** or **interview** and save it.
 Now it will be available in 2 versions: in the "**My speeches**" section from the browser local storage and as a separate file with the **JSON** extension.
 
+You may also look at a speech cards example in the "**Demo**" section, which based on the [wonderful article](https://medium.com/swlh/how-to-write-great-emails-and-why-it-matters-ad88fc9ac56a) by Aytekin Tank.
+
 ## Advantages:
 
 - Could be easily used on a mobile device to create, store and use speech cards,
@@ -53,8 +55,8 @@ MIT © Siarhei Vaitehovich
 
 - [x] Add tests
 - [x] Add form validation
-- [ ] Add color themes
+- [x] Add color themes
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
-- [ ] Create PWA
+- [ ] Create PWA(?)

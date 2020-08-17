@@ -5,3 +5,5 @@ export const THEMES = {
   DARK: 'dark',
   SIMPLE: 'simple',
 };
+export const STORAGE_SPEECH_PREFIX = 'speech_';
+export const STORAGE_THEME_PREFIX = 'speechTheme';
