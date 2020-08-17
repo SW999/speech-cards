@@ -1,6 +1,6 @@
 {
   "name": "speech-cards",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "description": "Simple app to prepare speech cards for public speaking or an interview",
   "type": "module",
   "repository": {
