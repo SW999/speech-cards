@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import MasterForm from '../../master-form/MasterForm';
-import { IState } from '../../../types';
+import { IState } from 'types/';
 
 type LocationType = {
   pathname: string;

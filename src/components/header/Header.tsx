@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useCallback, memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import { isMobileDevice } from '../../utils/';
+import { isMobileDevice } from 'utils/';
 
 const Header: FunctionComponent = memo(() => {
   const isMobile = isMobileDevice();

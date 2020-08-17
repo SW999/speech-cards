@@ -14,9 +14,10 @@
   "scripts": {
     "clean": "del-cli dist/*",
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
-    "start": "cross-env NODE_ENV=development && npm run clean && parcel index.html --open",
-    "build": "cross-env NODE_ENV=production && npm run clean && npm run type-check && parcel build index.html --public-url ./ --no-cache --no-source-maps --detailed-report",
-    "predeploy": "npm run build && git push --follow-tags",
+    "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
+    "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --no-cache --no-source-maps --detailed-report",
+    "prebuild": "npm version patch && git push —-tags origin master",
+    "predeploy": "npm run build && git push --tags",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
@@ -60,7 +61,7 @@
       ".+\\.css$": "<rootDir>/src/styleMock.ts",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$"
+    "testRegex": "(<rootDir>/src/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
   "keywords": [
     "public speaking",
@@ -130,5 +131,12 @@
     "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.2",
     "typescript": "3.8.3"
+  },
+  "alias": {
+    "components": "./src/components",
+    "constants": "./src/constants",
+    "reducers": "./src/reducers",
+    "types": "./src/types",
+    "utils": "./src/utils"
   }
 }

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
-import { debounce } from '../../utils/index';
+import { debounce } from 'utils/';
 import Input from '../input/Input';
 import md from '../../img/md.svg';
 

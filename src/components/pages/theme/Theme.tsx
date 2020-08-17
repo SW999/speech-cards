@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { THEMES, STORAGE_THEME_PREFIX } from '../../../constants';
+import { THEMES, STORAGE_THEME_PREFIX } from 'constants/';
 
 import darkTheme from '../../../img/darkTheme.jpg';
 import defaultTheme from '../../../img/defaultTheme.jpg';

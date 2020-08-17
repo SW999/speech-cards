@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { isMobileDevice, addSwipeEvent } from './utils/';
-import Header from './components/header/Header';
+import { isMobileDevice, addSwipeEvent } from 'utils/';
+import Header from 'components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
-import WithLoader from './components/with-loader/WithLoader';
+import WithLoader from 'components/with-loader/WithLoader';
 
 const Card = lazy(() => import('./components/pages/card/Card'));
 const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
