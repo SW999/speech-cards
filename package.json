@@ -1,6 +1,6 @@
 {
   "name": "speech-cards",
-  "version": "0.6.4",
+  "version": "0.6.6",
   "description": "Simple app to prepare speech cards for public speaking or an interview",
   "type": "module",
   "repository": {
@@ -28,7 +28,7 @@
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
     "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --no-cache --no-source-maps --detailed-report",
     "prebuild": "npm version patch && git push —-tags origin master",
-    "predeploy": "npm run build && git push --tags",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
