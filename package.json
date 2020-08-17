@@ -9,6 +9,17 @@
   },
   "homepage": "https://sw999.github.io/speech-cards",
   "author": "Siarhei Vaitehovich",
+  "keywords": [
+    "public speaking",
+    "speech",
+    "interview",
+    "speech-cards",
+    "interview-cards",
+    "speech cards",
+    "interview cards",
+    "react",
+    "typescript"
+  ],
   "license": "MIT",
   "main": "src/index.tsx",
   "scripts": {
@@ -22,7 +33,7 @@
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
     "lint": "npm run lint:js && npm run lint:scss",
-    "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.html,.ts,.tsx,.mjs --report-unused-disable-directives src",
+    "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.ts,.tsx,.mjs --report-unused-disable-directives src",
     "lint:scss": "stylelint \"src/**/*.scss\" --syntax scss",
     "type-check:watch": "tsc --noEmit --watch",
     "test": "npm run lint && jest",
@@ -55,25 +66,14 @@
       "js"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
+      "<rootDir>/tools/setupTests.ts"
     ],
     "moduleNameMapper": {
-      ".+\\.css$": "<rootDir>/src/styleMock.ts",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+      ".+\\.css$": "<rootDir>/tools/__mocks__/styleMock.ts",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/__mocks__/fileMock.js"
     },
     "testRegex": "(<rootDir>/src/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
-  "keywords": [
-    "public speaking",
-    "speech",
-    "interview",
-    "speech-cards",
-    "interview-cards",
-    "speech cards",
-    "interview cards",
-    "react",
-    "typescript"
-  ],
   "staticFiles": {
     "staticPath": "public",
     "watcherGlob": "**"
@@ -88,7 +88,7 @@
     "@testing-library/jest-dom": "^5.7.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^12.0.6",
-    "@types/jest": "^25.2.2",
+    "@types/jest": "^25.2.3",
     "@types/node": "^13.13.6",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
@@ -109,11 +109,10 @@
     "eslint-plugin-testing-library": "^3.1.3",
     "gh-pages": "^3.0.0",
     "husky": "^3.1.0",
-    "jest": "^25.5.4",
+    "jest": "^26.0.1",
     "jest-extended": "^0.11.5",
     "markdown-to-jsx": "^6.11.4",
     "node-sass": "^4.14.1",
-    "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.4.4",
     "prettier": "^2.0.5",
     "react-hook-form": "^4.10.2",
@@ -124,7 +123,7 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-prettier": "^1.1.2",
     "stylelint-scss": "^3.17.2",
-    "ts-jest": "^25.5.1",
+    "ts-jest": "^26.1.3",
     "tslint": "^5.20.1",
     "tslint-config-airbnb": "^5.11.2",
     "tslint-config-prettier": "^1.18.0",
@@ -132,11 +131,7 @@
     "tslint-react-hooks": "^2.2.2",
     "typescript": "3.8.3"
   },
-  "alias": {
-    "components": "./src/components",
-    "constants": "./src/constants",
-    "reducers": "./src/reducers",
-    "types": "./src/types",
-    "utils": "./src/utils"
+  "resolutions": {
+    "parcel-bundler": "1.12.4"
   }
 }

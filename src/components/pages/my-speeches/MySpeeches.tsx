@@ -11,8 +11,8 @@ import {
   readFromStorage,
   removeFromStorage,
   validateJSON,
-} from 'utils/';
-import { IState } from 'types/';
+} from '../../../utils';
+import { IState } from '../../../types';
 import Card from '../card/Card';
 import ModalPopup from '../../modal-popup/ModalPopup';
 import LoadSpeechBtn from '../../load-speech-btn/LoadSpeechBtn';

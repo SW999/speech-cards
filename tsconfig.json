@@ -37,6 +37,7 @@
     "dist",
     "node_modules",
     "public",
+    "tools",
     "*.test.tsx"
   ],
   "files": ["index.d.ts"]

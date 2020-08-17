@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { isMobileDevice } from 'utils/';
+import { isMobileDevice } from '../../../utils';
 import qr from '../../../img/qr.png';
 
 const Home: FunctionComponent = () => (

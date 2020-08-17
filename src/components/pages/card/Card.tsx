@@ -6,14 +6,14 @@ import React, {
   useState,
 } from 'react';
 import Loader from '../../loader/Loader';
-import { IState } from 'types/';
-import { isMobileDevice } from 'utils/';
+import { IState } from '../../../types';
+import { isMobileDevice } from '../../../utils';
 import {
   CARD_TOUCH_HINT,
   CARD_HINT,
   THEMES,
   STORAGE_THEME_PREFIX,
-} from 'constants/';
+} from '../../../constants';
 import swipe from './swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
