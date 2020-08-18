@@ -24,7 +24,7 @@
   "main": "src/index.tsx",
   "scripts": {
     "clean": "del-cli dist/*",
-    "version": "npm version patch",
+    "version": "npm version patch -f",
     "push": "git push --tags origin HEAD:master",
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
