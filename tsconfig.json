@@ -2,10 +2,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "jsx": "react",
-    "baseUrl": "./src",
-    "paths": {
-      "~*": ["./*"]
-    },
+    "baseUrl": "src",
+    "rootDir": "./src",
     "declaration": false,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
