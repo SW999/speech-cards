@@ -30,7 +30,7 @@
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
     "prebuild": "npm run version",
     "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps --detailed-report",
-    "predeploy": "npm run build && npm run push",
+    "predeploy": "npm run build && git push --follow-tags",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit",
