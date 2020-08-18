@@ -24,11 +24,10 @@
   "main": "src/index.tsx",
   "scripts": {
     "clean": "del-cli dist/*",
-    "version": "npm version patch",
     "push": "git push --tags origin master",
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
-    "prebuild": "npm run version && npm publish",
+    "prebuild": "npm version patch",
     "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps --detailed-report",
     "predeploy": "npm run build && git push --follow-tags",
     "deploy": "gh-pages -d dist",
