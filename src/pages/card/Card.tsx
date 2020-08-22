@@ -5,20 +5,20 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Loader from '../../loader/Loader';
-import { IState } from '../../../types';
-import { isMobileDevice } from '../../../utils';
+import Loader from '../../components/loader/Loader';
+import { IState } from '../../types';
+import { isMobileDevice } from '../../utils';
 import {
   CARD_TOUCH_HINT,
   CARD_HINT,
   THEMES,
   STORAGE_THEME_PREFIX,
-} from '../../../constants';
-import swipe from './swipe.svg';
+} from '../../constants';
+import swipe from '../../img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
-  import('../../radial-progress-bar/RedialProgressBar')
+  import('../../components/radial-progress-bar/RedialProgressBar')
 );
 
 const Card: FunctionComponent<IState> = ({ name, step, speech }) => {

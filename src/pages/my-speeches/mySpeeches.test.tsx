@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import MySpeeches from './MySpeeches';
-import { STORAGE_SPEECH_PREFIX } from '../../../constants';
+import { STORAGE_SPEECH_PREFIX } from '../../constants';
 
 const getSpeechNamesFromStorage = jest.fn();
 const doSpeechNameReadable = jest.fn();
@@ -10,7 +10,7 @@ const readFromStorage = jest.fn();
 const validateJSON = jest.fn();
 const isMobileDevice = jest.fn();
 
-jest.mock('../../../utils', () => ({
+jest.mock('../../utils', () => ({
   getSpeechNamesFromStorage: () => getSpeechNamesFromStorage(),
   doSpeechNameReadable: () => doSpeechNameReadable(),
   readFromStorage: () => readFromStorage(),

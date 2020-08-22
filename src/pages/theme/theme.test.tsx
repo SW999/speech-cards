@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Theme from './Theme';
-import { STORAGE_THEME_PREFIX } from '../../../constants/index';
+import { STORAGE_THEME_PREFIX } from '../../constants';
 
 const mockWindowProperty = (property, value) => {
   const { [property]: originalProperty } = window;

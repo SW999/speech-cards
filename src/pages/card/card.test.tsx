@@ -12,7 +12,7 @@ const mockStartProps = {
 
 const isMobileDeviceMock = jest.fn();
 
-jest.mock('../../../utils/', () => ({
+jest.mock('../../utils/', () => ({
   isMobileDevice: () => isMobileDeviceMock(),
 }));
 

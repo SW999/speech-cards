@@ -20,7 +20,7 @@ const Header: FunctionComponent = memo(() => {
   }, [isMobile, toggleMenu]);
 
   return (
-    <header className="page-header" id="pageHeader" role="heading">
+    <header className="page-header" id="pageHeader" role="banner">
       {isMobile && (
         <div className="menu-toggle" id="toggleMenu" role="button">
           <span />

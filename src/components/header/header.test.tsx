@@ -30,14 +30,14 @@ describe('<Header />', () => {
 
     fireEvent.click(screen.queryByRole('button'));
 
-    expect(await screen.findByRole('heading')).toHaveAttribute(
+    expect(await screen.findByRole('banner')).toHaveAttribute(
       'class',
       'page-header show-menu'
     );
 
     fireEvent.click(screen.queryByRole('button'));
 
-    expect(await screen.findByRole('heading')).toHaveAttribute(
+    expect(await screen.findByRole('banner')).toHaveAttribute(
       'class',
       'page-header'
     );

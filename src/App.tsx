@@ -5,17 +5,13 @@ import Header from './components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
 import WithLoader from './components/with-loader/WithLoader';
 
-const Card = lazy(() => import('./components/pages/card/Card'));
-const CreateNew = lazy(() => import('./components/pages/create-new/CreateNew'));
+const Card = lazy(() => import('./pages/card/Card'));
+const CreateNew = lazy(() => import('./pages/create-new/CreateNew'));
 const Footer = lazy(() => import('./components/footer/Footer'));
-const Home = lazy(() => import('./components/pages/home/Home'));
-const MySpeeches = lazy(() =>
-  import('./components/pages/my-speeches/MySpeeches')
-);
-const PageNotFound = lazy(() =>
-  import('./components/pages/page-not-found/PageNotFound')
-);
-const Theme = lazy(() => import('./components/pages/theme/Theme'));
+const Home = lazy(() => import('./pages/home/Home'));
+const MySpeeches = lazy(() => import('./pages/my-speeches/MySpeeches'));
+const PageNotFound = lazy(() => import('./pages/page-not-found/PageNotFound'));
+const Theme = lazy(() => import('./pages/theme/Theme'));
 
 const App: FunctionComponent = () => {
   useEffect(() => {

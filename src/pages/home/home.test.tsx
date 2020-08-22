@@ -5,7 +5,7 @@ import { HashRouter } from 'react-router-dom';
 
 const isMobileDevice = jest.fn();
 
-jest.mock('../../../utils', () => ({
+jest.mock('../../utils', () => ({
   isMobileDevice: (): boolean => isMobileDevice(),
 }));
 
