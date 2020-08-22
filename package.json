@@ -28,7 +28,7 @@
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
     "prebuild": "npm version patch",
-    "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps --detailed-report",
+    "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps --experimental-scope-hoisting",
     "predeploy": "npm run build && git push --follow-tags",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
