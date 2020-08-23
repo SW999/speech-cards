@@ -2,8 +2,10 @@
 
 exports[`Home component Home renders with QR code for desktop: Desktop 1`] = `
 <DocumentFragment>
-  <h1>
-    Simple speech cards
+  <h1
+    class="header-logo"
+  >
+    Speech cards
   </h1>
   <h2>
     Why?
@@ -122,8 +124,10 @@ exports[`Home component Home renders with QR code for desktop: Desktop 1`] = `
 
 exports[`Home component Home renders without QR code for mobile: Mobile 1`] = `
 <DocumentFragment>
-  <h1>
-    Simple speech cards
+  <h1
+    class="header-logo"
+  >
+    Speech cards
   </h1>
   <h2>
     Why?

@@ -5,7 +5,7 @@ import qr from '../../img/qr.png';
 
 const Home: FunctionComponent = () => (
   <>
-    <h1>Simple speech cards</h1>
+    <h1 className="header-logo">Speech cards</h1>
     <h2>Why?</h2>
     {!isMobileDevice() && (
       <figure className="qr-code-figure">

@@ -52,6 +52,16 @@ h3 {
   text-align: left;
 }
 
+.header-logo {
+  &::before {
+    @include pseudo($display: inline-block, $pos: static);
+    width: 9.4rem;
+    height: 6.2rem;
+    transform: translateX(-1rem) translateY(1rem);
+    background: url("../img/logo.png") 0 center no-repeat transparent;
+  }
+}
+
 p {
   margin-bottom: 1.58rem;
   font-size: 2rem;
