@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, memo } from 'react';
+import '../../scss/components/_progress-bar.scss';
 
 type RedialProgressBarProps = {
   currentValue: number;
@@ -38,7 +39,15 @@ const RedialProgressBar: FunctionComponent<RedialProgressBarProps> = ({
   }
 
   return (
-    <div className={`progress progress-${dynamicValue}`} role="progressbar">
+    <div
+      className={`progress progress-${dynamicValue}`}
+      role="progressbar"
+      aria-valuemax={total}
+      aria-valuemin={1}
+      aria-valuenow={currentValue}
+      aria-valuetext={result}
+      aria-label={result}
+    >
       <div className="progress__count">{result}</div>
       <div className="progress__curve">
         <div className="progress__curve-first-half" />

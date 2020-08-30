@@ -5,7 +5,7 @@ import Header from './components/header/Header';
 import demo from './how_to_write_efficient_emails.json';
 import WithLoader from './components/with-loader/WithLoader';
 
-const Card = lazy(() => import('./pages/card/Card'));
+const Card = lazy(() => import('./components/card/Card'));
 const CreateNew = lazy(() => import('./pages/create-new/CreateNew'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 const Home = lazy(() => import('./pages/home/Home'));

@@ -43,6 +43,7 @@ const SpeechesList: FunctionComponent<SpeechesListType> = ({
               data-name={name}
               onClick={editSpeech}
               title="Edit"
+              aria-label="Edit"
               type="button"
             >
               <i className="icon-pencil icon" aria-hidden="true" />
@@ -52,6 +53,7 @@ const SpeechesList: FunctionComponent<SpeechesListType> = ({
               data-name={name}
               onClick={removeSpeech}
               title="Remove"
+              aria-label="Remove"
               type="button"
             >
               <i className="icon-trash-can icon" aria-hidden="true" />

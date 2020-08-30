@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Loader from '../../components/loader/Loader';
+import Loader from '../loader/Loader';
 import { IState } from '../../types';
 import { isMobileDevice } from '../../utils';
 import {
@@ -14,11 +14,12 @@ import {
   THEMES,
   STORAGE_THEME_PREFIX,
 } from '../../constants';
+import '../../scss/components/_card.scss';
 import swipe from '../../img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
-  import('../../components/radial-progress-bar/RedialProgressBar')
+  import('../radial-progress-bar/RedialProgressBar')
 );
 
 const Card: FunctionComponent<IState> = ({ name, step, speech }) => {

@@ -25,7 +25,7 @@ describe('MasterForm', () => {
   it('MasterForm shows validation message for next step in case title is empty', async () => {
     render(<MasterForm />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next card' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Create card' }));
 
     await waitFor(() => {
       expect(screen.getByRole('alert')).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('MasterForm', () => {
       ).not.toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next card' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Create card' }));
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: 'Back' })).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('MasterForm', () => {
       ).not.toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next card' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Create card' }));
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: 'Back' })).toBeInTheDocument();
@@ -95,7 +95,7 @@ describe('MasterForm', () => {
       ).not.toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: 'Next card' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Create card' }));
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: 'Back' })).toBeInTheDocument();

@@ -1,4 +1,5 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
+import '../../scss/components/_modal-popup.scss';
 
 type ModalPopupType = {
   callback?: () => void;

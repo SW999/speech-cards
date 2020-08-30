@@ -4,6 +4,7 @@ exports[`Footer component Footer should take a snapshot: Footer 1`] = `
 <DocumentFragment>
   <div
     class="footer"
+    role="contentinfo"
   >
     <a
       href="https://github.com/SW999/speech-cards"

@@ -87,14 +87,10 @@ input[type="text"] {
   @include button;
   @include ripple;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
 
   @include mq(tablet) {
     display: inline-block;
     max-width: none;
-    margin-left: 0;
-    margin-right: 0;
   }
 }

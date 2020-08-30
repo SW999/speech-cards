@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   MouseEvent,
+  lazy,
   useCallback,
   useEffect,
   useState,
@@ -13,10 +14,15 @@ import {
   validateJSON,
 } from '../../utils';
 import { IState } from '../../types';
-import Card from '../card/Card';
-import ModalPopup from '../../components/modal-popup/ModalPopup';
 import LoadSpeechBtn from '../../components/load-speech-btn/LoadSpeechBtn';
 import SpeechesList from '../../components/speeches-list/SpeechesList';
+
+import WithLoader from '../../components/with-loader/WithLoader';
+
+const Card = lazy(() => import('../../components/card/Card'));
+const ModalPopup = lazy(() =>
+  import('../../components/modal-popup/ModalPopup')
+);
 
 const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);
@@ -69,7 +75,7 @@ const MySpeeches: FunctionComponent = () => {
   }, []);
 
   if (data) {
-    return <Card {...data} />;
+    return WithLoader({ component: Card })({ ...data });
   }
 
   if (edit) {
@@ -89,11 +95,14 @@ const MySpeeches: FunctionComponent = () => {
         showSpeech={showSpeech}
         speechNames={speechNames}
       />
-      <ModalPopup
-        callback={doModalAction}
-        isOpen={!!removedItemName}
-        onClose={hideModal}
-      />
+      {!!removedItemName &&
+        WithLoader({
+          component: ModalPopup,
+        })({
+          callback: doModalAction,
+          isOpen: true,
+          onClose: hideModal,
+        })}
       <br />
       <br />
       <h3>Load speech:</h3>

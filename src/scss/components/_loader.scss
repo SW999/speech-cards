@@ -1,3 +1,6 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
 .loader-wrapper {
   @include center-flex;
   height: 33.4rem;

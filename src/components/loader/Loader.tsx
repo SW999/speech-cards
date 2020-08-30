@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import '../../scss/components/_loader.scss';
 
 type LoaderProps = {
   onlyText?: boolean;

@@ -1,3 +1,6 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
 .dark-theme {
   --title-color: #{$white};
   --content-bg: #{$dark-gray};
@@ -25,30 +28,34 @@
   --title-color: #{$green};
   --progress-border-color: #{lighten($green, 5%)};
   --card-hint: #{lighten($green, 5%)};
-  --card-header-color: #{darken($semi-gray, 30%)};
-  --card-header-bg: #{lighten($semi-gray, 25%)};
-  --card-body-before-bg: #{lighten($semi-gray, 25%)};
+  --card-header-color: #{lighten($dark-gray, 10%)};
+  --card-header-bg: #{lighten($semi-gray, 15%)};
+  --card-body-before-bg: #{lighten($semi-gray, 15%)};
   --card-body-li-stripe-shadow: #{$white};
-  --card-body-li-stripe-bg: #{lighten($semi-gray, 20%)};
+  --card-body-li-stripe-bg: #{lighten($semi-gray, 22%)};
 
   .card-header h2 {
-    text-shadow: .2rem .2rem $white;
+    text-shadow: .1rem .1rem $white;
   }
 }
 
 .content {
-  background-color: var(--content-bg, $white);
+  background-color: var(--content-bg, $light-gray);
+
+  @include mq(tablet) {
+    background-color: var(--content-bg, $white);
+  }
 }
 
 .show-menu nav {
-  background-color: var(--mobile-nav-bg, rgba($white, .99));
+  background-color: var(--mobile-nav-bg, $white);
 }
 
 nav {
   background-color: var(--nav-bg, $white);
 
   a {
-    color: var(--nav-link-color, rgba($dark-gray, 0.9));
+    color: var(--nav-link-color, rgba($dark-gray, .9));
 
     &.active {
       color: var(--nav-link-active-color, $dark-gray);

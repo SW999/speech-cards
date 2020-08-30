@@ -54,6 +54,7 @@ a {
 }
 
 main {
+  flex-grow: 1;
   position: relative;
   padding: 5rem 2rem 0 2rem;
 
@@ -63,17 +64,19 @@ main {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 60rem;
   min-height: 100vh;
   z-index: 1;
-  background-color: $white;
+  background-color: $light-gray;
 
   @include mq(tablet) {
     min-height: calc(100vh - 4rem);
     margin: 2rem 0;
     padding: 1.5rem 2rem 6.6rem 2rem;
-    border-radius: 2.5rem;
+    border-radius: 2.5rem;  background-color: $white;
   }
 
   @include mq(desktop) {

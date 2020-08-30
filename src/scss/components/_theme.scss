@@ -1,3 +1,6 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
 .theme-row {
   display: flex;
   flex-wrap: wrap;

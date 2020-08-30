@@ -154,7 +154,7 @@ const MasterForm: FunctionComponent<DataType> = ({ data = initialState }) => {
             onClick={handleSubmit(nextStep)}
             type="button"
           >
-            Next card
+            {state.step < 1 ? 'Create card' : 'Next card'}
           </button>
           <button
             className="btn btn-green-outlined"

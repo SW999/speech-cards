@@ -1,3 +1,6 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
 .modal-popup-wrapper {
   @include center-flex;
   position: fixed;

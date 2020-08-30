@@ -3,16 +3,8 @@ import { Link } from 'react-router-dom';
 import { isMobileDevice } from '../../utils';
 import qr from '../../img/qr.png';
 
-const Home: FunctionComponent = () => (
+const WhyContent = (
   <>
-    <h1 className="header-logo">Speech cards</h1>
-    <h2>Why?</h2>
-    {!isMobileDevice() && (
-      <figure className="qr-code-figure">
-        <img src={qr} alt="QR Code link" />
-        <figcaption>QR Code link for mobile</figcaption>
-      </figure>
-    )}
     <p>
       Many people, like me, experience anxiety or even fear when preparing for
       public speaking or interview. The reasons can be different and there are
@@ -28,7 +20,10 @@ const Home: FunctionComponent = () => (
       correspond to the main sections of the speech.{' '}
       <strong>Speech cards</strong>.
     </p>
-    <h3>How it works?</h3>
+  </>
+);
+const HowItWorksContent = (
+  <>
     <p>
       After you have prepared well your speech or interview, you may need a
       little helper in order not to lose the thread and be more confident.
@@ -46,33 +41,87 @@ const Home: FunctionComponent = () => (
       <Link to="/my-speeches">My speeches</Link> section from the browser local
       storage and as a separate file with the JSON extension.
     </p>
-    <h3>Advantages:</h3>
-    <ul className="advantages">
-      <li>
-        could be easily used on a mobile phone to <Link to="/new">create</Link>,
-        store and <Link to="/demo">use speech cards</Link>,
-      </li>
-      <li>
-        no way to lose or forget{' '}
-        <Link to="/my-speeches">your speech cards</Link>, because your mobile
-        phone is always with you. Am I right?
-      </li>
-      <li>
-        you may easily share prepared speech cards in JSON format with someone
-        or to open it in a different device,
-      </li>
-      <li>no authorization required,</li>
-      <li>
-        no remote storage is used for your projects &mdash; you store all data
-        locally on your devices.
-      </li>
-    </ul>
-    <h3>Tips</h3>
-    <ul>
-      <li>Each card should be as simple as possible,</li>
-      <li>Should contain short clear heading,</li>
-      <li>Should contain main idea/ideas of current part of speech.</li>
-    </ul>
+  </>
+);
+const AdvantagesContent = (
+  <ul className="advantages">
+    <li>
+      could be easily used on a mobile phone to <Link to="/new">create</Link>,
+      store and <Link to="/demo">use speech cards</Link>,
+    </li>
+    <li>
+      no way to lose or forget <Link to="/my-speeches">your speech cards</Link>,
+      because your mobile phone is always with you. Am I right?
+    </li>
+    <li>
+      you may easily share prepared speech cards in JSON format with someone or
+      to open it in a different device,
+    </li>
+    <li>works offline! You may save it as the native app to your device,</li>
+    <li>no authorization required,</li>
+    <li>
+      no remote storage is used for your projects &mdash; you store all data
+      locally on your devices.
+    </li>
+  </ul>
+);
+const TipsContent = (
+  <ul>
+    <li>Each card should be as simple as possible,</li>
+    <li>Should contain short clear heading,</li>
+    <li>Should contain main idea/ideas of current part of speech.</li>
+  </ul>
+);
+
+const Home: FunctionComponent = () => (
+  <>
+    <h1 className="header-logo">Speech cards</h1>
+    {isMobileDevice() ? (
+      <>
+        <details>
+          <summary>
+            <h2>Why?</h2>
+          </summary>
+          <section>{WhyContent}</section>
+        </details>
+
+        <details>
+          <summary>
+            <h3>How it works?</h3>
+          </summary>
+          <section>{HowItWorksContent}</section>
+        </details>
+
+        <details>
+          <summary>
+            <h3>Advantages</h3>
+          </summary>
+          <section>{AdvantagesContent}</section>
+        </details>
+
+        <details>
+          <summary>
+            <h3>Tips</h3>
+          </summary>
+          <section>{TipsContent}</section>
+        </details>
+      </>
+    ) : (
+      <>
+        <h2>Why?</h2>
+        <figure className="qr-code-figure">
+          <img src={qr} alt="QR Code link" />
+          <figcaption>QR Code link for mobile</figcaption>
+        </figure>
+        {WhyContent}
+        <h3>How it works?</h3>
+        {HowItWorksContent}
+        <h3>Advantages:</h3>
+        {AdvantagesContent}
+        <h3>Tips</h3>
+        {TipsContent}
+      </>
+    )}
     <br />
   </>
 );

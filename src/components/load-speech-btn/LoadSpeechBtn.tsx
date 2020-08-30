@@ -32,15 +32,15 @@ const LoadSpeechBtn: FunctionComponent<LoadSpeechBtnType> = memo(
 
     return (
       <>
-        <input
-          type="file"
-          id="file"
-          className="file-input"
-          accept=".json"
-          onChange={handleFileSelected}
-        />
-        <label htmlFor="file" className="file-input-label btn-green">
+        <label className="file-input-label btn-green">
           {name}
+          <input
+            type="file"
+            id="file"
+            className="file-input"
+            accept=".json"
+            onChange={handleFileSelected}
+          />
         </label>
       </>
     );

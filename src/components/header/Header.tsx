@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useEffect, useCallback, memo } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { isMobileDevice } from '../../utils';
 
-const Header: FunctionComponent = memo(() => {
+export default function Header() {
   const isMobile = isMobileDevice();
   const toggleMenu = useCallback(() => {
     if (isMobile) {
@@ -22,7 +22,12 @@ const Header: FunctionComponent = memo(() => {
   return (
     <header className="page-header" id="pageHeader" role="banner">
       {isMobile && (
-        <div className="menu-toggle" id="toggleMenu" role="button">
+        <div
+          aria-label="Toggle menu"
+          className="menu-toggle"
+          id="toggleMenu"
+          role="button"
+        >
           <span />
         </div>
       )}
@@ -37,6 +42,4 @@ const Header: FunctionComponent = memo(() => {
       </nav>
     </header>
   );
-});
-
-export default Header;
+}

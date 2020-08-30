@@ -3,7 +3,7 @@ import { version } from '../../../package.json';
 import github from '../../img/github.svg';
 
 const Footer: FunctionComponent = () => (
-  <div className="footer">
+  <div className="footer" role="contentinfo">
     <a
       href="https://github.com/SW999/speech-cards"
       rel="nofollow"

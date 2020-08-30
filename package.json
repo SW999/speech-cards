@@ -1,8 +1,7 @@
 {
   "name": "speech-cards",
-  "version": "0.6.11",
+  "version": "1.0.0",
   "description": "Simple app to prepare speech cards for public speaking or an interview",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/SW999/speech-cards.git"
@@ -29,6 +28,7 @@
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
     "prebuild": "npm version patch",
     "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps --experimental-scope-hoisting",
+    "postbuild": "workbox generateSW",
     "predeploy": "npm run build && git push --follow-tags",
     "deploy": "gh-pages -d dist",
     "prettify": "prettier --write \"./src/**/*.{ts,tsx}\"",
@@ -39,7 +39,8 @@
     "type-check:watch": "tsc --noEmit --watch",
     "test": "npm run lint && jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:update": "jest --updateSnapshot"
   },
   "husky": {
     "hooks": {
@@ -70,8 +71,8 @@
       "<rootDir>/tools/setupTests.ts"
     ],
     "moduleNameMapper": {
-      ".+\\.css$": "<rootDir>/tools/__mocks__/styleMock.ts",
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/__mocks__/fileMock.js"
+      ".+\\.(css|scss)$": "<rootDir>/tools/__mocks__/styleMock.ts",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/__mocks__/fileMock.ts"
     },
     "testRegex": "(<rootDir>/src/.*|(\\.|/)(test|spec))\\.tsx?$"
   },
@@ -80,6 +81,8 @@
     "watcherGlob": "**"
   },
   "dependencies": {
+    "components": "^0.1.0",
+    "img": "^3.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0"
@@ -131,6 +134,7 @@
     "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.2",
     "typescript": "3.8.3",
-    "parcel-bundler": "1.12.4"
+    "parcel-bundler": "1.12.4",
+    "workbox-cli": "^5.0.0"
   }
 }

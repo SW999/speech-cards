@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { THEMES, STORAGE_THEME_PREFIX } from '../../constants';
+import '../../scss/components/_theme.scss';
 
 import darkTheme from '../../img/darkTheme.jpg';
 import defaultTheme from '../../img/defaultTheme.jpg';

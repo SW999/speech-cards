@@ -31,6 +31,7 @@ You may also look at a speech cards example in the "**Demo**" section, which bas
 - Could be easily used on a mobile device to create, store and use speech cards,
 - No way to lose or forget your speech cards, because your mobile device is always with you. Am I right?
 - You may easily share prepared speech cards in JSON format with someone or to open it in a different device,
+- works offline! You may save it as the native app to your device,
 - No authorization required,
 - No remote storage is used for your projects - you store all data locally on your devices.
 
@@ -46,6 +47,7 @@ You may also look at a speech cards example in the "**Demo**" section, which bas
 * Form validation with [react-hook-form](https://github.com/react-hook-form/react-hook-form)
 * SASS
 * Tests via Jest and @testing-library/react
+* progressive web application (PWA)
 
 Besides, I've faced with an interesting issue with routing of SPA on GitHub Pages. Fortunately, I managed to find a brilliant [solution](https://github.com/rafgraph/spa-github-pages) by [Rafael Pedicini](https://github.com/rafgraph). Thank you, Rafael, you helped keep the remains of my mind! :speak_no_evil:
 
@@ -61,4 +63,6 @@ MIT © Siarhei Vaitehovich
 - [x] Add edit mode for an existed speech
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
-- [ ] Create PWA(?)
+- [x] Create PWA
+
+Done! :sunny:
