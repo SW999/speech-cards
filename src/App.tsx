@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { isMobileDevice, addSwipeEvent } from './utils';
 import Header from './components/header/Header';
-import demo from './how_to_write_efficient_emails.json';
 import WithLoader from './components/with-loader/WithLoader';
 
 const Card = lazy(() => import('./components/card/Card'));
@@ -38,7 +37,7 @@ const App: FunctionComponent = () => {
           <Route exact path="/" component={WithLoader({ component: Home })} />
           <Route
             path="/demo"
-            component={WithLoader({ component: Card, ...demo })}
+            component={props => WithLoader({ component: Card })(props)}
           />
           <Route
             path="/my-speeches"

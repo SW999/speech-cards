@@ -19,7 +19,6 @@ import SpeechesList from '../../components/speeches-list/SpeechesList';
 
 import WithLoader from '../../components/with-loader/WithLoader';
 
-const Card = lazy(() => import('../../components/card/Card'));
 const ModalPopup = lazy(() =>
   import('../../components/modal-popup/ModalPopup')
 );
@@ -75,7 +74,7 @@ const MySpeeches: FunctionComponent = () => {
   }, []);
 
   if (data) {
-    return WithLoader({ component: Card })({ ...data });
+    return <Redirect to={{ pathname: '/demo', state: { data } }} />;
   }
 
   if (edit) {

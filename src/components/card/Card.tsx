@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import Loader from '../loader/Loader';
-import { IState } from '../../types';
+import { IState, LocationType } from '../../types';
 import { isMobileDevice } from '../../utils';
 import {
   CARD_TOUCH_HINT,
@@ -21,12 +21,30 @@ const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
   import('../radial-progress-bar/RedialProgressBar')
 );
+const defaultContent = {
+  name: '',
+  speech: [],
+  step: 0,
+};
+type CardType = {
+  content?: IState;
+  location?: LocationType;
+};
 
-const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
+const Card: FunctionComponent<CardType> = ({
+  content = defaultContent,
+  location,
+}) => {
+  const props = location?.state?.data;
+
   const isMobile = isMobileDevice();
+  const [data, setData] = useState<IState>(
+    props ? { ...props } : { ...content }
+  );
   const [page, setPage] = useState<number>(-1);
 
   useEffect(() => {
+    const { step } = data;
     const moveLeft = () => setPage(page => (page > -1 ? page - 1 : -1));
 
     const moveRight = () =>
@@ -58,7 +76,7 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     return () => {
       document.removeEventListener('keydown', slideCard);
     };
-  }, [isMobile, page, speech, step]);
+  }, [isMobile, page, data]);
 
   useEffect(() => {
     const CURRENT_THEME =
@@ -70,7 +88,16 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!props && content.speech.length < 1) {
+      import('../../how_to_write_efficient_emails.json').then(demo =>
+        setData({ ...demo })
+      );
+    }
+  }, [props, content]);
+
   if (page < 0) {
+    const { name } = data;
     return (
       <>
         <div className="card-hint" data-testid="card-hint">
@@ -93,16 +120,16 @@ const Card: FunctionComponent<IState> = ({ name, step, speech }) => {
     <>
       <Suspense fallback={<Loader />}>
         <div className="card-header">
-          <h2>{speech[page].title}</h2>
+          <h2>{data.speech[page]?.title}</h2>
           <RedialProgressBar
             currentValue={page + 1}
-            total={step}
-            label={`${page + 1}/${step}`}
+            label={`${page + 1}/${data.step}`}
+            total={data.step}
           />
         </div>
         <div className="card-body">
           <ul>
-            {speech[page].content.map(item => (
+            {data.speech[page]?.content.map(item => (
               <li key={item}>
                 <Markdown children={item} />
               </li>

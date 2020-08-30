@@ -5,9 +5,11 @@ const SPEECH_TITLE = 'Test';
 const TOUCH_HINT = 'Please use swipe to turn cards!';
 const HINT = 'Please use left/right arrows to turn cards!';
 const mockStartProps = {
-  name: SPEECH_TITLE,
-  step: 1,
-  speech: [{ title: 'Start', content: ['Content item'] }],
+  content: {
+    name: SPEECH_TITLE,
+    step: 1,
+    speech: [{ title: 'Start', content: ['Content item'] }],
+  },
 };
 
 const isMobileDeviceMock = jest.fn();
@@ -45,7 +47,7 @@ describe('<Card />', () => {
       expect(screen.queryByTestId('card-hint')).not.toBeInTheDocument();
     });
     expect(container.querySelector('h2')).toHaveTextContent(
-      mockStartProps['speech'][mockStartProps.step - 1].title
+      mockStartProps.content['speech'][mockStartProps.content.step - 1].title
     );
   });
 
