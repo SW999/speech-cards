@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { isMobileDevice } from '../../utils';
+import { useDocumentTitle } from '../../hooks';
 import qr from '../../img/qr.png';
 
 const WhyContent = (
@@ -73,57 +74,59 @@ const TipsContent = (
   </ul>
 );
 
-const Home: FunctionComponent = () => (
-  <>
-    <h1 className="header-logo">Speech cards</h1>
-    {isMobileDevice() ? (
-      <>
-        <details>
-          <summary>
-            <h2>Why?</h2>
-          </summary>
-          <section>{WhyContent}</section>
-        </details>
+export default function Home() {
+  useDocumentTitle('Home');
 
-        <details>
-          <summary>
-            <h3>How it works?</h3>
-          </summary>
-          <section>{HowItWorksContent}</section>
-        </details>
+  return (
+    <>
+      <h1 className="header-logo">Speech cards</h1>
+      {isMobileDevice() ? (
+        <>
+          <details>
+            <summary>
+              <h2>Why?</h2>
+            </summary>
+            <section>{WhyContent}</section>
+          </details>
 
-        <details>
-          <summary>
-            <h3>Advantages</h3>
-          </summary>
-          <section>{AdvantagesContent}</section>
-        </details>
+          <details>
+            <summary>
+              <h3>How it works?</h3>
+            </summary>
+            <section>{HowItWorksContent}</section>
+          </details>
 
-        <details>
-          <summary>
-            <h3>Tips</h3>
-          </summary>
-          <section>{TipsContent}</section>
-        </details>
-      </>
-    ) : (
-      <>
-        <h2>Why?</h2>
-        <figure className="qr-code-figure">
-          <img src={qr} alt="QR Code link" />
-          <figcaption>QR Code link for mobile</figcaption>
-        </figure>
-        {WhyContent}
-        <h3>How it works?</h3>
-        {HowItWorksContent}
-        <h3>Advantages:</h3>
-        {AdvantagesContent}
-        <h3>Tips</h3>
-        {TipsContent}
-      </>
-    )}
-    <br />
-  </>
-);
+          <details>
+            <summary>
+              <h3>Advantages</h3>
+            </summary>
+            <section>{AdvantagesContent}</section>
+          </details>
 
-export default Home;
+          <details>
+            <summary>
+              <h3>Tips</h3>
+            </summary>
+            <section>{TipsContent}</section>
+          </details>
+        </>
+      ) : (
+        <>
+          <h2>Why?</h2>
+          <figure className="qr-code-figure">
+            <img src={qr} alt="QR Code link" />
+            <figcaption>QR Code link for mobile</figcaption>
+          </figure>
+          {WhyContent}
+          <h3>How it works?</h3>
+          {HowItWorksContent}
+          <h3>Advantages:</h3>
+          {AdvantagesContent}
+          <h3>Tips</h3>
+          {TipsContent}
+        </>
+      )}
+      <br />
+    </>
+  );
+}

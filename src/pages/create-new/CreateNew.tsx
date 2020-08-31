@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import MasterForm from '../../components/master-form/MasterForm';
+import { useDocumentTitle } from '../../hooks';
 import { LocationType } from '../../types';
 
 type CreateNewType = {
@@ -7,6 +8,7 @@ type CreateNewType = {
 };
 
 const CreateNew: FunctionComponent<CreateNewType> = ({ location }) => {
+  useDocumentTitle('Create new speech or interview');
   const data = location.state?.data;
 
   return (

@@ -16,8 +16,8 @@ import {
 import { IState } from '../../types';
 import LoadSpeechBtn from '../../components/load-speech-btn/LoadSpeechBtn';
 import SpeechesList from '../../components/speeches-list/SpeechesList';
-
 import WithLoader from '../../components/with-loader/WithLoader';
+import { useDocumentTitle } from '../../hooks';
 
 const ModalPopup = lazy(() =>
   import('../../components/modal-popup/ModalPopup')
@@ -28,6 +28,8 @@ const MySpeeches: FunctionComponent = () => {
   const [edit, setEdit] = useState<IState | null>(null);
   const [removedItemName, setRemovedItemName] = useState<string | null>(null);
   const [speechNames, setSpeechNames] = useState<string[]>([]);
+
+  useDocumentTitle('My speeches');
 
   const showSpeech = (e: MouseEvent<HTMLButtonElement>): void => {
     const target = e.currentTarget;

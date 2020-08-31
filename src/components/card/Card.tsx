@@ -14,6 +14,7 @@ import {
   THEMES,
   STORAGE_THEME_PREFIX,
 } from '../../constants';
+import { useDocumentTitle } from '../../hooks';
 import '../../scss/components/_card.scss';
 import swipe from '../../img/swipe.svg';
 
@@ -42,6 +43,8 @@ const Card: FunctionComponent<CardType> = ({
     props ? { ...props } : { ...content }
   );
   const [page, setPage] = useState<number>(-1);
+
+  useDocumentTitle(data.name ? data.name : 'Demo');
 
   useEffect(() => {
     const { step } = data;

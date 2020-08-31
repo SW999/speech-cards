@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { THEMES, STORAGE_THEME_PREFIX } from '../../constants';
+import { useDocumentTitle } from '../../hooks';
 import '../../scss/components/_theme.scss';
 
 import darkTheme from '../../img/darkTheme.jpg';
@@ -16,6 +17,8 @@ const Theme: FunctionComponent = () => {
   const [active, setActive] = useState<string>(
     localStorage.getItem(STORAGE_THEME_PREFIX) || THEMES.DEFAULT
   );
+  useDocumentTitle('Theme');
+
   const onSetTheme = (name: string): void => {
     if (name === active) return;
 
