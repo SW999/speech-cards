@@ -7,3 +7,4 @@ export const THEMES = {
 };
 export const STORAGE_SPEECH_PREFIX = 'speech_';
 export const STORAGE_THEME_PREFIX = 'speechTheme';
+export const DEFAULT_TITLE = 'Speech cards';
