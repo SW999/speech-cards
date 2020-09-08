@@ -3,7 +3,7 @@
 
 ![Simple speech cards](https://user-images.githubusercontent.com/3176886/84038222-58584080-a9a8-11ea-89a5-38c494fe2b32.jpg)
 
-<a href="https://github.com/sw999/speech-cards/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/sw999/speech-cards.svg?style=flat-square" alt="License"></a> <a href="https://github.com/SW999/random-number/tags"><img src="https://img.shields.io/github/v/tag/sw999/speech-cards.svg?sort=semver&style=flat-square" alt="Version"></a> ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/speech-cards.svg?style=flat-square) [![pas](https://img.shields.io/static/v1?&message=ProgressiveApp.Store&color=74b9ff&style=flat&label=Follow%20Speech%20cards%20at)](https://progressiveapp.store/pwa/Speech-cards)
+<a href="https://github.com/sw999/speech-cards/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/sw999/speech-cards.svg?style=flat-square" alt="License"></a> <a href="https://github.com/SW999/random-number/tags"><img src="https://img.shields.io/github/v/tag/sw999/speech-cards.svg?sort=semver&style=flat-square" alt="Version"></a> ![GitHub last commit](https://img.shields.io/github/last-commit/sw999/speech-cards.svg?style=flat-square)
 
 <img align="right" width="200" height="200" alt="QR Code link for mobile" src="https://github.com/SW999/speech-cards/raw/master/src/img/qr.png">
 
