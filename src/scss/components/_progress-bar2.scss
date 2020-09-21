@@ -1,0 +1,35 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
+#svg circle {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset .3s linear;
+  stroke: rgba($semi-gray, .4);
+}
+#svg #bar {
+  stroke: $mojo;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+#cont {
+  @include center-flex;
+  position: relative;
+  border-radius: $br;
+  //box-shadow: 0 0 .4rem rgba($dark-gray, .3);
+  //box-shadow: -.2rem -.2rem .5rem rgba($dark-gray, .1), .3rem .3rem .5rem rgba($dark-gray, .1);
+}
+#cont:after {
+  @include pseudo($content: attr(data-pct)"%");
+  height: auto;
+  width: auto;
+  border-radius: $br;
+  font-size: 1.4rem;
+  font-family: fantasy;
+}
+#cont:before {
+  @include pseudo;
+  height: 80%;
+  width: 80%;
+  //box-shadow: inset 0 0 .4rem rgba($dark-gray, .3);
+  border-radius: $br;
+}

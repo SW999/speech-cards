@@ -22,6 +22,7 @@ const Markdown = lazy(() => import('markdown-to-jsx'));
 const RedialProgressBar = lazy(() =>
   import('../radial-progress-bar/RedialProgressBar')
 );
+const ProgressBar = lazy(() => import('../progress-bar/ProgressBar'));
 const defaultContent = {
   name: '',
   speech: [],
@@ -130,6 +131,12 @@ const Card: FunctionComponent<CardType> = ({
             total={data.step}
           />
         </div>
+        <ProgressBar
+          progress={((page + 1) * 100) / data.step}
+          radius={23}
+          stroke={4}
+        />
+
         <div className="card-body">
           <ul>
             {data.speech[page]?.content.map(item => (

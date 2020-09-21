@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo } from 'react';
 import '../../scss/components/_loader.scss';
 
 type LoaderProps = {
@@ -30,4 +30,4 @@ const Loader: FunctionComponent<LoaderProps> = ({
   );
 };
 
-export default Loader;
+export default memo(Loader);
