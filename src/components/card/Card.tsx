@@ -19,9 +19,6 @@ import '../../scss/components/_card.scss';
 import swipe from '../../img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
-const RedialProgressBar = lazy(() =>
-  import('../radial-progress-bar/RedialProgressBar')
-);
 const ProgressBar = lazy(() => import('../progress-bar/ProgressBar'));
 const defaultContent = {
   name: '',
@@ -125,17 +122,14 @@ const Card: FunctionComponent<CardType> = ({
       <Suspense fallback={<Loader />}>
         <div className="card-header">
           <h2>{data.speech[page]?.title}</h2>
-          <RedialProgressBar
+          <ProgressBar
             currentValue={page + 1}
             label={`${page + 1}/${data.step}`}
+            radius={23}
+            stroke={4}
             total={data.step}
           />
         </div>
-        <ProgressBar
-          progress={((page + 1) * 100) / data.step}
-          radius={23}
-          stroke={4}
-        />
 
         <div className="card-body">
           <ul>

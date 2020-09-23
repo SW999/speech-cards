@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState, memo } from 'react';
-import '../../scss/components/_progress-bar.scss';
 
 type RedialProgressBarProps = {
   currentValue: number;

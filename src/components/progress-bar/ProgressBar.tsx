@@ -1,17 +1,24 @@
 import React, { FunctionComponent, memo } from 'react';
-import '../../scss/components/_progress-bar2.scss';
+import '../../scss/components/_progress-bar.scss';
 
 type ProgressBarProps = {
-  progress: number;
+  currentValue: number;
+  label?: string;
   radius: number;
-  stroke?: number;
+  stroke: number;
+  total: number;
 };
 
 const ProgressBar: FunctionComponent<ProgressBarProps> = ({
-  progress,
+  currentValue,
+  label,
   radius,
-  stroke = 16,
+  stroke,
+  total,
 }) => {
+  const progress = (currentValue * 100) / total;
+  const result =
+    currentValue === total ? 'Done' : label ? label : `${~~progress}%`;
   const normalizedRadius = radius * 0.9;
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress * circumference) / 100;
@@ -19,9 +26,24 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
     width: radius * 2,
     height: radius * 2,
   };
+
+  if (total < 2) {
+    return null;
+  }
+
   return (
-    <div id="cont" data-pct={~~progress} style={style}>
-      <svg id="svg" width={radius * 2} height={radius * 2}>
+    <div
+      className="progress--wrapper"
+      data-pct={result}
+      role="progressbar"
+      style={style}
+      aria-valuemax={total}
+      aria-valuemin={1}
+      aria-valuenow={currentValue}
+      aria-valuetext={result}
+      aria-label={result}
+    >
+      <svg className="progress--svg" width={radius * 2} height={radius * 2}>
         <circle
           r={normalizedRadius}
           cx={radius}
@@ -32,7 +54,9 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
           strokeDashoffset={0}
         />
         <circle
-          id="bar"
+          className={`progress--bar${
+            result === 'Done' ? ' progress--bar__done' : ''
+          }`}
           r={normalizedRadius}
           cx={radius}
           cy={radius}
