@@ -25,7 +25,7 @@
   box-shadow: -.2rem -.2rem .5rem rgba($dark-gray, .1), .3rem .3rem .5rem rgba($dark-gray, .1);
 
   &:after {
-    @include pseudo($content: attr(data-pct));
+    @include pseudo($content: attr(data-res));
     width: auto;
     height: auto;
     border-radius: $br;

@@ -34,7 +34,7 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
   return (
     <div
       className="progress--wrapper"
-      data-pct={result}
+      data-res={result}
       role="progressbar"
       style={style}
       aria-valuemax={total}
@@ -54,6 +54,7 @@ const ProgressBar: FunctionComponent<ProgressBarProps> = ({
           strokeDashoffset={0}
         />
         <circle
+          data-testid="progress-bar"
           className={`progress--bar${
             result === 'Done' ? ' progress--bar__done' : ''
           }`}

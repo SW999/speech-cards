@@ -11,7 +11,7 @@ const Footer: FunctionComponent = () => (
     >
       <img src={github} alt="github" width="24" height="24" />
     </a>
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© SW999
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;© Siarhei Vaitehovich
     2020&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     {`v. ${version}`}
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
