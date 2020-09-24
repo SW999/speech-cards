@@ -11,45 +11,6 @@ $shadow: 0 0 .3rem rgba($dark-gray, .12), 0 .3rem .4rem rgba($dark-gray, .25);
   height: $height;
 }
 
-@mixin draw-progress($progress, $size) {
-  .progress__curve-first-half {
-    transform: rotate($progress * 3.6deg);
-  }
-
-  @if $progress < 50 {
-    .progress__curve {
-      clip: rect(0, $size, $size, #{$size/2});
-    }
-
-    .progress__curve-second-half {
-      transform: rotate(0deg);
-    }
-  } @else {
-    .progress__curve {
-      clip: rect(auto, auto, auto, auto);
-    }
-
-    .progress__curve-second-half {
-      transform: rotate(180deg);
-    }
-  }
-
-  @if $progress == 100 {
-    .progress__curve-first-half,
-    .progress__curve-second-half {
-      border-color: $orange;
-    }
-  }
-}
-
-@mixin progress($size) {
-  @for $i from 1 through 100 {
-    &.progress-#{$i} {
-      @include draw-progress($i, $size)
-    }
-  }
-}
-
 @mixin center-flex() {
   display: flex;
   align-items: center;
