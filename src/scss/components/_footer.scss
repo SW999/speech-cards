@@ -4,10 +4,11 @@
   width: 100%;
   max-width: 60rem;
   margin-top: 3rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 1rem;
   color: $white;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background: linear-gradient(to right, rgba($link-color, .7) 0%, rgba($blue, .5) 100%);
+  //background: darken($blue, 10%);
 
   @include mq(tablet) {
     position: absolute;

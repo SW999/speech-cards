@@ -62,6 +62,10 @@ nav {
   z-index: 2;
   transition: top .4s $easing-function;
 
+  &:focus {
+    outline: none;
+  }
+
   @include mq(tablet) {
     position: static;
     display: none;

@@ -18,7 +18,7 @@ exports[`Footer component Footer should take a snapshot: Footer 1`] = `
         width="24"
       />
     </a>
-       |   © Siarhei Vaitehovich 2020   |   v. 1.0.0   |   
+       Siarhei Vaitehovich   |   v. 1.0.0   |   
     <a
       href="mailto:swarog2002@mail.ru?subject=Speech%20cards"
       rel="noopener noreferrer"

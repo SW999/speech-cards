@@ -6,7 +6,12 @@ export default function Header() {
   const isMobile = isMobileDevice();
   const toggleMenu = useCallback(() => {
     if (isMobile) {
+      const $menu = document.getElementById('toggleMenu');
       document.getElementById('pageHeader').classList.toggle('show-menu');
+      $menu.setAttribute(
+        'aria-pressed',
+        $menu.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'
+      );
     }
   }, [isMobile]);
 
@@ -24,6 +29,7 @@ export default function Header() {
       {isMobile && (
         <div
           aria-label="Toggle menu"
+          aria-pressed="false"
           className="menu-toggle"
           id="toggleMenu"
           role="button"
