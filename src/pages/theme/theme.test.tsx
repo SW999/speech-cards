@@ -1,28 +1,27 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Theme from './Theme';
-import { STORAGE_THEME_PREFIX } from '../../constants';
-
-const mockWindowProperty = (property, value) => {
-  const { [property]: originalProperty } = window;
-  delete window[property];
-  beforeAll(() => {
-    Object.defineProperty(window, property, {
-      value,
-      configurable: true,
-      writable: true,
-    });
-  });
-  afterAll(() => {
-    window[property] = originalProperty;
-  });
-};
+//
+// const mockWindowProperty = (property, value) => {
+//   const { [property]: originalProperty } = window;
+//   delete window[property];
+//   beforeAll(() => {
+//     Object.defineProperty(window, property, {
+//       value,
+//       configurable: true,
+//       writable: true,
+//     });
+//   });
+//   afterAll(() => {
+//     window[property] = originalProperty;
+//   });
+// };
 
 describe('Theme component', () => {
-  mockWindowProperty('localStorage', {
-    setItem: jest.fn(),
-    getItem: jest.fn(),
-  });
+  // mockWindowProperty('localStorage', {
+  //   setItem: jest.fn(),
+  //   getItem: jest.fn(),
+  // });
 
   it('Theme renders correctly', () => {
     const { asFragment } = render(<Theme />);
@@ -31,19 +30,27 @@ describe('Theme component', () => {
   });
 
   it('Theme not changes value on click to active', () => {
-    const wrapper = render(<Theme />);
-    fireEvent.click(wrapper.container.querySelectorAll('.theme-col')[0]);
+    render(<Theme />);
+    fireEvent.click(screen.getByTestId('default'));
 
-    expect(window.localStorage.setItem).not.toHaveBeenCalled();
+    expect(
+      screen.getByTestId('default').classList.contains('theme-col_active')
+    ).toBeTruthy();
   });
 
-  it('Theme changes active value on click', () => {
-    const wrapper = render(<Theme />);
-    fireEvent.click(wrapper.container.querySelectorAll('.theme-col')[1]);
+  it('Theme changes value on click to not active value', async () => {
+    render(<Theme />);
 
-    expect(window.localStorage.setItem).toHaveBeenCalledWith(
-      STORAGE_THEME_PREFIX,
-      'dark'
-    );
+    expect(
+      screen.getByTestId('dark').classList.contains('theme-col_active')
+    ).toBeFalsy();
+
+    fireEvent.click(screen.getByTestId('dark'));
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId('dark').classList.contains('theme-col_active')
+      ).toBeTruthy();
+    });
   });
 });

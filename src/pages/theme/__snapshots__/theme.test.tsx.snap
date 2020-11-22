@@ -13,6 +13,7 @@ exports[`Theme component Theme renders correctly: Theme 1`] = `
   >
     <div
       class="theme-col theme-col_active"
+      data-testid="default"
     >
       <img
         alt="default theme"
@@ -23,6 +24,7 @@ exports[`Theme component Theme renders correctly: Theme 1`] = `
     </div>
     <div
       class="theme-col"
+      data-testid="dark"
     >
       <img
         alt="dark theme"
@@ -33,6 +35,7 @@ exports[`Theme component Theme renders correctly: Theme 1`] = `
     </div>
     <div
       class="theme-col"
+      data-testid="simple"
     >
       <img
         alt="simple theme"

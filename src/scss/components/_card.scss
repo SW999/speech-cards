@@ -1,7 +1,8 @@
 @import "../abstracts/_variables";
 @import "../abstracts/_mixins";
 
-.dark-theme {
+body[data-theme='dark'] {
+  --body-color: #{$white};
   --title-color: #{$white};
   --content-bg: #{$dark-gray};
   --mobile-nav-bg: #{$dark-gray};
@@ -24,7 +25,7 @@
   }
 }
 
-.simple-theme {
+body[data-theme='simple'] {
   --title-color: #{$green};
   --progress-border-color: #{lighten($green, 5%)};
   --card-hint: #{lighten($green, 5%)};
@@ -37,6 +38,10 @@
   .card-header h2 {
     text-shadow: .1rem .1rem $white;
   }
+}
+
+body {
+  color: var(--body-color, rgba($dark-gray, .84));
 }
 
 .content {

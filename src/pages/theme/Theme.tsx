@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { THEMES, STORAGE_THEME_PREFIX } from '../../constants';
+import { THEMES } from '../../constants';
 import { useDocumentTitle } from '../../hooks';
 import '../../scss/components/_theme.scss';
 
@@ -15,7 +15,7 @@ const THEME_ITEMS = [
 
 const Theme: FunctionComponent = () => {
   const [active, setActive] = useState<string>(
-    localStorage.getItem(STORAGE_THEME_PREFIX) || THEMES.DEFAULT
+    document.body.dataset.theme || THEMES.DEFAULT
   );
   useDocumentTitle('Theme');
 
@@ -23,8 +23,11 @@ const Theme: FunctionComponent = () => {
     if (name === active) return;
 
     setActive(name);
-    localStorage.setItem(STORAGE_THEME_PREFIX, name);
   };
+
+  React.useEffect(() => {
+    document.body.dataset.theme = active;
+  }, [active]);
 
   return (
     <>
@@ -43,6 +46,7 @@ const Theme: FunctionComponent = () => {
                 active === name ? ' theme-col_active' : ''
               }`}
               onClick={() => onSetTheme(name)}
+              data-testid={name}
             >
               <img
                 alt={`${name} theme`}

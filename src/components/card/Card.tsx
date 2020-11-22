@@ -1,19 +1,14 @@
 import React, {
   FunctionComponent,
-  lazy,
   Suspense,
+  lazy,
   useEffect,
   useState,
 } from 'react';
 import Loader from '../loader/Loader';
 import { IState, LocationType } from '../../types';
 import { isMobileDevice } from '../../utils';
-import {
-  CARD_TOUCH_HINT,
-  CARD_HINT,
-  THEMES,
-  STORAGE_THEME_PREFIX,
-} from '../../constants';
+import { CARD_HINT, CARD_TOUCH_HINT } from '../../constants';
 import { useDocumentTitle } from '../../hooks';
 import '../../scss/components/_card.scss';
 import swipe from '../../img/swipe.svg';
@@ -78,16 +73,6 @@ const Card: FunctionComponent<CardType> = ({
       document.removeEventListener('keydown', slideCard);
     };
   }, [isMobile, page, data]);
-
-  useEffect(() => {
-    const CURRENT_THEME =
-      localStorage.getItem(STORAGE_THEME_PREFIX) || THEMES.DEFAULT;
-    document.body.classList.add(`${CURRENT_THEME}-theme`);
-
-    return () => {
-      document.body.classList.remove(`${CURRENT_THEME}-theme`);
-    };
-  }, []);
 
   useEffect(() => {
     if (!props && content.speech.length < 1) {
