@@ -1,0 +1,83 @@
+@import "../abstracts/_variables";
+@import "../abstracts/_mixins";
+
+body[data-theme='dark'] {
+  --body-color: #{$white};
+  --title-color: #{$white};
+  --content-bg: #{$dark-gray};
+  --mobile-nav-bg: #{$dark-gray};
+  --nav-bg: #{$dark-gray};
+  --nav-link-color: #{$white};
+  --nav-link-active-color: #{$white};
+  --nav-link-hover-color: #{$white};
+  --menu-toggle-bg: #{$semi-gray};
+  --progress-count-color: #{$semi-gray};
+  --progress-count-bg: #{$dark-gray};
+  --card-hint: #{lighten($semi-gray, 5%)};
+  --card-header-bg: #{lighten($dark-gray, 5%)};
+  --card-body-before-bg: #{lighten($dark-gray, 5%)};
+  --card-body-li-color: #{lighten($semi-gray, 20%)};
+  --card-body-li-stripe-shadow: #{$dark-gray};
+  --card-body-li-stripe-bg: #{lighten($dark-gray, 10%)};
+
+  .card-header h2 {
+    text-shadow: none;
+  }
+}
+
+body[data-theme='simple'] {
+  --title-color: #{$green};
+  --progress-border-color: #{lighten($green, 5%)};
+  --card-hint: #{lighten($green, 5%)};
+  --card-header-color: #{lighten($dark-gray, 10%)};
+  --card-header-bg: #{lighten($semi-gray, 15%)};
+  --card-body-before-bg: #{lighten($semi-gray, 15%)};
+  --card-body-li-stripe-shadow: #{$white};
+  --card-body-li-stripe-bg: #{lighten($semi-gray, 22%)};
+
+  .card-header h2 {
+    text-shadow: .1rem .1rem $white;
+  }
+}
+
+body {
+  color: var(--body-color, rgba($dark-gray, .84));
+}
+
+.content {
+  background-color: var(--content-bg, $light-gray);
+
+  @include mq(tablet) {
+    background-color: var(--content-bg, $white);
+  }
+}
+
+.show-menu nav {
+  background-color: var(--mobile-nav-bg, $white);
+}
+
+nav {
+  background-color: var(--nav-bg, $white);
+
+  a {
+    color: var(--nav-link-color, rgba($dark-gray, .9));
+
+    &.active {
+      color: var(--nav-link-active-color, $dark-gray);
+    }
+
+    @media(hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--nav-link-hover-color, $dark-gray);
+      }
+    }
+  }
+}
+
+.menu-toggle {
+  > span,
+  > span:before,
+  > span:after {
+    background-color: var(--menu-toggle-bg, $dark-gray);
+  }
+}
