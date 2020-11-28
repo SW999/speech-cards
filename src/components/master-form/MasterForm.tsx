@@ -10,12 +10,8 @@ import React, {
   useState,
 } from 'react';
 import { Redirect } from 'react-router-dom';
-import {
-  debounce,
-  downloadFile,
-  saveToStorage,
-  normalizeState,
-} from '../../utils';
+import { downloadFile, saveToStorage, normalizeState } from '../../utils';
+import { useDebounce } from '../../hooks';
 import { IAction, IState } from '../../types';
 import { newSpeechReducer, initialState } from '../../reducers';
 import Input from '../input/Input';
@@ -67,9 +63,12 @@ const MasterForm: FunctionComponent<DataType> = ({ data = initialState }) => {
       payload: { step, itemNumber },
     });
 
-  const resetState = debounce((): void => dispatch({ type: 'RESET' }), 500);
+  const resetState = useDebounce((): void => dispatch({ type: 'RESET' }), 500);
 
-  const nextStep = debounce((): void => dispatch({ type: 'NEXT_STEP' }), 500);
+  const nextStep = useDebounce(
+    (): void => dispatch({ type: 'NEXT_STEP' }),
+    500
+  );
 
   const prevStep = (): void => dispatch({ type: 'PREV_STEP' });
 

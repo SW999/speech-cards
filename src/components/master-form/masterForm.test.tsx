@@ -5,13 +5,13 @@ import MasterForm from './MasterForm';
 
 jest.mock('../../utils', () => ({
   ...jest.requireActual('../../utils'),
-  debounce: fn => {
-    fn.cancel = jest.fn();
-    return fn;
-  },
   downloadFile: jest.fn(),
   normalizeState: jest.fn(),
   saveToStorage: jest.fn(),
+}));
+
+jest.mock('../../hooks', () => ({
+  useDebounce: func => func,
 }));
 
 describe('MasterForm', () => {

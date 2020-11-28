@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
-import { debounce } from '../../utils';
+import { useDebounce } from '../../hooks';
 import Input from '../input/Input';
 import md from '../../img/md.svg';
 
@@ -38,11 +38,11 @@ const ContentItem: FunctionComponent<AddRemoveContentItemProps> = ({
     setValue(`contentItem-${step}-${itemCount}`, e.currentTarget.value);
   };
 
-  const onAddContentItem = debounce((): void => {
+  const onAddContentItem = useDebounce((): void => {
     onAdd(step, itemCount);
   }, 500);
 
-  const onRemoveContentItem = debounce((): void => {
+  const onRemoveContentItem = useDebounce((): void => {
     onRemove(step, itemCount);
   }, 500);
 
