@@ -116,6 +116,7 @@
     "jest-extended": "^0.11.5",
     "markdown-to-jsx": "^6.11.4",
     "node-sass": "^4.14.1",
+    "parcel-bundler": "1.12.4",
     "parcel-plugin-static-files-copy": "^2.4.4",
     "prettier": "^2.0.5",
     "react-hook-form": "^4.10.2",
@@ -133,7 +134,6 @@
     "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.2",
     "typescript": "3.8.3",
-    "parcel-bundler": "1.12.4",
-    "workbox-cli": "^5.0.0"
+    "workbox-cli": "^6.0.2"
   }
 }
