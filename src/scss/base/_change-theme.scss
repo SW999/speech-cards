@@ -19,6 +19,7 @@ body[data-theme='dark'] {
   --card-body-li-color: #{lighten($semi-gray, 20%)};
   --card-body-li-stripe-shadow: #{$dark-gray};
   --card-body-li-stripe-bg: #{lighten($dark-gray, 10%)};
+  --main-header-color: #{lighten($semi-gray, 20%)};
 
   .card-header h2 {
     text-shadow: none;
@@ -34,6 +35,7 @@ body[data-theme='simple'] {
   --card-body-before-bg: #{lighten($semi-gray, 15%)};
   --card-body-li-stripe-shadow: #{$white};
   --card-body-li-stripe-bg: #{lighten($semi-gray, 22%)};
+  --main-header-color: #{lighten($dark-gray, 10%)};
 
   .card-header h2 {
     text-shadow: .1rem .1rem $white;
