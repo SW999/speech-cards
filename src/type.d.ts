@@ -1,15 +1,15 @@
-export type SpeechItem = {
+type SpeechItem = {
   title: string;
   content: string[];
 };
 
-export type IState = {
+type IState = {
   name?: string;
   step?: number;
   speech?: SpeechItem[];
 };
 
-export type LocationType = {
+type LocationType = {
   pathname: string;
   search: string;
   hash: string;
@@ -17,7 +17,7 @@ export type LocationType = {
 };
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type IAction = {
+type IAction = {
   type: string;
   payload?: any;
 };

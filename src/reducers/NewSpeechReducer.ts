@@ -1,5 +1,3 @@
-import { IState, IAction, SpeechItem } from '../types';
-
 export const speechInitialState: IState = { name: '', step: 0, speech: [] };
 
 export const newSpeechReducer = (state: IState, action: IAction): IState => {

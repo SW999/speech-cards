@@ -12,7 +12,6 @@ import React, {
 import { Redirect } from 'react-router-dom';
 import { downloadFile, saveToStorage, normalizeState } from '../../utils';
 import { useDebounce } from '../../hooks';
-import { IAction, IState } from '../../types';
 import { newSpeechReducer, initialState } from '../../reducers';
 import Input from '../input/Input';
 import Loader from '../loader/Loader';

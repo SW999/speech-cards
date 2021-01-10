@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import MasterForm from '../../components/master-form/MasterForm';
 import { useDocumentTitle } from '../../hooks';
-import { LocationType } from '../../types';
 
 type CreateNewType = {
   location: LocationType;

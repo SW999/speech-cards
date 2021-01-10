@@ -1,4 +1,3 @@
-import { IState } from 'types';
 import { prepareSpeechName } from './prepareSpeechName.util';
 import { getSpeechNamesFromStorage } from './getSpeechNamesFromStorage.util';
 import { STORAGE_SPEECH_PREFIX } from '../constants/index';

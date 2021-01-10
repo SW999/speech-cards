@@ -1,4 +1,3 @@
-import { IState } from 'types';
 import { prepareSpeechName } from './prepareSpeechName.util';
 
 export const downloadFile = async (data: IState): Promise<void> => {

@@ -6,7 +6,6 @@ import React, {
   useState,
 } from 'react';
 import Loader from '../loader/Loader';
-import { IState, LocationType } from '../../types';
 import { isMobileDevice } from '../../utils';
 import { CARD_HINT, CARD_TOUCH_HINT } from '../../constants';
 import { useDocumentTitle } from '../../hooks';

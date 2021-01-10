@@ -1,5 +1,3 @@
-import { IState } from 'types';
-
 export const validateJSON = (o: IState | null): boolean => {
   return !!(
     o !== null &&

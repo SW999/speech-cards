@@ -13,7 +13,6 @@ import {
   removeFromStorage,
   validateJSON,
 } from '../../utils';
-import { IState } from '../../types';
 import LoadSpeechBtn from '../../components/load-speech-btn/LoadSpeechBtn';
 import SpeechesList from '../../components/speeches-list/SpeechesList';
 import WithLoader from '../../components/with-loader/WithLoader';
