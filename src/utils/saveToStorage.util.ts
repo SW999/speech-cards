@@ -1,6 +1,6 @@
 import { prepareSpeechName } from './prepareSpeechName.util';
 import { getSpeechNamesFromStorage } from './getSpeechNamesFromStorage.util';
-import { STORAGE_SPEECH_PREFIX } from '../constants/index';
+import { STORAGE_SPEECH_PREFIX } from '~constants';
 
 export const saveToStorage = (data: IState): void => {
   const speechesList = getSpeechNamesFromStorage();

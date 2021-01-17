@@ -5,15 +5,15 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import Loader from '../loader/Loader';
-import { isMobileDevice } from '../../utils';
-import { CARD_HINT, CARD_TOUCH_HINT } from '../../constants';
-import { useDocumentTitle } from '../../hooks';
-import '../../scss/components/_card.scss';
-import swipe from '../../img/swipe.svg';
+import Loader from '~components/loader/Loader';
+import { isMobileDevice } from '~utils';
+import { CARD_HINT, CARD_TOUCH_HINT } from '~constants';
+import { useDocumentTitle } from '~hooks';
+import '~scss/components/_card.scss';
+import swipe from '~img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
-const ProgressBar = lazy(() => import('../progress-bar/ProgressBar'));
+const ProgressBar = lazy(() => import('~components/progress-bar/ProgressBar'));
 const defaultContent = {
   name: '',
   speech: [],

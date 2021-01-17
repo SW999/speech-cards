@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FunctionComponent, memo } from 'react';
-import { reviverJSON, validateJSON } from '../../utils';
+import { reviverJSON, validateJSON } from '~utils';
 
 type LoadSpeechBtnType = {
   onLoadSpeech: (data: IState) => void;

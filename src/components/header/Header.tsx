@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import { isMobileDevice } from '../../utils';
+import { isMobileDevice } from '~utils';
 
 export default function Header() {
   const isMobile = isMobileDevice();

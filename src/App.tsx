@@ -1,16 +1,16 @@
 import React, { FunctionComponent, useEffect, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { isMobileDevice, addSwipeEvent } from './utils';
-import Header from './components/header/Header';
-import WithLoader from './components/with-loader/WithLoader';
+import { isMobileDevice, addSwipeEvent } from '~utils';
+import Header from '~components/header/Header';
+import WithLoader from '~components/with-loader/WithLoader';
 
-const Card = lazy(() => import('./components/card/Card'));
-const CreateNew = lazy(() => import('./pages/create-new/CreateNew'));
-const Footer = lazy(() => import('./components/footer/Footer'));
-const Home = lazy(() => import('./pages/home/Home'));
-const MySpeeches = lazy(() => import('./pages/my-speeches/MySpeeches'));
-const PageNotFound = lazy(() => import('./pages/page-not-found/PageNotFound'));
-const Theme = lazy(() => import('./pages/theme/Theme'));
+const Card = lazy(() => import('~components/card/Card'));
+const CreateNew = lazy(() => import('~pages/create-new/CreateNew'));
+const Footer = lazy(() => import('~components/footer/Footer'));
+const Home = lazy(() => import('~pages/home/Home'));
+const MySpeeches = lazy(() => import('~pages/my-speeches/MySpeeches'));
+const PageNotFound = lazy(() => import('~pages/page-not-found/PageNotFound'));
+const Theme = lazy(() => import('~pages/theme/Theme'));
 
 const App: FunctionComponent = () => {
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { STORAGE_SPEECH_PREFIX } from '../constants/index';
+import { STORAGE_SPEECH_PREFIX } from '~constants';
 
 const len = STORAGE_SPEECH_PREFIX.length;
 

@@ -1,5 +1,5 @@
 import { useRef, useLayoutEffect, useMemo } from 'react';
-import { debounce } from '../utils/debounce.util';
+import { debounce } from '~utils';
 
 export function useDebounce(callback, delay) {
   const callbackRef = useRef(callback);

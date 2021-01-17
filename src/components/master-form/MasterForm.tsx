@@ -10,13 +10,13 @@ import React, {
   useState,
 } from 'react';
 import { Redirect } from 'react-router-dom';
-import { downloadFile, saveToStorage, normalizeState } from '../../utils';
-import { useDebounce } from '../../hooks';
-import { newSpeechReducer, initialState } from '../../reducers';
-import Input from '../input/Input';
-import Loader from '../loader/Loader';
-import LoadSpeechBtn from '../load-speech-btn/LoadSpeechBtn';
-const MainStep = lazy(() => import('../main-step/MainStep'));
+import { downloadFile, saveToStorage, normalizeState } from '~utils';
+import { useDebounce } from '~hooks';
+import { newSpeechReducer, initialState } from '~reducers';
+import Input from '~components/input/Input';
+import Loader from '~components/loader/Loader';
+import LoadSpeechBtn from '~components/load-speech-btn/LoadSpeechBtn';
+const MainStep = lazy(() => import('~components/main-step/MainStep'));
 type DataType = {
   data?: IState;
 };

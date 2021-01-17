@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import Loader from '../loader/Loader';
+import Loader from '~components/loader/Loader';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const WithLoader = ({ component: Component, ...rest }) => (props?: any) => {

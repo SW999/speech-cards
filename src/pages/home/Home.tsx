@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isMobileDevice } from '../../utils';
-import { useDocumentTitle } from '../../hooks';
-import qr from '../../img/qr.png';
+import { isMobileDevice } from '~utils';
+import { useDocumentTitle } from '~hooks';
+import qr from '~img/qr.png';
 
 const WhyContent = (
   <>

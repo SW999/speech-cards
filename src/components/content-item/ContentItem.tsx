@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FunctionComponent, LegacyRef } from 'react';
-import { useDebounce } from '../../hooks';
-import Input from '../input/Input';
-import md from '../../img/md.svg';
+import { useDebounce } from '~hooks';
+import Input from '~components/input/Input';
+import md from '~img/md.svg';
 
 type AddRemoveContentItemProps = {
   error: object;

@@ -5,8 +5,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import ContentItem from '../content-item/ContentItem';
-import Input from '../input/Input';
+import ContentItem from '~components/content-item/ContentItem';
+import Input from '~components/input/Input';
 
 type MainStepProps = {
   changeStepContent: (

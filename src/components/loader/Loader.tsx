@@ -1,5 +1,5 @@
 import React, { FunctionComponent, memo } from 'react';
-import '../../scss/components/_loader.scss';
+import '~scss/components/_loader.scss';
 
 type LoaderProps = {
   onlyText?: boolean;

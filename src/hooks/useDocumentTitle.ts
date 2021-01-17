@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { DEFAULT_TITLE } from '../constants';
+import { DEFAULT_TITLE } from '~constants';
 
 export function useDocumentTitle(title: string) {
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDocumentTitle } from '../../hooks';
+import { useDocumentTitle } from '~hooks';
 
 export default function PageNotFound() {
   useDocumentTitle('404');

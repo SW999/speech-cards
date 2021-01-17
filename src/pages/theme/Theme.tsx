@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState } from 'react';
-import { THEMES } from '../../constants';
-import { useDocumentTitle } from '../../hooks';
-import '../../scss/components/_theme.scss';
+import { THEMES } from '~constants';
+import { useDocumentTitle } from '~hooks';
+import '~scss/components/_theme.scss';
 
-import darkTheme from '../../img/darkTheme.jpg';
-import defaultTheme from '../../img/defaultTheme.jpg';
-import simpleTheme from '../../img/simpleTheme.jpg';
+import darkTheme from '~img/darkTheme.jpg';
+import defaultTheme from '~img/defaultTheme.jpg';
+import simpleTheme from '~img/simpleTheme.jpg';
 
 const THEME_ITEMS = [
   { name: THEMES.DEFAULT, img: defaultTheme },

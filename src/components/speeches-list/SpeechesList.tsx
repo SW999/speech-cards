@@ -1,5 +1,5 @@
 import React, { FunctionComponent, MouseEvent } from 'react';
-import { doSpeechNameReadable } from '../../utils';
+import { doSpeechNameReadable } from '~utils';
 
 type SpeechesListType = {
   editSpeech: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;

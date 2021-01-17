@@ -1,5 +1,5 @@
 import React, { FunctionComponent, memo } from 'react';
-import '../../scss/components/_progress-bar.scss';
+import '~scss/components/_progress-bar.scss';
 
 type ProgressBarProps = {
   currentValue: number;

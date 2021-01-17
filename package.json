@@ -24,6 +24,7 @@
   "scripts": {
     "clean": "del-cli dist/* .cache/*",
     "push": "git push --tags origin master",
+    "postinstall": "link-module-alias",
     "dev": "concurrently -r \"npm:type-check:watch\" \"npm:start\"",
     "start": "cross-env NODE_ENV=development && npm run clean && npm run type-check && parcel src/index.html --open",
     "prebuild": "npm version patch",
@@ -47,6 +48,16 @@
       "pre-commit": "npm run prettify",
       "pre-push": "npm run test"
     }
+  },
+  "_moduleAliases": {
+    "~components": "src/components",
+    "~constants": "src/constants",
+    "~hooks": "src/hooks",
+    "~img": "src/img",
+    "~pages": "src/pages",
+    "~reducers": "src/reducers",
+    "~scss": "src/scss",
+    "~utils": "src/utils"
   },
   "engines": {
     "node": ">= 8.11.0",
@@ -114,6 +125,7 @@
     "husky": "^3.1.0",
     "jest": "^25.5.4",
     "jest-extended": "^0.11.5",
+    "link-module-alias": "^1.2.0",
     "markdown-to-jsx": "^6.11.4",
     "node-sass": "^4.14.1",
     "parcel-bundler": "1.12.4",

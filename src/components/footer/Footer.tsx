@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { version } from '../../../package.json';
-import github from '../../img/github.svg';
+import github from '~img/github.svg';
 
 const Footer: FunctionComponent = () => (
   <div className="footer" role="contentinfo">
