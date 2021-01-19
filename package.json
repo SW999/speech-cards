@@ -38,7 +38,7 @@
     "lint:js": "cross-env NODE_ENV=production eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.ts,.tsx,.mjs --report-unused-disable-directives src",
     "lint:scss": "stylelint \"src/**/*.scss\" --syntax scss",
     "type-check:watch": "tsc --noEmit --watch",
-    "test": "npm run lint && jest",
+    "test": "cross-env NODE_ENV=test && npm run lint && jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:update": "jest --updateSnapshot"

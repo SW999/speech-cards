@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { version } from '../../../package.json';
 import github from '~img/github.svg';
+
+const version =
+  process.env.NODE_ENV === 'test' ? '1.0.0' : process.env.npm_package_version;
 
 const Footer: FunctionComponent = () => (
   <div className="footer" role="contentinfo">

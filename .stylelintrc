@@ -9,7 +9,7 @@
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "block-no-empty": null,
-    "unit-whitelist": ["em", "rem", "s", "px", "%", "deg", "vh", "vw"],
+    "unit-allowed-list": ["em", "rem", "s", "px", "%", "deg", "vh", "vw"],
     "no-descending-specificity": null
   }
 }
