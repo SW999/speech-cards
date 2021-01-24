@@ -7,6 +7,7 @@ exports[`Footer component Footer should take a snapshot: Footer 1`] = `
     role="contentinfo"
   >
     <a
+      class="git"
       href="https://github.com/SW999/speech-cards"
       rel="nofollow"
       title="Github page"
@@ -18,7 +19,14 @@ exports[`Footer component Footer should take a snapshot: Footer 1`] = `
         width="24"
       />
     </a>
-       Siarhei Vaitehovich   |   v. 1.0.0   |   
+    Siarhei Vaitehovich
+    <span
+      class="divider"
+    />
+    v. 1.0.0
+    <span
+      class="divider"
+    />
     <a
       href="mailto:swarog2002@mail.ru?subject=Speech%20cards"
       rel="noopener noreferrer"

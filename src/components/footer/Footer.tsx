@@ -7,15 +7,17 @@ const version =
 const Footer: FunctionComponent = () => (
   <div className="footer" role="contentinfo">
     <a
+      className="git"
       href="https://github.com/SW999/speech-cards"
       rel="nofollow"
       title="Github page"
     >
       <img src={github} alt="github" width="24" height="24" />
     </a>
-    &nbsp;&nbsp;&nbsp;Siarhei Vaitehovich&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    Siarhei Vaitehovich
+    <span className="divider" />
     {`v. ${version}`}
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <span className="divider" />
     <a
       href="mailto:swarog2002@mail.ru?subject=Speech%20cards"
       target="_blank"

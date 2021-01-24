@@ -27,4 +27,16 @@
     color: $white;
     text-decoration: none;
   }
+
+  .git {
+    margin-right: 1.3rem;
+  }
+
+  .divider {
+    padding: 0 1.3rem;
+
+    &::before {
+      content: '|';
+    }
+  }
 }
