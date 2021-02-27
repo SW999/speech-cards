@@ -64,5 +64,6 @@ MIT © Siarhei Vaitehovich
 - [x] Add a QR code to start page only for desktop
 - [x] Add confirmation modal
 - [x] Create PWA
+- [ ] Add Open Graph meta tags
 
 Done! :sunny:
