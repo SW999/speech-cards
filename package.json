@@ -110,7 +110,6 @@
     "@typescript-eslint/parser": "^2.33.0",
     "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
-    "cssnano": "^4.1.10",
     "del-cli": "^3.0.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
