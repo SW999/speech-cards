@@ -43,10 +43,11 @@ You may also look at a speech cards example in the "**Demo**" section, which bas
 
 ## Technology Stack
 * Parcel web application bundler
-* React with TypeScript
+* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) with ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 * Form validation with [react-hook-form](https://github.com/react-hook-form/react-hook-form)
-* SASS
-* Tests via Jest and @testing-library/react
+* ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+* Tests via ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) and ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white) @testing-library/react
 * progressive web application (PWA)
 
 Besides, I've faced with an interesting issue with routing of SPA on GitHub Pages. Fortunately, I managed to find a brilliant [solution](https://github.com/rafgraph/spa-github-pages) by [Rafael Pedicini](https://github.com/rafgraph). Thank you, Rafael, you helped keep the remains of my mind! :speak_no_evil:
