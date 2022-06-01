@@ -42,12 +42,12 @@ You may also look at a speech cards example in the "**Demo**" section, which bas
 - Should contain main idea/ideas of current part of speech.
 
 ## Technology Stack
+![Parcel](https://user-images.githubusercontent.com/3176886/171444419-f6718701-2bc8-45b5-94b4-c0ffc10c5792.png) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
 * Parcel web application bundler
-* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) with ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+* React with TypeScript
 * Form validation with [react-hook-form](https://github.com/react-hook-form/react-hook-form)
-* ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-* Tests via ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white) and ![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white) @testing-library/react
+* SASS
+* Tests via Jest and @testing-library/react
 * progressive web application (PWA)
 
 Besides, I've faced with an interesting issue with routing of SPA on GitHub Pages. Fortunately, I managed to find a brilliant [solution](https://github.com/rafgraph/spa-github-pages) by [Rafael Pedicini](https://github.com/rafgraph). Thank you, Rafael, you helped keep the remains of my mind! :speak_no_evil:
