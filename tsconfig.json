@@ -18,7 +18,7 @@
     "target": "es2017",
     "resolveJsonModule": true,
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types", "src/type.d.ts"
     ],
     "lib": [
       "es2017",

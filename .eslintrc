@@ -2,7 +2,7 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:prettier/recommended",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended"
@@ -206,6 +206,11 @@
     "react": {
       "pragma": "React",
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src/type.d.ts"]
+      }
     }
   }
 }
