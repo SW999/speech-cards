@@ -16,7 +16,7 @@ import { newSpeechReducer, initialState } from '~reducers';
 import Input from '~components/input/Input';
 import Loader from '~components/loader/Loader';
 import LoadSpeechBtn from '~components/load-speech-btn/LoadSpeechBtn';
-const MainStep = lazy(() => import('~components/main-step/MainStep'));
+const MainStep = lazy(() => import('../main-step/MainStep'));
 type DataType = {
   data?: IState;
 };

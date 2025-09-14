@@ -18,7 +18,7 @@ import SpeechesList from '~components/speeches-list/SpeechesList';
 import WithLoader from '~components/with-loader/WithLoader';
 import { useDocumentTitle } from '~hooks';
 
-const ModalPopup = lazy(() => import('~components/modal-popup/ModalPopup'));
+const ModalPopup = lazy(() => import('../../components/modal-popup/ModalPopup'));
 
 const MySpeeches: FunctionComponent = () => {
   const [data, setData] = useState<IState | null>(null);

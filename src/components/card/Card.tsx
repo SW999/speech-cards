@@ -13,7 +13,7 @@ import '~scss/components/_card.scss';
 import swipe from '~img/swipe.svg';
 
 const Markdown = lazy(() => import('markdown-to-jsx'));
-const ProgressBar = lazy(() => import('~components/progress-bar/ProgressBar'));
+const ProgressBar = lazy(() => import('../progress-bar/ProgressBar'));
 const defaultContent = {
   name: '',
   speech: [],
