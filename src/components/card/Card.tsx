@@ -6,13 +6,14 @@ import React, {
   useState,
 } from 'react';
 import Loader from '~components/loader/Loader';
+import Markdown from 'markdown-to-jsx';
 import { isMobileDevice } from '~utils';
 import { CARD_HINT, CARD_TOUCH_HINT } from '~constants';
 import { useDocumentTitle } from '~hooks';
 import '~scss/components/_card.scss';
 import swipe from '~img/swipe.svg';
 
-const Markdown = lazy(() => import('markdown-to-jsx'));
+//const Markdown = lazy(() => import('markdown-to-jsx'));
 const ProgressBar = lazy(() => import('../progress-bar/ProgressBar'));
 const defaultContent = {
   name: '',
